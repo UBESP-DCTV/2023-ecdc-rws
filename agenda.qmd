@@ -1,0 +1,235 @@
+---
+title: "Agenda"
+bibliography: packages.bib
+---
+
+## Intro
+
+The course will alternate between face-to-face presentations and quick, continuous exercises (1 minute each) on the covered micro-topics.
+
+Once participants complete a valuable set of micro-topics, they will engage in hands-on exercises, possibly in five groups of three (different for each activity), in a Zoom breakout room (5 to 10 minutes). Each exercise offers an opportunity to apply what they have learned independently. Next, one group will present its solution to foster a collaborative discussion. Finally, the instructor will provide the "official" answer to the challenge. That not only offers a comparative learning experience but also sets the stage for the next topic. Each new chapter begins in a collaborative environment, with the official solution to the previous challenge implemented, ensuring a smooth transition and cohesive learning path.
+
+At the end of each day, participants will have the option to tackle an exercise covering the day's topics; the solution will be discussed and presented in the first half-hour of the next class.
+
+At the end of the course, we suggest a comprehensive exercise to be done independently at home. We will send a questionnaire to participants one month later to assess the retention of the concepts presented in the course.
+
+The whole course will be conducted using the R programming languages [@R-base], and it will introduce the main **Tidyverse** [@tidyverse2019] R-package ecosystem and philosophy for a uniform, composable, functional, and human-first design utilities to do data science. In particular, the following packages will be introduced and used during the course:
+
+-   the `{tidyverse}` [@R-tidyverse] to activate the ecosystem on the R session
+
+-   the RStudio projects, and the `{renv}` [@R-renv], and `{here}` [@R-here] packages for project management, reproducibility, and portability. On their side, the `{magrittr}` [@R-magrittr] together to the native *pipe,* to pipe instructions in an easy to write/read/understand way.
+
+-   `{ggplot2}` [@R-ggplot2] for graphics production
+
+-   the `{readr}` [@R-readr], `{readxl}` [@R-readxl], `{writexl}` [@R-writexl], `{haven}` [@R-haven], and `{rio}` [@R-rio] for data reading/import and writing/export
+
+-   `{janitor}` [@R-janitor], and `{tidyr}` [@R-tidyr] for data cleaning at import level, and the `{dplyr}` [@R-dplyr], `{forcats}` [@R-forcats], `{lubridate}` [@R-lubridate], and `{stringr}` [@R-stringr], and `{glue}` [@R-glue] for post-import data sets and type-specific data manipulation and management.
+
+-   `{gtsummary}` [@R-gtsummary] to create summary tables for data and models and to include table data in a report's narrative text sections directly, i.e., without copy-pasting them by hand.[^1]
+
+[^1]: The `{flextable}` [@R-flextable] package will be not introduced explicitely because `{gtsummary}` can now manage MS Word tables as well. On the other side, it will be explained how to convert a `gtsummary` table on other formats, `flextable` included.
+
+<!-- -->
+
+-   R Markdown [@R-rmarkdown], `{knitr}` [@R-knitr], and Quarto [@R-quarto] to create reproducible, dynamic documents such as reports, articles, slides, and much more.
+
+```{r}
+#| include: false
+knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writexl", "haven",  "rio", "tidyr", "janitor", "dplyr", "forcats", "glue", "magrittr", "lubridate", "stringr", "renv", "here", "gtsummary", "flextable", "rmarkdown", "knitr", "quarto"), "packages.bib")
+```
+
+## Agenda
+
+[240' each day]{.aside}
+
+::: panel-tabset
+## Day 1
+
+### 0. \[90'\] Intros:
+
+-   \[10'\] Course's objectives and philosophy
+
+-   \[5'\] Ts/TAs presentation
+
+-   \[30'\] R/RStudio
+
+-   \[15'\] Tidyverse ecosystem, style, and perspectives
+
+-   \[15'\] Course organization, teaching marerials, and personalized assistance
+
+-   \[15'\] Posit Cloud presentation and setup
+
+::: {.callout-note appearance="minimal"}
+\[20'\] `BREAK`{=html}
+:::
+
+### 1. \[120'\] Pipe(s) and visualization [^2]
+
+-   \[15'\] {magrittr}'s and native's pipes
+
+-   \[105\] Grammar of tables
+
+    -   \[10'\] data and plots
+
+    -   \[15'\] aesthetics
+
+    -   \[30'\] geometries
+
+    -   \[15'\] facets
+
+    -   \[25'\] themes & labels
+
+    -   \[10'\] other components
+
+::: {.callout-note appearance="minimal"}
+\[10'\] RECAP & assignments
+:::
+
+## Day 2
+
+::: {.callout-note appearance="minimal"}
+\[30'\] RECAP & solutions
+:::
+
+### 2. \[50'\] Infrastructures[^3]
+
+-   \[15'\] R projects
+
+-   \[20'\] local environments
+
+-   \[15'\] files organization (dev/ folder)
+
+### 3. \[40'\] import
+
+-   \[15'\] Base and Tidy alternatives[^4]
+
+-   \[25'\] Our solution[^5]
+
+::: {.callout-note appearance="minimal"}
+\[20'\] `BREAK`{=html}
+:::
+
+### 4. \[90'\] Tidying[^6]
+
+-   \[30'\] var names & headers
+
+-   \[20'\] missing data
+
+-   \[40'\] tidy format & pivoting
+
+::: {.callout-note appearance="minimal"}
+\[10'\] RECAP & assignments
+:::
+
+## Day 3
+
+::: {.callout-note appearance="minimal"}
+\[30'\] RECAP & solutions
+:::
+
+### 5. (a) \[90'\] Transform -- manage formats[^7]
+
+-   \[40'\] strings
+
+-   \[20'\] factors
+
+-   \[30'\] dates
+
+::: {.callout-note appearance="minimal"}
+\[20'\] BREAK
+:::
+
+### 5. (b) \[90'\] Transform -- manage dataset[^8]
+
+-   \[30'\] mutate (grouped) data contents & across
+
+-   \[30'\] select (all_of...)
+
+-   \[30'\] filter (.data & .env)
+
+::: {.callout-note appearance="minimal"}
+\[10'\] RECAP & assignments
+:::
+
+## Day 4
+
+::: {.callout-note appearance="minimal"}
+\[30'\] RECAP & solutions
+:::
+
+### 6. \[90'\] Modeling (basic statistics)[^9]
+
+-   \[60'\] Summarize data on tables
+
+    -   \[30'\] descriptive statistics
+
+    -   \[10'\] add information
+
+    -   \[10'\] modify style
+
+    -   \[10'\] cross-tables
+
+-   \[30'\] Summarize models
+
+    -   \[20'\] multi-variables
+
+    -   \[10'\] uni-variables
+
+-   \[10'\] Merging (h) and stacking (v) tables
+
+::: {.callout-note appearance="minimal"}
+\[20'\] BREAK
+:::
+
+### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^10]
+
+-   \[20'\] (Visual) Quarto document structure
+
+    -   \[10'\] types & creating
+
+    -   \[5'\] header
+
+    -   \[5'\] content
+
+-   \[15'\] Base Markdown syntax
+
+-   \[20'\] chunks, inline code, and inline tables content
+
+-   \[5'\] chunk options
+
+::: {.callout-note appearance="minimal"}
+\[10'\] RECAP & final assignments
+:::
+
+::: {.callout-note appearance="minimal"}
+\[20'\] OVERALL RECAP w/ a from-zero-to-hero complete live-coding example & next-month assignment
+:::
+
+::: {.callout-note appearance="minimal"}
+\[10'\] end of course survey
+:::
+
+::: {.callout-note appearance="minimal"}
+\[10'\] finale & continuous support access instructions
+:::
+:::
+
+[^2]: pkg: {magrittr}, {ggplot2}
+
+[^3]: pkg: {renv}, {here}
+
+[^4]: pkgs: {readr}, {readxl}, {writexl}, {haven}
+
+[^5]: pkg: {rio}
+
+[^6]: pkgs: {janitor}, {tidyr}
+
+[^7]: pkgs: {dplyr}, {forcats}, {lubridate}, {stringr}, {glue}
+
+[^8]: pkgs: {dplyr}
+
+[^9]: pkgs: {dplyr}, {gtsummary}
+
+[^10]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.
+
+## Bibliography

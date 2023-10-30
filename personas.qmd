@@ -1,0 +1,43 @@
+---
+title: "Learning Personas"
+---
+
+## Persona 1: Ricky Report
+
+::: {.panel-tabset group="a"}
+## General Background
+
+Ricky is a senior epidemiologist and a supervisor at the National Public Health Institute of Country X. He has a Master's in Public Health focusing on Epidemiology from a reputed institution. Over his 10-year career, Ricky has been actively involved in field epidemiology, particularly outbreak investigations and health surveillance systems. He understands the importance of data in informing public health actions and has basic knowledge of statistical tools.
+
+## Relevant Experiences
+
+He has a basic understanding of R and data manipulation but has relied chiefly on other statistical software like SAS for his work. Ricky is competent in fundamental data analysis but is a novice in using the Tidyverse package in R and constructing tables and images for reporting.
+
+## (Their perceived!) needs
+
+Ricky perceives the need to upskill in R, particularly in using Tidyverse for data manipulation and visualization, to ensure efficient and effective analysis and reporting. He is also keen on learning R Markdown to generate reproducible and presentable reports. Ricky believes mastering these skills will enhance his capacity and enable him to effectively support and train regional and local level staff.
+
+## Special Considerations
+
+As a supervisor, Ricky must balance his time between administrative duties, fieldwork, and learning. He is also responsible for mentoring MediPIET fellows, so he's keen on gaining hands-on skills that he can easily pass on to his mentees.
+:::
+
+## Persona 2: Tabitha Tidyverse
+
+::: {.panel-tabset group="a"}
+## General Background
+
+Tabitha is an experienced field epidemiologist and a supervisor at the Provincial Public Health Department of Country Y. She holds a Doctorate in Epidemiology and has been part of various national and international epidemiological projects over her 15-year career. Tabitha has always been enthusiastic about leveraging data to derive actionable insights for public health improvements.
+
+## Relevant Experiences
+
+Tabitha is competent in using R for statistical analysis and has a basic understanding of Tidyverse. She has used R Markdown occasionally but wishes to delve deeper into constructing comprehensive reports, including tables and images.
+
+## (Their perceived!) needs
+
+Tabitha perceives the need to become an expert in using Tidyverse for data manipulation and visualization and to master the creation of professional reports using R Markdown. She aims to standardize her team's reporting process and nurture continuous learning and sharing culture among the regional network of trainers and supervisors.
+
+## Special Considerations
+
+Tabitha is responsible for mentoring EPIET/EUPHEM fellows and sees a significant value in incorporating the advanced features of R and Tidyverse in the training curriculum. She is also involved in various committees and networks, which requires her to have a flexible learning schedule to manage her multiple responsibilities effectively.
+:::

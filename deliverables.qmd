@@ -1,0 +1,18 @@
+---
+title: "Deliverables"
+author:
+  - name: "Vicky Lefevre"
+    affiliations: "Head of Public Health Functions Unit (ECDC)"
+---
+
+## Deliverable 1
+
+A kick-off video conference with ECDC project participants will take place within ten working days of the contract signature to further define and specify the tasks and deliverables and agree on a more detailed work plan to achieve the objectives, such as the format of the training and its specific content.
+
+## Deliverable 6
+
+Develop training content and material, including training design and planning, preparation for pre-course R tutorials, lectures, and practical exercises, and for a two-day online course on introduction to R targeting beginners in R.
+
+## Deliverable 9
+
+Deliver an online R course (duration of 2 days, delivered in 4 different half days over 2- 3 weeks) for 3 different groups of 10 participants in 3 different time slots. The content of the course is described above.

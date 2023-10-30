@@ -1,0 +1,35 @@
+---
+title: "UBEP R-Tidyverse Course to ECDC"
+
+image: /img/UBEP.png
+image-alt: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
+image-title: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
+
+about:
+  id: hero-heading
+  template: trestles
+---
+
+**Framework contract:** ECDC/2023/027 "Biostatistics Services" -- RS/2023/PHF/25462
+
+## Objectives
+
+::: {.callout-caution appearance="minimal" icon="false"}
+The main objective of the present request for services is to [**provide an online R course**]{.underline} (duration of 2 days, delivered in 4 different half days) for 3 different groups of 10 participants in 3 different time slots, targeting the supervisors of [EPIET/EUPHEM](https://www.ecdc.europa.eu/en/epiet-euphem) and [MediPIET](https://www.ecdc.europa.eu/en/training-and-tools/training-programmes/fellowships/medipiet) fellows. The training course is expected [**to cover an introduction to R for data management, analysis and visualization**]{.underline}.
+:::
+
+## Course content
+
+This course will provide an introduction to R using public health examples, covering the following topics:
+
+-   About R and R basics, using RStudio projects, and tips for file organization
+-   Importing data, including with the `{here}` and `{rio}` R packages
+-   Data exploration and tidy data formats
+-   Cleaning data with `{tidyverse}` R functions
+-   Making descriptive tables with the `{janitor}`, `{flextable}`, `{dplyr}`, and `{gtsummary}` R packages, including basic statistics
+-   Basics of data visualization with `{ggplot2}`, including epidemic curves
+-   The basics of R Markdown
+
+## Time frame
+
+The time frame for this project is estimated at 6 months. The final deliverable shall be delivered no later than 31^st^ March 2024.

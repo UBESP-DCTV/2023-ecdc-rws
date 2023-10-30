@@ -1,0 +1,37 @@
+Package: 2023-ecdc-rws
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    devtools,
+    dplyr,
+    flextable,
+    forcats,
+    ggplot2,
+    glue,
+    gtsummary,
+    haven,
+    here,
+    janitor,
+    knitr,
+    lubridate,
+    magrittr,
+    quarto,
+    readr,
+    readxl,
+    renv,
+    rio,
+    rmarkdown,
+    spelling,
+    stringr,
+    tidyr,
+    tidyverse,
+    writexl

@@ -1,0 +1,88 @@
+project:
+  type: website
+  output-dir: docs
+
+
+website:
+  title: "UBEP R-Tidyverse Course to ECDC"
+  description: ""
+  favicon: /img/UBEP.png
+  image: /img/UBEP.png
+  site-url: https://ubesp-dctv.github.io/2023-ecdc-rws
+  repo-url: https://github.com/UBESP-DCTV/2023-ecdc-rws
+  repo-actions: [edit, issue]
+  twitter-card:
+    creator: "@CorradoLanera"
+  open-graph:
+    locale: en_US
+    site-name: "2023-ecdc-rws"
+  reader-mode: true
+  page-navigation: true
+  back-to-top-navigation: true
+  search:
+    location: navbar
+    type: textbox
+  navbar:
+    background: warning
+    logo: /img/UBEP.png
+    logo-alt: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Deliverables
+        href: deliverables.qmd
+      - text: Personas
+        href: personas.qmd
+      - text: Agenda
+        href: agenda.qmd
+    # tools:
+    #   - icon: link-45deg
+    #     text: Link utili
+  page-footer:
+    left: ''
+    center: |
+      [![](img/unipd_logo.png){fig-alt="UniPD" width=100px}](https://www.unipd.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+      [![](img/UBEP.png){fig-alt="UBEP" width=50px}](https://www.unipd-ubep.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+    right: "Copyright 2023, UBEP"
+
+
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: superhero
+    css: styles.css
+    lang: en_US
+    toc: true
+
+affiliations:
+  - id: ubep
+    name: UBEP
+    department: Cardiac, Thoracic, Vascular Sciences, and Public Health
+    address: v. Leonardo Loredan, 18
+    city: Padova
+    region: Veneto
+    country: Italy
+    postal-code: 35137
+    url: https://www.unipd-ubep.it/
+
+author:
+  - name: Corrado Lanera
+    orcid: 0000-0002-0520-7428
+    email: corrado.lanera@ubep.unipd.it
+    affiliations:
+      - ref: ubep
+  - name: Ileana Baldi
+    orcid: 0000-0002-8578-9164
+    email: ileana.baldi@ubep.unipd.it
+    affiliations:
+      - ref: ubep
+  - name: Dario Gregori
+    orcid: 0000-0001-7906-0580
+    email: dario.gregori@ubep.unipd.it
+    affiliations:
+      - ref: ubep
+
+editor: visual
+
