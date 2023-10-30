@@ -86,3 +86,6 @@ author:
 
 editor: visual
 
+execute:
+  freeze: auto
+
