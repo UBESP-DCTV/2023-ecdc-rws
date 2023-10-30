@@ -1,6 +1,7 @@
 ---
 title: "Agenda"
 bibliography: packages.bib
+embed-resources: true
 ---
 
 ## Intro
