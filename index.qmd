@@ -1,7 +1,7 @@
 ---
 title: "UBEP R-Tidyverse Course to ECDC"
 
-image: /img/UBEP.png
+image: img/UBEP.png
 image-alt: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
 image-title: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
 
