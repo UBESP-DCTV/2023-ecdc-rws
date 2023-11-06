@@ -6,8 +6,8 @@ project:
 website:
   title: "UBEP R-Tidyverse Course to ECDC"
   description: ""
-  favicon: img/UBEP.png
-  image: img/UBEP.png
+  favicon: /img/UBEP.png
+  image: /img/UBEP.png
   site-url: https://ubesp-dctv.github.io/2023-ecdc-rws
   repo-url: https://github.com/UBESP-DCTV/2023-ecdc-rws
   repo-actions: [edit, issue]
@@ -24,7 +24,7 @@ website:
     type: textbox
   navbar:
     background: warning
-    logo: img/UBEP.png
+    logo: /img/UBEP.png
     logo-alt: "UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)"
     left:
       - text: Home
@@ -35,14 +35,15 @@ website:
         href: personas.qmd
       - text: Agenda
         href: agenda.qmd
-    # tools:
-    #   - icon: link-45deg
-    #     text: Link utili
+      - text: Summative Assessment
+        menu:
+          - text: solved
+            href: motivating-example/ExOIR.qmd
   page-footer:
     left: ''
     center: |
-      [![](img/unipd_logo.png){fig-alt="UniPD" width=100px}](https://www.unipd.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
-      [![](img/UBEP.png){fig-alt="UBEP" width=50px}](https://www.unipd-ubep.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+      [![](/img/unipd_logo.png){fig-alt="UniPD" width=100px}](https://www.unipd.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+      [![](/img/UBEP.png){fig-alt="UBEP" width=50px}](https://www.unipd-ubep.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
     right: "Copyright 2023, UBEP"
 
 

@@ -1,0 +1,25 @@
+# GitHub ----------------------------------------------------------
+# install.packages("MSKCC-Epi-Bio/bstfun")
+requireNamespace("bstfun")
+
+
+# CRAN ------------------------------------------------------------
+requireNamespace("here")
+requireNamespace("rio")
+requireNamespace("tidyverse")
+requireNamespace("scales")
+requireNamespace("janitor")
+requireNamespace("labelled")
+requireNamespace("glue")
+requireNamespace("gt")
+requireNamespace("gtsummary")
+requireNamespace("webshot2")
+requireNamespace("flextable")
+requireNamespace("arrow")
+requireNamespace("hexView")
+requireNamespace("fst")
+requireNamespace("pzfx")
+requireNamespace("rmatio")
+requireNamespace("readODS")
+requireNamespace("qs")
+requireNamespace("parameters")
