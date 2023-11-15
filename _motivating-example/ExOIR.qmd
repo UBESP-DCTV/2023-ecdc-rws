@@ -11,7 +11,6 @@ bibliography: references.bib
 csl: vancouver.csl
 execute: 
   warning: false
-  echo: false
 editor: visual
 ---
 
@@ -53,8 +52,6 @@ library(gtsummary)
 here("R") |> 
   list.files(pattern = "\\.R$", full.names = TRUE) |> 
   walk(source)
-
-
 ```
 
 ::: {.callout-note appearance="minimal"}
@@ -65,9 +62,14 @@ The student should be able to reproduce the basic descriptive analysis section o
 
 ------------------------------------------------------------------------
 
+::: callout-important
+## Learning Objectives
+
+-   basic table creation (both tibble/tribble and gt)
+:::
+
 ```{r}
 #| label: header
-#| echo: false
 tbl_header <- tribble( # <1>
   ~colnames               , ~content,
   "**Date:**"             , "25 September 1996",
@@ -92,6 +94,12 @@ tbl_header
 
 1.  Define a `tibble` table in a "natural" way by rows.
 
+::: callout-important
+## Learning Objectives
+
+-   save tables on disk as images
+:::
+
 ```{r}
 #| label: save-header
 gtsave(data = tbl_header, filename = here("output/tbl_header.png"))
@@ -100,6 +108,18 @@ gtsave(data = tbl_header, filename = here("output/tbl_header.png"))
 ## Analyses
 
 ### Import, clean, and manage data
+
+::: callout-important
+## Learning Objectives
+
+-   import (`here` and `import`)
+
+-   clean (janitor)
+
+-   data management (`mutate` and `select`)
+
+> Here we could add additional "exercices" making the imported data more tricky to tidy (i.e., missing data, multiple column names, ....).
+:::
 
 ```{r}
 #| label: data
@@ -175,6 +195,12 @@ random_labs <- import(here("data-raw/random_labs.csv")) |>
 
 ### Compute tables
 
+::: callout-important
+## Learning Objectives
+
+-   `gt_summary::tbl_summary()`
+:::
+
 ```{r}
 #| label: compute-tbl-one
 tbl_one <- random_wedding |> 
@@ -208,6 +234,14 @@ tbl_two <- random_wedding |>
 
 ::: {.callout-warning appearance="minimal"}
 Table three is way too difficult in this shape; we need to investigate for a cleaner solutions!
+:::
+
+::: callout-important
+## Learning Objectives
+
+-   `gt_summary::tbl_uvregression()`
+
+-   `gt_summary::tbl_merge()`
 :::
 
 ```{r}
@@ -303,6 +337,14 @@ gtsave(data = as_gt(tbl_five), filename = here("output/tbl_five.png"))
 
 ### Compute figures
 
+::: callout-important
+## Learning Objectives
+
+-   data management (`filter`)
+
+-   `ggplot` (and `geom_histogram()`, and `labs`)
+:::
+
 ```{r}
 #| label: compute-fig-one-simplified
 fig_one_simple <- random_wedding |> # <1>
@@ -336,6 +378,12 @@ fig_one_simple <- random_wedding |> # <1>
 
 1.  Simple solution, but not exactly the same as in the guidelines, i.e. it is composed by bars and not by unit-tiles
 2.  Theming will be showed but not teached deeply in the details of time formats, code will be provided as an example template
+
+::: callout-important
+## Learning Objectives
+
+-   managing dates (`lubridate`)
+:::
 
 ```{r}
 #| label: compute-fig-one
@@ -383,6 +431,12 @@ fig_one <- random_wedding |> # <1>
 
 1.  This is a more complex graph that reproduce more as-is the prototype graph. The added skills to learn are: `cut` variables into intervals (keeping intervals progressive number only), slide timepoints to a midrange position, produce progressive id by levels of a variable (using `mutate(..., .by = ...)`), and use `geom_tile()`
 
+::: callout-important
+## Learning Objectives
+
+-   save plots on disk
+:::
+
 ```{r}
 #| label: save-figures
 ggsave(
@@ -419,6 +473,12 @@ Dr. Darina O'Flanagan, Specialist in Public Health Medicine at the EHB, led the 
 We defined a case as a person who had consumed food at the wedding reception on 21 August 1996 and developed diarrhoea (three or more loose stools in 24 hours) within the next 72 hours.
 
 ### Case Finding
+
+::: callout-important
+## Learning Objectives
+
+-   just look hot to embed code in the text, and how to inject tabels' cells values directly on in.
+:::
 
 We obtained the addresses and telephone numbers of all `r cohort_ss` attendees of the wedding reception. Hotel management provided a copy of the menu and a list of all food items served during the reception.
 
@@ -515,13 +575,18 @@ The members of the outbreak control team would like to thank the staff of the EH
 
 ## Tables
 
+::: callout-important
+## Learning Objectives
+
+-   just look how to include table and figures in the text using captions and cross references.
+:::
+
 ```{r}
 #| label: tbl-one
 #| tbl-cap: "Study characteristics. Wedding reception, Malahide, 21 August 1996"
 #| tbl-subcap: "*This data are simulated.*"
 #| echo: false
-tbl_one |> 
-  as_flex_table()
+tbl_one
 ```
 
 ```{r}
@@ -529,8 +594,7 @@ tbl_one |>
 #| tbl-cap: "Demographic details of cohort. Wedding reception, Malahide, 21 August 1996"
 #| tbl-subcap: "*This data are simulated.*"
 #| echo: false
-tbl_two |> 
-  as_flex_table()
+tbl_two
 ```
 
 ```{r}
@@ -538,8 +602,7 @@ tbl_two |>
 #| tbl-cap: "Characteristics of cases with attack rates, relative risks (RR) and 95% confidence intervals (95% CI). Wedding reception, Malahide, 21 August 1996."
 #| tbl-subcap: "*This data are simulated.*"
 #| echo: false
-tbl_three |> 
-  as_flex_table()
+tbl_three
 ```
 
 ```{r}
@@ -548,8 +611,7 @@ tbl_three |>
 #| tbl-subcap: "*This data are simulated.*"
 #| column: body-outset
 #| echo: false
-tbl_four |> 
-  as_flex_table()
+tbl_four
 ```
 
 ```{r}
@@ -558,8 +620,7 @@ tbl_four |>
 #| tbl-subcap: "*This data are simulated.*"
 #| column: body-outset
 #| echo: false
-tbl_five |> 
-  as_flex_table()
+tbl_five
 ```
 
 ## Figures
