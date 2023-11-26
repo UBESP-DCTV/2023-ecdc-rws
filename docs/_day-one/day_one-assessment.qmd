@@ -1,0 +1,13 @@
+---
+title: "Day One - Assessment"
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    code-fold: true
+bibliography: references.bib
+csl: vancouver.csl
+execute: 
+  warning: false
+editor: visual
+---

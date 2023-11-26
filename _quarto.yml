@@ -2,6 +2,10 @@ project:
   type: website
   output-dir: docs
   resources:
+    - "_day-one/"
+    - "_day-two/"
+    - "_day-three/"
+    - "_day-four/"
     - "_motivating-example/"
 
 
@@ -39,7 +43,15 @@ website:
         href: agenda.qmd
       - text: Summative Assessment
         menu:
-          - text: solved
+          - text: "Day 1"
+            href: "_day-one/day_one-summative.html"
+          - text: "Day 2"
+            href: "_day-two/day_two-summative.html"
+          - text: "Day 3"
+            href: "_day-three/day_three-summative.html"
+          - text: "Day 4"
+            href: "_day-four/day_four-summative.html"
+          - text: "Final"
             href: "_motivating-example/ExOIR.html"
   page-footer:
     left: ''
