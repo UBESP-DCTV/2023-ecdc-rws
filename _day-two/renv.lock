@@ -1425,6 +1425,16 @@
       ],
       "Hash": "15da5a8412f317beeee6175fbc76f4bb"
     },
+    "piton": {
+      "Package": "piton",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "Rcpp"
+      ],
+      "Hash": "e3e637a1b4deb944a58e9ab22662fc4e"
+    },
     "pkgbuild": {
       "Package": "pkgbuild",
       "Version": "1.4.2",
@@ -2208,6 +2218,18 @@
       ],
       "Hash": "c328568cd14ea89a83bd4ca7f54ae07e"
     },
+    "tidyxl": {
+      "Package": "tidyxl",
+      "Version": "1.0.9",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "piton"
+      ],
+      "Hash": "000b38414fc61bf2803c7a7a1832474d"
+    },
     "timechange": {
       "Package": "timechange",
       "Version": "0.2.0",
@@ -2239,6 +2261,25 @@
         "cpp11"
       ],
       "Hash": "f561504ec2897f4d46f0c7657e488ae1"
+    },
+    "unheadr": {
+      "Package": "unheadr",
+      "Version": "0.3.3",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "forcats",
+        "magrittr",
+        "readxl",
+        "rlang",
+        "stringr",
+        "tibble",
+        "tidyr",
+        "tidyxl"
+      ],
+      "Hash": "942094462df920be0fe8b16ce6016d7a"
     },
     "urlchecker": {
       "Package": "urlchecker",

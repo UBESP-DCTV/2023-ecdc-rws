@@ -1,0 +1,39 @@
+---
+title: "Exercise template"
+format: html
+editor: visual
+params:
+  solved: true
+---
+
+# ciao
+
+::: callout-important
+## Instructions
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: name-ex
+#| code-fold: false
+#| eval: false
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: name-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+```
+:::

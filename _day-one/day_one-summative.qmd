@@ -62,7 +62,7 @@ You can access to a dedicated R/RStudio environment on Posit Cloud at connecting
 
 ## Attribution
 
-The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.[@noauthor_epietoutbreakinvestigation_nodate]
+The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.[@epiet/ou]
 
 ## Copyright & License
 
