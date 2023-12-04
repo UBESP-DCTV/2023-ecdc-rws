@@ -58,11 +58,11 @@ All the exercise are presented in a tabset panel with a tab containing all the m
 
 ## RStudio cloud
 
-You can access to a dedicated R/RStudio environment on Posit Cloud at connecting \[here\](<https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4>). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
 
 ## Attribution
 
-The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.
+The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.[@noauthor_epietoutbreakinvestigation_nodate]
 
 ## Copyright & License
 
@@ -736,8 +736,6 @@ epicurve_strata
 :::
 :::
 
-# References
-
 ```{r}
 #| label: pkg-bib
 #| include: false
@@ -746,7 +744,3 @@ knitr::write_bib(
   file = "packages.bib"
 )
 ```
-
-1.  [EPIET Copenhagen outbreack case study](https://github.com/EPIET/OutbreakInvestigation/tree/master/Copenhagen)
-
-2.  Wickham, H., & Grolemund, G. (2016). [R for data science: import, tidy, transform, visualize, and model data (First edition). O'Reilly.](https://r4ds.had.co.nz/)
