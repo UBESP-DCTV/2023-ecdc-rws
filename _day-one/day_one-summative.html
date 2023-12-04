@@ -53,7 +53,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging-indent div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}</style>
 
 
 <script>/*!
@@ -4337,6 +4356,7 @@ window.onload = function() {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Day One - Assessment</h1>
+<p class="subtitle lead">UBEP’s R training for supervisors</p>
 </div>
 
 
@@ -4365,13 +4385,13 @@ Learning Objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>At the end of the assessment, participants should be able to:</p>
+<p>At the end of the assessment, participants should have demonstrated their ability to: <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">1</a>)</span></p>
 <ul>
 <li><p>Use the native pipe (<code>|&gt;</code>) and the <code>{ggplot2}</code> plus-sign (<code>+</code>) correctly</p></li>
 <li><p>Create general plots using <code>{ggplot2}</code> package and corresponding grammar; in particular:</p>
 <ul>
 <li><p>select/use tidy-data for a plot</p></li>
-<li><p>understand the meaning of “eesthetics” (<code>aes</code>)</p></li>
+<li><p>understand the meaning of “aesthetics” (<code>aes</code>)</p></li>
 <li><p>know the use and the basic geometries (<code>geom_*</code>)</p></li>
 <li><p>ability to facet a plot (<code>facet</code>)</p></li>
 <li><p>be able to modify the basic plot style (<code>theme</code> and <code>labs</code>)</p></li>
@@ -4400,16 +4420,18 @@ Instructions
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>Instructions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href>RStudio cloud</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href>Attribution</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href>Copyright &amp; License</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-
+<p>This assessment is the first of four ones regarding the UBEP’s <strong>R training for supervisors</strong> for the ECDC.</p>
+<p>To solve the exercise follow the text and find the assessments in which you need to fill the <code>___</code> where required in the code. Next, go to the corresponding section of the R script <code>solution.R</code> and try/run sequentially your code.</p>
+<p>All the exercise are presented in a tabset panel with a tab containing all the missing parts, and a tab with the solved, completed (including output) code. This version of the file has not the solution exposed.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<p>You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](<a href="https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4" class="uri">https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4</a>). You need to create a free account on Posit Cloud, and next accept to join the “R training for supervisors” workspace. Inside that space, you can enter in the “day-1” project, and find inside all the data, script and resources useful to complete the assessment.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-
+<p>The text and examples in the present document are UBEP’s variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <a href="https://github.com/EPIET/OutbreakInvestigation" class="uri">https://github.com/EPIET/OutbreakInvestigation</a>.</p>
 </div>
 <div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-
+<p>The present work is released under the GPL-3 License.</p>
 </div>
 </div>
 </div>
@@ -4426,25 +4448,47 @@ Instructions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this section, participants should attach to the R session the following packages using the `library` function:</p>
+<p>In this section, participants should attach to the R session the following packages using the <code>library</code> function: <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-rio" role="doc-biblioref">4</a>)</span></p>
 <ul>
 <li><p><code>tidyverse</code></p></li>
 <li><p><code>here</code></p></li>
 <li><p><code>rio</code></p></li>
 </ul>
+<p>Moreover, they need to correctly pipe the instructions to read the data.</p>
+<blockquote class="blockquote">
+<p>Task: fill in <code>___</code> the proper function/command</p>
+</blockquote>
 </div>
 </div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="ex-sol">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href>Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href>Solution</a></li></ul>
+<div class="tab-content" data-group="ex-sol">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">___</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">___</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">___</span>(rio)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data-raw/Copenhagen_clean.xlsx&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">import</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>linelist <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&quot;data-raw/Copenhagen_clean.xlsx&quot;</span>) ___ </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">import</span>() ___ </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), fct))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Solution will appear on the “solved” document</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="data-preparation" class="level1">
@@ -4463,9 +4507,9 @@ Instructions
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href>Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href>Data import</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href>Case definition</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href>Context</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href>Data import</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href>Case definition</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <section id="the-alert" class="level3">
 <h3 class="anchored" data-anchor-id="the-alert">The Alert</h3>
 <p>On November 14th 2006 the director of a high school in Greater Copenhagen, Denmark, contacted the regional public health authorities to inform them about an outbreak of diarrhoea and vomiting among participants from a school dinner party held on the 11th of November 2006. Almost all students and teachers of the school (750 people) attended the party.</p>
@@ -4473,11 +4517,10 @@ Instructions
 </section>
 <section id="your-mission" class="level3">
 <h3 class="anchored" data-anchor-id="your-mission">Your mission</h3>
-<p>Your group has been tasked with investigating this outbreak; you have just received the information above. Before you spring into action, sit together and make a plan. Think about the ten steps of an outbreak investigation and how they apply in this setting. What practical issues might occur?</p>
-<p>The particular focus of this session should be on steps 1-4 of the ten steps of outbreak investigations, i.e. the steps you need to take <em>before</em> you sit down and analyse the data.</p>
+<p>Your group has been tasked with investigating this outbreak; you have just received the information above.</p>
 </section>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>The epidemiologists in the outbreak team decided to perform a retrospective cohort study in order to identify the food item that was the vehicle of the outbreak. The cohort was defined as students and teachers who had attended the party at the high school on 11th of November 2006.</p>
 <p>A questionnaire was designed to conduct a survey on food consumption and on presentation of the illness. Information about the survey and a link to the questionnaire was circulated to students and teachers via the school’s intranet with the request that everyone who attended the school party on 11th of November 2006 should fill in the questionnaire.</p>
 <p>Practically all students and teachers check the intranet on a daily basis, because it is the school’s main communication channel for information about courses, homework assignments, cancellation of lessons etc. The school’s intranet was accessible for ill students or teachers from home so that everyone in the cohort could potentially participate and the response rate could be maximised. Additionally, the information about the investigation was also displayed on the screen in the main hall of the school.</p>
@@ -5087,7 +5130,7 @@ Preprocessing
 </div>
 </section>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <p><strong>Variables of interest:</strong></p>
 <p>Your exposure of interest is the school dinner party held on 11 November 2006 at 18:00. You may have noticed while skimming the data, that there is a binary variable called <code>meal</code>. This variable indicates whether people attended the school dinner party and ate a meal there, or not.</p>
 <p>Other variables that will be helpful to include in your case definition are <code>onset_datetime</code> (hint: check that case onset date/time is <strong>after</strong> exposure) and symptom variables (hint: not everyone on the linelist fell ill). The symptoms included in the data set are:</p>
@@ -5163,35 +5206,26 @@ Instructions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this section, participants should…</p>
+<p>In this section, participants should fill in <code>___</code> the proper function/command.</p>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href>Introduction</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href>Analisys Plan</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false" href>Time</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false" href>Person</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href>Introduction</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href>Analisys Plan</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-3" role="tab" aria-controls="tabset-8-3" aria-selected="false" href>Time</a></li></ul>
 <div class="tab-content">
-<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <section id="goals" class="level3">
 <h3 class="anchored" data-anchor-id="goals">Goals</h3>
 <p>In this session, we will perform some descriptive analysis. Typically, we would describe the outbreak in terms of time, place and person. In this data set, we don’t have geospatial information, but we do have time (onset dates and times, incubation periods) and person (age, sex, clinical symptoms). You will:</p>
 <ul>
-<li>Describe cases by age and sex (create an age sex pyramid)</li>
+<li>Describe cases by age and sex</li>
 <li>Describe case symptoms</li>
 <li>Describe and illustrate incubation periods</li>
 <li>Create an epidemic curve</li>
-<li>Calculate attack proportions</li>
-<li>summarise the analysis so far and generate hypotheses:
-<ul>
-<li>Any surprising findings regarding cohort characteristics?</li>
-<li>Does the shape of the epicurve support a viral or toxic aetiology?</li>
-<li>What other information can you obtain from the epicurve?</li>
-<li>Does the summary of symptoms help you narrow down the suspect agent?</li>
-<li>Do you have any hypothesis about the vehicle of infection so far?</li>
-</ul></li>
 </ul>
 <p>Many of the descriptive features can be illustrated graphically, for which we will use the package <code>ggplot2</code>.</p>
 </section>
 </div>
-<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
 <p>In theory, you create an analysis plan before data collection - it is an important way to ensure you collect all the data you need and that you <em>only</em> collect the data you need (think: data protection!). However, during outbreak investigations, you may need to deploy questionnaires as soon as possible and before a plan has been developed. In these cases, your experience will be an important resource to fall back on.</p>
 <p>In your analysis plan you should create a document to include:</p>
 <ul>
@@ -5213,11 +5247,320 @@ Instructions
 </ul></li>
 </ul>
 </div>
-<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-
+<div id="tabset-8-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-3-tab">
+<section id="incubation-period" class="level3">
+<h3 class="anchored" data-anchor-id="incubation-period">Incubation period</h3>
+<blockquote class="blockquote">
+<p>The incubation period of a disease is the time from an exposure resulting in infection until the onset of disease. Because infection usually occurs immediately after exposure, the incubation period is generally the duration of the period from the onset of infection to the onset of disease. <span class="citation" data-cites="rothman2008">(<a href="#ref-rothman2008" role="doc-biblioref">5</a>)</span></p>
+</blockquote>
+<p>In the previous section, we calculated incubation period by subtracting the meal date and time from the date and time of symptom onset. This gave us the incubation period in hours. We can now look at this on a graph:</p>
+<p><strong>Plot of incubation period:</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
-
+<div class="callout-title-container flex-fill">
+Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Produce a <code>histogram</code> of the <code>incubation</code> period variable (with missing values dropped out), using the <code>ggplot</code> function.</p>
+<p>Set the following labels:</p>
+<ul>
+<li><p>x axis: “Incubation period in 6-hour bins”</p></li>
+<li><p>y axis: “Number of cases”</p></li>
+</ul>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="ex-sol">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href>Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href>Solution</a></li></ul>
+<div class="tab-content" data-group="ex-sol">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>incplot <span class="ot">&lt;-</span> linelist <span class="sc">|&gt;</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove missing values:</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(incubation) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create an empty ggplot frame setting `incubation` as aesthetic:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(<span class="fu">___</span>(<span class="at">x =</span> ___)) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a histogram of incubation using the appropriate geom_*:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set bin widths to 6 hours:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">binwidth =</span> <span class="dv">6</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adapt scale to better fit data</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">48</span>, <span class="dv">6</span>)) <span class="sc">+</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Set the required labs to the x and y axes:</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> ___,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> ___</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Print plot:</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>incplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Solution will appear on the “solved” document</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="epidemic-curve" class="level3">
+<h3 class="anchored" data-anchor-id="epidemic-curve">Epidemic curve</h3>
+<p>To create an <em>epicurve</em>, we are going to use <code>ggplot2</code>. <code>ggplot2</code> is a versatile package that helps create beautiful visualizations in <code>R</code>. There are plenty good in-depth guides to the package, for example: <a href="https://epirhandbook.com/en/ggplot-basics.html"><em>The Epidemiologist R Handbook</em> Chapter on <em>ggplot</em></a> and <a href="https://ggplot2-book.org/index.html"><em>ggplot2 - Elegant Graphics for Data Analysis</em></a>.</p>
+<p>First, we can create an epicurve for the date of onset, limiting the input data to cases:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Produce a daily epicurve using a <code>barplot</code> of the <code>dayonset</code> variable (considering <code>case</code> only, and with missing values dropped out), using the <code>ggplot</code> function.</p>
+<p>Set the following labels:</p>
+<ul>
+<li><p>x axis: “Date of onset”</p></li>
+<li><p>y axis: “Number of cases”</p></li>
+</ul>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="ex-sol">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href>Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href>Solution</a></li></ul>
+<div class="tab-content" data-group="ex-sol">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch data:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>epicurve_date <span class="ot">&lt;-</span> linelist <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter for cases where dayonset is not missing:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">==</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(___)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  ) ___</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add dayonset to ggplot aesthetic:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> dayonset)) ___ </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the proper `geom_*` for a barplot:</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>() <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adapt scale to data and adjust axis label angle:</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">&quot;1 day&quot;</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date_short</span>()) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Update x and y axis labels:</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Date of onset&quot;</span>, </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Number of cases&quot;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unnecessary grid lines:</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Print epicurve:</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>epicurve_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Solution will appear on the “solved” document</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>As you can see, the epicurve is quite crude, because most cases had their disease onset on 12 November. To increase resolution, we could enhance the time information to include both day and hour.</p>
+<p>During the data preparation session, we already concatenated the variables <code>dayonset</code> and <code>starthour</code> together and formatted them with the <code>lubridate</code> package to create a new date-time variable called <code>onset_datetime</code>. We can now create the epicurve with this variable:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Produce a 6-hours epicurve using a <code>barplot</code> of the <code>onset_datetime</code> variable (considering <code>case</code> only, and with missing values dropped out), using the <code>ggplot</code> function.</p>
+<p>Set the following labels:</p>
+<ul>
+<li><p>x axis: “Date of onset”</p></li>
+<li><p>y axis: “Number of cases”</p></li>
+</ul>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="ex-sol">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href>Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href>Solution</a></li></ul>
+<div class="tab-content" data-group="ex-sol">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch data:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>epicurve_hour <span class="ot">&lt;-</span> linelist <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter for cases where onset_datetime is not missing:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">==</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">___</span>(onset_datetime)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  ) ___</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add onset_datetime to ggplot aesthetic:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">___ =</span> onset_datetime)) ___</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the proper `geom_*` for a barplot:</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>() <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust x axis scales to a suitable unit:</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">&quot;6 hours&quot;</span>, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date_short</span>()) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Update x and y axis labels:</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Date and time of onset&quot;</span>, </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Number of cases&quot;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove unnecessary grid lines:</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Print epicurve:</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>epicurve_hour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<div class="cell">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Solution will appear on the “solved” document</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Finally, we could compare the epicurve between the sexes and additionally investigate how teachers versus students were distributed. Here, <code>fill</code> adds an additional variable to be displayed in the plot: <code>sex</code> is going to determine the fill-colour of our bars. <code>facet_wrap</code> splits the graph in two: one each for the two levels of <code>group</code>.</p>
+<p>We will also use the function <code>str_glue()</code> to add the total number of cases to the sub-title of the plot. <code>str_glue()</code> is a very useful function that allows you to dynamically create a summary statistic from your data within some normal text.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Instructions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Produce a 6-hours epicurve using a <code>barplot</code> of the <code>onset_datetime</code> variable (considering <code>case</code> only, and with missing values dropped out), using the <code>ggplot</code> function. Superimpose the stratification by <code>sex</code>, and split the chart in two base on the <code>group</code> variable.</p>
+<p>Set the following labels:</p>
+<ul>
+<li><p>x axis: “Date of onset”</p></li>
+<li><p>y axis: “Number of cases”</p></li>
+<li><p>fill legend title: “Sex”</p></li>
+</ul>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="ex-sol">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href>Exercise</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href>Solution</a></li></ul>
+<div class="tab-content" data-group="ex-sol">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch data:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>epicurve_strata <span class="ot">&lt;-</span> linelist <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Filter for cases where onset_datetime is not missing:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    ___ <span class="sc">==</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">___</span>(___)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add factor onset_day to ggplot aesthetic:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">___ =</span> onset_datetime)) <span class="sc">+</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add the proper `geom_*` for an &quot;overall&quot; barplot:</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>() <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Superimpose the same `geom_*` for a barplot</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># stratified by sex:</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(<span class="fu">___</span>(<span class="at">fill =</span> ___), <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Adjust x axis scales to a suitable unit:</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_datetime</span>(</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">&quot;6 hours&quot;</span>, </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_date_short</span>()) <span class="sc">+</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stratify by group:</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="st">&quot;group&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Update x and y axis labels:</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">___</span>(</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Date and time of onset&quot;</span>, </span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Number of cases&quot;</span>, </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Sex&quot;</span>, </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Epicurve of the outbreak, overall (gray bars) and stratified by sex (coloured bars)&quot;</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="fu">str_glue</span>(</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Copenhagen, November 2006, N = {sum(linelist$case)}&quot;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add theme:</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Print epicurve:</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>epicurve_strata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<div class="cell">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Solution will appear on the “solved” document</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -5226,16 +5569,28 @@ Instructions
 <h1>References</h1>
 <ol type="1">
 <li><p><a href="https://github.com/EPIET/OutbreakInvestigation/tree/master/Copenhagen">EPIET Copenhagen outbreack case study</a></p></li>
-<li><p>Morgenstern, H., Kleinbaum, D. G., &amp; Kupper, L. L. (1980). <a href="https://doi.org/10.1093/ije/9.1.97">Measures of Disease Incidence Used in Epidemiologic Research. International Journal of Epidemiology, 9(1), 97–104.</a></p></li>
-<li><p>Rothman, K. J., Lash, T. L., VanderWeele, T. J., &amp; Haneuse, S. (2021). Modern epidemiology (Fourth edition). Wolters Kluwer.</p></li>
-<li><p>Wickham, H. (n.d.). <a href="https://www.tidyverse.org/">Tidy Verse - R packages for data science.</a></p></li>
-<li><p>Wickham, H. (2009). <a href="https://ggplot2-book.org/">Ggplot2: elegant graphics for data analysis. Springer.</a></p></li>
-<li><p>Wickham, H. (2019). <a href="https://adv-r.hadley.nz/">Advanced R (Second edition). CRC Press/Taylor and Francis Group.</a></p></li>
 <li><p>Wickham, H., &amp; Grolemund, G. (2016). <a href="https://r4ds.had.co.nz/">R for data science: import, tidy, transform, visualize, and model data (First edition). O’Reilly.</a></p></li>
 </ol>
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-R-ggplot2" class="csl-entry" role="listitem">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Wickham H, Chang W, Henry L, Pedersen TL, Takahashi K, Wilke C, et al. ggplot2: Create elegant data visualisations using the grammar of graphics [Internet]. 2023. Available from: <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a></div>
+</div>
+<div id="ref-R-tidyverse" class="csl-entry" role="listitem">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Wickham H. Tidyverse: Easily install and load the tidyverse [Internet]. 2023. Available from: <a href="https://tidyverse.tidyverse.org">https://tidyverse.tidyverse.org</a></div>
+</div>
+<div id="ref-R-here" class="csl-entry" role="listitem">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Müller K. Here: A simpler way to find your files [Internet]. 2020. Available from: <a href="https://here.r-lib.org/">https://here.r-lib.org/</a></div>
+</div>
+<div id="ref-R-rio" class="csl-entry" role="listitem">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Becker J, Chan C, Schoch D, Leeper TJ. Rio: A swiss-army knife for data i/o [Internet]. 2023. Available from: <a href="https://github.com/gesistsa/rio">https://github.com/gesistsa/rio</a></div>
+</div>
+<div id="ref-rothman2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Rothman KJ, Greenland S, Lash TL. Modern epidemiology [Internet]. Third edition. Philadelphia: Wolters Kluwer Health/Lippincott Williams &amp; Wilkins Philadelphia; 2008. Available from: <a href="http://www.r2library.com/public/ResourceDetail.aspx?authCheck=true&amp;resid=2127">http://www.r2library.com/public/ResourceDetail.aspx?authCheck=true&amp;resid=2127</a></div>
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

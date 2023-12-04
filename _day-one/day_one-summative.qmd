@@ -1,15 +1,18 @@
 ---
 title: "Day One - Assessment"
+subtitle: "UBEP's R training for supervisors"
 format:
   html:
     df-print: paged
     embed-resources: true
     code-fold: true
-bibliography: references.bib
+bibliography: [references.bib, packages.bib]
 csl: vancouver.csl
 execute: 
   warning: false
 editor: visual
+params:
+    solved: false
 ---
 
 # Visualization
@@ -17,7 +20,7 @@ editor: visual
 ::: {.callout-note appearance="minimal"}
 ## Learning Objectives
 
-At the end of the assessment, participants should be able to:
+At the end of the assessment, participants should have demonstrated their ability to: [@R-ggplot2]
 
 -   Use the native pipe (`|>`) and the `{ggplot2}` plus-sign (`+`) correctly
 
@@ -25,7 +28,7 @@ At the end of the assessment, participants should be able to:
 
     -   select/use tidy-data for a plot
 
-    -   understand the meaning of "eesthetics" (`aes`)
+    -   understand the meaning of "aesthetics" (`aes`)
 
     -   know the use and the basic geometries (`geom_*`)
 
@@ -47,11 +50,23 @@ This section is for context only. Nothing has to be done in this section by the 
 ::: panel-tabset
 ## Instructions
 
+This assessment is the first of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
+
+To solve the exercise follow the text and find the assessments in which you need to fill the `___` where required in the code. Next, go to the corresponding section of the R script `solution.R` and try/run sequentially your code.
+
+All the exercise are presented in a tabset panel with a tab containing all the missing parts, and a tab with the solved, completed (including output) code. This version of the file `r c("has not", "has")[params$solved + 1L]` the solution exposed.
+
 ## RStudio cloud
+
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting \[here\](<https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4>). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
 
 ## Attribution
 
+The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.
+
 ## Copyright & License
+
+The present work is released under the GPL-3 License.
 :::
 
 # Environment preparation
@@ -59,17 +74,47 @@ This section is for context only. Nothing has to be done in this section by the 
 ::: callout-important
 ## Instructions
 
-In this section, participants should attach to the R session the following packages using the \`library\` function:
+In this section, participants should attach to the R session the following packages using the `library` function: [@R-tidyverse, @R-here, @R-rio]
 
 -   `tidyverse`
 
 -   `here`
 
 -   `rio`
+
+Moreover, they need to correctly pipe the instructions to read the data.
+
+> Task: fill in `___` the proper function/command
 :::
 
-```{r, }
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: ex-setup
+#| code-fold: false
+#| eval: false
+___(tidyverse)
+___(here)
+___(rio)
+
+linelist <- here("data-raw/Copenhagen_clean.xlsx") ___ 
+  import() ___ 
+  mutate(across(where(is.character), fct))
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
 #| label: setup
+#| include: !expr params$solved
+#| echo: !expr params$solved
 library(tidyverse)
 library(here)
 library(rio)
@@ -78,6 +123,7 @@ linelist <- here("data-raw/Copenhagen_clean.xlsx") |>
   import() |> 
   mutate(across(where(is.character), fct))
 ```
+:::
 
 # Data preparation
 
@@ -98,9 +144,7 @@ The first people fell ill the same night and by 14 November, the school had rece
 
 ### Your mission
 
-Your group has been tasked with investigating this outbreak; you have just received the information above. Before you spring into action, sit together and make a plan. Think about the ten steps of an outbreak investigation and how they apply in this setting. What practical issues might occur?
-
-The particular focus of this session should be on steps 1-4 of the ten steps of outbreak investigations, i.e. the steps you need to take *before* you sit down and analyse the data.
+Your group has been tasked with investigating this outbreak; you have just received the information above.
 
 ## Data import
 
@@ -214,7 +258,7 @@ Ultimately, the investigation team decided to remove respondents that did not me
 ::: callout-important
 ## Instructions
 
-In this section, participants should...
+In this section, participants should fill in `___` the proper function/command.
 :::
 
 ::: panel-tabset
@@ -224,17 +268,10 @@ In this section, participants should...
 
 In this session, we will perform some descriptive analysis. Typically, we would describe the outbreak in terms of time, place and person. In this data set, we don't have geospatial information, but we do have time (onset dates and times, incubation periods) and person (age, sex, clinical symptoms). You will:
 
--   Describe cases by age and sex (create an age sex pyramid)
+-   Describe cases by age and sex
 -   Describe case symptoms
 -   Describe and illustrate incubation periods
 -   Create an epidemic curve
--   Calculate attack proportions
--   summarise the analysis so far and generate hypotheses:
-    -   Any surprising findings regarding cohort characteristics?
-    -   Does the shape of the epicurve support a viral or toxic aetiology?
-    -   What other information can you obtain from the epicurve?
-    -   Does the summary of symptoms help you narrow down the suspect agent?
-    -   Do you have any hypothesis about the vehicle of infection so far?
 
 Many of the descriptive features can be illustrated graphically, for which we will use the package `ggplot2`.
 
@@ -259,21 +296,457 @@ In your analysis plan you should create a document to include:
 
 ## Time
 
-## Person
+### Incubation period
+
+> The incubation period of a disease is the time from an exposure resulting in infection until the onset of disease. Because infection usually occurs immediately after exposure, the incubation period is generally the duration of the period from the onset of infection to the onset of disease. [@rothman2008]
+
+In the previous section, we calculated incubation period by subtracting the meal date and time from the date and time of symptom onset. This gave us the incubation period in hours. We can now look at this on a graph:
+
+**Plot of incubation period:**
+
+::: callout-important
+## Instructions
+
+Produce a `histogram` of the `incubation` period variable (with missing values dropped out), using the `ggplot` function.
+
+Set the following labels:
+
+-   x axis: "Incubation period in 6-hour bins"
+
+-   y axis: "Number of cases"
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: incubation_ggplot-ex
+#| eval: false
+#| code-fold: false
+
+incplot <- linelist |>  
+  
+  # Remove missing values:
+  drop_na(incubation) |> 
+  
+  # Create an empty ggplot frame setting `incubation` as aesthetic:
+  ___(___(x = ___)) +
+  
+  # Add a histogram of incubation using the appropriate geom_*:
+  ___(
+    # Set bin widths to 6 hours:
+    binwidth = 6
+  ) +
+  
+  # Adapt scale to better fit data
+  scale_x_continuous(breaks = seq(0, 48, 6)) + 
+  
+  # Set the required labs to the x and y axes:
+  ___(
+    x = ___,
+    y = ___
+  )
+
+# Print plot:
+incplot
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: incubation_ggplot-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+incplot <- linelist |>  
+  
+  # Remove missing values:
+  drop_na(incubation) |> 
+  
+  # Create an empty ggplot frame:
+  ggplot(aes(x = incubation)) +
+  
+  # Add a histogram of incubation:
+  geom_histogram(
+    # Set bin widths to 6 hours:
+    binwidth = 6
+  ) +
+  
+  # Adapt scale to better fit data
+  scale_x_continuous(breaks = seq(0, 48, 6)) + 
+  
+  # Label x and y axes:
+  labs(
+    x = "Incubation period in 6-hour bins",
+    y = "Number of cases"
+  )
+
+# Print plot:
+incplot
+```
+:::
+
+### Epidemic curve
+
+To create an *epicurve*, we are going to use `ggplot2`. `ggplot2` is a versatile package that helps create beautiful visualizations in `R`. There are plenty good in-depth guides to the package, for example: [*The Epidemiologist R Handbook* Chapter on *ggplot*](https://epirhandbook.com/en/ggplot-basics.html) and [*ggplot2 - Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html).
+
+First, we can create an epicurve for the date of onset, limiting the input data to cases:
+
+::: callout-important
+## Instructions
+
+Produce a daily epicurve using a `barplot` of the `dayonset` variable (considering `case` only, and with missing values dropped out), using the `ggplot` function.
+
+Set the following labels:
+
+-   x axis: "Date of onset"
+
+-   y axis: "Number of cases"
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: epicurve-date-ex
+#| eval: false
+#| code-fold: false
+
+# Fetch data:
+epicurve_date <- linelist |> 
+  
+  # Filter for cases where dayonset is not missing:
+  ___(
+    ___ == TRUE,
+    !is.na(___)
+  ) ___
+  
+  # Add dayonset to ggplot aesthetic:
+  ggplot(aes(x = dayonset)) ___ 
+  
+  # Add the proper `geom_*` for a barplot:
+  ___() +
+  
+  # Adapt scale to data and adjust axis label angle:
+  scale_x_datetime(
+    date_breaks = "1 day",
+    labels = scales::label_date_short()) +
+  
+  # Update x and y axis labels:
+  ___(
+    ___ = "Date of onset", 
+    ___ = "Number of cases"
+  ) +
+  
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_date
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: epicurve-date-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Fetch data:
+epicurve_date <- linelist |> 
+  
+  # Filter for cases where dayonset is not missing:
+  filter(
+    case == TRUE,
+    !is.na(dayonset)
+  ) |> 
+  
+  # Add dayonset to ggplot aesthetic:
+  ggplot(aes(x = dayonset)) + 
+  
+  # Add the proper `geom_*` for a barplot:
+  geom_bar() +
+  
+  # Adapt scale to data and adjust axis label angle:
+  scale_x_datetime(
+    date_breaks = "1 day",
+    labels = scales::label_date_short()) +
+  
+  # Update x and y axis labels:
+  labs(x = "Date of onset", 
+       y = "Number of cases") +
+  
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_date
+
+
+```
+:::
+
+As you can see, the epicurve is quite crude, because most cases had their disease onset on 12 November. To increase resolution, we could enhance the time information to include both day and hour.
+
+During the data preparation session, we already concatenated the variables `dayonset` and `starthour` together and formatted them with the `lubridate` package to create a new date-time variable called `onset_datetime`. We can now create the epicurve with this variable:
+
+::: callout-important
+## Instructions
+
+Produce a 6-hours epicurve using a `barplot` of the `onset_datetime` variable (considering `case` only, and with missing values dropped out), using the `ggplot` function.
+
+Set the following labels:
+
+-   x axis: "Date of onset"
+
+-   y axis: "Number of cases"
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: epicurve-hour-ex
+#| eval: false
+#| code-fold: false
+
+# Fetch data:
+epicurve_hour <- linelist |> 
+  
+  # Filter for cases where onset_datetime is not missing:
+  filter(
+    ___ == TRUE,
+    !___(onset_datetime)
+  ) ___
+  
+  # Add onset_datetime to ggplot aesthetic:
+  ggplot(aes(___ = onset_datetime)) ___
+  
+  # Add the proper `geom_*` for a barplot:
+  ___() +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Update x and y axis labels:
+  ___(
+    ___ = "Date and time of onset", 
+    ___ = "Number of cases"
+  ) +
+
+  
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_hour
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: epicurve-hour-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Fetch data:
+epicurve_hour <- linelist |> 
+  
+  # Filter for cases where dayonset is not missing:
+  filter(
+    case == TRUE,
+    !is.na(onset_datetime)
+  ) |> 
+  
+  # Add onset_datetime to ggplot aesthetic:
+  ggplot(aes(x = onset_datetime)) + 
+  
+  # Add the proper `geom_*` for a barplot:
+  geom_bar() +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Update x and y axis labels:
+  labs(
+    x = "Date and time of onset", 
+    y = "Number of cases"
+  ) +
+
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_hour
+
+```
+:::
+
+Finally, we could compare the epicurve between the sexes and additionally investigate how teachers versus students were distributed. Here, `fill` adds an additional variable to be displayed in the plot: `sex` is going to determine the fill-colour of our bars. `facet_wrap` splits the graph in two: one each for the two levels of `group`.
+
+We will also use the function `str_glue()` to add the total number of cases to the sub-title of the plot. `str_glue()` is a very useful function that allows you to dynamically create a summary statistic from your data within some normal text.
+
+::: callout-important
+## Instructions
+
+Produce a 6-hours epicurve using a `barplot` of the `onset_datetime` variable (considering `case` only, and with missing values dropped out), using the `ggplot` function. Superimpose the stratification by `sex`, and split the chart in two base on the `group` variable.
+
+Set the following labels:
+
+-   x axis: "Date of onset"
+
+-   y axis: "Number of cases"
+
+-   fill legend title: "Sex"
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: ex-epicurve-stratified-ex
+#| eval: false
+#| code-fold: false
+
+# Fetch data:
+epicurve_strata <- linelist |> 
+  
+  # Filter for cases where onset_datetime is not missing:
+  filter(
+    ___ == TRUE,
+    !___(___)
+  ) |> 
+  
+  # Add factor onset_day to ggplot aesthetic:
+  ggplot(aes(___ = onset_datetime)) + 
+  
+  # Add the proper `geom_*` for an "overall" barplot:
+  ___() +
+  
+  # Superimpose the same `geom_*` for a barplot
+  # stratified by sex:
+  ___(___(fill = ___), position = "dodge") +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Stratify by group:
+  facet_wrap("group", nrow = 2) +
+  
+  # Update x and y axis labels:
+  ___(
+    ___ = "Date and time of onset", 
+    ___ = "Number of cases", 
+    ___ = "Sex", 
+    title = "Epicurve of the outbreak, overall (gray bars) and stratified by sex (coloured bars)",
+    subtitle = str_glue(
+      "Copenhagen, November 2006, N = {sum(linelist$case)}"
+    )
+  ) +
+
+  # Add theme:
+  theme_bw()
+
+# Print epicurve:
+epicurve_strata
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: epicurve-stratified-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Fetch data:
+epicurve_strata <- linelist |> 
+  
+  # Filter for cases where onset_datetime is not missing:
+  filter(
+    case == TRUE,
+    !is.na(onset_datetime)
+  ) |> 
+  
+  # Add factor onset_day to ggplot aesthetic:
+  ggplot(aes(x = onset_datetime)) + 
+  
+  # Add the proper `geom_*` for an "overall" barplot:
+  geom_bar() +
+  
+  # Superimpose the same `geom_*` for a barplot
+  # stratified by sex:
+  geom_bar(aes(fill = sex), position = "dodge") +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Stratify by group:
+  facet_wrap("group", nrow = 2) +
+  
+  # Update x and y axis labels:
+  labs(
+    x = "Date and time of onset", 
+    y = "Number of cases", 
+    fill = "Sex", 
+    title = "Epicurve of the outbreak, overall (gray bars) and stratified by sex (coloured bars)",
+    subtitle = str_glue(
+      "Copenhagen, November 2006, N = {sum(linelist$case)}"
+    )
+  ) +
+
+  # Add theme:
+  theme_bw()
+
+# Print epicurve:
+epicurve_strata
+```
+:::
 :::
 
 # References
 
+```{r}
+#| label: pkg-bib
+#| include: false
+knitr::write_bib(
+  c(.packages(), "ggplot2", "tidyverse") |> unique(),
+  file = "packages.bib"
+)
+```
+
 1.  [EPIET Copenhagen outbreack case study](https://github.com/EPIET/OutbreakInvestigation/tree/master/Copenhagen)
 
-2.  Morgenstern, H., Kleinbaum, D. G., & Kupper, L. L. (1980). [Measures of Disease Incidence Used in Epidemiologic Research. International Journal of Epidemiology, 9(1), 97--104.](https://doi.org/10.1093/ije/9.1.97)
-
-3.  Rothman, K. J., Lash, T. L., VanderWeele, T. J., & Haneuse, S. (2021). Modern epidemiology (Fourth edition). Wolters Kluwer.
-
-4.  Wickham, H. (n.d.). [Tidy Verse - R packages for data science.](https://www.tidyverse.org/)
-
-5.  Wickham, H. (2009). [Ggplot2: elegant graphics for data analysis. Springer.](https://ggplot2-book.org/)
-
-6.  Wickham, H. (2019). [Advanced R (Second edition). CRC Press/Taylor and Francis Group.](https://adv-r.hadley.nz/)
-
-7.  Wickham, H., & Grolemund, G. (2016). [R for data science: import, tidy, transform, visualize, and model data (First edition). O'Reilly.](https://r4ds.had.co.nz/)
+2.  Wickham, H., & Grolemund, G. (2016). [R for data science: import, tidy, transform, visualize, and model data (First edition). O'Reilly.](https://r4ds.had.co.nz/)
