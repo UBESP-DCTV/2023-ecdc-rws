@@ -1,0 +1,767 @@
+---
+title: "Day Three - Assessment"
+subtitle: "UBEP's R training for supervisors"
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    code-fold: true
+    code-annotations: select
+bibliography: [references.bib, packages.bib]
+csl: vancouver.csl
+execute: 
+  warning: false
+editor: visual
+params:
+  solved: false
+---
+
+# Infrastructure, Import, and Tidying
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+
+At the end of the assessment, participants should have demonstrated their ability to: [@R-dplyr; @R-stringr, @R-forcats, @R-lubridate]
+
+-   Manage strings using basic regular expression and the package `{stringr}` .[@R-stringr]
+
+-   Manage factors using functions in the package `{forcats}`. [@R-forcats]
+
+-   Manage dates-time objects using functions in the package `{lubridate}`. [@R-lubridate]
+
+-   Use the base `{dplyr}` verbs (i.e., `filter`, `select`, `mutate`, `group_by`, `summarise`), adverbs (i.e., `across`, `where`, `starts_with`, `ends_with`, `contains`, `matches`, `all_of`, `any_of`), and constructors (i.e., `tibble`, and `tribble`). [@R-dplyr]
+:::
+
+# Preamble
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+::: panel-tabset
+## Instructions
+
+This assessment is the second of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
+
+To solve the exercise follow the text and find the assessments in which you need to fill the `___` where required in the code. Next, go to the corresponding section of the R script `solution.R` and try/run sequentially your code.
+
+All the exercise are presented in a tabset panel with a tab containing all the missing parts, and a tab with the solved, completed (including output) code. This version of the file `r c("has not", "has")[params$solved + 1L]` the solution exposed.
+
+## RStudio cloud
+
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
+
+## Attribution
+
+The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.[@noauthor_epietoutbreakinvestigation_nodate]
+
+## Copyright & License
+
+The present work is released under the GPL-3 License.
+:::
+
+
+
+# Data preparation
+
+::: panel-tabset
+## Context
+
+### Objectives
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+
+At the end of the case study, participants should be able to:
+
+-   Conduct an investigation to identify the source of an outbreak
+-   Apply the ten steps of an outbreak investigation
+-   Explain the epidemiological and microbiological contributions to foodborne outbreak investigations
+-   Perform data cleaning and analysis preparation steps using R
+-   Perform descriptive, univariable and stratified analyses using R
+-   Critically evaluate the results from statistical and microbiological analyses and identify food vehicles most likely associated with becoming ill
+-   Understand the importance of writing outbreak reports (developing an analytical plan)
+
+### The Alert
+
+On November 14th 2006 the director of a high school in Greater Copenhagen, Denmark, contacted the regional public health authorities to inform them about an outbreak of diarrhoea and vomiting among participants from a school dinner party held on the 11th of November 2006. Almost all students and teachers of the school (750 people) attended the party.
+
+The first people fell ill the same night and by 14 November, the school had received reports of diarrhoeal illness from around 200 - 300 students and teachers, many of whom also reported vomiting.
+
+### Your mission
+
+Your group has been tasked with investigating this outbreak; you have just received the information above.
+
+## Data Import
+
+The epidemiologists in the outbreak team decided to perform a retrospective cohort study in order to identify the food item that was the vehicle of the outbreak. The cohort was defined as students and teachers who had attended the party at the high school on 11th of November 2006.
+
+A questionnaire was designed to conduct a survey on food consumption and on presentation of the illness. Information about the survey and a link to the questionnaire was circulated to students and teachers via the school's intranet with the request that everyone who attended the school party on 11th of November 2006 should fill in the questionnaire.
+
+Practically all students and teachers check the intranet on a daily basis, because it is the school's main communication channel for information about courses, homework assignments, cancellation of lessons etc. The school's intranet was accessible for ill students or teachers from home so that everyone in the cohort could potentially participate and the response rate could be maximised. Additionally, the information about the investigation was also displayed on the screen in the main hall of the school.
+
+These data were then exported from the survey tool and saved as `Copenhagen_raw.xlsx`.[^1]
+
+### Load packages {#load-pkgs}
+
+In this section, you will become familiar with the raw data set provided.
+
+Before to start, open your RStudio project day-3 within the course [Posit Cloud Workspace](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4) by clicking on it.[^2] You can find your exercise within the `solution.R` file in the `assessment/` folder. That script reports all the unsolved chunks of R code reported in this very document, including all the once under the "Exercise" tabs. Within the project's folder there is a folder named `data-raw/`. In the `data-raw/` folder there is our raw file `Copenhagen_raw.xlsx`.
+
+
+First of all attach the packages we will use to the current working R session.
+
+```{r}
+#| label: setup
+#| code-fold: false
+library(tidyverse)
+library(gtsummary)
+library(here)
+library(janitor)
+library(unheadr)
+library(rio)
+```
+
+```{r}
+#| label: import-raw-ex
+#| code-fold: false
+linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+linelist_raw
+```
+
+You should now see that you have a `data.frame` called `linelist_raw` in your environment tab. You should also be able to see how many observations and variables it contains.
+
+You can view the data by clicking on the name of it (`linelist_raw`) in the environment pane, or alternatively, type and execute `View(linelist_raw)` in the R console.
+
+As you can see, the data are quite messy, especially in the first rows. If you navigate them you can find that:
+
+-   it seams that there are leading headers for each group of columns (in the first of them)
+-   the "real" headers seams span across multiple rows (three)
+-   the presence of logical column with all visible rows as NA could be highlight the presence of empty lines
+-   the sex column seams to report only the a single (the first) occurrence of `female` and `male`
+
+::: callout-important
+## Instructions
+
+In this section, participants should fill in `___` the proper instructions to correctly import the data set.
+
+> Suggestion: Explore the piped code sequentially, one istruction a time, looking on all the intermediate results step by step.
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: import-ex
+#| code-fold: false
+#| eval: false
+
+# read and import the dataset
+# use the working instructions used previously
+# In the first line, create the path to the data set only
+linelist <- here("data-raw/Copenhagen_raw.xlsx") |> 
+  # import the data
+  # don't consider the first row (headers' groups) as column names
+  import(col_names = FALSE) |>
+  # mash together the four rows composing the headers
+  # merge the groups' headers with the proper headers in a single row
+  # (tip.: use a function in the `{unheadr}`)
+  mash_colnames(                                                  #  <1>
+    n_name_rows = 4,  # how many rows has to be mashed?
+    keep_names = FALSE, # do we count/consider current colnames?
+    sliding_headers = TRUE  # are there grouping headers'name (1st row)
+  ) |>  
+  # remove empty columns (tip.: use a function in the `{janitor}`)
+  remove_empty(which = c("cols")) |> 
+  # clean all the names
+  # convert them using standard cammel_case convention
+  # (tip.: use a function in the `{janitor}`)
+  clean_names() |> 
+  # fill the `sex` column to have a complete data set (remind that we
+  # have mashed the groups'heaaders with the columns'names)
+  fill(demo_sex) |> 
+  # Because of our importing strategy, all columns are pure characters.
+  # We can use the `parse_guess` function of the {readr} package to 
+  # mutate every columns to a suitable proper type across each one.
+  ___(
+    ___(everything(), \(x) parse_guess(x, guess_integer = TRUE))
+  )
+
+
+
+linelist
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: import-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# read and import the dataset
+# use the working instructions used previously
+# In the first line, create the path to the data set only
+linelist <- here("data-raw/Copenhagen_raw.xlsx") |> 
+  # import the data
+  # don't consider the first row (headers' groups) as column names
+  import(col_names = FALSE) |>
+  # mash together the four rows composing the headers
+  # merge the groups' headers with the proper headers in a single row
+  # (tip.: use a function in the `{unheadr}`)
+  mash_colnames(                                                  #  <1>
+    n_name_rows = 4,  # how many rows has to be mashed?
+    keep_names = FALSE, # do we count/consider current colnames?
+    sliding_headers = TRUE  # are there grouping headers'name (1st row)
+  ) |>  
+  # remove empty columns (tip.: use a function in the `{janitor}`)
+  remove_empty(which = c("cols")) |> 
+  # clean all the names
+  # convert them using standard cammel_case convention
+  # (tip.: use a function in the `{janitor}`)
+  clean_names() |> 
+  # fill the `sex` column to have a complete data set (remind that we
+  # have mashed the groups'heaaders with the columns'names)
+  fill(demo_sex) |> 
+  # Because of our importing strategy, all columns are pure characters.
+  # We can use the `parse_guess` function of the {readr} package to 
+  # mutate every columns to a suitable proper type across each one.
+  mutate(
+    across(everything(), \(x) parse_guess(x, guess_integer = TRUE))
+  )
+
+linelist
+```
+
+1.  Note: If you would like to throw away the groups' names at the beginning of each variable names, you could ignore the first line when importing the dataset (`import(skip = 1, col_names = FALSE)`) and remove the `sliding_headers` option to the `mash_colnames` call, considering three cols now only (`mash_colnames(3, keep_names = FALSE)`).
+:::
+
+### Exploring the data
+
+Before you can begin analysing the data, you will need to become familiar with its contents and check for any errors, or values that don't make sense.
+
+In addition, it is advisable to consider what format or class each variable (column) should be in. This is something you can include in your analysis plan. For example, if you know you will be creating an epidemic curve of onset dates, you will need to ensure that the onset dates have been correctly interpreted by R as `date` class on import and are not being read as character strings. The column class or type is particularly important if you plan on performing any calculations on that column.
+
+We will see how to do that, in the next lesson.
+
+Anyway we can have a look at the current summary of column types and values by the `skim` function of the `{skimr}` package.
+
+```{r}
+#| label: skim-data
+#| code-fold: false
+skimr::skim(linelist)
+```
+
+## Data Cleaning
+::: callout-important
+## Instructions
+In this section, participants should fill in `___` the proper instructions to correctly import the data set.
+
+> Suggestion: Explore the piped code sequentially, one istruction a time, looking on all the intermediate results step by step.
+
+:::
+
+### Date time variables
+
+The dates are formatted as day, then month (abbreviated character string), then year, in a character vector; we will convert them to a date object.
+
+Most people fell ill on Saturday 12 November (a day after the implicated meal). However, the data set also includes the hour of onset in a variable called `time_start_hour`. We will combine the date and hour of onset into a date-time variable, which will provide more appropriate units to construct an epicurve with later.
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: pre-processing-date-time-ex
+#| code-fold: false
+#| eval: false
+
+# Update linelist:
+linelist <- linelist |> 
+  ___(
+    time_day_onset = ___(time_day_onset, tz = "UTC"),
+    time_datetime_onset = paste(time_day_onset, time_start_hour) |> 
+      ymd_h(truncated = 2)
+  )
+
+linelist
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: pre-processing-date-time-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Update linelist:
+linelist <- linelist |> 
+  mutate(
+    time_day_onset = dmy(time_day_onset, tz = "UTC"),
+    time_datetime_onset = paste(time_day_onset, time_start_hour) |> 
+      ymd_h(truncated = 2)
+  )
+
+linelist
+```
+:::
+
+### Recoding values
+There is a variable in the data set called `group`.
+In this variable, teachers have been encoded as `0`, while students were encoded as `1`.
+We can convert the `group` variable to a factor and give each factor level the appropriate label.
+
+We will convert to factor also the `demo_sex` variable
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: factors-hidden-ex
+#| code-fold: false
+#| eval: false
+
+linelist <- linelist |> 
+  ___(
+    demo_sex = factor(demo_sex),
+    demo_group = ___(demo_group, labels = c("teacher", "student")),
+    demo_class = factor(demo_class)
+  )
+linelist
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: name-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+linelist <- linelist |> 
+  mutate(
+    demo_sex = factor(demo_sex),
+    demo_group = factor(demo_group, labels = c("teacher", "student")),
+    demo_class = factor(demo_class)
+  )
+linelist
+```
+:::
+
+Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-original) we can highlight and fix some typographical errors.^[Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!]
+
+```{r}
+#| label: tbl-age-group-original
+#| tbl-cap: "Age vs. Group comparison for the original data."
+#| echo: false
+linelist |> 
+  tbl_cross(demo_age, demo_group)
+```
+   + There is one teacher aged 16 (likely digit reversal - should be 61)
+   + There is one student aged 8 (likely missing a digit - should be 18)
+   + There is one student aged 180 (likely has an extra digit - should be 18)
+
+We will fix those values accordingly. (@tbl-age-group-fixed)
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: age-group-fixes-ex
+#| code-fold: false
+#| eval: false
+
+linelist <- linelist |> 
+  ___(
+    demo_age = case_when(
+      demo_age == 16 & demo_group == "teacher" ~ 61, 
+      demo_age %in% c(8, 180) & demo_group == "student" ~ 18, 
+      TRUE ~ demo_age
+    )
+  )
+linelist
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: age-group-fixes-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+linelist <- linelist |> 
+  mutate(
+    demo_age = case_when(
+      demo_age == 16 & demo_group == "teacher" ~ 61, 
+      demo_age %in% c(8, 180) & demo_group == "student" ~ 18, 
+      TRUE ~ demo_age
+    )
+  )
+linelist
+```
+:::
+
+```{r}
+#| label: tbl-age-group-fixed
+#| tbl-cap: "Age vs. Group comparison after fix"
+#| echo: false
+linelist |> 
+  tbl_cross(demo_age, demo_group)
+```
+
+
+### Variable Class
+Most variables are either binary symptoms or food exposures, that have been encoded as 0 (where the symptom was absent or there was no exposure) or 1 (symptom present or person was exposed to the food item). We will convert them to logicals (i.e., `TRUE`/`FALSE`).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: booleans-hidden-ex
+#| code-fold: false
+#| eval: false
+
+# Update linelist
+linelist <- linelist |>
+  ## Please note: the following sequence of three `___` is a one of the
+  ## most useful and used standard patters in R managing data in the 
+  ## tidyverse
+  ___(
+    ___(
+      ___(\(x) all(x %in% c(0, 1, NA))),
+      as.logical
+    )
+  )
+linelist
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: booleans-hidden-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Update linelist
+linelist <- linelist |>
+  mutate(
+    across(
+      where(\(x) all(x %in% c(0, 1, NA))),
+      as.logical
+    )
+  )
+linelist
+```
+
+:::
+
+
+## Case Definition
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+::: callout-note
+The current section is not interested for the present exercise, so we just perform the computations hidden behind the scene.
+:::
+
+The final step to undertake before proceeding to descriptive analysis, is to create a new column in the data set to hold the case definition.  You can call this column `case` and set it to `TRUE` if the individual meets the case definition criteria and `FALSE` if not.
+
+**Variables of interest:**
+
+Your exposure of interest is the school dinner party held on 11 November 2006 at 18:00. You may have noticed while skimming the data, that there is a binary variable called `food_meal`.  This variable indicates whether people attended the school dinner party and ate a meal there, or not.
+
+Other variables that will be helpful to include in your case definition are `time_datetime_onset` (hint: check that case onset date/time is **after** exposure) and symptom variables (hint: not everyone on the linelist fell ill).  The symptoms included in the data set are:
+
+   + `symptoms_abdo` (abdominal pain)
+   + `symptoms_diarrhoea`
+   + `symptoms_bloody` (bloody diarrhoea)
+   + `symptoms_nausea`
+   + `symptoms_vomiting`
+   + `symptoms_fever`
+   + `symptoms_headache`
+   + `symptoms_jointpain`
+
+### Defining a case
+
+To demonstrate how this works, we will first construct an example case definition in words:  
+
+A case was defined as a person who:
+
+   + attended the school dinner on 11 November 2006 (i.e. is on the linelist)
+   + ate a meal at the school dinner (i.e. was exposed)
+   + fell ill after the start of the meal
+   + fell ill no later than two days after the school dinner
+   + suffered from diarrhoea with or without blood, or vomiting
+
+
+Non cases were defined as people who:
+
+   + attended the school dinner on 11 November 2006 (i.e. are on the linelist)
+   + ate a meal at the school dinner (i.e. were exposed)
+   + did not fall ill within the time period of interest
+   + did not develop diarrhoea (with or without blood) or vomiting
+
+
+For the sake of the analysis, we exclude any people from the cohort who didn't eat at the dinner, because we specifically hypothesise a food item to be the vehicle of infection in this outbreak. Excluding people reduces the sample size and therefore the power slightly, but the investigators considered that this would increase specificity.
+
+The variables needed to define this case definition are:
+
+   + `food_meal`
+   + `time_datetime_onset`
+   + `symptoms_diarrhoea`
+   + `symptoms_bloody`
+   + `symptoms_vomiting`
+
+### Case definition
+
+First, we create a column for the date and time of the meal.  We can use this column to determine if onset date/times occured before or after the meal.  We can limit the case definition to people who had onset date/times after the meal, since we hypothesise that the meal is where exposure to the pathogen occured.
+
+Moreover, for the case definition, we are primarily interested in three symptoms:
+
+   + `symptoms_diarrhoea` (without blood)
+   + `symptoms_bloody` (diarrhoea with blood)
+   + `symptoms_vomiting` 
+
+However, these are not the only symptoms in the data set.  When creating the case definition, it would be easier to refer to these three symptoms if there was one column, indicating whether people had those symptoms or not.  We can call this column `symptoms_gastro`.  
+
+
+```{r}
+#| label: case-def
+#| echo: false
+
+# Start with linelist:
+linelist <- linelist |>  
+  mutate(
+    meal_datetime = ymd_h("2006-11-11 18"),
+    symptoms_gastro = (
+      symptoms_diarrhoea | symptoms_bloody | symptoms_vomiting
+    ) |> replace_na(FALSE)
+  )
+linelist
+```
+
+
+
+> Note that we have included people who have no data for all three symptoms of interest, and categorised them as `FALSE`.  This means that they will be defined as non-cases in the next step.  
+
+**Creating the case definition column**
+
+Next, we can create a column for the case definition, in which we will define all the respondents as either cases, non-cases or `NA`.  
+
+We can define non-cases as those who attended the meal, but didn't develop any gastro symptoms, or if they did, developed them before the meal took place.  
+
+We can exclude (define as `NA`) respondents that answered the survey, but did not attend the meal.  
+
+
+```{r}
+#| label: ate-meal
+#| echo: false
+linelist <- linelist |>
+  rowwise() |> 
+  mutate(
+    ate_anything = c_across(starts_with("food") & !ends_with("_d")) |> 
+      reduce(`|`) |>
+      replace_na(FALSE)
+  ) |> 
+  ungroup()
+linelist
+```
+
+Next, we can check if there is anyone that said they didn't eat a meal (or skipped that question) but did consume one or more of the food or drink items at the party (@tbl-ate-meal):
+
+```{r}
+#| label: tbl-ate-meal
+#| tbl-cap: "People eating something without having the meal."
+#| echo: false
+tbl_ate_meal <- linelist |> 
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
+```
+We can see from this table that `r inline_text(tbl_ate_meal, col_level = "TRUE", row_level = "FALSE")` respondents said they didn't have a meal, but did actually consume items on the party meal menu, according to their answers for the food and drink questions.  
+
+We can therefore recode the `food_meal` column for these individuals as `TRUE`.
+
+```{r}
+#| label: fix-ate-meal
+#| echo: false
+
+# Start with linelist:
+linelist <- linelist |> 
+  mutate(
+    food_meal = if_else(!food_meal & ate_anything, TRUE, food_meal)
+  )
+linelist
+```
+
+Check teh result (@tbl-ate-meal-check).
+
+```{r}
+#| label: tbl-ate-meal-check
+#| tbl-cap: "People eating something without having the meal, after fix."
+#| echo: false
+tbl_ate_meal <- linelist |> 
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
+```
+
+Now that these values are corrected, we can proceed with the case definition:
+
+
+```{r}
+#| label: case-definition
+#| echo: false
+
+# Start with linelist:
+linelist <- linelist |>  
+  # Create case definition:
+  mutate(
+    case = case_when(
+      # Define excluded individuals as those with no record of a meal:
+      !food_meal | is.na(food_meal) ~ NA,
+  
+      # Cases have any gastro symptoms with onset after the meal:
+      symptoms_gastro & !is.na(time_datetime_onset) & (time_datetime_onset >= meal_datetime) 
+      ~ TRUE, 
+      
+      # All the rest (`TRUE`) marked as FALSE,
+      # i.e., non cases have no gastro symptoms but ate a meal at the party:
+      # !symptoms_gastro | (symptoms_gastro & (time_datetime_onset < meal_datetime))
+      TRUE ~ FALSE,
+    ),
+  )
+linelist
+```
+
+### Incubation times
+
+A suitable incubation period to use in the case definition can be defined by calculating the time between exposure (to the meal) and onset of symptoms, and then looking at the distribution of these time differences.  In this outbreak, incubation periods are easy to calculate, because everyone was exposed at (roughly) the same time and on the same day (eating the meal at the school dinner party).  
+
+We will create a column for incubation times (date and time of meal subtracted from the date and time of symptom onset).
+
+```{r}
+#| label: incubation
+#| echo: false
+
+linelist <- linelist |>  
+  # Update incubation to be NA if case is not TRUE:
+  mutate(
+    incubation = ifelse(case, time_datetime_onset - meal_datetime, NA)
+  )
+linelist
+```
+
+We can now refine the case definition and limit the maximum incubation period to 48 hours after the meal, as the data points to a fast-acting bacterial toxin or a virus.
+
+We will update the case definition, this time only changing values which were previously defined as a case but had onset of symptoms after 13 November 2006 at 18:00.  Respondents that meet this condition will be reclassified as non cases (i.e. `case = FALSE`).
+
+```{r}
+#| label: case-update
+#| echo: false
+
+# Update the case definition to limit to onset three days after meal:
+linelist <- linelist |> 
+  mutate(
+    case = case & (time_datetime_onset <= (meal_datetime + days(2)))
+  )
+linelist
+```
+
+As it happens, there is no change in the number of cases, because none of them had an onset date and time that was more than two days after the meal.  We can double-check this by cross-tabulating the onset date/time and case status (@tbl-case-onset).
+
+```{r}
+#| label: tbl-case-onset
+#| tbl-cap: "Cases and non-cases each onset datetime"
+#| echo: false
+
+linelist |> 
+  tbl_cross(time_datetime_onset, case)
+```
+
+We can see that the onset dates of all cases were from 11 to 13 November 2006 inclusive; this is why case numbers didn't change when we updated the case definition.
+
+### Exclusions
+
+Ultimately, the investigation team decided to remove respondents that did not meet the definition for a case or a non-case from the data set prior to analysis.  We can do this easily with the function `drop_na()`:
+
+```{r drop_nacase}
+
+linelist <- linelist |> 
+  # Remove rows where case is NA:
+  drop_na(case)
+linelist
+```
+
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[^1]: This version of the dataset is slightlty modified respect the original `Copenhagen_raw.csv` raw dataset to include some additional *messiness* useful for the assessment purposes.[@epiet/ou]
+
+[^2]: If you have downloaded it in your local environment, you can double click on the `project.Rproj` project file.
+
+
+
+```{r}
+#| label: pkg-bib
+#| include: false
+knitr::write_bib(
+  c(
+    .packages(),
+    "ggplot2", "tidyverse", "renv", "here", "tidyr", "janitor",
+    "rio", "haven", "readr", "unheadr", "dplyr", "forcats", "stringr",
+    "lubridate"
+  ) |> unique(),
+  file = "packages.bib"
+)
+```
