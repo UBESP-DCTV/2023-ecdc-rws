@@ -10,7 +10,6 @@ params:
 
 ::: callout-important
 ## Instructions
-
 :::
 
 ::: {.panel-tabset group="ex-sol"}

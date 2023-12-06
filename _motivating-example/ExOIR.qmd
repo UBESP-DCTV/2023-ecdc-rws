@@ -26,24 +26,6 @@ library(labelled)
 library(glue)
 library(gt)
 library(gtsummary)
-
-# https://gt.albert-rapp.de/quarto_gt
-# library(knitr)
-# 
-# knit_print.gt <- function(x, ...) {
-#   stringr::str_c(
-#     "<div style='all:initial';>\n",
-#     gt::as_raw_html(x),
-#     "\n</div>"
-#   ) |>
-#     knitr::asis_output()
-# 
-# }
-# registerS3method(
-#   "knit_print", 'gt_tbl', knit_print.gt,
-#   envir = asNamespace("gt")
-#   # important to overwrite {gt}s knit_print
-# )
 ```
 
 ```{r}

@@ -7,6 +7,8 @@ format:
     embed-resources: true
     code-fold: true
     code-annotations: select
+    toc: true
+    toc-location: left
 bibliography: [references.bib, packages.bib]
 csl: vancouver.csl
 execute: 
@@ -55,7 +57,7 @@ All the exercise are presented in a tabset panel with a tab containing all the m
 
 ## RStudio cloud
 
-You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-2" project, and find inside all the data, script and resources useful to complete the assessment.
 
 ## Attribution
 

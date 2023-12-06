@@ -6,6 +6,8 @@ format:
     df-print: paged
     embed-resources: true
     code-fold: true
+    toc: true
+    toc-location: left
 bibliography: [references.bib, packages.bib]
 csl: vancouver.csl
 execute: 
