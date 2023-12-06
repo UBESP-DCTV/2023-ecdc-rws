@@ -1,9 +1,11 @@
 {
-  "hash": "05746f4ab0f02ee805ffbbd05885cebf",
+  "hash": "ee20e6271826c09101e3c3c7f0e1f96a",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Exercise template\"\nformat: html\neditor: visual\nparams:\n  solved: true\n---\n\n\n# ciao\n\n::: callout-important\n## Instructions\n:::\n\n::: {.panel-tabset group=\"ex-sol\"}\n## Exercise\n\n\n::: {.cell}\n\n:::\n\n\n## Solution\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Exercise template\"\nformat: html\neditor: visual\nparams:\n  solved: true\n---\n\n\n# ciao\n\n::: callout-important\n## Instructions\n\n:::\n\n::: {.panel-tabset group=\"ex-sol\"}\n## Exercise\n\n\n::: {.cell}\n\n:::\n\n\n## Solution\n\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n:::\n",
+    "supporting": [
+      "ex-template_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

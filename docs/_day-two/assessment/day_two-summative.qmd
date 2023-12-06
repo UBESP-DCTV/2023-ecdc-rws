@@ -346,11 +346,12 @@ linelist <- linelist |>
   mutate(
     time_day_onset = dmy(time_day_onset, tz = "UTC"),
     time_datetime_onset = paste(time_day_onset, time_start_hour) |> 
-      ymd_h(truncated = 2)
+      ymd_h(truncated = 2) # <1>
   )
 
 linelist
 ```
+1. The argument `truncated = 2` will result in dates with missing `time_start_hour` still being converted to date-time, with the missing time being set to `00:00` (midnight). Whether you want to deal with missing `time_start_hour` in this way or prefer to code these date-times as `NA` will depend on how you want them to be represented in your analysis.
 
 ### Recoding values
 There is a variable in the data set called `group`.
@@ -373,7 +374,7 @@ linelist
 ```
 
 
-Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-original) we can highlight and fix some typographical errors.^[Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!]
+Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-original) we can highlight and fix some typographical errors.[^3]
 
 ```{r}
 #| label: tbl-age-group-original
@@ -625,7 +626,7 @@ We will create a column for incubation times (date and time of meal subtracted f
 linelist <- linelist |>  
   # Update incubation to be NA if case is not TRUE:
   mutate(
-    incubation = ifelse(case, time_datetime_onset - meal_datetime, NA)
+    incubation = if_else(case, time_datetime_onset - meal_datetime, NA)
   )
 linelist
 ```
@@ -741,8 +742,7 @@ In the previous section, we calculated incubation period by subtracting the meal
 **Plot of incubation period:**
 
 ```{r}
-#| label: incubation_ggplot-sol
-#| echo: false
+#| label: incubation_ggplot
 
 incplot <- linelist |>  
   
@@ -778,14 +778,13 @@ First, we can create an epicurve for the date of onset, limiting the input data 
 
 
 ```{r}
-#| label: epicurve-date-sol
-#| echo: false
+#| label: epicurve-date
 
 # Fetch data:
 epicurve_date <- linelist |> 
   
   # Filter for cases where dayonset is not missing:
-  filter(case == TRUE, !is.na(time_day_onset)) |> 
+  filter(case, !is.na(time_day_onset)) |>  #<1>
   
   # Add dayonset to ggplot aesthetic:
   ggplot(aes(x = time_day_onset)) + 
@@ -809,6 +808,8 @@ epicurve_date <- linelist |>
 # Print epicurve:
 epicurve_date
 ```
+1. Note that `case` is logical, so we can use it as a filter directly (i.e., `case == TRUE` is exactly the same as `case` alone).
+
 
 As you can see, the epicurve is quite crude, because most cases had their disease onset on 12 November. To increase resolution, we could enhance the time information to include both day and hour.
 
@@ -816,17 +817,13 @@ During the data preparation session, we already concatenated the variables `time
 
 
 ```{r}
-#| label: epicurve-hour-sol
-#| echo: false
+#| label: epicurve-hour
 
 # Fetch data:
 epicurve_hour <- linelist |> 
   
   # Filter for cases where dayonset is not missing:
-  filter(
-    case == TRUE,
-    !is.na(time_datetime_onset)
-  ) |> 
+  filter(case, !is.na(time_datetime_onset)) |> 
   
   # Add onset_datetime to ggplot aesthetic:
   ggplot(aes(x = time_datetime_onset)) + 
@@ -856,17 +853,13 @@ epicurve_hour
 Finally, we could compare the epicurve between the sexes and additionally investigate how teachers versus students were distributed.
 
 ```{r}
-#| label: epicurve-stratified-sol
-#| echo: false
+#| label: epicurve-stratified
 
 # Fetch data:
 epicurve_strata <- linelist |> 
   
   # Filter for cases where onset_datetime is not missing:
-  filter(
-    case == TRUE,
-    !is.na(time_datetime_onset)
-  ) |> 
+  filter(case, !is.na(time_datetime_onset)) |> 
   
   # Add factor onset_day to ggplot aesthetic:
   ggplot(aes(x = time_datetime_onset)) + 
@@ -1100,7 +1093,7 @@ fig_symptoms_case
 
 [^2]: If you have downloaded it in your local environment, you can double click on the `project.Rproj` project file.
 
-[^3]: The argument `truncated = 2` will result in dates with missing `time_start_hour` still being converted to date-time, with the missing time being set to `00:00` (midnight). Whether you want to deal with missing `time_start_hour` in this way or prefer to code these date-times as `NA` will depend on how you want them to be represented in your analysis.
+[^3]: Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!
 
 ```{r}
 #| label: pkg-bib
