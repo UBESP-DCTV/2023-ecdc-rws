@@ -2,10 +2,10 @@ project:
   type: website
   output-dir: docs
   resources:
-    - "_day-one/"
-    - "_day-two/"
-    - "_day-three/"
-    - "_day-four/"
+    - "_day-one/assessment/"
+    - "_day-two/assessment/"
+    - "_day-three/assessment/"
+    - "_day-four/assessment/"
     - "_motivating-example/"
 
 
@@ -44,7 +44,7 @@ website:
       - text: Summative Assessment
         menu:
           - text: "Day 1"
-            href: "_day-one/day_one-summative.html"
+            href: "_day-one/assessment/day_one-summative.html"
           - text: "Day 2"
             href: "_day-two/assessment/day_two-summative.html"
           - text: "Day 3"
