@@ -1,0 +1,77 @@
+---
+title: "Presentation"
+subtitle: "Day One"
+format:
+ revealjs:
+    scrollable: true
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    multiplex: true
+    chalkboard: 
+      src: src/chalkboard.json
+---
+
+# Sec 1
+
+mandi
+[www.google.com](https://www.google.com)
+
+## One
+
+-   a
+
+-   b
+
+## Two
+
+::: columns
+::: {.column width="50%"}
+-   c
+
+-   d
+:::
+
+::: {.column width="50%"}
+-   e
+
+-   f
+:::
+:::
+
+-   d
+
+-   d
+
+# Sec 2
+
+## One
+
+-   a
+
+-   b
+
+::: notes
+mandi
+:::
+
+## Two
+
+-   c
+
+-   d
+
+## Code
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+#| error: true
+library(ggplot2)
+ggplot(
+  airquality, aes(Temp, Ozone))+
+  geom_point() +
+  geom_smooth(method = "loess")
+```

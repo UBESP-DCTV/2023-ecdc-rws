@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - "_day-one/assessment/"
+    - "_day-one/slide/"
     - "_day-two/assessment/"
     - "_day-three/assessment/"
     - "_day-four/assessment/"
