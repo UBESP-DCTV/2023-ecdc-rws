@@ -13,3 +13,6 @@ requireNamespace("labelled")
 requireNamespace("rio")
 requireNamespace("tidyverse")
 requireNamespace("skimr")
+
+# GitHub ----------------------------------------------------------
+requireNamespace("countdown")

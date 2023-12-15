@@ -68,7 +68,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[15'\] {magrittr}'s and native's pipes
 
--   \[105\] Grammar of tables
+-   \[105\] Grammar of graphics
 
     -   \[10'\] data and plots
 

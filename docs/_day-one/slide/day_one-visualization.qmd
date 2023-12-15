@@ -1,0 +1,76 @@
+---
+title: "Day One:<br>Pipe(s) and Visualization"
+subtitle: "120 min approx"
+format:
+ revealjs:
+    scrollable: true
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    multiplex: true
+    chalkboard: 
+      src: src/chalkboard.json
+---
+
+# Overview
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   Q1
+:::
+
+::: {.column width="50%"}
+### Objectives
+
+-   O1
+:::
+:::
+
+# Topic 1
+
+## Chapter 1
+
+::: callout-tip
+:::
+
+::: callout-caution
+## Your turn
+:::
+
+## Chapter 2
+
+::: callout-tip
+:::
+
+::: callout-caution
+## Your turn
+:::
+
+# Summary
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-warning
+:::
+:::
+:::
+
+## Homework
+
+### Posit's RStudio Cloud Workspace
+
+-   Project:
+-   Instructions:
+-   Script to complete:
+
+
+
