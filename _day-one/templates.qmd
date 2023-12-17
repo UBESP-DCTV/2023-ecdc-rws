@@ -1,0 +1,159 @@
+
+
+
+# Overview -----------------
+
+# Overview
+
+##
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+- What we are going to do in the course?
+- Who we are?
+- R/RStudio/Tidyverse<br>Why and How?
+- How the course is organized?
+- How to access/use the course material?
+:::
+
+::: {.column width="50%"}
+### Objectives
+
+#### To know the course
+- a.
+- b.
+
+#### To be able to do/use
+- c.
+- d.
+:::
+:::
+
+
+
+# topic --------------------
+
+# Topic
+
+## Chapter
+
+::: callout-tip
+:::
+
+::: callout-caution
+## Your turn
+:::
+
+
+
+
+# Code ---------------------
+
+::: columns
+::: {.column width="35%"}
+|          |       |
+|----------|-------|
+|  | `` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+```
+:::
+:::
+
+
+
+# Summary ------------------
+
+# Summary
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-caution
+## Your turn
+
+Connect to our [pad](https://bit.ly/ubep-rws-pad)([https://bit.ly/ubep-rws-pad](https://bit.ly/ubep-rws-pad)) and ...
+:::
+:::
+:::
+
+## Homework
+
+### Posit's RStudio Cloud Workspace
+
+-   Project:
+-   Instructions:
+-   Script to complete:
+
+
+
+# Break --------------------
+
+
+## Break
+
+[20 minutes](https://apps.garrickadenbuie.com/countdown/?_inputs_&time=%2220%3A00%22&update_every=%221%22&warn_time=%2204%3A00%22)[^1]
+
+[^1]: <https://apps.garrickadenbuie.com/countdown>
+
+
+
+
+# Your turn ----------------
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+- Connect to our [pad](https://bit.ly/ubep-rws-pad)([https://bit.ly/ubep-rws-pad](https://bit.ly/ubep-rws-pad))
+
+- Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud ([https://bit.ly/ubep-rws-rstudio-day-1](https://bit.ly/ubep-rws-rstudio-day-1))
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex2`, write (in a new line) what is your expected result from the following computation:
+
+``` r
+<code>
+```
+
+2.  Then, open the script `01-math_and_logic.R` and follow the instruction step by step.
+
+
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   `a:b` create a sequence of from `a` to `b`
+-   `a` and `b` can be zero or negative
+-   The sequence start from `a` and go through `b` in by steps of length `1`, without surpasses `b`
+-   Math and logic works on vectors (i.e., sequences) input and output!
+:::
+:::

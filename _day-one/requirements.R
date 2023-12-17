@@ -12,6 +12,7 @@ requireNamespace("janitor")
 requireNamespace("labelled")
 requireNamespace("rio")
 requireNamespace("tidyverse")
+requireNamespace("dplyr")
 requireNamespace("skimr")
 
 # GitHub ----------------------------------------------------------

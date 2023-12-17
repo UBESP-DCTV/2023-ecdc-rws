@@ -1,0 +1,16 @@
+---
+format: revealjs
+---
+
+## What is `has_annotations`?
+
+```{r}
+#| echo: true
+ls()
+```
+
+```{r}
+#| echo: true
+str(has_annotations)
+```
+

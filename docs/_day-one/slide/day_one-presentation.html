@@ -647,7 +647,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_10a26189" data-warn-when="5" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="bottom:15%;left:15%;">
+<div class="countdown" id="timer_60e2da4f" data-warn-when="5" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="bottom:15%;left:15%;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -773,6 +773,1828 @@
 </ul>
 </div>
 </div>
+</section></section><section><section id="r-basics-review" class="title-slide slide level1 center"><h1>R basics review</h1>
+
+</section><section id="language" class="slide level2"><h2>Language</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Comments</td>
+<td><code>#</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># R will ignore this!!</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="co"># +1 also this!!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Assignment</td>
+<td><code>&lt;-</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Code to the right is evaluate, then </span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># stored in a variable named to the left</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>two <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>two</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Create vectors</td>
+<td><code>c</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>three_two_one <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, two, <span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>three_two_one</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 2 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Subset</td>
+<td><code>[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># R counts from 1</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>three_two_one[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>List objects</td>
+<td><code>ls</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "has_annotations" "three_two_one"   "two"            </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Remove objects</td>
+<td><code>rm</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">rm</span>(three_two_one)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">ls</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "has_annotations" "two"            </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>functions</td>
+<td><code>fun(arg = val)</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># To assign values to arguments</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># you must use `=`</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">mean</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody>
+<tr class="odd">
+<td>Help function</td>
+<td><code>?fun</code></td>
+</tr>
+<tr class="even">
+<td>Help operator</td>
+<td><code>?"&lt;op&gt;"</code></td>
+</tr>
+</tbody></table>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Variable names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter (or a single dot, for hidden variables).</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>?sum</span>
+<span id="cb20-2"><a href="#cb20-2"></a>?<span class="st">"+"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<p><img data-src="img/mean-help.png"></p>
+</div>
+</div>
+</div>
+</div>
+</section><section id="your-turn-1" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>) and:</p>
+<ol type="1">
+<li>Put <code>x</code>s next to the correct variable names.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_995c1be1" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section><section id="math" class="slide level2"><h2>Math</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody>
+<tr class="odd">
+<td>Brackets</td>
+<td>
+<code>(</code>, <code>)</code>
+</td>
+</tr>
+<tr class="even">
+<td>Add</td>
+<td><code>+</code></td>
+</tr>
+<tr class="odd">
+<td>Subtract</td>
+<td><code>-</code></td>
+</tr>
+<tr class="even">
+<td>Multiply</td>
+<td><code>*</code></td>
+</tr>
+<tr class="odd">
+<td>Divide</td>
+<td><code>/</code></td>
+</tr>
+<tr class="even">
+<td>Exponent</td>
+<td>
+<code>^</code> or <code>**</code>
+</td>
+</tr>
+<tr class="odd">
+<td>Square root</td>
+<td><code>sqrt</code></td>
+</tr>
+</tbody></table>
+</div><div class="column" style="width:65%;">
+<p><br><br><br></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Standrard order of precedence</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="dv">5</span> <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">4</span>) <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span>(<span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Magnitude</td>
+<td><code>&lt;num&gt;E&lt;exp10&gt;</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fl">1E2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Exponential</td>
+<td><code>exp</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Euler number</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">exp</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.718282</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Logarithm</td>
+<td>
+<code>log</code>, <code>log10</code>, <code>log2</code>
+</td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># You can compose functions</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">log</span>(<span class="fu">exp</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Pi</td>
+<td><code>pi</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>pi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.141593</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Sine</td>
+<td><code>sin</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">sin</span>(pi<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Cosine</td>
+<td><code>cos</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">cos</span>(pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="logic-and-tests" class="slide level2"><h2>Logic and tests</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody>
+<tr class="odd">
+<td>True</td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td>False</td>
+<td><code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td>And</td>
+<td><code>&amp;</code></td>
+</tr>
+<tr class="even">
+<td>Or</td>
+<td><code>|</code></td>
+</tr>
+<tr class="odd">
+<td>Not</td>
+<td><code>!</code></td>
+</tr>
+</tbody></table>
+</div><div class="column" style="width:65%;">
+<p><br></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Standrard order of precedence</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Standrard order of precedence</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="sc">!</span><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="sc">!</span>(<span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Comparison</td>
+<td>
+<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>
+</td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">&gt;</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>“Exact!” Equal</td>
+<td><code>==</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Test equal numbes</td>
+<td><code>all.equal</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="dv">3</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">==</span> <span class="fl">0.6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="dv">3</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">==</span> <span class="fl">0.6</span> <span class="co"># finite machine</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">all.equal</span>(<span class="dv">3</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>), <span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<table><tbody><tr class="odd">
+<td>Different</td>
+<td><code>!=</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="dv">1</span> <span class="sc">!=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="your-turn-3" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
+<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+</ul>
+<p>…and:</p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Before to evaluate it, in the pad, under the section <code>1.3. Ex2</code>, write (in a new line) what is your expected result from the following computation:</li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>(<span class="dv">4</span><span class="sc">:</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">&gt;=</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Then, open the script <code>01-math_and_logic.R</code> and follow the instruction step by step.</li>
+</ol>
+<div class="fragment fade-out" data-fragment-index="1">
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_87d9b9ef" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>
+<code>a:b</code> create a sequence of from <code>a</code> to <code>b</code>
+</li>
+<li>
+<code>a</code> and <code>b</code> can be zero or negative</li>
+<li>The sequence start from <code>a</code> and go through <code>b</code> in by steps of length <code>1</code>, without surpasses <code>b</code>
+</li>
+<li>Math and logic works on vectors (i.e., sequences) input and output!</li>
+<li>Prefer <code><a href="https://rdrr.io/r/base/seq.html">?seq</a></code>, <code><a href="https://rdrr.io/r/base/seq.html">?seq_len</a></code> and <code><a href="https://rdrr.io/r/base/seq.html">?seq_along</a></code> instead of <code><a href="https://rdrr.io/r/base/Colon.html">?":"</a></code> when bounds are not proper number but variables and you are writing scripts (not always interactive): they have more consistent behavior and edge-situations error handling.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-atomic-vectors" class="slide level2"><h2>Data structure: (atomic) vectors</h2>
+<p>Atomic vectors are homogeneous/flat objects, i.e.&nbsp;all the objects composing the sequence <strong>must</strong> be of the same type, and cannot contain other (nested) sequences.</p>
+<p>Four main types (<code><a href="https://rdrr.io/r/base/typeof.html">?typeof</a></code>) of atomic vectors:</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Logical</td>
+<td><code><a href="https://rdrr.io/r/base/logical.html">?is.logical</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="fu">typeof</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">c</span>(<span class="fu">is.atomic</span>(<span class="cn">FALSE</span>), <span class="fu">is.logical</span>(<span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Integer</td>
+<td><code><a href="https://rdrr.io/r/base/integer.html">?is.integer</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="fu">typeof</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">c</span>(<span class="fu">is.atomic</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), <span class="fu">is.integer</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Double</td>
+<td><code><a href="https://rdrr.io/r/base/double.html">?is.double</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">typeof</span>(<span class="fl">1.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="fu">c</span>(<span class="fu">is.atomic</span>(<span class="fl">1.2</span>), <span class="fu">is.double</span>(<span class="fl">1.2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Character</td>
+<td><code><a href="https://rdrr.io/r/base/character.html">?is.character</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">typeof</span>(<span class="st">"Hello supervisors"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">c</span>( <span class="co"># line brakes don't brake execution</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a>  <span class="fu">is.atomic</span>(<span class="st">"Hello supervisors"</span>),</span>
+<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">is.character</span>(<span class="st">"Hello supervisors"</span>)</span>
+<span id="cb68-4"><a href="#cb68-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Elements can be named</p>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="fu">c</span>(<span class="at">one =</span> <span class="dv">1</span>, <span class="at">two =</span> <span class="dv">2</span>, <span class="at">three =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  one   two three 
+    1     2     3 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="your-turn-5" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
+<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+</ul>
+<p>…and:</p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Before to evaluate it, in the pad, under the section <code>1.3. Ex3</code>, write (in a new line) what is your expected result (including <em>an error</em>) from the following computation:</li>
+</ol>
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>mixed_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="at">one =</span> <span class="cn">TRUE</span>, <span class="at">two =</span> <span class="dv">2</span>L,</span>
+<span id="cb72-3"><a href="#cb72-3"></a>  <span class="at">three =</span> <span class="fl">3.3</span>, <span class="at">four =</span> <span class="st">"four"</span></span>
+<span id="cb72-4"><a href="#cb72-4"></a>)</span>
+<span id="cb72-5"><a href="#cb72-5"></a>mixed_vector</span>
+<span id="cb72-6"><a href="#cb72-6"></a><span class="fu">typeof</span>(mixed_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Then, open the script <code>02-atomic-vectors.R</code> and follow the instruction step by step.</li>
+</ol>
+<div class="fragment fade-out" data-fragment-index="1">
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_d894437d" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Coercion rule<br>from <em>specific</em> to <em>general</em>:<br><small>logical &gt; integer &gt; double &gt; character</small></p>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>mixed_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="at">one =</span> <span class="cn">TRUE</span>, <span class="at">two =</span> <span class="dv">2</span>L,</span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="at">three =</span> <span class="fl">3.3</span>, <span class="at">four =</span> <span class="st">"four"</span></span>
+<span id="cb73-4"><a href="#cb73-4"></a>)</span>
+<span id="cb73-5"><a href="#cb73-5"></a>mixed_vector</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>   one    two  three   four 
+"TRUE"    "2"  "3.3" "four" </code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">typeof</span>(mixed_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-other-vectors---factors" class="slide level2"><h2>Data structure: (other) vectors - Factors</h2>
+<p>Other structure in R are based on atomic vectors, i.e.&nbsp;are of one of the base types but have more <em>structure</em> (similar structures are called <code><a href="https://rdrr.io/r/base/class.html">?class</a></code>)</p>
+<p><strong>Factors</strong> are discrete (i.e.&nbsp;based on <code><a href="https://rdrr.io/r/base/integer.html">?integer</a></code>s) variables with labels.</p>
+<div class="columns">
+<div class="column" style="width:25%;">
+<table><tbody><tr class="odd">
+<td>Factors</td>
+<td><code><a href="https://rdrr.io/r/base/factor.html">?is.factor</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:75%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb77-2"><a href="#cb77-2"></a>  <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>),</span>
+<span id="cb77-3"><a href="#cb77-3"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"other"</span>)</span>
+<span id="cb77-4"><a href="#cb77-4"></a>)</span>
+<span id="cb77-5"><a href="#cb77-5"></a>gender</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] male   female female
+Levels: female male other</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">is.factor</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">typeof</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">class</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">as.character</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "male"   "female" "female"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">as.integer</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:25%;">
+<table><tbody><tr class="odd">
+<td>Levels</td>
+<td><code><a href="https://rdrr.io/r/base/levels.html">?levels</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:75%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="fu">levels</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "female" "male"   "other" </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>You can investigate the internal structure of any R objects using <code><a href="https://rdrr.io/r/utils/str.html">?str</a></code>.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:25%;">
+<table><tbody><tr class="odd">
+<td>Structure</td>
+<td><code><a href="https://rdrr.io/r/utils/str.html">?str</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:75%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="fu">str</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Factor w/ 3 levels "female","male",..: 2 1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-other-vectors---dates-date-times" class="slide level2"><h2>Data structure: (other) vectors - Dates / Date-times</h2>
+<p>Other structure in R are based on atomic vectors, i.e.&nbsp;are of one of the base types but have more <em>structure</em> (similar structures are called <code><a href="https://rdrr.io/r/base/class.html">?class</a></code>)</p>
+<p><strong>Dates</strong> are counts (based on <code><a href="https://rdrr.io/r/base/double.html">?double</a></code>s) of days since 1970-01-01.<sup>1</sup></p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Dates</td>
+<td><code><a href="https://rdrr.io/r/base/as.Date.html">?as.Date</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"1970-01-10"</span>)</span>
+<span id="cb93-2"><a href="#cb93-2"></a>date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-10"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">typeof</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="fu">class</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="fu">as.double</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="fu">str</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> Date[1:1], format: "1970-01-10"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Date-Time</strong> are counts (based on <code><a href="https://rdrr.io/r/base/double.html">?double</a></code>s) of seconds since 1970-01-01.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Date-times</td>
+<td>
+<code><a href="https://rdrr.io/r/base/as.POSIXlt.html">?as.POSIXct</a></code><sup>2</sup>
+</td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1"></a>date_time <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(</span>
+<span id="cb103-2"><a href="#cb103-2"></a>  <span class="st">"1970-01-10 13:10"</span>,</span>
+<span id="cb103-3"><a href="#cb103-3"></a>  <span class="at">tz =</span> <span class="st">"UTC"</span></span>
+<span id="cb103-4"><a href="#cb103-4"></a>)</span>
+<span id="cb103-5"><a href="#cb103-5"></a>date_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1970-01-10 13:10:00 UTC"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1"></a><span class="fu">typeof</span>(date_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a><span class="fu">class</span>(date_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "POSIXct" "POSIXt" </code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1"></a><span class="fu">as.double</span>(date_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 825000</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a><span class="fu">str</span>(date_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code> POSIXct[1:1], format: "1970-01-10 13:10:00"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>This date is know as the Unix Epoch.</p></li><li id="fn6"><p>POSIXct: “Portable Operating System Interface - Calendar Time”.</p></li></ol></aside></section><section id="data-structure-list-vectors" class="slide level2"><h2>Data structure: list (vectors)</h2>
+<p>List vectors are heterogeneous/nestable objects, i.e.&nbsp;objects composing the sequence <strong>can</strong> be of distinct types, and can contain other (nested) sequences.</p>
+<div class="columns">
+<div class="column" style="width:15%;">
+<table><tbody><tr class="odd">
+<td>List</td>
+<td><code><a href="https://rdrr.io/r/base/list.html">?list</a></code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:85%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1"></a>db_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb113-2"><a href="#cb113-2"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">69</span>),</span>
+<span id="cb113-3"><a href="#cb113-3"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.72</span>, <span class="fl">1.81</span>),</span>
+<span id="cb113-4"><a href="#cb113-4"></a>  <span class="at">at_risk =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb113-5"><a href="#cb113-5"></a>  <span class="at">gender =</span> <span class="fu">factor</span>(</span>
+<span id="cb113-6"><a href="#cb113-6"></a>    <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>),</span>
+<span id="cb113-7"><a href="#cb113-7"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"other"</span>)</span>
+<span id="cb113-8"><a href="#cb113-8"></a>  )</span>
+<span id="cb113-9"><a href="#cb113-9"></a>)</span>
+<span id="cb113-10"><a href="#cb113-10"></a>db_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>$age
+[1] 70 85 69
+
+$height
+[1] 1.50 1.72 1.81
+
+$at_risk
+[1]  TRUE FALSE  TRUE
+
+$gender
+[1] male   female female
+Levels: female male other</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1"></a><span class="fu">str</span>(db_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 4
+ $ age    : num [1:3] 70 85 69
+ $ height : num [1:3] 1.5 1.72 1.81
+ $ at_risk: logi [1:3] TRUE FALSE TRUE
+ $ gender : Factor w/ 3 levels "female","male",..: 2 1 1</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-other-lists---data-frames-and-tibble" class="slide level2"><h2>Data structure: (other) lists - data frames (and tibble)</h2>
+<p>Other structure in R are based on list vectors, i.e.&nbsp;are heterogeneous sequence of objects.</p>
+<p><strong>data frames</strong> are ordered list of equally sized homogeneous named vectors. I.e. the are used for tabular data:</p>
+<div class="foo-to-separate-the-list-from-the-below-columns">
+<ul>
+<li>ordered list of columns of information, with headers (<code><a href="https://rdrr.io/r/base/names.html">?names</a></code>)</li>
+<li>in a column there is one type of information (homogeneous)</li>
+<li>all columns have the same <code><a href="https://rdrr.io/r/base/length.html">?length</a></code>, i.e.&nbsp;number of rows (<code><a href="https://rdrr.io/r/base/nrow.html">?nrow</a></code>)</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Data frames</td>
+<td><code><a href="https://rdrr.io/r/base/data.frame.html">?data.frame</a></code></td>
+</tr></tbody></table>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>During the course we will see, explain and use <code>tibbles</code>: a modern, enhanced, better displayed, and with stricter and more consistent structure than standard data frames.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1"></a>db_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb117-2"><a href="#cb117-2"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">69</span>),</span>
+<span id="cb117-3"><a href="#cb117-3"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.72</span>, <span class="fl">1.81</span>),</span>
+<span id="cb117-4"><a href="#cb117-4"></a>  <span class="at">at_risk =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb117-5"><a href="#cb117-5"></a>  <span class="at">gender =</span> <span class="fu">factor</span>(</span>
+<span id="cb117-6"><a href="#cb117-6"></a>    <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>),</span>
+<span id="cb117-7"><a href="#cb117-7"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"other"</span>)</span>
+<span id="cb117-8"><a href="#cb117-8"></a>  )</span>
+<span id="cb117-9"><a href="#cb117-9"></a>)</span>
+<span id="cb117-10"><a href="#cb117-10"></a>db_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+1  70   1.50    TRUE   male
+2  85   1.72   FALSE female
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1"></a><span class="fu">names</span>(db_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "age"     "height"  "at_risk" "gender" </code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a><span class="fu">nrow</span>(db_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a><span class="fu">ncol</span>(db_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a><span class="fu">dim</span>(db_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3 4</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-vectors-as-trains" class="slide level2"><h2>Data structure: <em>vectors</em> as trains</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>R works on vectors of two types only:</p>
+<ul>
+<li>
+<strong>Atomic</strong> (homogeneous / flat)</li>
+<li>
+<strong>List</strong> (heterogeneous / nested)</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Think of objects in R (any objects in R!) as a train (either atomic or list) made of wagons:</p>
+<ul>
+<li>a train (i.e., a vector) is sequence of wagons (i.e., objects, homogeneous or heterogeneous, possibly other trains)</li>
+<li>wagons have content (i.e., the data they contain)</li>
+<li>wagons can have labels (i.e., names)</li>
+</ul></section><section id="data-structure-subsetting-data---subset" class="slide level2"><h2>Data structure: Subsetting data - subset</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>You can refer to <em>subsetting</em> objects (i.e., a train) as performing two operations mainly:</p>
+<ul>
+<li>create another objects (i.e., another train) with a subset of its elements (i.e., wagons)</li>
+<li>extract the content of a (single) object (i.e., the content of a wagon)</li>
+</ul>
+<p>You can select more than one object/<em>wagon</em> when subsetting, but a single one only when <em>extracting</em>!</p>
+</div>
+</div>
+</div>
+<p>Three ways to identify elements (i.e., wagons):</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Original</td>
+<td></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>db_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+1  70   1.50    TRUE   male
+2  85   1.72   FALSE female
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Subset by position</td>
+<td><code>[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a>db_df[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  height at_risk
+1   1.50    TRUE
+2   1.72   FALSE
+3   1.81    TRUE</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Subset by names</td>
+<td><code>[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a>db_df[<span class="fu">c</span>(<span class="st">"height"</span>, <span class="st">"age"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  height age
+1   1.50  70
+2   1.72  85
+3   1.81  69</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Subset by logic<sup>1</sup>
+</td>
+<td><code>[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a>db_df[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age gender
+1  70   male
+2  85 female
+3  69 female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn7"><p>Logical subsetting vector <strong>must</strong> be the same <code>?lenght</code> of the object (i.e., number of train’s wagons).</p></li></ol></aside></section><section id="data-structure-subsetting-data---coordinates" class="slide level2"><h2>Data structure: Subsetting data - coordinates</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>A data frame (and <code>tibble</code>s) can be see as a “matrix” (or a table).</p>
+</div>
+</div>
+</div>
+<p>Data frames values can be subsetted using “[rows, column]” notation</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<table><tbody><tr class="odd">
+<td>Original</td>
+<td></td>
+</tr></tbody></table>
+</div><div class="column" style="width:60%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a>db_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+1  70   1.50    TRUE   male
+2  85   1.72   FALSE female
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<table><tbody><tr class="odd">
+<td>coordinates</td>
+<td><code>[rows, cols]</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:60%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a>db_df[<span class="dv">3</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.81</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1"></a>db_df[<span class="dv">3</span>, <span class="st">"age"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<table><tbody><tr class="odd">
+<td>ask <em>anything</em><br>get <em>everything</em>
+</td>
+<td>
+<code>[, cols]</code><br><code>[rows, ]</code>
+</td>
+</tr></tbody></table>
+</div><div class="column" style="width:60%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1"></a>db_df[, <span class="st">"age"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70 85 69</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1"></a>db_df[<span class="dv">3</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<table><tbody><tr class="odd">
+<td>multiple selection</td>
+<td><code>[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:60%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1"></a>db_df[<span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height
+3  69   1.81</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1"></a>db_df[<span class="dv">3</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  height gender
+3   1.81 female
+2   1.72 female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Use the additional argument <code>drop = FALSE</code> to maintain the data frame structure. Using <code>tibble</code>s we will consistently get always a <code>tibble</code> when subsetting with coordinates!</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1"></a>db_df[<span class="dv">3</span>, <span class="dv">2</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  height
+3   1.81</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1"></a>db_df[<span class="dv">3</span>, <span class="st">"age"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age
+3  69</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1"></a>db_df[, <span class="st">"age"</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age
+1  70
+2  85
+3  69</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="data-structure-subsetting-data---extract" class="slide level2"><h2>Data structure: Subsetting data - extract</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>You can refer to <em>subsetting</em> objects (i.e., a train) as performing two operations mainly:</p>
+<ul>
+<li>create another objects (i.e., another train) with a subset of its elements (i.e., wagons)</li>
+<li>extract the content of a (single) object (i.e., the content of a wagon)</li>
+</ul>
+<p>You can select more than one object/<em>wagon</em> when subsetting, but a single one only when <em>extracting</em>!</p>
+</div>
+</div>
+</div>
+<p>Two ways to identify a (single!) element (i.e., a wagon):</p>
+<div class="foo-to-separate-the-list-from-the-below-columns">
+<ul>
+<li>with its position.</li>
+<li>with its name, if it has a name.</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Original</td>
+<td></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1"></a>db_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+1  70   1.50    TRUE   male
+2  85   1.72   FALSE female
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Extracting</td>
+<td><code>[[</code></td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1"></a>db_df[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 70 85 69</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1"></a>db_df[[<span class="st">"height"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.50 1.72 1.81</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<table><tbody><tr class="odd">
+<td>Extracting</td>
+<td>
+<code>$</code><sup>1</sup>
+</td>
+</tr></tbody></table>
+</div><div class="column" style="width:70%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1"></a>db_df<span class="sc">$</span>height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.50 1.72 1.81</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>Discouraged in non-interactive usage because of its unpredictable results due to partial matching (<code><a href="https://rdrr.io/r/base/Extract.html">?"$"</a></code> ).</p></li></ol></aside></section><section id="your-turn-7" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
+<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+</ul>
+<p>…and:</p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Before to evaluate it, in the pad, under the section <code>1.3. Ex3</code>, write (in a new line) what is your expected result from the following computation:</li>
+</ol>
+<div class="sourceCode" id="cb163"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1"></a>db_df <span class="ot">&lt;-</span> db_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb163-2"><a href="#cb163-2"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">85</span>, <span class="dv">69</span>),</span>
+<span id="cb163-3"><a href="#cb163-3"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.72</span>, <span class="fl">1.81</span>),</span>
+<span id="cb163-4"><a href="#cb163-4"></a>  <span class="at">at_risk =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>),</span>
+<span id="cb163-5"><a href="#cb163-5"></a>  <span class="at">gender =</span> <span class="fu">factor</span>(</span>
+<span id="cb163-6"><a href="#cb163-6"></a>    <span class="fu">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>, <span class="st">"female"</span>),</span>
+<span id="cb163-7"><a href="#cb163-7"></a>    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"female"</span>, <span class="st">"male"</span>, <span class="st">"other"</span>)</span>
+<span id="cb163-8"><a href="#cb163-8"></a>  )</span>
+<span id="cb163-9"><a href="#cb163-9"></a>)</span>
+<span id="cb163-10"><a href="#cb163-10"></a></span>
+<span id="cb163-11"><a href="#cb163-11"></a>db_df[[<span class="dv">4</span>]][[<span class="dv">3</span>]]</span>
+<span id="cb163-12"><a href="#cb163-12"></a>db_df[<span class="dv">3</span>, <span class="dv">4</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb163-13"><a href="#cb163-13"></a>db_df[<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb163-14"><a href="#cb163-14"></a>db_df[[<span class="dv">4</span>]][<span class="dv">3</span>]</span>
+<span id="cb163-15"><a href="#cb163-15"></a>db_df[<span class="dv">4</span>][[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Then, open the script <code>03-subsetting.R</code> and follow the instruction step by step.</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_bf96b142" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:65%;right:25%;bottom:5%;left:25%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section><section id="your-turn-9" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
+<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+</ul>
+<p>…and:</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1"></a>db_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  age height at_risk gender
+1  70   1.50    TRUE   male
+2  85   1.72   FALSE female
+3  69   1.81    TRUE female</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1"></a>db_df[[<span class="dv">4</span>]][[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] female
+Levels: female male other</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1"></a>db_df[<span class="dv">3</span>, <span class="dv">4</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  gender
+3 female</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1"></a>db_df[<span class="dv">3</span>, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] female
+Levels: female male other</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href="#cb172-1"></a>db_df[[<span class="dv">4</span>]][<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] female
+Levels: female male other</code></pre>
+</div>
+</div>
+</div>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href="#cb174-1"></a>db_df[<span class="dv">4</span>][[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-error">
+<pre><code>Error in .subset2(x, i, exact = exact): subscript out of bounds</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Subset operation can be performed in sequence on the same object directly.</li>
+<li>Crucial to know if you are working on a subset of an object or its content.</li>
+</ul>
+</div>
+</div>
+</div>
+</section><section id="control-flow" class="slide level2"><h2>Control flow</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<table style="width:56%;">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 30%">
+</colgroup>
+<tbody><tr class="odd">
+<td>If-than</td>
+<td><div class="sourceCode" id="cb176"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1"></a><span class="cf">if</span> (cond) {</span>
+<span id="cb176-2"><a href="#cb176-2"></a>  <span class="co"># &lt;code&gt;</span></span>
+<span id="cb176-3"><a href="#cb176-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+</tr></tbody>
+</table>
+</div><div class="column" style="width:55%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb177"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb177-1"><a href="#cb177-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb177-2"><a href="#cb177-2"></a></span>
+<span id="cb177-3"><a href="#cb177-3"></a><span class="fu">print</span>(<span class="st">"start"</span>)</span>
+<span id="cb177-4"><a href="#cb177-4"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb177-5"><a href="#cb177-5"></a>  <span class="fu">print</span>(<span class="st">"ok"</span>)</span>
+<span id="cb177-6"><a href="#cb177-6"></a>}</span>
+<span id="cb177-7"><a href="#cb177-7"></a><span class="fu">print</span>(<span class="st">"end"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "start"
+[1] "end"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<table style="width:96%;">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 58%">
+</colgroup>
+<tbody><tr class="odd">
+<td>If-than-else</td>
+<td><div class="sourceCode" id="cb179"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb179-1"><a href="#cb179-1"></a><span class="cf">if</span> (cond) {</span>
+<span id="cb179-2"><a href="#cb179-2"></a>  <span class="co"># &lt;code&gt;</span></span>
+<span id="cb179-3"><a href="#cb179-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb179-4"><a href="#cb179-4"></a>  <span class="co"># &lt;code&gt;</span></span>
+<span id="cb179-5"><a href="#cb179-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+</tr></tbody>
+</table>
+</div><div class="column" style="width:55%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb180"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb180-1"><a href="#cb180-1"></a><span class="fu">print</span>(<span class="st">"start"</span>)</span>
+<span id="cb180-2"><a href="#cb180-2"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb180-3"><a href="#cb180-3"></a>  <span class="fu">print</span>(<span class="st">"ok"</span>)</span>
+<span id="cb180-4"><a href="#cb180-4"></a>} <span class="cf">else</span> {</span>
+<span id="cb180-5"><a href="#cb180-5"></a>  <span class="fu">print</span>(<span class="st">"ko"</span>)</span>
+<span id="cb180-6"><a href="#cb180-6"></a>}</span>
+<span id="cb180-7"><a href="#cb180-7"></a><span class="fu">print</span>(<span class="st">"end"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "start"
+[1] "ko"
+[1] "end"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<table style="width:53%;">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 38%">
+</colgroup>
+<tbody><tr class="odd">
+<td>for</td>
+<td><div class="sourceCode" id="cb182"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb182-1"><a href="#cb182-1"></a><span class="cf">for</span> (<span class="sc">&lt;</span>var<span class="sc">&gt;</span> <span class="cf">in</span> <span class="sc">&lt;</span>vector<span class="sc">&gt;</span>) {</span>
+<span id="cb182-2"><a href="#cb182-2"></a>  <span class="co"># &lt;code&gt;</span></span>
+<span id="cb182-3"><a href="#cb182-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></td>
+</tr></tbody>
+</table>
+</div><div class="column" style="width:55%;">
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb183"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb183-1"><a href="#cb183-1"></a><span class="fu">print</span>(<span class="st">"start"</span>)</span>
+<span id="cb183-2"><a href="#cb183-2"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(x)) {</span>
+<span id="cb183-3"><a href="#cb183-3"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"i is:"</span>, i))</span>
+<span id="cb183-4"><a href="#cb183-4"></a>}</span>
+<span id="cb183-5"><a href="#cb183-5"></a><span class="fu">print</span>(<span class="st">"start"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "start"
+[1] "i is: 1"
+[1] "i is: 2"
+[1] "i is: 3"
+[1] "start"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="functions" class="slide level2"><h2>Functions</h2>
 </section></section><section id="references" class="title-slide slide level1 smaller scrollable"><h1>References</h1>
 
 <img src="img/UBEP.png" class="slide-logo r-stretch"><div class="footer footer-default">

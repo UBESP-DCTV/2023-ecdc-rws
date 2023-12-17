@@ -153,12 +153,15 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ## Teaching Materials & Resources
 
-|                                                    |                                                                                                       |
-|--------------------------|----------------------------------------------|
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | Teams' room:                                       |                                                                                                       |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | Website (agenda, slides, and assessments):         | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | RStudio cloud workspace:                           | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | Really realtime collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 
 <br>
 
@@ -327,22 +330,25 @@ IDE = Integrated Development Environment (to work with R)
 :::
 
 ::: {.column width="65%"}
-
 ![](img/rstudio-full.png){.absolute top="10%" right="10%"}
 
-::: {.fragment}
+::: fragment
 ![](img/rstudio-full-annoted.png){.absolute top="10%" right="10%"}
 :::
-::: {.fragment}
+
+::: fragment
 ![](img/rstudio.png){.absolute top="20%" right="5%"}
 :::
-::: {.fragment}
+
+::: fragment
 ![](img/rstudio-annoted.png){.absolute top="20%" right="5%"}
 :::
-::: {.fragment}
+
+::: fragment
 ![](img/rstudio-notab.png){.absolute top="30%" right="0%"}
 :::
-::: {.fragment}
+
+::: fragment
 ![](img/rstudio-notab-annoted.png){.absolute top="30%" right="0%"}
 :::
 :::
@@ -378,5 +384,1347 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 -   `{lubridate}`: a tool suite to work with dates and date-times.
 :::
 :::
+
+# R basics review
+
+## Language
+
+::: columns
+::: {.column width="35%"}
+|          |     |
+|----------|-----|
+| Comments | `#` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# R will ignore this!!
+1 + 1 # +1 also this!!
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|            |      |
+|------------|------|
+| Assignment | `<-` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# Code to the right is evaluate, then 
+# stored in a variable named to the left
+two <- 1 + 1
+two
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|                |     |
+|----------------|-----|
+| Create vectors | `c` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+three_two_one <- c(3, two, 1)
+three_two_one
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|        |     |
+|--------|-----|
+| Subset | `[` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# R counts from 1
+three_two_one[1]
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|              |      |
+|--------------|------|
+| List objects | `ls` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+ls()
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|                |      |
+|----------------|------|
+| Remove objects | `rm` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+rm(three_two_one)
+ls()
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|           |                  |
+|-----------|------------------|
+| functions | `fun(arg = val)` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# To assign values to arguments
+# you must use `=`
+mean(x = c(1, 2, 3))
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|               |           |
+|---------------|-----------|
+| Help function | `?fun`    |
+| Help operator | `?"<op>"` |
+
+::: callout-important
+Variable names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter (or a single dot, for hidden variables).
+:::
+:::
+
+::: {.column width="65%"}
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#| output-location: column
+?sum
+?"+"
+```
+:::
+
+::: {.column width="45%"}
+![](img/mean-help.png)
+:::
+:::
+:::
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and:
+
+1.  Put `x`s next to the correct variable names.
+:::
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+## Math
+
+::: columns
+::: {.column width="35%"}
+|             |             |
+|-------------|-------------|
+| Brackets    | `(`, `)`    |
+| Add         | `+`         |
+| Subtract    | `-`         |
+| Multiply    | `*`         |
+| Divide      | `/`         |
+| Exponent    | `^` or `**` |
+| Square root | `sqrt`      |
+:::
+
+::: {.column width="65%"}
+<br><br><br>
+
+```{r}
+#| output-location: column
+# Standrard order of precedence
+5 + sqrt(4) / 2 * 3^(2 - 1)
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|           |                 |
+|-----------|-----------------|
+| Magnitude | `<num>E<exp10>` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+1E2
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|             |       |
+|-------------|-------|
+| Exponential | `exp` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# Euler number
+exp(1)
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|           |                        |
+|-----------|------------------------|
+| Logarithm | `log`, `log10`, `log2` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# You can compose functions
+log(exp(1))
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|     |      |
+|-----|------|
+| Pi  | `pi` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+pi
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|      |       |
+|------|-------|
+| Sine | `sin` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+sin(pi/2)
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|        |       |
+|--------|-------|
+| Cosine | `cos` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+cos(pi)
+```
+:::
+:::
+
+## Logic and tests
+
+::: columns
+::: {.column width="35%"}
+|       |         |
+|-------|---------|
+| True  | `TRUE`  |
+| False | `FALSE` |
+| And   | `&`     |
+| Or    | `|`     |
+| Not   | `!`     |
+:::
+
+::: {.column width="65%"}
+<br>
+
+```{r}
+#| output-location: column
+# Standrard order of precedence
+TRUE & FALSE
+```
+
+```{r}
+#| output-location: column
+# Standrard order of precedence
+!TRUE | TRUE
+```
+
+```{r}
+#| output-location: column
+!(TRUE | TRUE)
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|            |                      |
+|------------|----------------------|
+| Comparison | `<`, `<=`, `>`, `>=` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+sum(1:3) > 4
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|                |      |
+|----------------|------|
+| "Exact!" Equal | `==` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+(1 + 2) == 3
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|                   |             |
+|-------------------|-------------|
+| Test equal numbes | `all.equal` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+3/5 == 0.6
+```
+
+```{r}
+#| output-location: column
+3*(1/5) == 0.6 # finite machine
+```
+
+```{r}
+#| output-location: column
+all.equal(3*(1/5), 0.6)
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|           |      |
+|-----------|------|
+| Different | `!=` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+1 != 2
+```
+:::
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex2`, write (in a new line) what is your expected result from the following computation:
+
+``` r
+(4:2 - 1) >= 3
+```
+
+2.  Then, open the script `01-math_and_logic.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   `a:b` create a sequence of from `a` to `b`
+-   `a` and `b` can be zero or negative
+-   The sequence start from `a` and go through `b` in by steps of length `1`, without surpasses `b`
+-   Math and logic works on vectors (i.e., sequences) input and output!
+-   Prefer `?seq`, `?seq_len` and `?seq_along` instead of `?":"` when bounds are not proper number but variables and you are writing scripts (not always interactive): they have more consistent behavior and edge-situations error handling.
+:::
+:::
+
+## Data structure: (atomic) vectors
+
+Atomic vectors are homogeneous/flat objects, i.e. all the objects composing the sequence **must** be of the same type, and cannot contain other (nested) sequences.
+
+Four main types (`?typeof`) of atomic vectors:
+
+::: columns
+::: {.column width="30%"}
+|         |               |
+|---------|---------------|
+| Logical | `?is.logical` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+typeof(TRUE)
+```
+
+```{r}
+#| output-location: column
+c(is.atomic(FALSE), is.logical(FALSE))
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="30%"}
+|         |               |
+|---------|---------------|
+| Integer | `?is.integer` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+typeof(1:3)
+```
+
+```{r}
+#| output-location: column
+c(is.atomic(1:3), is.integer(1:3))
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="30%"}
+|        |              |
+|--------|--------------|
+| Double | `?is.double` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+typeof(1.2)
+```
+
+```{r}
+#| output-location: column
+c(is.atomic(1.2), is.double(1.2))
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="30%"}
+|           |                 |
+|-----------|-----------------|
+| Character | `?is.character` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+typeof("Hello supervisors")
+```
+
+```{r}
+#| output-location: column
+c( # line brakes don't brake execution
+  is.atomic("Hello supervisors"),
+  is.character("Hello supervisors")
+)
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="30%"}
+Elements can be named
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+c(one = 1, two = 2, three = 3)
+```
+:::
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex3`, write (in a new line) what is your expected result (including *an error*) from the following computation:
+
+``` r
+mixed_vector <- c(
+  one = TRUE, two = 2L,
+  three = 3.3, four = "four"
+)
+mixed_vector
+typeof(mixed_vector)
+```
+
+2.  Then, open the script `02-atomic-vectors.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: columns
+::: {.column width="30%"}
+Coercion rule<br>from *specific* to *general*:<br><small>logical \> integer \> double \> character</small>
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+mixed_vector <- c(
+  one = TRUE, two = 2L,
+  three = 3.3, four = "four"
+)
+mixed_vector
+```
+
+```{r}
+#| output-location: column
+typeof(mixed_vector)
+```
+:::
+:::
+:::
+
+## Data structure: (other) vectors - Factors
+
+Other structure in R are based on atomic vectors, i.e. are of one of the base types but have more *structure* (similar structures are called `?class`)
+
+**Factors** are discrete (i.e. based on `?integer`s) variables with labels.
+
+::: columns
+::: {.column width="25%"}
+|         |              |
+|---------|--------------|
+| Factors | `?is.factor` |
+:::
+
+::: {.column width="75%"}
+```{r}
+#| output-location: column
+gender <- factor(
+  c("male", "female", "female"),
+  levels = c("female", "male", "other")
+)
+gender
+```
+
+```{r}
+#| output-location: column
+is.factor(gender)
+```
+
+```{r}
+#| output-location: column
+typeof(gender)
+```
+
+```{r}
+#| output-location: column
+class(gender)
+```
+
+```{r}
+#| output-location: column
+as.character(gender)
+```
+
+```{r}
+#| output-location: column
+as.integer(gender)
+```
+:::
+:::
+
+::: columns
+::: {.column width="25%"}
+|        |           |
+|--------|-----------|
+| Levels | `?levels` |
+:::
+
+::: {.column width="75%"}
+```{r}
+#| output-location: column
+levels(gender)
+```
+:::
+:::
+
+::: callout-tip
+You can investigate the internal structure of any R objects using `?str`.
+:::
+
+::: columns
+::: {.column width="25%"}
+|           |        |
+|-----------|--------|
+| Structure | `?str` |
+:::
+
+::: {.column width="75%"}
+```{r}
+#| output-location: column
+str(gender)
+```
+:::
+:::
+
+## Data structure: (other) vectors - Dates / Date-times
+
+Other structure in R are based on atomic vectors, i.e. are of one of the base types but have more *structure* (similar structures are called `?class`)
+
+**Dates** are counts (based on `?double`s) of days since 1970-01-01.[^5]
+
+[^5]: This date is know as the Unix Epoch.
+
+::: columns
+::: {.column width="30%"}
+|       |            |
+|-------|------------|
+| Dates | `?as.Date` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+date <- as.Date("1970-01-10")
+date
+```
+
+```{r}
+#| output-location: column
+typeof(date)
+```
+
+```{r}
+#| output-location: column
+class(date)
+```
+
+```{r}
+#| output-location: column
+as.double(date)
+```
+
+```{r}
+#| output-location: column
+str(date)
+```
+:::
+:::
+
+**Date-Time** are counts (based on `?double`s) of seconds since 1970-01-01.
+
+::: columns
+::: {.column width="30%"}
+|            |                   |
+|------------|-------------------|
+| Date-times | `?as.POSIXct`[^6] |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+date_time <- as.POSIXct(
+  "1970-01-10 13:10",
+  tz = "UTC"
+)
+date_time
+```
+
+```{r}
+#| output-location: column
+typeof(date_time)
+```
+
+```{r}
+#| output-location: column
+class(date_time)
+```
+
+```{r}
+#| output-location: column
+as.double(date_time)
+```
+
+```{r}
+#| output-location: column
+str(date_time)
+```
+:::
+:::
+
+[^6]: POSIXct: "Portable Operating System Interface - Calendar Time".
+
+## Data structure: list (vectors)
+
+List vectors are heterogeneous/nestable objects, i.e. objects composing the sequence **can** be of distinct types, and can contain other (nested) sequences.
+
+::: columns
+::: {.column width="15%"}
+|      |         |
+|------|---------|
+| List | `?list` |
+:::
+
+::: {.column width="85%"}
+```{r}
+#| output-location: column
+db_list <- list(
+  age = c(70, 85, 69),
+  height = c(1.5, 1.72, 1.81),
+  at_risk = c(TRUE, FALSE, TRUE),
+  gender = factor(
+    c("male", "female", "female"),
+    levels = c("female", "male", "other")
+  )
+)
+db_list
+```
+
+<br>
+
+```{r}
+#| output-location: column
+str(db_list)
+```
+:::
+:::
+
+## Data structure: (other) lists - data frames (and tibble)
+
+Other structure in R are based on list vectors, i.e. are heterogeneous sequence of objects.
+
+**data frames** are ordered list of equally sized homogeneous named vectors. I.e. the are used for tabular data:
+
+::: foo-to-separate-the-list-from-the-below-columns
+-   ordered list of columns of information, with headers (`?names`)
+-   in a column there is one type of information (homogeneous)
+-   all columns have the same `?length`, i.e. number of rows (`?nrow`)
+:::
+
+::: columns
+::: {.column width="30%"}
+|             |               |
+|-------------|---------------|
+| Data frames | `?data.frame` |
+
+::: callout-tip
+During the course we will see, explain and use `tibbles`: a modern, enhanced, better displayed, and with stricter and more consistent structure than standard data frames.
+:::
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df <- data.frame(
+  age = c(70, 85, 69),
+  height = c(1.5, 1.72, 1.81),
+  at_risk = c(TRUE, FALSE, TRUE),
+  gender = factor(
+    c("male", "female", "female"),
+    levels = c("female", "male", "other")
+  )
+)
+db_df
+```
+
+```{r}
+#| output-location: column
+names(db_df)
+```
+
+```{r}
+#| output-location: column
+nrow(db_df)
+```
+
+```{r}
+#| output-location: column
+ncol(db_df)
+```
+
+```{r}
+#| output-location: column
+dim(db_df)
+```
+:::
+:::
+
+## Data structure: *vectors* as trains
+
+::: callout-important
+R works on vectors of two types only:
+
+-   **Atomic** (homogeneous / flat)
+-   **List** (heterogeneous / nested)
+:::
+
+Think of objects in R (any objects in R!) as a train (either atomic or list) made of wagons:
+
+-   a train (i.e., a vector) is sequence of wagons (i.e., objects, homogeneous or heterogeneous, possibly other trains)
+-   wagons have content (i.e., the data they contain)
+-   wagons can have labels (i.e., names)
+
+## Data structure: Subsetting data - subset
+
+::: callout-important
+You can refer to *subsetting* objects (i.e., a train) as performing two operations mainly:
+
+-   create another objects (i.e., another train) with a subset of its elements (i.e., wagons)
+-   extract the content of a (single) object (i.e., the content of a wagon)
+
+You can select more than one object/*wagon* when subsetting, but a single one only when *extracting*!
+:::
+
+Three ways to identify elements (i.e., wagons):
+
+::: columns
+::: {.column width="30%"}
+|          |     |
+|----------|-----|
+| Original |     |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+|                    |     |
+|--------------------|-----|
+| Subset by position | `[` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df[c(2, 3)]
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+|                 |     |
+|-----------------|-----|
+| Subset by names | `[` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df[c("height", "age")]
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+|                     |     |
+|---------------------|-----|
+| Subset by logic[^7] | `[` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df[c(TRUE, FALSE, FALSE, TRUE)]
+```
+:::
+:::
+
+[^7]: Logical subsetting vector **must** be the same `?lenght` of the object (i.e., number of train's wagons).
+
+## Data structure: Subsetting data - coordinates
+
+::: callout-important
+A data frame (and `tibble`s) can be see as a "matrix" (or a table).
+:::
+
+Data frames values can be subsetted using "\[rows, column\]" notation
+
+::: columns
+::: {.column width="40%"}
+|          |     |
+|----------|-----|
+| Original |     |
+:::
+
+::: {.column width="60%"}
+```{r}
+#| output-location: column
+db_df
+```
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+|             |                |
+|-------------|----------------|
+| coordinates | `[rows, cols]` |
+:::
+
+::: {.column width="60%"}
+```{r}
+#| output-location: column
+db_df[3, 2]
+```
+
+```{r}
+#| output-location: column
+db_df[3, "age"]
+```
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+|                                    |                          |
+|------------------------------------|--------------------------|
+| ask *anything*<br>get *everything* | `[, cols]`<br>`[rows, ]` |
+:::
+
+::: {.column width="60%"}
+```{r}
+#| output-location: column
+db_df[, "age"]
+```
+
+```{r}
+#| output-location: column
+db_df[3, ]
+```
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+|                    |     |
+|--------------------|-----|
+| multiple selection | `[` |
+:::
+
+::: {.column width="60%"}
+```{r}
+#| output-location: column
+db_df[3, 1:2]
+```
+
+```{r}
+#| output-location: column
+db_df[3:2, c(2, 4)]
+```
+:::
+:::
+
+::: columns
+::: {.column width="40%"}
+::: callout-tip
+Use the additional argument `drop = FALSE` to maintain the data frame structure. Using `tibble`s we will consistently get always a `tibble` when subsetting with coordinates!
+:::
+:::
+
+::: {.column width="60%"}
+```{r}
+#| output-location: column
+db_df[3, 2, drop = FALSE]
+```
+
+```{r}
+#| output-location: column
+db_df[3, "age", drop = FALSE]
+```
+
+```{r}
+#| output-location: column
+db_df[, "age", drop = FALSE]
+```
+:::
+:::
+
+## Data structure: Subsetting data - extract
+
+::: callout-important
+You can refer to *subsetting* objects (i.e., a train) as performing two operations mainly:
+
+-   create another objects (i.e., another train) with a subset of its elements (i.e., wagons)
+-   extract the content of a (single) object (i.e., the content of a wagon)
+
+You can select more than one object/*wagon* when subsetting, but a single one only when *extracting*!
+:::
+
+Two ways to identify a (single!) element (i.e., a wagon):
+
+::: foo-to-separate-the-list-from-the-below-columns
+-   with its position.
+-   with its name, if it has a name.
+:::
+
+::: columns
+::: {.column width="30%"}
+|          |     |
+|----------|-----|
+| Original |     |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+|            |      |
+|------------|------|
+| Extracting | `[[` |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df[[1]]
+```
+
+```{r}
+#| output-location: column
+db_df[["height"]]
+```
+:::
+:::
+
+::: columns
+::: {.column width="30%"}
+|            |         |
+|------------|---------|
+| Extracting | `$`[^8] |
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+db_df$height
+```
+:::
+:::
+
+[^8]: Discouraged in non-interactive usage because of its unpredictable results due to partial matching (`?"$"` ).
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex3`, write (in a new line) what is your expected result from the following computation:
+
+``` r
+db_df <- db_df <- data.frame(
+  age = c(70, 85, 69),
+  height = c(1.5, 1.72, 1.81),
+  at_risk = c(TRUE, FALSE, TRUE),
+  gender = factor(
+    c("male", "female", "female"),
+    levels = c("female", "male", "other")
+  )
+)
+
+db_df[[4]][[3]]
+db_df[3, 4, drop = FALSE]
+db_df[3, 4]
+db_df[[4]][3]
+db_df[4][[3]]
+```
+
+2.  Then, open the script `03-subsetting.R` and follow the instruction step by step.
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "65%",
+  bottom = "5%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+::: columns
+::: {.column width="35%"}
+```{r}
+db_df
+```
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+db_df[[4]][[3]]
+```
+
+```{r}
+#| output-location: column
+db_df[3, 4, drop = FALSE]
+```
+
+```{r}
+#| output-location: column
+db_df[3, 4]
+```
+
+```{r}
+#| output-location: column
+db_df[[4]][3]
+```
+
+```{r}
+#| output-location: column
+#| error: true
+db_df[4][[3]]
+```
+:::
+:::
+
+::: callout-important
+-   Subset operation can be performed in sequence on the same object directly.
+-   Crucial to know if you are working on a subset of an object or its content.
+:::
+
+## Control flow
+
+::: columns
+::: {.column width="45%"}
++-----------------+---------------------+
+| If-than         | ``` r               |
+|                 | if (cond) {         |
+|                 |   # <code>          |
+|                 | }                   |
+|                 | ```                 |
++-----------------+---------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+x <- 3
+
+print("start")
+if (x > 3) {
+  print("ok")
+}
+print("end")
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="45%"}
++--------------------------+-----------------------------------------+
+| If-than-else             | ``` r                                   |
+|                          | if (cond) {                             |
+|                          |   # <code>                              |
+|                          | } else {                                |
+|                          |   # <code>                              |
+|                          | }                                       |
+|                          | ```                                     |
++--------------------------+-----------------------------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+print("start")
+if (x > 3) {
+  print("ok")
+} else {
+  print("ko")
+}
+print("end")
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="45%"}
++---------+---------------------------+
+| for     | ``` r                     |
+|         | for (<var> in <vector>) { |
+|         |   # <code>                |
+|         | }                         |
+|         | ```                       |
++---------+---------------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+print("start")
+for (i in seq_len(x)) {
+  print(paste("i is:", i))
+}
+print("start")
+```
+:::
+:::
+
+## Functions
 
 # References
