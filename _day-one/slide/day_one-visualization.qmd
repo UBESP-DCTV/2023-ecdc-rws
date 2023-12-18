@@ -1,57 +1,123 @@
 ---
-title: "Day One:<br>Pipe(s) and Visualization"
+title: '[Day One]{style="color:darkblue"}:<br>[Pipe(s)]{style="color:darkorange;"}<br>and<br>[Visualization]{style="color:darkorange;"}'
 subtitle: "120 min approx"
 format:
- revealjs:
-    scrollable: true
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
     logo: img/UBEP.png
     footer: "UBEP's R training for supervisors"
     slide-number: true
     history: false
     preview-links: auto
+    code-link: true
     multiplex: true
     chalkboard: 
-      src: src/chalkboard.json
+      src: src/chalkboard-pipes-and-visualization.json
+bibliography: references.bib
 ---
 
-# Overview
+# Overview {style="color:darkblue;"}
+
+## 
 
 ::: columns
 ::: {.column width="50%"}
 ### Questions
 
--   Q1
+-   What is a `pipe` and how it works?
+-   Which pipes should we know and care about?
+-   what is a _ggplot_, which are its main components?
+-   How data should be provided to a ggplot?
+-   How can we create ggplots with the `{ggplot2}` R package?
+-   What are:
+  - `aes`thetics?
+  - `geom`etries?
+  - `facet`s?
+  -  plot `theme`s and `labs`?
 :::
 
 ::: {.column width="50%"}
-### Objectives
+### Lesson Objectives
 
--   O1
+#### To be able to
+
+-   Use the R native pipe (`|>`) to concatenate functions, knowing that exists the `{magrittr}` one (`%>%`) having similar behavior.
+-   Create anonymous functions in the R native style as `\(x)` to use with, but not limited to, pipes.
+-   Create basic plots with `{ggplot2}` (scatter, histogram, barplot, boxplot, and time-series); including grouped plot with or without colours, and plots of multiple types.
+-   Use the `facet_*` functions to stratify plots accordingly to data
+-   Modify the main style component of a plot (i.e., sub-/titles, labels, legends)
+-   Use the main `{patchwork}` functions to compose a plot by multiple ones.
+-   Save a plot as a stand alone image file.
 :::
 :::
 
-# Pipe(s)
+
+# Pipes
+
+## Situation: sequences of actions
+
+## Overwrite the result
+
+## Create middle objects
+
+## Compose function calls
+
+## Use pipes
+
+## `{magrittr}` vs native
+
+## Pipes in composing plots
+
+Curious why a distinct pipe for ggplots?
+Check out the answer of `{ggplot2}` author, Hadley Wicham [here](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7)
 
 
-# Grammar of Graphics (`{ggplot2}`)
+# `ggplot2`
 
-# Summary
+## Setup
 
-::: columns
-::: {.column width="50%"}
-::: callout-important
-:::
-:::
+## Definitions
 
-::: {.column width="50%"}
-::: callout-warning
-:::
-:::
-:::
+## Data and Meta-data
 
-## Homework
+## Why a Grammar for Graphics
 
-### Posit's RStudio Cloud Workspace
+## Practical aim of the lesson
+
+## `ggplot` plots components
+
+## Aesthetics
+
+## Geometries
+
+## Multiple Geometries
+
+## Aesthetics within geometries
+
+## Base template
+
+## Customize metadata: main labels
+
+## Customize metadata: 
+
+## Facets
+
+## Saving plots
+
+
+
+
+
+
+
+
+
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
 
 -   Project:
 -   Instructions:

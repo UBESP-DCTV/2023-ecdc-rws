@@ -245,7 +245,6 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
-      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -328,7 +327,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Day One:<br>Pipe(s) and Visualization</h1>
+  <h1 class="title"><span style="color:darkblue">Day One</span>:<br><span style="color:darkorange;">Pipe(s)</span><br>and<br><span style="color:darkorange;">Visualization</span></h1>
   <p class="subtitle">120 min approx</p>
 
 <div class="quarto-title-authors">
@@ -336,131 +335,147 @@
 
 </section>
 <section>
-<section id="overview" class="title-slide slide level1 center">
+<section id="overview" class="title-slide slide level1 center" style="color:darkblue;">
 <h1>Overview</h1>
 
 </section>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="questions">Questions</h3>
 <ul>
-<li>Q1</li>
+<li>What is a <code>pipe</code> and how it works?</li>
+<li>Which pipes should we know and care about?</li>
+<li>what is a <em>ggplot</em>, which are its main components?</li>
+<li>How data should be provided to a ggplot?</li>
+<li>How can we create ggplots with the <code>{ggplot2}</code> R package?</li>
+<li>What are:</li>
+<li><code>aes</code>thetics?</li>
+<li><code>geom</code>etries?</li>
+<li><code>facet</code>s?</li>
+<li>plot <code>theme</code>s and <code>labs</code>?</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h3 id="objectives">Objectives</h3>
+<h3 id="lesson-objectives">Lesson Objectives</h3>
+<h4 id="to-be-able-to">To be able to</h4>
 <ul>
-<li>O1</li>
+<li>Use the R native pipe (<code>|&gt;</code>) to concatenate functions, knowing that exists the <code>{magrittr}</code> one (<code>%&gt;%</code>) having similar behavior.</li>
+<li>Create anonymous functions in the R native style as <code>\(x)</code> to use with, but not limited to, pipes.</li>
+<li>Create basic plots with <code>{ggplot2}</code> (scatter, histogram, barplot, boxplot, and time-series); including grouped plot with or without colours, and plots of multiple types.</li>
+<li>Use the <code>facet_*</code> functions to stratify plots accordingly to data</li>
+<li>Modify the main style component of a plot (i.e., sub-/titles, labels, legends)</li>
+<li>Use the main <code>{patchwork}</code> functions to compose a plot by multiple ones.</li>
+<li>Save a plot as a stand alone image file.</li>
 </ul>
-</div>
-</div></section>
-<section>
-<section id="topic-1" class="title-slide slide level1 center">
-<h1>Topic 1</h1>
-
-</section>
-<section id="chapter-1" class="slide level2">
-<h2>Chapter 1</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Your turn</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</section>
-<section id="chapter-2" class="slide level2">
-<h2>Chapter 2</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Your turn</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="summary" class="title-slide slide level1 center">
-<h1>Summary</h1>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Important</strong></p>
-</div>
-<div class="callout-content">
+<section id="pipes" class="title-slide slide level1 center">
+<h1>Pipes</h1>
 
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Warning</strong></p>
-</div>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="homework" class="slide level2">
-<h2>Homework</h2>
-<h3 id="posits-rstudio-cloud-workspace">Posit’s RStudio Cloud Workspace</h3>
+<section id="situation-sequences-of-actions" class="slide level2">
+<h2>Situation: sequences of actions</h2>
+</section>
+<section id="overwrite-the-result" class="slide level2">
+<h2>Overwrite the result</h2>
+</section>
+<section id="create-middle-objects" class="slide level2">
+<h2>Create middle objects</h2>
+</section>
+<section id="compose-function-calls" class="slide level2">
+<h2>Compose function calls</h2>
+</section>
+<section id="use-pipes" class="slide level2">
+<h2>Use pipes</h2>
+</section>
+<section id="magrittr-vs-native" class="slide level2">
+<h2><code>{magrittr}</code> vs native</h2>
+</section>
+<section id="pipes-in-composing-plots" class="slide level2">
+<h2>Pipes in composing plots</h2>
+<p>Curious why a distinct pipe for ggplots? Check out the answer of <code>{ggplot2}</code> author, Hadley Wicham <a href="https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7">here</a></p>
+</section></section>
+<section>
+<section id="ggplot2" class="title-slide slide level1 center">
+<h1><code>ggplot2</code></h1>
+
+</section>
+<section id="setup" class="slide level2">
+<h2>Setup</h2>
+</section>
+<section id="definitions" class="slide level2">
+<h2>Definitions</h2>
+</section>
+<section id="data-and-meta-data" class="slide level2">
+<h2>Data and Meta-data</h2>
+</section>
+<section id="why-a-grammar-for-graphics" class="slide level2">
+<h2>Why a Grammar for Graphics</h2>
+</section>
+<section id="practical-aim-of-the-lesson" class="slide level2">
+<h2>Practical aim of the lesson</h2>
+</section>
+<section id="ggplot-plots-components" class="slide level2">
+<h2><code>ggplot</code> plots components</h2>
+</section>
+<section id="aesthetics" class="slide level2">
+<h2>Aesthetics</h2>
+</section>
+<section id="geometries" class="slide level2">
+<h2>Geometries</h2>
+</section>
+<section id="multiple-geometries" class="slide level2">
+<h2>Multiple Geometries</h2>
+</section>
+<section id="aesthetics-within-geometries" class="slide level2">
+<h2>Aesthetics within geometries</h2>
+</section>
+<section id="base-template" class="slide level2">
+<h2>Base template</h2>
+</section>
+<section id="customize-metadata-main-labels" class="slide level2">
+<h2>Customize metadata: main labels</h2>
+</section>
+<section id="customize-metadata" class="slide level2">
+<h2>Customize metadata:</h2>
+</section>
+<section id="facets" class="slide level2">
+<h2>Facets</h2>
+</section>
+<section id="saving-plots" class="slide level2">
+<h2>Saving plots</h2>
+</section></section>
+<section>
+<section id="homework" class="title-slide slide level1 center">
+<h1>Homework</h1>
+
+</section>
+<section id="posits-rstudio-cloud-workspace" class="slide level2">
+<h2>Posit’s RStudio Cloud Workspace</h2>
 <ul>
 <li>Project:</li>
 <li>Instructions:</li>
 <li>Script to complete:</li>
 </ul>
-
-<img src="img/UBEP.png" class="slide-logo r-stretch"><div class="footer footer-default">
+</section>
+<section id="acknowledgement" class="slide level2">
+<h2>Acknowledgement</h2>
+<p>To create the current lesson we explored, use, and adapt contents from the following resources:</p>
+<ul>
+<li><a href="https://carpentries.org/">Carpentrie</a>’s <a href="https://swcarpentry.github.io/r-novice-inflammation/">Programming with R</a> course material.</li>
+<li><a href="https://carpentries.org/">Carpentrie</a>’s <a href="https://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a> course material.</li>
+<li><a href="https://hadley.nz/">Hadley Wicham</a>’s <a href="https://adv-r.hadley.nz">Advanced R - (2e)</a></li>
+<li><a href="https://hadley.nz/">Hadley Wicham</a>’s <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a></li>
+</ul>
+<p>The slides are made using <a href="https://posit.co/">Posit</a>’s <a href="https://quarto.org/">Quarto</a> open-source scientific and technical publishing system powered in R by <a href="https://yihui.org/">Yihui Xie</a>’s <a href="https://yihui.org/knitr/">kintr</a>.</p>
+<h3 id="license">License</h3>
+ <p xmlns:cc="http://creativecommons.org/ns#"><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+<h3 id="references">References</h3>
+<p><img src="img/UBEP.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p>UBEP’s R training for supervisors</p>
 </div>
 </section></section>
@@ -498,7 +513,7 @@
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'chalkboard': {"buttons":true,"src":"src/chalkboard.json"},
+'chalkboard': {"buttons":true,"src":"src/chalkboard-pipes-and-visualization.json"},
 'multiplex': {"secret":null,"id":"3c673c602e6c2e50","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
@@ -645,9 +660,9 @@
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1648,
 
-        height: 700,
+        height: 1080,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,

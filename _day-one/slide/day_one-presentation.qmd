@@ -13,7 +13,7 @@ format:
     code-link: true
     multiplex: true
     chalkboard: 
-      src: src/chalkboard.json
+      src: src/chalkboard-presentation.json
 bibliography: references.bib
 ---
 
