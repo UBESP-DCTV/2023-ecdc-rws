@@ -415,12 +415,14 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 ::: {.column width="65%"}
 ```{r}
 #| output-location: column
-# Code to the right is evaluate, then 
-# stored in a variable named to the left
 two <- 1 + 1
 two
 ```
 :::
+:::
+
+::: callout-important
+Var names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter (or a single dot, for hidden variables).
 :::
 
 ::: columns
@@ -441,16 +443,17 @@ three_two_one
 
 ::: columns
 ::: {.column width="35%"}
-|        |     |
-|--------|-----|
-| Subset | `[` |
+|        |              |
+|--------|--------------|
+| Subset | `?[` or `[[` |
 :::
 
 ::: {.column width="65%"}
 ```{r}
 #| output-location: column
-# R counts from 1
-three_two_one[1]
+#| results: hold
+three_two_one[c(2, 3)] 
+three_two_one[[1]] # R counts from 1
 ```
 :::
 :::
@@ -496,9 +499,24 @@ ls()
 ::: {.column width="65%"}
 ```{r}
 #| output-location: column
-# To assign values to arguments
-# you must use `=`
+# Use `=` to assign vals to args
 mean(x = c(1, 2, 3))
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|                 |        |
+|-----------------|--------|
+| R's null object | `NULL` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+#| results: hold
+NULL
 ```
 :::
 :::
@@ -509,10 +527,6 @@ mean(x = c(1, 2, 3))
 |---------------|-----------|
 | Help function | `?fun`    |
 | Help operator | `?"<op>"` |
-
-::: callout-important
-Variable names can contain letters, numbers, underscores and periods but no spaces. They must start with a letter (or a single dot, for hidden variables).
-:::
 :::
 
 ::: {.column width="65%"}
@@ -528,7 +542,7 @@ Variable names can contain letters, numbers, underscores and periods but no spac
 :::
 
 ::: {.column width="45%"}
-![](img/mean-help.png)
+![](img/mean-help-crop.png)
 :::
 :::
 :::
@@ -806,7 +820,7 @@ all.equal(3*(1/5), 0.6)
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 1,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -968,7 +982,7 @@ typeof(mixed_vector)
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 1,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1230,7 +1244,7 @@ Other structure in R are based on list vectors, i.e. are heterogeneous sequence 
 | Data frames | `?data.frame` |
 
 ::: callout-tip
-During the course we will see, explain and use `tibbles`: a modern, enhanced, better displayed, and with stricter and more consistent structure than standard data frames.
+During the course we will see, explain and use *tibbles* (from the package `{tibble}`): a modern, enhanced, better displayed, and with stricter and more consistent structure than standard data frames.
 :::
 :::
 
@@ -1551,7 +1565,7 @@ db_df$height
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `1.3. Ex3`, write (in a new line) what is your expected result from the following computation:
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex4`, write (in a new line) what is your expected result from the following computation:
 
 ``` r
 db_df <- db_df <- data.frame(
@@ -1645,13 +1659,13 @@ db_df[4][[3]]
 
 ::: columns
 ::: {.column width="45%"}
-+-----------------+---------------------+
-| If-than         | ``` r               |
-|                 | if (cond) {         |
-|                 |   # <code>          |
-|                 | }                   |
-|                 | ```                 |
-+-----------------+---------------------+
++-----------------------+--------------------------------------+
+| If-than               | ``` r                                |
+|                       | if (cond) {                          |
+|                       |   # <code>                           |
+|                       | }                                    |
+|                       | ```                                  |
++-----------------------+--------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1673,15 +1687,15 @@ print("end")
 
 ::: columns
 ::: {.column width="45%"}
-+--------------------------+-----------------------------------------+
-| If-than-else             | ``` r                                   |
-|                          | if (cond) {                             |
-|                          |   # <code>                              |
-|                          | } else {                                |
-|                          |   # <code>                              |
-|                          | }                                       |
-|                          | ```                                     |
-+--------------------------+-----------------------------------------+
++-----------------------+--------------------------------------+
+| If-than-else          | ``` r                                |
+|                       | if (cond) {                          |
+|                       |   # <code>                           |
+|                       | } else {                             |
+|                       |   # <code>                           |
+|                       | }                                    |
+|                       | ```                                  |
++-----------------------+--------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1703,13 +1717,35 @@ print("end")
 
 ::: columns
 ::: {.column width="45%"}
-+---------+---------------------------+
-| for     | ``` r                     |
-|         | for (<var> in <vector>) { |
-|         |   # <code>                |
-|         | }                         |
-|         | ```                       |
-+---------+---------------------------+
+::: callout-tip
+You don't need to test if a logical is `TRUE` or `FALSE`, they *are* already `TRUE` or `FALSE`!
+:::
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+is_to_print <- TRUE
+
+if (is_to_print) {
+  print("ok")
+} else {
+  print("ko")
+}
+```
+:::
+:::
+
+::: columns
+::: {.column width="45%"}
++-----------------------+--------------------------------------+
+| For cycles            | ``` r                                |
+|                       | for (<var> in <vector>) {            |
+|                       |   # <code>                           |
+|                       | }                                    |
+|                       | ```                                  |
++-----------------------+--------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1727,4 +1763,272 @@ print("start")
 
 ## Functions
 
-# References
+::: columns
+::: {.column width="45%"}
++-----------------------+---------------------------------+
+| Definition            | ``` r                           |
+|                       | name <- function(args) {        |
+|                       |   # body code of the funciton   |
+|                       | }                               |
+|                       | ```                             |
++-----------------------+---------------------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+sum_one <- function(x) {
+  x + 1 # <1>
+}
+sum_one(x = 3)
+```
+
+1.  A function always return its last evaluated objects.
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="45%"}
++-----------------------+------------------------------------+
+| Default               | ``` r                              |
+|                       | name <- function(args = default) { |
+|                       |   # body code of the funciton      |
+|                       | }                                  |
+|                       | ```                                |
++-----------------------+------------------------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+sum_one <- function(x = 3) {
+  x + 1
+}
+sum_one()
+sum_one(x = 3)
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="45%"}
++-----------------------+---------------------------------+
+| Positional arg match  | `?function`                     |
++-----------------------+---------------------------------+
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+x_exp_y <- function(x, y) {
+  x^y
+}
+x_exp_y(2, 3)
+```
+:::
+:::
+
+<br>
+
+::: columns
+::: {.column width="45%"}
+::: callout-tip
+To avoid confusion, don't mix positional and named argument match using non standard order: start positional, and once you name an argument name all the subsequent!
+:::
+:::
+
+::: {.column width="55%"}
+```{r}
+#| output-location: column
+#| results: hold
+x_exp_y(y = 3, 2)
+```
+:::
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.3. Ex5`, write (in a new line) what is your expected result from the following computation:
+
+``` r
+<code>
+```
+
+2.  Then, open the script `04-cond-and-funs.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 2,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   `?if` returns the last computed value, if any, or `NULL` otherwise (which may happen if there is no `else`).
+-   `?for` returns `NULL`
+:::
+:::
+
+## Packages
+
+A **package** is a container of functions and data sets.
+
+A **library** is a folder in your computer that store packages. They can be of three type:
+
+::: foo-to-separate-the-list-from-the-below-columns
+1.  project (may exists)
+2.  user (may exists)
+3.  system (always exists)
+:::
+
+::: columns
+::: {.column width="55%"}
+|                  |                     |
+|------------------|---------------------|
+| Install packages | `?install.packages` |
+:::
+
+::: {.column width="45%"}
+```{r}
+#| output-location: column
+#| results: hold
+install.packages("tibble")
+```
+:::
+:::
+
+::: columns
+::: {.column width="55%"}
+|                 |            |
+|-----------------|------------|
+| Attach packages | `?library` |
+:::
+
+::: {.column width="45%"}
+```{r}
+#| output-location: column
+#| results: hold
+library("tibble")
+```
+:::
+:::
+
+::: columns
+::: {.column width="55%"}
+|          |                                |
+|----------|--------------------------------|
+| Help[^9] | `help(package = "<pkg_name>")` |
+:::
+
+::: {.column width="45%"}
+```{r}
+#| output-location: column
+#| results: hold
+help(package = "tibble")
+```
+:::
+:::
+
+[^9]: Packages help pages include the list (with link to the corresponding documentation) of all their functions and data sets.
+
+::: callout-important
+*Install* a package means store its R executable code in one of the libraries.<br>*Attach* a package means be able to use its functions and dataset within the current R session.
+
+You need to **install** a package you want to use once only (plus updates or if you need it inside multiple libraries).<br>You need to **attach** a package you want to use anytime you start a new R session.
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn & Break
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Run the code below and compare data frames and tibbles trying exploring its structure, subsetting it, or extracting some cloumn, rows, value(s). You can use `05-packages.R`. Which difference do you see? Write your opinions in the pad (we will discuss in a different lesson).
+
+``` r
+library(tibble)
+
+db_tbl <- tibble(
+  age = c(70, 85, 69),
+  height = c(1.5, 1.72, 1.81),
+  at_risk = c(TRUE, FALSE, TRUE),
+  gender = factor(
+    c("male", "female", "female"),
+    levels = c("female", "male", "other")
+  )
+)
+db_tbl
+```
+
+2.  Find a package of your choice on Internet. Install it, attach it, explore its documentation. Find a function you like to use within the package; access its documentation, and provide an example code to use it.
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  left = "45%",
+  right = "5%",
+  top = "55%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+## Acknowledgement
+
+To create the current lesson we explored, use, and adapt contents from the following resources:
+
+-   [Carpentrie](https://carpentries.org/)'s [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
+-   [Carpentrie](https://carpentries.org/)'s [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
+-   [Hadley Wicham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
+-   [Hadley Wicham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [kintr](https://yihui.org/knitr/).
+
+### Additionl Resources
+
+- The [Tidyverse](https://www.tidyverse.org/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References
