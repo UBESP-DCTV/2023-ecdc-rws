@@ -530,10 +530,12 @@
 </div>
 </section><section id="data-analyses-a-sequence-of-actions" class="slide level2"><h2>Data analyses: a sequence of actions</h2>
 <p><strong>Import</strong>: define a path, <em>and then…</em> read it, <em>and then…</em> initial fixes (e.g., removing empty rows or columns)</p>
+<p><strong>Tidying</strong>: take the data, <em>and then…</em> separate merged information, <em>and then…</em>, …, <em>and then…</em> reshape the data to tidy them</p>
 <p><strong>Transforming</strong>: take the data, <em>and then…</em> mutate some variables accordingly to desiderata (e.g., making factors, converting dates, or cleaning text, <em>and then…</em> filter unwanted observations for the current study.</p>
 <p><strong>Visualize</strong>: take the data, <em>and then…</em> select what to plot, <em>and then…</em> define how to plot, <em>and then…</em> restyle accordingly to desiderata, <em>and then…</em> save it.</p>
-<p><strong>Analyse</strong>: take the data <em>and then…</em> reshape it accordingly to the model requirements, <em>and then…</em> fit the model, <em>and then…</em> summarize the model, <em>and then…</em> plot the results</p>
-</section><section id="your-turn-1" class="slide level2"><h2>Your Turn</h2>
+<p><strong>Analyse</strong>: take the data, <em>and then…</em> reshape it accordingly to the model requirements, <em>and then…</em> fit the model, <em>and then…</em> summarize the model, <em>and then…</em> plot the results</p>
+
+<img data-src="img/tidyverse-loop.png" class="r-stretch"></section><section id="your-turn-1" class="slide level2"><h2>Your Turn</h2>
 <p>Suppose you have the following functions:</p>
 <div class="cell columns column-output-location">
 <div class="column">
@@ -587,7 +589,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2444430c" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:60%;right:5%;bottom:10;left:45%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_a2dcfc7e" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:60%;right:5%;bottom:10;left:45%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -773,7 +775,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_60284923" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_e8483f27" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1018,18 +1020,16 @@
 </div>
 </div>
 </section><section id="aesthetics" class="slide level2" data-auto-animate="true"><h2 data-id="quarto-animate-title">2. Aesthetics</h2>
-<p>Let’s say we want to investigate the relation between the onset_datetime time and age stratify by sex. We could map the incubation time variable to the x axis, the age to the y one, and sex to color!</p>
+<p>Let’s say we want to investigate the distribution of the dayonset. We should map the dayonset variable to the x axis!</p>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="3-7"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a href="#cb22-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
+<div class="sourceCode cell-code" id="cb22" data-code-line-numbers="3-5"><pre class="sourceCode numberSource r number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode r hljs"><span id="cb22-1" class="hljs-ln-code"><a href="#cb22-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
 <span id="cb22-2" class="hljs-ln-code"><a href="#cb22-2"></a>  <span class="fu">ggplot</span>(  <span class="co"># create a plot</span></span>
 <span id="cb22-3" class="hljs-ln-code"><a href="#cb22-3"></a>    <span class="fu">aes</span>(  <span class="co"># with aesthetics:</span></span>
-<span id="cb22-4" class="hljs-ln-code"><a href="#cb22-4"></a>      <span class="at">x =</span> onset_datetime,</span>
-<span id="cb22-5" class="hljs-ln-code"><a href="#cb22-5"></a>      <span class="at">y =</span> age,</span>
-<span id="cb22-6" class="hljs-ln-code"><a href="#cb22-6"></a>      <span class="at">color =</span> sex</span>
-<span id="cb22-7" class="hljs-ln-code"><a href="#cb22-7"></a>    )</span>
-<span id="cb22-8" class="hljs-ln-code"><a href="#cb22-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4" class="hljs-ln-code"><a href="#cb22-4"></a>      <span class="at">x =</span> dayonset</span>
+<span id="cb22-5" class="hljs-ln-code"><a href="#cb22-5"></a>    )</span>
+<span id="cb22-6" class="hljs-ln-code"><a href="#cb22-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:65%;">
 <div class="cell">
@@ -1053,19 +1053,17 @@
 </div>
 </div>
 </section><section id="geometries" class="slide level2"><h2>3. Geometries</h2>
-<p>Once having the canvas and the mappings, we can <em>add</em> a geometrical layer. In this case, we what to add points with <code>incubation</code> (i.e., x) and <code>age</code> (i.e., y) coordinates and colored accordingly to sex.</p>
+<p>Once having the canvas and the mappings, we can <em>add</em> a geometrical layer. In this case, we what to add bars for <code>dayonset</code> (i.e., x).</p>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
+<div class="sourceCode cell-code" id="cb23" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
 <span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">ggplot</span>(  <span class="co"># create a plot</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a>    <span class="fu">aes</span>(  <span class="co"># with aesthetics:</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>      <span class="at">x =</span> onset_datetime,</span>
-<span id="cb23-5"><a href="#cb23-5"></a>      <span class="at">y =</span> age,</span>
-<span id="cb23-6"><a href="#cb23-6"></a>      <span class="at">color =</span> sex</span>
-<span id="cb23-7"><a href="#cb23-7"></a>    )</span>
-<span id="cb23-8"><a href="#cb23-8"></a>  ) <span class="sc">+</span> </span>
-<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-4"><a href="#cb23-4"></a>      <span class="at">x =</span> dayonset</span>
+<span id="cb23-5"><a href="#cb23-5"></a>    )</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  ) <span class="sc">+</span> </span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">geom_bar</span>() <span class="co"># drawing bars</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -1101,9 +1099,158 @@
 </div>
 </div>
 </div>
+</section><section id="aesthetics-vs-parameters" class="slide level2"><h2>Aesthetics vs parameters</h2>
+<p>Suppose we would like to have the bars filled in blue?[^6]</p>
+<p>We can add the parameter within the <code>geom_*</code> directly.</p>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">ggplot</span>(  <span class="co"># create a plot</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>    <span class="fu">aes</span>(  <span class="co"># with aesthetics:</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>      <span class="at">x =</span> dayonset</span>
+<span id="cb24-5"><a href="#cb24-5"></a>    )</span>
+<span id="cb24-6"><a href="#cb24-6"></a>  ) <span class="sc">+</span> </span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Yoour Turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Why the following code produce red bars, and the legend report “fill” as header and “blue” as level?</p>
+<ul>
+<li>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</li>
+</ul>
+<p>Under the section <code>1.3. Ex10</code>, write (in a new line) what is your opinion.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="day_one-visualization_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+</div>
+</div>
+<div class="fragment fade-out" data-fragment-index="1">
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_236c3005" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>For having a blue bar chart, put the parameter, within the corresponding layer (e.g., the <code>geom_*</code>, or globally in the <code>ggplot</code> call), <strong>out of the <code>aes</code> call</strong>! These are actually aesthetics, used to set them to a fixed value, like <code>colour = "red"</code> or <code>size = 3</code>, instead of mapping data to the aesthetics!</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section id="multiple-geometries" class="slide level2"><h2>Multiple Geometries</h2>
-</section><section id="aesthetics-within-geometries" class="slide level2"><h2>Aesthetics within geometries</h2>
+<p>We can also <em>add</em> multiple geometrics one <em>on top</em> of the others. In which case, it could be useful to set personalized <code>aes</code>thetics abd customized the position of the geoms.</p>
+<div class="columns">
+<div class="column" style="width:35%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" data-code-line-numbers="8-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>linelist <span class="sc">|&gt;</span>  <span class="co"># start from data, and than </span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">ggplot</span>(  <span class="co"># create a plot</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>    <span class="fu">aes</span>(  <span class="co"># with aesthetics:</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>      <span class="at">x =</span> dayonset</span>
+<span id="cb25-5"><a href="#cb25-5"></a>    )</span>
+<span id="cb25-6"><a href="#cb25-6"></a>  ) <span class="sc">+</span> </span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>  <span class="fu">geom_bar</span>(</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    <span class="fu">aes</span>(<span class="at">fill =</span> sex),</span>
+<span id="cb25-10"><a href="#cb25-10"></a>    <span class="at">position =</span> <span class="st">"dodge"</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>We can set also <code>aes</code>thetics within a single <code>geom_*</code> without affecting the other.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>We would like to also set the <em>position</em> of the <code>grom_*</code> we are creating. Look at the documentation to find which position are supported by your <code>geom_*</code>.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="day_one-visualization_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Most common positions are <code>"stack"</code> (default, multiple bars occupying the same <code>x</code> position will be stacked atop one another ), <code>"dodge"</code> (dodged side-to-side), <code>"fill"</code> (shows relative proportions at each x by stacking the bars and then standardising each bar to have the same height)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section><section id="base-template" class="slide level2"><h2>Base template</h2>
+<p>Up to now, we can have a minimal set of instructions to define a base template for our plots</p>
+<h3 id="global-mapping-from-data-to-aesthetic">Global mapping from data to aesthetic</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="er">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>  ) <span class="sc">+</span> </span>
+<span id="cb26-5"><a href="#cb26-5"></a>    <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<h3 id="local-mapping-from-data-to-aesthetic">Local mapping from data to aesthetic</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="er">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>    <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(</span>
+<span id="cb27-4"><a href="#cb27-4"></a>       <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>)</span>
+<span id="cb27-5"><a href="#cb27-5"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="sc">&lt;</span>DATA<span class="sc">&gt;</span> <span class="er">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb28-3"><a href="#cb28-3"></a>    <span class="er">&lt;</span>GEOM_FUNCTION<span class="sc">&gt;</span>(</span>
+<span id="cb28-4"><a href="#cb28-4"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">&lt;</span>MAPPINGS<span class="sc">&gt;</span>),</span>
+<span id="cb28-5"><a href="#cb28-5"></a>       <span class="at">position =</span> <span class="sc">&lt;</span>POSITION<span class="sc">&gt;</span> <span class="co"># optional</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>       <span class="er">&lt;</span>AESTHETIC<span class="sc">&gt;</span> <span class="er">=</span> <span class="er">&lt;</span>CONSTANT<span class="sc">&gt;</span> <span class="co"># optional</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="customize-metadata-primary-labels" class="slide level2"><h2>Customize metadata: primary labels</h2>
 </section><section id="customize-metadata" class="slide level2"><h2>Customize metadata:</h2>
 </section><section id="facets" class="slide level2"><h2>Facets</h2>
