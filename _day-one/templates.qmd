@@ -3,31 +3,27 @@
 
 # Overview -----------------
 
-# Overview
+# Overview {style="color:darkblue;"}
 
-##
+## 
 
 ::: columns
 ::: {.column width="50%"}
 ### Questions
 
-- What we are going to do in the course?
-- Who we are?
-- R/RStudio/Tidyverse<br>Why and How?
-- How the course is organized?
-- How to access/use the course material?
+-   c
 :::
 
 ::: {.column width="50%"}
-### Objectives
+### Lesson Objectives
 
 #### To know the course
-- a.
-- b.
+
+-   a
 
 #### To be able to do/use
-- c.
-- d.
+
+-   b
 :::
 :::
 
@@ -66,6 +62,18 @@
 ```
 :::
 :::
+
+
+# Columns ------------------
+::: columns
+::: {.column width="50%"}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+
 
 
 
