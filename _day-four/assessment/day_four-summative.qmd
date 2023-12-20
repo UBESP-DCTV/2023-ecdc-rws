@@ -1715,6 +1715,7 @@ tbl_glm
 ```
 :::
 :::
+
 # References
 
 ```{r}
