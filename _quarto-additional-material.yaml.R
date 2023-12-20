@@ -10,3 +10,9 @@ href: "_day-three/assessment/day_three-summative.html"
 href: "_day-four/assessment/day_four-summative.html"
 - text: "Final"
 href: "_motivating-example/ExOIR.html"
+
+
+
+
+- text: Agenda
+href: agenda.qmd

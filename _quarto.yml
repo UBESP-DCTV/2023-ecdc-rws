@@ -40,8 +40,6 @@ website:
         href: deliverables.qmd
       - text: Personas
         href: personas.qmd
-      - text: Agenda
-        href: agenda.qmd
   page-footer:
     left: ''
     center: |

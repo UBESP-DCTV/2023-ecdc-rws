@@ -100,7 +100,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[15'\] files organization (dev/ folder)
 
-### 3. \[40'\] import
+### 3. \[40'\] Import
 
 -   \[15'\] Base and Tidy alternatives[^4]
 
