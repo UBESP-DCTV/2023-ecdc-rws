@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.420">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.4.420" />
 
-<meta name="author" content="Corrado Lanera">
-<meta name="author" content="Ileana Baldi">
-<meta name="author" content="Dario Gregori">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Corrado Lanera" />
+<meta name="author" content="Ileana Baldi" />
+<meta name="author" content="Dario Gregori" />
 
 <title>UBEP R-Tidyverse Course to ECDC</title>
 <style>
@@ -25,25 +27,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href=".//img/UBEP.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,84 +53,70 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="UBEP R-Tidyverse Course to ECDC">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/img/UBEP.png">
-<meta property="og:site_name" content="2023-ecdc-rws">
-<meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="176">
-<meta property="og:image:width" content="146">
-<meta property="og:image:alt" content="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
-<meta name="twitter:title" content="UBEP R-Tidyverse Course to ECDC">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/img/UBEP.png">
-<meta name="twitter:creator" content="@CorradoLanera">
-<meta name="twitter:image-height" content="176">
-<meta name="twitter:image-width" content="146">
-<meta name="twitter:image:alt" content="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
-<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="nav-fixed">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./img/UBEP.png" alt="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)" class="navbar-logo">
+    <a href="/index.html" class="navbar-brand navbar-brand-logo">
+    <img src="/img/UBEP.png" alt="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)" class="navbar-logo" />
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">UBEP R-Tidyverse Course to ECDC</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="/index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./deliverables.html"> 
+    <a class="nav-link" href="/deliverables.html"> 
 <span class="menu-text">Deliverables</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./personas.html"> 
+    <a class="nav-link" href="/personas.html"> 
 <span class="menu-text">Personas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./agenda.html"> 
+    <a class="nav-link" href="/agenda.html"> 
 <span class="menu-text">Agenda</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-summative-assessment" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-summative-assessment" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
  <span class="menu-text">Summative Assessment</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-summative-assessment">    
         <li>
-    <a class="dropdown-item" href="./_day-one/assessment/day_one-summative.html">
+    <a class="dropdown-item" href="/_day-one/assessment/day_one-summative.html">
  <span class="dropdown-text">Day 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./_day-two/assessment/day_two-summative.html">
+    <a class="dropdown-item" href="/_day-two/assessment/day_two-summative.html">
  <span class="dropdown-text">Day 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./_day-three/assessment/day_three-summative.html">
+    <a class="dropdown-item" href="/_day-three/assessment/day_three-summative.html">
  <span class="dropdown-text">Day 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./_day-four/assessment/day_four-summative.html">
+    <a class="dropdown-item" href="/_day-four/assessment/day_four-summative.html">
  <span class="dropdown-text">Day 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./_motivating-example/ExOIR.html">
+    <a class="dropdown-item" href="/_motivating-example/ExOIR.html">
  <span class="dropdown-text">Final</span></a>
   </li>  
     </ul>
@@ -169,27 +139,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link" data-scroll-target="#course-content">Course content</a></li>
-  <li><a href="#time-frame" id="toc-time-frame" class="nav-link" data-scroll-target="#time-frame">Time frame</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+        <div id="quarto-toc-target"></div>
     </div>
 <!-- main -->
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="img/UBEP.png" alt="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)" class="about-image
-  rounded " style="width: 20em;" title="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
+<main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">UBEP R-Tidyverse Course to ECDC</h1>
 </div>
+
+
 <div class="quarto-title-meta-author">
   <div class="quarto-title-meta-heading">Authors</div>
   <div class="quarto-title-meta-heading">Affiliation</div>
+  
     <div class="quarto-title-meta-contents">
     <p class="author">Corrado Lanera <a href="mailto:corrado.lanera@ubep.unipd.it" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0520-7428" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
@@ -221,19 +185,34 @@ ul.task-list li input[type="checkbox"] {
           </p>
       </div>
     </div>
-<div class="quarto-title-meta">
-  </div>
-</header>
-  </div>
-  <div class="about-contents"><main class="content" id="quarto-document-content">
 
+<div class="quarto-title-meta">
+
+      
+  
+    
+  </div>
+  
+
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives">Objectives</a></li>
+  <li><a href="#course-content" id="toc-course-content">Course content</a></li>
+  <li><a href="#time-frame" id="toc-time-frame">Time frame</a></li>
+  </ul>
+</nav>
 <p><strong>Framework contract:</strong> ECDC/2023/027 “Biostatistics Services” – RS/2023/PHF/25462</p>
 <section id="objectives" class="level2">
-<h2 data-anchor-id="objectives">Objectives</h2>
+<h2>Objectives</h2>
 <div class="callout callout-style-simple callout-caution no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class='callout-icon no-icon'></i>
 </div>
 <div class="callout-body-container">
 <p>The main objective of the present request for services is to <u><strong>provide an online R course</strong></u> (duration of 2 days, delivered in 4 different half days) for 3 different groups of 10 participants in 3 different time slots, targeting the supervisors of <a href="https://www.ecdc.europa.eu/en/epiet-euphem">EPIET/EUPHEM</a> and <a href="https://www.ecdc.europa.eu/en/training-and-tools/training-programmes/fellowships/medipiet">MediPIET</a> fellows. The training course is expected <u><strong>to cover an introduction to R for data management, analysis and visualization</strong></u>.</p>
@@ -242,7 +221,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="course-content" class="level2">
-<h2 data-anchor-id="course-content">Course content</h2>
+<h2>Course content</h2>
 <p>This course will provide an introduction to R using public health examples, covering the following topics:</p>
 <ul>
 <li>About R and R basics, using RStudio projects, and tips for file organization</li>
@@ -255,15 +234,27 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="time-frame" class="level2">
-<h2 data-anchor-id="time-frame">Time frame</h2>
+<h2>Time frame</h2>
 <p>The time frame for this project is estimated at 6 months. The final deliverable shall be delivered no later than 31<sup>st</sup> March 2024.</p>
-
-
-</section>
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-int-navbar-title">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Deliverables">Deliverables</span> <span class="hidden" data-render-id="quarto-int-navbar:/deliverables.html">/deliverables.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Personas">Personas</span> <span class="hidden" data-render-id="quarto-int-navbar:/personas.html">/personas.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Agenda">Agenda</span> <span class="hidden" data-render-id="quarto-int-navbar:/agenda.html">/agenda.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Summative Assessment">Summative Assessment</span> <span class="hidden" data-render-id="quarto-int-navbar:Day 1">Day 1</span> <span class="hidden" data-render-id="quarto-int-navbar:/_day-one/assessment/day_one-summative.html">/_day-one/assessment/day_one-summative.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Day 2">Day 2</span> <span class="hidden" data-render-id="quarto-int-navbar:/_day-two/assessment/day_two-summative.html">/_day-two/assessment/day_two-summative.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Day 3">Day 3</span> <span class="hidden" data-render-id="quarto-int-navbar:/_day-three/assessment/day_three-summative.html">/_day-three/assessment/day_three-summative.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Day 4">Day 4</span> <span class="hidden" data-render-id="quarto-int-navbar:/_day-four/assessment/day_four-summative.html">/_day-four/assessment/day_four-summative.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Final">Final</span> <span class="hidden" data-render-id="quarto-int-navbar:/_motivating-example/ExOIR.html">/_motivating-example/ExOIR.html</span></p>
+<div class="hidden" data-render-id="footer-center">
+<p><a href="https://www.unipd.it" class="external" target="_blank"><img src=".\img/unipd_logo.png" class="img-fluid" alt="UniPD" width="100" /></a>      <a href="https://www.unipd-ubep.it" class="external" target="_blank"><img src=".\img/UBEP.png" class="img-fluid" alt="UBEP" width="50" /></a>     </p>
 </div>
- <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<div class="hidden" data-render-id="footer-right">
+<p>Copyright 2023, UBEP</p>
+</div>
+</div>
+<div id="quarto-about-pipeline" class="hidden">
+
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-twittercardtitle">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-ogcardtitle">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-metasitename">UBEP R-Tidyverse Course to ECDC</span> <span class="hidden" data-render-id="quarto-twittercarddesc"></span> <span class="hidden" data-render-id="quarto-ogcardddesc"></span></p>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -797,15 +788,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p><a href="https://www.unipd.it" class="external" target="_blank"><img src=".\img/unipd_logo.png" class="img-fluid" alt="UniPD" width="100"></a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.unipd-ubep.it" class="external" target="_blank"><img src=".\img/UBEP.png" class="img-fluid" alt="UBEP" width="50"></a> &nbsp;&nbsp;&nbsp;&nbsp;</p>
-</div>
+      <div class='footer-contents'>[![](/img/unipd_logo.png){fig-alt="UniPD" width=100px}](https://www.unipd.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+[![](/img/UBEP.png){fig-alt="UBEP" width=50px}](https://www.unipd-ubep.it){.external target="_blank"} &nbsp;&nbsp;&nbsp;&nbsp;
+</div>  
+    </div>
     <div class="nav-footer-right">
-<p>Copyright 2023, UBEP</p>
-</div>
+      <div class='footer-contents'>Copyright 2023, UBEP</div>  
+    </div>
   </div>
 </footer>
 
+</body>
 
-
-
-</body></html>
+</html>

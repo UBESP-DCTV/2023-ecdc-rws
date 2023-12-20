@@ -555,6 +555,28 @@ The `aes` function maps variables to aesthetics of our plot.
 :::
 :::
 
+## Main `aes`thetics
+
+::: callout-important
+You use `aes`thetics for *visualize the data*.
+:::
+
+-   `x`, `y`: position along the x and y axes.
+
+-   `alpha`: the transparency of the geometries.
+
+-   `colour`: the color of the geometries according to the data.
+
+-   `fill`: the interior color of the geometries.
+
+-   `group`: to which group a geometry belongs.
+
+-   `linetype`: the type of line used (solid, dotted, etc.).
+
+-   `shape`: the shape of the points.
+
+-   `size`: the size of the points or lines.
+
 ## 3. Geometries
 
 Once having the canvas and the mappings, we can *add* a geometrical layer. In this case, we what to add bars for `dayonset` (i.e., x).
@@ -594,36 +616,58 @@ linelist |>  # start from data, and than
 ```
 
 ::: callout-important
-All geometry functions are called `geom_*`, with `*` indicating the type of geom. `?geom_point`, `?geom_line`, `?geom_bar`, `?geom_boxplot`, `?gome_histogram`, ...
+All geometry functions are called `geom_*`, with `*` indicating the type of geometry:
+
+`?geom_point`, `?geom_line`, `?geom_bar`, `?geom_boxplot`, `?gome_histogram`, ...
 :::
 :::
 :::
 
-## Aesthetics vs parameters
+## Main `geom_*`etries
 
-Suppose we would like to have the bars filled in blue?\[\^6\]
+::: callout-important
+You use `geom_*`etries for *shape the data*.
+:::
 
-We can add the parameter within the `geom_*` directly.
+-   `geom_point`: scatter-plot
+
+-   `geom_line`: lines connecting points
+
+-   `geom_smooth`: function line based on data
+
+-   `geom_boxplot`: box plot for categorical variables
+
+-   `geom_bar`: bar charts for categorical x axis
+
+-   `geom_histogram`: histogram for continuous x axis
+
+-   `geom_violin`: distribution kernel of data dispersion
+
+-   `geom_path`: lines connecting points in sequence of appearance
+
+## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
+Suppose we would like to have the bars filled in blue.
+
+Why this produces red bars, and the legend report "fill" as header and "blue" as level?
 
 ::: columns
 ::: {.column width="35%"}
 ```{r}
-#| code-line-numbers: "7"
+#| code-line-numbers: "5"
 #| output-location: default
 #| eval: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = dayonset,
+      fill = "blue"
     )
   ) + 
-  geom_bar(fill = "blue")
+  geom_bar()
 ```
 
 ::: callout-caution
-## Yoour Turn
-
-Why the following code produce red bars, and the legend report "fill" as header and "blue" as level?
+## Your Turn
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
@@ -646,7 +690,6 @@ linelist |>  # start from data, and than
   geom_bar()
 ```
 
-::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
@@ -662,18 +705,62 @@ countdown(
 )
 ```
 :::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-tip
-For having a blue bar chart, put the parameter, within the corresponding layer (e.g., the `geom_*`, or globally in the `ggplot` call), **out of the `aes` call**! These are actually aesthetics, used to set them to a fixed value, like `colour = "red"` or `size = 3`, instead of mapping data to the aesthetics!
-:::
-:::
-:::
 :::
 
-## Multiple Geometries
+## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
 
-We can also *add* multiple geometrics one *on top* of the others. In which case, it could be useful to set personalized `aes`thetics abd customized the position of the geoms.
+Suppose we would like to have the bars filled in blue.
+
+Why this produces red bars, and the legend report "fill" as header and "blue" as level?
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue")
+```
+
+::: callout-caution
+## Your Turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
+:::
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue")
+```
+
+:::
+:::
+
+::: callout-important
+For having a blue bar chart, put the parameter within the `geom_*`etry call, and **out of the `aes` call**: these are parameters used to set aesthetics to a fixed value, like `colour = "red"` or `size = 3`, instead of mapping data to the aesthetics!
+:::
+
+## Multiple `geom_*`etries
+
+We can also *add* multiple `geom_*`etries one *on top* of the others. In which case, it could be useful to set personalized `aes`thetics and customized the position of the geoms.
 
 ::: columns
 ::: {.column width="35%"}
@@ -699,7 +786,7 @@ We can set also `aes`thetics within a single `geom_*` without affecting the othe
 :::
 
 ::: callout-important
-We would like to also set the *position* of the `grom_*` we are creating. Look at the documentation to find which position are supported by your `geom_*`.
+We would like to also set the *position* of the `geom_*` we are creating.
 :::
 :::
 
@@ -720,68 +807,492 @@ linelist |>  # start from data, and than
     position = "dodge"
   )
 ```
+:::
+:::
 
-::: callout-tip
-Most common positions are `"stack"` (default, multiple bars occupying the same `x` position will be stacked atop one another ), `"dodge"` (dodged side-to-side), `"fill"` (shows relative proportions at each x by stacking the bars and then standardising each bar to have the same height)
+
+## Multiple `geom_*`etries
+
+We can also *add* multiple `geom_*`etries one *on top* of the others. In which case, it could be useful to set personalized `aes`thetics and customized the position of the geoms.
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "7-11"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  )
+  geom_bar(fill = "blue")
+```
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "7-11"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) +
+  geom_bar(fill = "blue")
+```
+
+::: callout-important
+`geom_*`s are **added** in order, so the operation is NOT commutative!
 :::
 :::
 :::
 
-## Base template
 
-Up to now, we can have a minimal set of instructions to define a base template for our plots
 
-### Global mapping from data to aesthetic
+
+## Main `position`s
+
+::: callout-important
+You use `position`s for **place** the `geom_*`s.
+:::
+
+-   `"stack"`: (default) multiple bars occupying the same `x` position will be stacked atop one another.
+
+-   `"dodge"`: dodged side-to-side.
+
+-   `"fill"`: shows relative proportions at each x by stacking the bars and then standardising each bar to have the same height.
+
+-   `"jitter"`: adds random noise to a plot making it easier to read, sometimes. 
+
+## Base template {auto-animate=true}
+
+Up to now, we can have a minimal set of instructions to define a base template for our plots.
 
 ``` r
 <DATA> |> 
   ggplot(
-    aes(<MAPPINGS>)
+    aes(<GLOBAL_MAPPINGS>)
   ) + 
-    <GEOM_FUNCTION>()
-```
-
-or
-
-### Local mapping from data to aesthetic
-
-``` r
-<DATA> |> 
-  ggplot() + 
     <GEOM_FUNCTION>(
-       aes(<MAPPINGS>)
+      aes(<LOCAL_MAPPINGS>)
     )
 ```
 
+## Base template (+ optionals) {auto-animate=true}
+
+Up to now, we can have a minimal set of instructions to define a base template for our plots.
+
 ``` r
 <DATA> |> 
-  ggplot() + 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
     <GEOM_FUNCTION>(
-       mapping = aes(<MAPPINGS>),
-       position = <POSITION> # optional
-       <AESTHETIC> = <CONSTANT> # optional
+      aes(<LOCAL_MAPPINGS>),
+      position = <LOCAL_POSITION> # optional
+      <AESTHETIC> = <LOCAL_CONSTANT> # optional
     )
 ```
 
-## Customize metadata: primary labels
+::: callout-important
+Local `aes`thetic mappings overwrite the global ones!
+:::
 
-## Customize metadata:
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Open the script `07-ggplot.R` and follow the instruction step by step to create a plot.
+
+> Using the data provided, think of a simple plot, and build it mapping data to the right aestetics, and adding the right `geom_*`. 
+
+2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex11`.
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
 
 ## Facets
 
-## Theme: data Vs. Meta-data
+We can then stratify our plot by the levels of one or two discrete data in our data set, creating distinct plot with the data for each class, displyed in distinct facets..
 
-When plotting data
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "12-14"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  )
+```
+
+::: callout-important
+`facet_grid` forms a matrix of panels defined by row and column faceting variables.
+:::
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "12-14"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  )
+```
+
+::: callout-tip
+`facet_grid` is most useful when you have two discrete variables, and all combinations of the variables exist in the data. If you have only one variable with many levels, try `?facet_wrap`.
+:::
+:::
+:::
+
+## Customize metadata: primary labels
+
+Now we can start to make it nicer, adding and improving some text and label, as the title, axis and legend labels, and a caption.
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "15-24"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  )
+```
+
+::: callout-important
+`facet_grid` forms a matrix of panels defined by row and column faceting variables.
+:::
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "15-24"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  )
+
+```
+
+::: callout-tip
+`facet_grid` is most useful when you have two discrete variables, and all combinations of the variables exist in the data. If you have only one variable with many levels, try `?facet_wrap`.
+:::
+:::
+:::
+
+
+
+## Theme
+
+Many other options we can finally consider to fine tune the appearance of our plot. 
+
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "25-28"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top"
+  )
+
+```
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "25-28"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  ) + 
+  theme_minimal() +
+  theme(
+    legend.position = "top"
+  )
+
+```
+
+:::
+:::
+
+
+## Themes: showcase
+Theme customiz parameters are quite much, here we report a representation of a number of them.
+
+![Theme Elements Reference Sheet by [Isabella Benabaye](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)](img/ggplot2-theme-elements-reference-v2.png)
+
+## A more complete template
+
+We can finally have a bigger set of instructions to define a more exhaustive template for our plots.
+
+``` r
+<DATA> |> 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
+    <GEOM_FUNCTION>(
+      aes(<LOCAL_MAPPINGS>),
+      position = <LOCAL_POSITION>
+      <AESTHETIC> = <LOCAL_CONSTANT>
+    ) +
+    <FACET_FUNCTION> +
+    labs(
+      ## aesthetics
+      <AES_NAME> = "<TEXT>"
+      
+      ## meta-data
+      <METADATA_NAME> = "<TEXT>"
+    ) +
+    <THEME>()
+```
 
 ## Saving plots
+
+To save a ggplot on your disk, you can call teh function `ggsave`. Many kind of output are supported.
+
+```{r}
+#| eval: false
+#| output-location: default
+cases_dates_by_grp_cls <- linelist |> 
+  ggplot(
+    aes(
+      # ...
+    )
+  ) + 
+  geom_bar(
+      # ...
+  ) + 
+  facet_grid(
+      # ...
+  ) + 
+  labs(
+    ## aesthetics
+      # ...
+    ## metadata
+      # ...
+  ) + 
+  theme(
+      # ...
+  )
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+cases_dates_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.png")
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+dist_cases_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.jpeg")
+
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+dist_cases_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.pdf")
+```
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Open again the script `07-ggplot.R` and improve your plot `facet_*`ing it, including `?labs` and customized somehow the `?theme`.
+
+2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex12`. Next, save it in a file format of your choice, and send the file inthe Teams chat.
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
 
 # Homework
 
 ## Posit's RStudio Cloud Workspace
 
--   Project:
+-   Project: Day-1
 -   Instructions:
--   Script to complete:
+      - Go to: https://bit.ly/ubep-rws-website
+      - The text is the Day-1 assessment under the tab "Summative Assessments".
+-   Script to complete on RStudio: `solution.R`
 
 ## Acknowledgment
 
@@ -792,6 +1303,7 @@ To create the current lesson, we explored, used, and adapted content from the fo
 -   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science](https://r4ds.had.co.nz/)
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+-   [ ]()'s [ ](https://r.qcbs.ca/workshop03/workshop03-fr/workshop03-fr.html)
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
