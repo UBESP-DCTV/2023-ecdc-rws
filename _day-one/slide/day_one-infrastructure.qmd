@@ -1,0 +1,102 @@
+---
+title: '[Day One]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
+subtitle: "50 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  results = "hold"
+)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+- What is an RStudio project?
+- Why using RStudio projects helps?
+- How works the `{here}` package, and why it is useful in combiantion with RStudio projects.
+- What is an library of R packages, and how many of them we (can) have on a system?
+- What is `{renv}`, and why it is crucial for mid- long-term projects?
+- How can we activate and use `{renv}` on our R projects?
+- Why organize a project in standard folders?
+- What can be a suitable standard project folder organization?
+
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+- Activate, restore, a work on an RStudio projects.
+- Use the `{here}` package and its `?here::here` function to find files and folders within a project.
+- Describe the difference from a library and a package, in R.
+- Describe the purpose of the `{renv}` package/system.
+- Create a project powered by `{renv}`, both from RStudio IDE and using `?renv::init`
+- Use the main three instructions in `{renv}`, i.e., `?renv::status`, `?renv::snapshot`, and `?renv::restore`
+- Organize a project in folder, in particular understand and be able to use the standard structure of (`renv/`) `R/`, `data-raw/`, and `data/`, with optional folders for `analyses/`, and `dev/`.
+- Understand the role, and don't be scared, of additional folders like `tests`.
+
+
+:::
+:::
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+-   Project: Day-1
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-1 assessment under the tab "Summative Assessments".
+-   Script to complete on RStudio: `solution.R`
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Carpentrie](https://carpentries.org/)'s [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
+-   [Carpentrie](https://carpentries.org/)'s [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
+-   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science](https://r4ds.had.co.nz/)
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Hadley Wickham](https://hadley.nz/)'s [Tidyverse style guide](https://style.tidyverse.org/index.html)
+-   [Hadley Wickham]()'s [answer](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7) to why `+` in `{ggplot2}` instead of *standard* pipe.
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References

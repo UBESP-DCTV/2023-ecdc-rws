@@ -99,32 +99,37 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[30'\] Recap & Solutions
 :::
 
-### 3. \[120'\] Pipe(s) and visualization [^2]
+### 3a. \[90'\] Pipe(s) and visualization [^2]
 
 -   \[15'\] Intro to data analysis cycle loop
 
 -   \[20'\] Function composition and pipes
 
--   \[105'\] Intro to `{ggplot2}`
+-   \[55'\] Intro to `{ggplot2}`
 
     -   \[10'\] Tidy data, and the layered grammar of graphics.
 
     -   \[45'\] Base template (data, aesthetics, and geometries)
-
-    -   \[10'\] Labels
-    
-    -   \[10'\] Facets
-    
-    -   \[15'\] Themes and other components
-    
-    -   \[15'\] Saving plots
 
 
 ::: {.callout-note appearance="minimal"}
 \[20'\] `BREAK`{=html}
 :::
 
-### 4. \[60'\] Import
+### 3b. \[50'\] Pipe(s) and visualization [^2]
+
+-   \[50'\] Intro to `{ggplot2}`
+
+    -   \[15'\] Labels
+    
+    -   \[10'\] Facets
+    
+    -   \[15'\] Themes and other components
+    
+    -   \[10'\] Saving plots
+
+
+### 4. \[40'\] Import
 
 -   \[20'\] Base and Tidy, and `rio`[^4] [^5]
 
