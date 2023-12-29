@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="day_one-infrastructure_files/libs/revealjs/dist/theme/quarto.css">
 <link href="day_one-infrastructure_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -321,7 +386,8 @@
       margin-right: 0; 
     }
   </style>
-<link href="day_one-infrastructure_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<link href="day_one-infrastructure_files/libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+<script src="day_one-infrastructure_files/libs/countdown-0.4.0/countdown.js"></script><link href="day_one-infrastructure_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="day_one-infrastructure_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
 <body class="quarto-light">
@@ -346,7 +412,7 @@
 <li>What is an RStudio project?</li>
 <li>Why using RStudio projects helps?</li>
 <li>How works the <a href="https://here.r-lib.org/">here</a> package, and why it is useful in combiantion with RStudio projects.</li>
-<li>What is an library of R packages, and how many of them we (can) have on a system?</li>
+<li>What is a library (and a repository) of R packages, and how many of them we (can) have on a system?</li>
 <li>What is <a href="https://rstudio.github.io/renv/">renv</a>, and why it is crucial for mid- long-term projects?</li>
 <li>How can we activate and use <a href="https://rstudio.github.io/renv/">renv</a> on our R projects?</li>
 <li>Why organize a project in standard folders?</li>
@@ -357,19 +423,204 @@
 <h4 id="to-be-able-to">To be able to</h4>
 <ul>
 <li>Activate, restore, a work on an RStudio projects.</li>
-<li>Use the <a href="https://here.r-lib.org/">here</a> package and its <code><a href="https://here.r-lib.org//reference/here.html">?here::here</a></code> function to find files and folders within a project.</li>
+<li>Use the <a href="https://here.r-lib.org/">here</a> package to find files and folders within a project.</li>
 <li>Describe the difference from a library and a package, in R.</li>
-<li>Describe the purpose of the <a href="https://rstudio.github.io/renv/">renv</a> package/system.</li>
-<li>Create a project powered by <a href="https://rstudio.github.io/renv/">renv</a>, both from RStudio IDE and using <code><a href="https://rstudio.github.io/renv/reference/init.html">?renv::init</a></code>
+<li>Create a project powered by <a href="https://rstudio.github.io/renv/">renv</a>
 </li>
-<li>Use the main three instructions in <a href="https://rstudio.github.io/renv/">renv</a>, i.e., <code><a href="https://rstudio.github.io/renv/reference/status.html">?renv::status</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">?renv::snapshot</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">?renv::restore</a></code>
+<li>Use <code><a href="https://rstudio.github.io/renv/reference/init.html">?renv::init</a></code>, <code><a href="https://rstudio.github.io/renv/reference/status.html">?renv::status</a></code>, <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">?renv::snapshot</a></code>, and <code><a href="https://rstudio.github.io/renv/reference/restore.html">?renv::restore</a></code>
 </li>
-<li>Organize a project in folder, in particular understand and be able to use the standard structure of (<code>renv/</code>) <code>R/</code>, <code>data-raw/</code>, and <code>data/</code>, with optional folders for <code>analyses/</code>, and <code>dev/</code>.</li>
-<li>Understand the role, and don’t be scared, of additional folders like <code>tests</code>.</li>
+<li>Organize a project in folder, in particular understand and be able to use the standard structure of (<code>renv/</code>) <code>R/</code>, <code>data-raw/</code>, and <code>data/</code>, with optional folders for <code>analyses/</code>, and <code>dev/</code>
+</li>
 </ul>
 </div>
 </div>
-</section></section><section><section id="homework" class="title-slide slide level1 center"><h1>Homework</h1>
+</section></section><section id="rrstudio-projects" class="title-slide slide level1 center"><h1>R/RStudio projects</h1>
+
+</section><section><section id="renv" class="title-slide slide level1 center"><h1><code>{renv}</code></h1>
+
+</section><section id="glossario" class="slide level2"><h2>Glossario</h2>
+<ul>
+<li><p><strong>Package</strong>: a container for functions and data</p></li>
+<li><p><strong>Library</strong>: a folder on a computer in which installed packages are stored</p></li>
+<li><p><strong>Repository</strong>: a source of packages (often on Internet)</p></li>
+</ul></section><section id="repositories" class="slide level2"><h2>Repositories</h2>
+<p>Most common repository is <a href="https://cran.r-project.org/">CRAN</a> (The Comprehensive R Archive Network) from which you can install packages from any R session by <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>.</p>
+<p>Other repositories are:</p>
+<ul>
+<li>
+<a href="https://bioconductor.org/">Bioconductor</a>: focused on open source software for bioinformatics.</li>
+<li>
+<a href="https://packagemanager.posit.co/">Posit Public Package Manager</a>: current and snapshot versions of R and Python packages.</li>
+<li>
+<a href="https://r-universe.dev/search/">R Universe</a>: high-performance package server which turns GitHub organizations into repositories.</li>
+</ul>
+<div class="column" style="width:50%;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Call <code>getOption("repos")</code> to know which repository are you using in the session you are.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">getOption</span>(<span class="st">"repos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>    CRAN 
+"@CRAN@" </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="libraries" class="slide level2"><h2>Libraries</h2>
+<ul>
+<li><p>System: shared across all users and projects</p></li>
+<li><p>User: shared by all the user projects</p></li>
+<li><p>Project: powered by <a href="https://rstudio.github.io/renv/">renv</a>, is the project its own independent collection of packages</p></li>
+</ul>
+<div class="column" style="width:50%;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Call <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> to know which library are you using in the session you are.</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">.libPaths</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/corra/Documents/GitHub/ubep/2023-ecdc-rws/_day-one/renv/library/R-4.3/x86_64-w64-mingw32"
+[2] "C:/Program Files/R/R-4.3.2/library"                                                               </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="create-projects-powered-by-renv" class="slide level2"><h2>Create projects powered by <code>{renv}</code>
+</h2>
+<p>To create a project powered by <a href="https://rstudio.github.io/renv/">renv</a> you can simply tick the corresponding option in RStudio at creation time.</p>
+
+<img data-src="img/rstudio-renv.png" class="r-stretch"></section><section id="convert-projects-to-use-renv" class="slide level2"><h2>Convert projects to use <code>{renv}</code>
+</h2>
+<p>To convert an existing project to use <a href="https://rstudio.github.io/renv/">renv</a> call <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code>.</p>
+<p>This creates:</p>
+<ul>
+<li><p>A <code>renv/library</code> folder that will be the projects library containing all the packages used within the project</p></li>
+<li><p><code>renv.lock</code> file which is the current package inventory of your projects, storing metadata of project used packages so that anyone can re-install them all (with exact the same version) on any other machine.</p></li>
+<li><p>A project dedicated <code>.Rprofile</code>; which is an R script that is automatically run at every R start, just before to giving you the power to interact with the R session, and it is used by <a href="https://rstudio.github.io/renv/">renv</a> to configure the project library in the current session.</p></li>
+</ul></section><section id="the-renv-main-workflow" class="slide level2"><h2>The <code>{renv}</code> main workflow</h2>
+
+<img data-src="img/renv-workflow.png" class="r-stretch quarto-figure-center"><p class="caption">The renv workflow</p><ol start="0" type="1">
+<li>
+<code>init()</code>: setup the <a href="https://rstudio.github.io/renv/">renv</a> infrastructure</li>
+<li>
+<code>install()</code>/<code><a href="https://rdrr.io/r/stats/update.html">update()</a></code>/<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>: install/update packages</li>
+<li>
+<code>snapshot()</code>: update the <code>renv.lock</code> file writing metadata about the current state of the project library</li>
+<li>
+<code>restore()</code>: restore the library accordingly to the what is prescribed in the <code>renv.lock</code> file</li>
+</ol>
+<blockquote>
+<p><code>status()</code>: check for differences between the <code>renv.lock</code> file and the packages installed in the project library.</p>
+</blockquote>
+</section><section id="renv-cache" class="slide level2"><h2>
+<code>{renv}</code> cache</h2>
+<p>Every <a href="https://rstudio.github.io/renv/">renv</a> projects starts with an empty library (there is only the <a href="https://rstudio.github.io/renv/">renv</a> package itself).</p>
+<p>Working on many projects you will probably use same packages on different projects, so you will need to install them multiple times!</p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Installing a package means:</p>
+<ul>
+<li>download it from a repository</li>
+<li>install (put) it in the project library</li>
+</ul>
+<p>every time…</p>
+<p>That is manage efficiently by a <a href="https://rstudio.github.io/renv/">renv</a> global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.</p>
+</div>
+</div>
+</div>
+</section><section id="your-turn" class="slide level2"><h2>Your turn</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad">https://bit.ly/ubep-rws-pad</a>)</p></li>
+<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+</ul>
+<p>…and:</p>
+<p>Follow the instructions in the pad</p>
+</div>
+</div>
+</div>
+<div class="fragment fade-out" data-fragment-index="1">
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_1b3d3f53" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment fade-in" data-fragment-index="1">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ol start="0" type="1">
+<li>
+<code>init()</code>: setup the <a href="https://rstudio.github.io/renv/">renv</a> infrastructure</li>
+<li>
+<code>install()</code>/<code><a href="https://rdrr.io/r/stats/update.html">update()</a></code>/<code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>: install/update packages</li>
+<li>
+<code>snapshot()</code>: update the <code>renv.lock</code> file writing metadata about the current state of the project library</li>
+<li>
+<code>restore()</code>: restore the library accordingly to the what is prescribed in the <code>renv.lock</code> file</li>
+</ol>
+<blockquote>
+<p><code>status()</code>: check for differences between the <code>renv.lock</code> file and the packages installed in the project library.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+</section></section><section id="folder-organization" class="title-slide slide level1 center"><h1>Folder organization</h1>
+
+</section><section><section id="homework" class="title-slide slide level1 center"><h1>Homework</h1>
 
 </section><section id="posits-rstudio-cloud-workspace" class="slide level2"><h2>Posit’s RStudio Cloud Workspace</h2>
 <ul>
