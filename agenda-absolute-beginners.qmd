@@ -133,7 +133,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[20'\] Base and Tidy, and `rio`[^4] [^5]
 
--   \[20'\] Headers, var names, and missing data
+-   \[40'\] Headers, var names, and missing data
 
 
 ::: {.callout-note appearance="minimal"}
