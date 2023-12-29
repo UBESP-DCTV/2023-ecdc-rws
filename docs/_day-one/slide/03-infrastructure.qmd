@@ -1,0 +1,626 @@
+---
+title: '[Day One]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
+subtitle: "50 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  results = "hold"
+)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   What is an RStudio project?
+-   Why using RStudio projects helps?
+-   How works the `{here}` package, and why it is useful in combiantion with RStudio projects.
+-   What is a library (and a repository) of R packages, and how many of them we (can) have on a system?
+-   What is `{renv}`, and why it is crucial for mid- long-term projects?
+-   How can we activate and use `{renv}` on our R projects?
+-   Why organize a project in standard folders?
+-   What can be a suitable standard project folder organization?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   Activate, restore, a work on an RStudio projects.
+-   Use the `{here}` package to find files and folders within a project.
+-   Describe the difference from a library and a package, in R.
+-   Create a project powered by `{renv}`
+-   Use `?renv::init`, `?renv::status`, `?renv::snapshot`, and `?renv::restore`
+-   Organize a project in folder, in particular understand and be able to use the standard structure of (`renv/`) `R/`, `data-raw/`, and `data/`, with optional folders for `analyses/`, and `dev/`
+:::
+:::
+
+# `{renv}`
+
+## Glossario
+
+::: columns
+::: {.column width="50%"}
+
+-   **Package**: a container for functions and data
+
+-   **Library**: a folder on a computer in which installed packages are stored
+
+-   **Repository**: a source of packages (often on Internet)
+
+:::
+::: {.column width="50%"}
+
+::: callout-tip
+## Reminder
+Functions and data are identified by their names (which cannot be duplicate within the same package).
+
+When you  `library()` a package you _attach_  it to the current R session. 
+
+Attaching a package to the R session, it means to make it function and data names available for you to use. I.e., you are (within the session) expanded the _language_!
+:::
+:::
+:::
+
+## Repositories
+
+The most common repository is [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network) from which you can install packages from any R session by `install.packages()`.
+
+::: columns
+::: {.column width="50%"}
+
+Other repositories are:
+
+-   [Bioconductor](https://bioconductor.org/): focused on open source software for bioinformatics.
+-   [Posit Public Package Manager](https://packagemanager.posit.co/): current and snapshot versions of R and Python packages.
+-   [R Universe](https://r-universe.dev/search/): high-performance package server which turns GitHub organizations into repositories.
+:::
+::: {.column width="50%"}
+
+::: callout-tip
+Call `getOption("repos")` to know which repository are you using in the session you are.
+
+```{r}
+getOption("repos")
+```
+:::
+:::
+:::
+
+## Libraries
+
+::: columns
+::: {.column width="50%"}
+
+-   System: shared across all users and projects
+
+-   User: shared by all the user projects
+
+-   Project: powered by `{renv}`, is the project its own independent collection of packages
+
+::: 
+::: {.column width="50%"}
+
+::: callout-tip
+Call `.libPaths()` to know which library are you using in the session you are.
+
+```{r}
+.libPaths()
+```
+:::
+:::
+:::
+
+## Create projects powered by `{renv}`
+
+To create a project powered by `{renv}` you can simply tick the corresponding option in RStudio at creation time.
+
+![](img/rstudio-renv.png)
+
+## Convert projects to use `{renv}`
+
+To convert an existing project to use `{renv}` call `renv::init()`.
+
+::: columns
+::: {.column width="50%"}
+This creates:
+
+-   A `renv/library` folder that will be the projects library containing all the packages used within the project
+
+-   `renv.lock` file which is the current package inventory of your projects, storing metadata of project used packages so that anyone can re-install them all (with exact the same version) on any other machine.
+
+-   A project dedicated `.Rprofile`; which is an R script that is automatically run at every R start, just before to giving you the power to interact with the R session, and it is used by `{renv}` to configure the project library in the current session.
+:::
+
+::: {.column width="50%"}
+![](img/renv-init.png)
+:::
+:::
+
+
+## The `{renv}` main workflow
+
+![The renv workflow](img/renv-workflow.png)
+
+0.  `init()`: setup the `{renv}` infrastructure
+1.  `install()`/`update()`/`install.packages()`: install/update packages
+2.  `snapshot()`: update the `renv.lock` file writing metadata about the current state of the project library
+3.  `restore()`: restore the library accordingly to the what is prescribed in the `renv.lock` file
+
+> `status()`: check for differences between the `renv.lock` file and the packages installed in the project library.
+
+## `{renv}` cache
+
+Every `{renv}` projects starts with an empty library (there is only the `{renv}` package itself).
+
+Working on many projects you will probably use same packages on different projects, so you will need to install them multiple times!
+
+::: callout-important
+Installing a package means:
+
+-   download it from a repository
+-   install (put) it in the project library
+
+every time...
+
+That is manage efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+
+Follow the instructions in the pad
+:::
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+0.  `init()`: setup the `{renv}` infrastructure
+1.  `install()`/`update()`/`install.packages()`: install/update packages
+2.  `snapshot()`: update the `renv.lock` file writing metadata about the current state of the project library
+3.  `restore()`: restore the library accordingly to the what is prescribed in the `renv.lock` file
+
+> `status()`: check for differences between the `renv.lock` file and the packages installed in the project library.
+:::
+:::
+
+# R/RStudio projects
+
+## Scripts - interface
+
+-   You are not required to use the interactive R console alone
+-   You can save what you type/code for future usage in scripts, i.e., simple text files containing code. If R scripts, their extension is `.R`, e.g., `my-first-script.R`.
+
+::: columns
+::: {.column width="50%"}
+![](img/rstudio-script.png)
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Strive to create scripts that are working as expected while executed as a whole from top to bottom in a new clean R session.
+:::
+:::
+:::
+
+## Scripts - shortcuts
+
+-   Create new R script with the shortcut `CTRL/CMD + SHIFT + N`
+
+-   In RStudio, you can run/execute/evaluate/send-to-R a complete chunk of code by placing the cursor wherever inside that chunk, and using the shortcut `CTRL/CMD + RETURN`.[^1]
+
+[^1]: You can use `CTRL/CMD + SHIFT + S` to run the whole script ("S" for *source*).
+
+::: columns
+::: {.column width="50%"}
+::: callout-tip
+-   New script: `CTRL/CMD + SHIFT + N`
+-   Run line/chunk of code: `CTRL/CMD + RETURN`
+-   Run selected piece/lines/blocks of code: select them and `CTRL/CMD + RETURN`
+-   Run (source) the whole script: `CTRL/CMD + SHIFT + S`
+-   Restart the R session: `CTRL/CMD + SHIFT + F10`
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+-   Always start your script attaching **all** used packages, i.e. including all the `library()` statements (Easily see which package you would need to install, and what is used to run every piece of code in the script).
+-   Never include (uncommented) `install.packages()` statements in a script (especially if you share it! changing other people environment can hamper the systems).
+:::
+:::
+:::
+
+## Saving and naming files and folder
+
+-   Machine readable: avoid spaces, symbols, and special characters.[^2]
+
+-   Human readable: use file names to describe what’s in the file.
+
+-   Play well with default ordering: start file names with numbers so that alphabetical sorting puts them in the order they get used.[^3]
+
+[^2]: And don’t rely on case sensitivity to distinguish files.
+
+[^3]: Use 0-leading numbers if you imagine more than ten files, e.g., use "01" instead of "1" to avoid that "11" will be ordered before "2".
+
+::: columns
+::: {.column width="50%"}
+### Common name
+
+```         
+alternative model.R
+code for exploratory analysis.r
+finalreport.qmd
+FinalReport.qmd
+fig 1.png
+Figure_02.png
+model_first_try.R
+run-first.r
+temp.txt
+```
+:::
+
+::: {.column width="50%"}
+### Better names
+
+```         
+01-load-data.R
+02-exploratory-analysis.R
+03-model-approach-1.R
+04-model-approach-2.R
+fig-01.png
+fig-02.png
+report-2022-03-20.qmd
+report-2022-04-02.qmd
+report-draft-notes.txt
+```
+:::
+:::
+
+::: callout-tip
+Spend time to write/style names and codes that make as fast as possible to understand them. You will spend *a lot* more time reading, understanding, debugging your code, files, and projects than the amount of time you will pass actually typing them. So, saving time in typing possibly more immediate and faster, but less readable code or less meaningful names is the best way to spend more time overall on projects.
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  On RStudio, create a new script with some code inside that:
+
+::: columns
+::: {.column width="50%"}
+-   attach the `{ggplot2}` package w/ `library(ggplot2)`
+-   create a variable `x`
+-   use `x` in some computation, and store the result in another variable `res`
+-   save your script
+:::
+
+::: {.column width="50%"}
+-   copy-paste your script in the pad, reporting the value of `res`
+-   take any other script from one of your colleagues and run it
+-   write in the pad what is the value you obtained
+:::
+:::
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+-   From a well designed script and data, all the environmental objects can be recreated
+
+-   From a well created environmental set of objects, is still quite impossible to reconstruct the code used to create it!
+:::
+
+::: callout-tip
+Do not let R to save/restore your workspace (the default), start every R session with a clean environment!
+:::
+:::
+
+::: {.column width="50%"}
+![](img/rstudio-blank-slate.png)
+:::
+:::
+
+## Working directory
+
+-   Your scripts (with your data) are the *source of truth* regarding your analyses project!
+
+-   You/other can and should be able to recreate all your result from your script and data
+
+### *Where* are your analyses?
+
+-   Every R session is automatically linked to a so called *working directory*, i.e., a folder in your computer.
+
+-   Every time you as R to write/save to, read/load from your disk, R will start looking from that folder.
+
+::: callout-tips
+You can always know what is your current working directory by
+
+```{r}
+getwd()
+```
+
+Or looking at the top of your console tab in RStudio...[^4]
+
+![](img/rstudio-wd.png)
+:::
+
+[^4]: In RStudio cloud that should not that meaningful as every project is a sort of complete isolated system.
+
+## Projects
+
+With RStudio projects, R automatically set the working directory of your session at the project folder. Moreover RStudio automatically save the status of your projects script, including open tabs.
+
+So, with rstudio projects, you can
+
+::: columns
+::: {.column width="50%"}
+-   close and reopen you projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).
+
+-   run multiple R session simultaneously, each one linked to its own wordking directory, i.e. working effectively on multiple projects.
+
+-   send/store your projects out from your computer and it will still working
+:::
+
+::: {.column width="50%"}
+![](img/rstudio-project.png)
+:::
+:::
+
+## Paths
+
+::: columns
+::: {.column width="50%"}
+-   Inside projects you do not need to use (and you should never do that!) use absolute path in reading or writing files and folders.
+
+-   Absolute paths, e.g., `C:\Users\corra\Documents\GitHub\ubep\2023-ecdc-rws\_day-one\slide\` points to a specific folder in a specific computer, and will never work on other systems, or if you move your project on a different folder of the same pc
+:::
+
+::: {.column width="50%"}
+-   Inside projects you can (and you should always do that!) use relative path in reading or writing files and folders.
+
+-   Relative paths, e.g., `_day0one\slide\` point to a path relative to the current working directory, so that they always works on different PCs, or if you move your project folder on other position within your computer.
+:::
+:::
+
+On UNIX Machine (linux/mac) path are separated by slashes (e.g., `path/to/folder`), while on Windows they are separated by back-slashes (e.g., `path\to\folder`).
+
+However, in R (and many other software), the backslash has special meaning, so that if you need to write a windows-like path in R, you should type them twice every time (e.g., `path\\to\\folder`).
+
+::: callout-tip
+On the other hand, R understand and can manage both the standards in all the systems, so that, in R, you can always use the UNIX-like path, even on Windows machines.
+:::
+
+# The `{here}` package
+
+Sometimes the working directory can change with or without our control.[^5]
+
+To use `{here}` in your scripts, simply attach it!
+
+```{r}
+library(here)
+```
+
+
+::: columns
+::: {.column width="50%"}
+
+
+- `here()` function always uses project-relative paths
+  ```{r}
+  here()
+  ```
+    
+- you can compose paths without worrying about the slash/backslash to use!
+
+  ```{r}
+  here("img", "here.png")
+  ```
+:::
+::: {.column width="50%"}
+![](img/here.png)
+::: 
+
+:::
+
+[^5]: E.g., in rendering reports, the working directory while the render engine runs is set to the report script folder.
+
+
+
+# Folder organization
+
+## Folder organization
+
+Now that you:
+- have a main project folder to work inside
+- can write scripts to store code used for you analyses
+- can write/read files to/from the disk
+- can define robust path relative to the peoject main folder
+
+You are free to organize and move your scripts and data in well designed folder structures
+
+::: callout-tip
+Some of the standard R folders are:
+- `data-raw/`: to store raw data, the original ones _they_ send us
+- `data/`: processed data we will use into our analyses
+- `R/`: a folder to store custom functions source code only (advanced topic)
+:::
+
+# Suggested folder organization
+
+- `R/`: if any, custom functions defined and used within the project.
+- `data-raw/`: to store raw data, the original ones _they_ send us.
+- `data/`: processed data we will use into our analyses.
+- `analysis/`: analysis scripts.
+- `output/`: report, figure and table produced.
+
+::: callout-tip
+If you create an `R/functions.R` script into which you define custom functions, you can make them available during analyses computations including, after the `library()` calls at the top of the script, the following code:
+
+```r
+source(here("R", "functions.R"))
+```
+
+And next, you can use your custom function within the script.
+:::
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+
+- Go to: https://bit.ly/ubep-rws-website
+- Create a new project
+- Install `{renv}` and activate it
+- Install `{ggplot2}`, and `{here}` and update the `renv.lock` file
+- Create the folders `R/`, `analyses/`, `output/`
+the following code
+
+::: callout-caution
+## Your turn
+- Run the whole `analyses/analysis.R` script.
+- Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad) (https://bit.ly/ubep-rws-pad).
+:::
+::: 
+
+::: {.column width="50%"}
+- Within the `R/` folder, create a script named `functions.R` and type in 
+```r
+make_plot <- function() {
+  ggplot2::ggplot(
+    mtcars,
+    ggplot2::aes(x = cyl, y = mpg)
+  ) +
+  ggplot2::geom_point()
+}
+```
+
+- within the `analyses/` folder, create a script `analysis.R` including the following code
+
+```r
+library(here)
+library(ggplot2)
+
+source(here("R", "functions.R"))
+
+plot <- make_plot()
+
+ggsave(
+  plot,
+  here("output", "plot.png")
+)
+```
+:::
+:::
+
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+-   [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) website.
+
+- [`{here}`](https://here.r-lib.org/) website
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+- [Jenny Brian](https://jennybryan.org/about/)'s [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) 
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References
