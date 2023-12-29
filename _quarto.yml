@@ -5,6 +5,7 @@ project:
     - "_day-one/assessment/"
     - "_day-one/slide/"
     - "_day-two/assessment/"
+    - "_day-two/slide/"
     - "_day-three/assessment/"
     - "_day-four/assessment/"
     - "_motivating-example/"
@@ -40,6 +41,8 @@ website:
         href: deliverables.qmd
       - text: Personas
         href: personas.qmd
+      - text: Agenda
+        href: "agenda-absolute-beginners.qmd"
   page-footer:
     left: ''
     center: |

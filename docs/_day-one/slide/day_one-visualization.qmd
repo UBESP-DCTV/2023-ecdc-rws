@@ -1303,7 +1303,7 @@ To create the current lesson, we explored, used, and adapted content from the fo
 -   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science](https://r4ds.had.co.nz/)
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
--   [ ]()'s [ ](https://r.qcbs.ca/workshop03/workshop03-fr/workshop03-fr.html)
+-   [qcbs](https://qcbs.ca/)'s [Introduction à `ggplot2`](https://r.qcbs.ca/workshop03/)
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 

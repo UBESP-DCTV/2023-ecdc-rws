@@ -1904,7 +1904,7 @@ A **package** is a container of functions and data sets.
 A **library** is a folder in your computer that store packages. They can be of three type:
 
 ::: foo-to-separate-the-list-from-the-below-columns
-1.  project (may exists)
+1.  project (may exists, powered by `{renv}` package... we will see that)
 2.  user (may exists)
 3.  system (always exists)
 :::
@@ -1962,7 +1962,11 @@ help(package = "tibble")
 ::: callout-important
 *Install* a package means store its R executable code in one of the libraries.<br>*Attach* a package means be able to use its functions and dataset within the current R session.
 
-You need to **install** a package you want to use once only (plus updates or if you need it inside multiple libraries).<br>You need to **attach** a package you want to use anytime you start a new R session.
+You need to **install** a package you want to use once only (plus updates or if you need it inside multiple libraries).<br>Anytime you (re)start an R session, you need to **attach** packages you want to use.
+
+Functions and data are identified by their names (which cannot be duplicate within the same package).
+
+Attaching a package to an R session, it means to make its function and data names available for you to call/use. I.e., you have expanded the _language_ (within the session)!
 :::
 
 ## Your turn

@@ -6,13 +6,13 @@ embed-resources: true
 
 ## Intro
 
-The course will alternate between face-to-face presentations and quick, continuous exercises (1 minute each) on the covered micro-topics.
+The course will alternate between face-to-face presentations and quick, continuous exercises (1-5 minute each) on the covered micro-topics.
 
-Once participants complete a valuable set of micro-topics, they will engage in hands-on exercises, possibly in five groups of three (different for each activity), in a Zoom breakout room (5 to 10 minutes). Each exercise offers an opportunity to apply what they have learned independently. Next, one group will present its solution to foster a collaborative discussion. Finally, the instructor will provide the "official" answer to the challenge. That not only offers a comparative learning experience but also sets the stage for the next topic. Each new chapter begins in a collaborative environment, with the official solution to the previous challenge implemented, ensuring a smooth transition and cohesive learning path.
+Once participants complete a valuable set of micro-topics, they will engage in hands-on exercises. Each exercise offers an opportunity to apply what they have learned independently. Finally, the instructor will provide the "official" answer to the challenge. That not only offers a comparative learning experience but also sets the stage for the next topic. Each new chapter begins in a collaborative environment, with the official solution to the previous challenge implemented, ensuring a smooth transition and cohesive learning path.
 
-At the end of each day, participants will have the option to tackle an exercise covering the day's topics; the solution will be discussed and presented in the first half-hour of the next class.
+At the end of each day, participants will have the option to tackle an longer hands-on exercise covering the day's topics; the solution will be discussed and presented in the first half-hour of the next class.
 
-At the end of the course, we suggest a comprehensive exercise to be done independently at home. We will send a questionnaire to participants one month later to assess the retention of the concepts presented in the course.
+At the end of the course, we will suggest a comprehensive exercise to be done independently at home. We will send a questionnaire to participants one month later to assess the retention of the concepts presented in the course.
 
 The whole course will be conducted using the R programming languages [@R-base], and it will introduce the main **Tidyverse** [@tidyverse2019] R-package ecosystem and philosophy for a uniform, composable, functional, and human-first design utilities to do data science. In particular, the following packages will be introduced and used during the course:
 
