@@ -37,7 +37,8 @@ library(countdown)
 ::: {.column width="50%"}
 ### Questions
 
--   
+- How data can be imported from files on disk?
+- How basic data import issues can be assessed?
 :::
 
 ::: {.column width="50%"}
@@ -45,7 +46,13 @@ library(countdown)
 
 #### To be able to
 
--   
+- Know basics of base R `?read.csv`, and `?write.csv`.
+- Know basics of `?readr::read_csv`, and `?readr::write_csv`.
+- Know basics of `{heaven}` package.
+- Working with `?rio::import`, and `?rio::export`.
+- Mange presence/absence/multiple-empty header lines in source data.
+- Select best data variable/column names for working with code
+- Handle missing data (including empty rows and columns).
 :::
 :::
 
