@@ -17,3 +17,13 @@ requireNamespace("skimr")
 
 # GitHub ----------------------------------------------------------
 requireNamespace("countdown")
+
+
+# optional
+requireNamespace("arrow")
+requireNamespace("hexView")
+requireNamespace("fst")
+requireNamespace("pzfx")
+requireNamespace("rmatio")
+requireNamespace("readODS")
+requireNamespace("qs")
