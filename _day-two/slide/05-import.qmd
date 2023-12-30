@@ -46,6 +46,7 @@ library(countdown)
 
 #### To be able to
 
+- Read tabular data from a file into R.
 - Know basics of base R `?read.csv`, and `?write.csv`.
 - Know basics of `?readr::read_csv`, and `?readr::write_csv`.
 - Know basics of `{heaven}` package.
@@ -56,13 +57,98 @@ library(countdown)
 :::
 :::
 
-# Import
+# R Import/Export
+
+## Data file
+
+For doing real data analyses, we need to interact with the _external_ world with data. Reading and writing them.
+
+Mainly, we will work with the so-called rectangular data. I.e., information that can be organized in a tables:
+
+- all columns (AKA variables) have the same number of rows.
+- all rows (AKA observations) have the same number of columns
+- each data value correspond to a single row-column pair within the table.
+
+
+![](img/tidy-data-R4DS.png)
+
+
+## Plain Vs. non-plain text data
+
+Tabular data can be (quite always) saved as a plain text, readable by anyone, on every computer. 
+
+::: columns
+::: {.column width="50%"}
+
+Most common plain-text tabular data file format is "CSV", i.e., Comma-Separated Value.
+
+```csv
+id,age,weigth,
+1,47,80,
+2,51,76,
+3,27,92
+```
+
+File extension for this kind of file is `.csv` (e.g., `data.csv`)
+
+::: {.fragment .fade-in}
+::: callout-warning
+In EU, we use a comma to separate decimal digits instead of a dot. For this reason, it would be ambiguous to use comma to separate field in CSV, which must use quotes in those cases. For this reason, there is an alternative version of CSV, called CSV2 (using the same file extension `.csv`!!) which uses a semicolon to separate fields and can use comma for numbers.
+
+::: columns
+::: {.column widht="50%"}
+
+CSV
+```csv
+id,age,weigth,
+1,47,"80,4",
+2,51,"76,3",
+3,27,92
+```
+:::
+
+::: {.column widht="50%"}
+CSV2
+```csv
+id;age;weigth;
+1;47;80,4;
+2;51;76,3;
+3;27;92
+```
+:::
+:::
+
+:::
+:::
+
+:::
+::: {.column width="50%"}
+
+On the other hand, it could be difficult to collect data in plain text, and often they are collected by other software, e.g., Excel, in non-plain text format.
+
+![](img/excel-data.png)
+
+File extension for this kind of file is `.xlsx` (e.g., `data.xlsx`)
+
+:::
+:::
 
 ## Base R
 
+
+
 ## Tidyverse
 
+
+
 ## `{rio}`
+
+::: callout-tip
+In R exist different naming convention for reading data. Tidyverse use consistently `read_*` (e.g., `read_csv`, `read_rds`) and `write_*` (e.g., `write_csv`, `write_rds`), where `*` is the file format used. Base R an inconsistent combination of `read.*` (e.g., `read.csv`), `read*` (e.g., `readRDS`), `write.*` (e.g., `write.csv`), `write*` (e.g., `writeLines`), `load` and `save*` (e.g., `saveRDS`).
+
+We will introduce and use the `{rio}` package which use 
+:::
+
 
 # Cleaning imported data
 

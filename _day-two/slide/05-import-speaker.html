@@ -28,6 +28,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 <link rel="stylesheet" href="05-import_files/libs/revealjs/dist/theme/quarto.css">
 <link href="05-import_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -350,6 +415,7 @@
 <h3 id="lesson-objectives">Lesson Objectives</h3>
 <h4 id="to-be-able-to">To be able to</h4>
 <ul>
+<li>Read tabular data from a file into R.</li>
 <li>Know basics of base R <code><a href="https://rdrr.io/r/utils/read.table.html">?read.csv</a></code>, and <code><a href="https://rdrr.io/r/utils/write.table.html">?write.csv</a></code>.</li>
 <li>Know basics of <code><a href="https://readr.tidyverse.org/reference/read_delim.html">?readr::read_csv</a></code>, and <code><a href="https://readr.tidyverse.org/reference/write_delim.html">?readr::write_csv</a></code>.</li>
 <li>Know basics of <code>{heaven}</code> package.</li>
@@ -360,11 +426,80 @@
 </ul>
 </div>
 </div>
-</section></section><section><section id="import" class="title-slide slide level1 center"><h1>Import</h1>
+</section></section><section><section id="r-importexport" class="title-slide slide level1 center"><h1>R Import/Export</h1>
 
+</section><section id="data-file" class="slide level2"><h2>Data file</h2>
+<p>For doing real data analyses, we need to interact with the <em>external</em> world with data. Reading and writing them.</p>
+<p>Mainly, we will work with the so-called rectangular data. I.e., information that can be organized in a tables:</p>
+<ul>
+<li>all columns (AKA variables) have the same number of rows.</li>
+<li>all rows (AKA observations) have the same number of columns</li>
+<li>each data value correspond to a single row-column pair within the table.</li>
+</ul>
+
+<img data-src="img/tidy-data-R4DS.png" class="r-stretch"></section><section id="plain-vs.-non-plain-text-data" class="slide level2"><h2>Plain Vs. non-plain text data</h2>
+<p>Tabular data can be (quite always) saved as a plain text, readable by anyone, on every computer.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Most common plain-text tabular data file format is “CSV”, i.e., Comma-Separated Value.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>id,age,weigth,</span>
+<span id="cb1-2"><a href="#cb1-2"></a>1,47,80,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>2,51,76,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>3,27,92</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>File extension for this kind of file is <code>.csv</code> (e.g., <code>data.csv</code>)</p>
+<div class="fragment fade-in">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>In EU, we use a comma to separate decimal digits instead of a dot. For this reason, it would be ambiguous to use comma to separate field in CSV, which must use quotes in those cases. For this reason, there is an alternative version of CSV, called CSV2 (using the same file extension <code>.csv</code>!!) which uses a semicolon to separate fields and can use comma for numbers.</p>
+<div class="columns">
+<div class="column" data-widht="50%">
+<p>CSV</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>id,age,weigth,</span>
+<span id="cb2-2"><a href="#cb2-2"></a>1,47,"80,4",</span>
+<span id="cb2-3"><a href="#cb2-3"></a>2,51,"76,3",</span>
+<span id="cb2-4"><a href="#cb2-4"></a>3,27,92</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" data-widht="50%">
+<p>CSV2</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource csv number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>id;age;weigth;</span>
+<span id="cb3-2"><a href="#cb3-2"></a>1;47;80,4;</span>
+<span id="cb3-3"><a href="#cb3-3"></a>2;51;76,3;</span>
+<span id="cb3-4"><a href="#cb3-4"></a>3;27;92</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p>On the other hand, it could be difficult to collect data in plain text, and often they are collected by other software, e.g., Excel, in non-plain text format.</p>
+<p><img data-src="img/excel-data.png"></p>
+<p>File extension for this kind of file is <code>.xlsx</code> (e.g., <code>data.xlsx</code>)</p>
+</div>
+</div>
 </section><section id="base-r" class="slide level2"><h2>Base R</h2>
 </section><section id="tidyverse" class="slide level2"><h2>Tidyverse</h2>
 </section><section id="rio" class="slide level2"><h2><code>{rio}</code></h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>In R exist different naming convention for reading data. Tidyverse use consistently <code>read_*</code> (e.g., <code>read_csv</code>, <code>read_rds</code>) and <code>write_*</code> (e.g., <code>write_csv</code>, <code>write_rds</code>), where <code>*</code> is the file format used. Base R an inconsistent combination of <code>read.*</code> (e.g., <code>read.csv</code>), <code>read*</code> (e.g., <code>readRDS</code>), <code>write.*</code> (e.g., <code>write.csv</code>), <code>write*</code> (e.g., <code>writeLines</code>), <code>load</code> and <code>save*</code> (e.g., <code>saveRDS</code>).</p>
+<p>We will introduce and use the <a href="https://github.com/gesistsa/rio">rio</a> package which use</p>
+</div>
+</div>
+</div>
 </section></section><section><section id="cleaning-imported-data" class="title-slide slide level1 center"><h1>Cleaning imported data</h1>
 
 </section><section id="headers" class="slide level2"><h2>Headers</h2>

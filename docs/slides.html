@@ -10,7 +10,7 @@
 <meta name="author" content="Ileana Baldi">
 <meta name="author" content="Dario Gregori">
 
-<title>UBEP R-Tidyverse Course to ECDC</title>
+<title>UBEP R-Tidyverse Course to ECDC - Slides</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,6 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
@@ -70,21 +71,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="UBEP R-Tidyverse Course to ECDC">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/img/UBEP.png">
+<meta property="og:title" content="UBEP R-Tidyverse Course to ECDC - Slides">
+<meta property="og:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site_name" content="2023-ecdc-rws">
 <meta property="og:locale" content="en_US">
-<meta property="og:image:height" content="176">
-<meta property="og:image:width" content="146">
-<meta property="og:image:alt" content="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
-<meta name="twitter:title" content="UBEP R-Tidyverse Course to ECDC">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/img/UBEP.png">
+<meta name="twitter:title" content="UBEP R-Tidyverse Course to ECDC - Slides">
+<meta name="twitter:image" content="https://ubesp-dctv.github.io/2023-ecdc-rws/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:creator" content="@CorradoLanera">
-<meta name="twitter:image-height" content="176">
-<meta name="twitter:image-width" content="146">
-<meta name="twitter:image:alt" content="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -109,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -125,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Agenda</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./slides.html"> 
+    <a class="nav-link active" href="./slides.html" aria-current="page"> 
 <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
@@ -146,27 +139,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link" data-scroll-target="#course-content">Course content</a></li>
-  <li><a href="#time-frame" id="toc-time-frame" class="nav-link" data-scroll-target="#time-frame">Time frame</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="img/UBEP.png" alt="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)" class="about-image
-  rounded " style="width: 20em;" title="UBEP: Unit of Biostatistics, Epidemiology, and Public Health - University of Padova (ITALY)">
+<main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">UBEP R-Tidyverse Course to ECDC</h1>
+<h1 class="title">Slides</h1>
 </div>
+
+
 <div class="quarto-title-meta-author">
   <div class="quarto-title-meta-heading">Authors</div>
   <div class="quarto-title-meta-heading">Affiliation</div>
+  
     <div class="quarto-title-meta-contents">
     <p class="author">Corrado Lanera <a href="mailto:corrado.lanera@ubep.unipd.it" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-0520-7428" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
@@ -198,48 +185,59 @@ ul.task-list li input[type="checkbox"] {
           </p>
       </div>
     </div>
+
 <div class="quarto-title-meta">
+
+      
+  
+    
   </div>
+  
+
+
 </header>
-  </div>
-  <div class="about-contents"><main class="content" id="quarto-document-content">
-
-<p><strong>Framework contract:</strong> ECDC/2023/027 “Biostatistics Services” – RS/2023/PHF/25462</p>
-<section id="objectives" class="level2">
-<h2 data-anchor-id="objectives">Objectives</h2>
-<div class="callout callout-style-simple callout-caution no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>The main objective of the present request for services is to <u><strong>provide an online R course</strong></u> (duration of 2 days, delivered in 4 different half days) for 3 different groups of 10 participants in 3 different time slots, targeting the supervisors of <a href="https://www.ecdc.europa.eu/en/epiet-euphem">EPIET/EUPHEM</a> and <a href="https://www.ecdc.europa.eu/en/training-and-tools/training-programmes/fellowships/medipiet">MediPIET</a> fellows. The training course is expected <u><strong>to cover an introduction to R for data management, analysis and visualization</strong></u>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="course-content" class="level2">
-<h2 data-anchor-id="course-content">Course content</h2>
-<p>This course will provide an introduction to R using public health examples, covering the following topics:</p>
-<ul>
-<li>About R and R basics, using RStudio projects, and tips for file organization</li>
-<li>Importing data, including with the <code>{here}</code> and <code>{rio}</code> R packages</li>
-<li>Data exploration and tidy data formats</li>
-<li>Cleaning data with <code>{tidyverse}</code> R functions</li>
-<li>Making descriptive tables with the <code>{janitor}</code>, <code>{flextable}</code>, <code>{dplyr}</code>, and <code>{gtsummary}</code> R packages, including basic statistics</li>
-<li>Basics of data visualization with <code>{ggplot2}</code>, including epidemic curves</li>
-<li>The basics of R Markdown</li>
-</ul>
-</section>
-<section id="time-frame" class="level2">
-<h2 data-anchor-id="time-frame">Time frame</h2>
-<p>The time frame for this project is estimated at 6 months. The final deliverable shall be delivered no later than 31<sup>st</sup> March 2024.</p>
 
 
-</section>
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
-</div>
- <!-- /main -->
+<!-- # Day 1 -->
+<!-- ::: panel-tabset -->
+<!-- ## Presentation -->
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/01-presentation.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ## Introduction to R -->
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/02-intro-r.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ## Infrastructure -->
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/03-infrastructure.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- # Day 2 -->
+<!-- ::: panel-tabset -->
+<!-- ## Pipe(s) & Visualization -->
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-two/slide/04-visualization.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ## Import/Export -->
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-two/slide/05-import.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -404,6 +402,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   } else {
     toggleColorMode(false);
   }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -775,7 +780,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
 <p><a href="https://www.unipd.it" class="external" target="_blank"><img src=".\img/unipd_logo.png" class="img-fluid" alt="UniPD" width="100"></a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.unipd-ubep.it" class="external" target="_blank"><img src=".\img/UBEP.png" class="img-fluid" alt="UBEP" width="50"></a> &nbsp;&nbsp;&nbsp;&nbsp;</p>
-</div>
+<div class="toc-actions"><ul><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/edit/main/slides.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/UBESP-DCTV/2023-ecdc-rws/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Copyright 2023, UBEP</p>
 </div>
