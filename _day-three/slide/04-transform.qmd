@@ -219,6 +219,144 @@ billboard |>
 [^2]: We will see regular expression in the next lesson
 
 
+## Multiple variable in colnames {auto-animate=true}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+who2
+```
+
+::: callout-tip
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
+This way you can separate them in a furhter second step...
+
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  )
+
+```
+
+:::
+:::
+
+## Multiple variable in colnames {auto-animate=true}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+who2
+```
+
+::: callout-tip
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
+This way you can separate them in a furhter second step usign `tidyr::separate`.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  ) |> 
+  separate(
+    col = diagnosis_gender_age,
+    into = c("diagnosis", "gender", "age"),
+    sep = "_"
+  )
+
+```
+
+:::
+:::
+
+
+
+
+## Multiple variable in colnames {auto-animate=true}
+
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  ) |> 
+  separate(
+    col = diagnosis_gender_age,
+    into = c("diagnosis", "gender", "age"),
+    sep = "_"
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "4,5"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = c("diagnosis", "gender", "age"), 
+    names_sep = "_",
+    values_to = "count"
+  )
+
+```
+
+::: callout-tip
+You can also separate colnames containing multiple variables, and matching a regular pattern, into multiple variable in a single step.
+:::
+
+:::
+:::
+
+
+
+
+
+
+
+## `tidyr::pivot_wider`
+
+![Image from [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)](img/pivot-wider-carpentry.png)
+
+## Reverse pivot - `tidyr::pivot_wider`
+
+
+![[Animation of tidyverse verbs](https://www.garrickadenbuie.com/project/tidyexplain/) by [Garrick Aden-Buie](https://www.garrickadenbuie.com/) ](img/tidyr-pivoting.gif)
+
+
+
+
+
 # Data management
 
 ## Select
@@ -252,6 +390,10 @@ To create the current lesson, we explored, used, and adapted content from the fo
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
 - [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
+
+- [Garrick Aden-Buie](https://www.garrickadenbuie.com/)'s [Tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+
+- [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
