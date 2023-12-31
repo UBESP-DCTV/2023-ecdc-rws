@@ -38,7 +38,12 @@ library(countdown)
 ::: {.column width="50%"}
 ### Questions
 
--   
+- What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
+- How to select some varaibles/columns only?
+- How to filter rows that match certain conditions?
+- How to modify (even create) the content of a variable?
+- How to handle dates and time in R?
+- How to handle strings in R?
 :::
 
 ::: {.column width="50%"}
@@ -46,9 +51,189 @@ library(countdown)
 
 #### To be able to
 
--   
+- Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.
+- Select/filter columns/rows of tibbles (i.e., dataframes).
+- Change content of variable programmatically, possibly ususing content from other variables.
+- convert textual date/time into date/time R objects
+- use simple regular expression to manage strings
 :::
 :::
+
+# Data shape
+
+## Tidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/tidy-data.jpg)
+
+## Untidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/untidy-data.jpg)
+
+## Why tidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/why-tidy-data.jpg)
+
+## Tidy rules
+
+There are three interrelated rules that make a dataset tidy:
+
+1. Each variable is a column; each column is a variable.
+2. Each observation is a row; each row is an observation.
+3. Each value is a cell; each cell is a single value.
+
+![](img/tidy-data-R4DS.png)
+
+## Why untidy data {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+Example: `tidyverse::billboard` dataset.[^1]
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard
+```
+:::
+
+::: {.column width="30%"}
+::: callout-warning
+
+- information in column:
+  - `wk1-wk76` should be a single variable: the week.
+  - cell values of `wk1-wk76` should be a single variable: the rank.
+:::
+:::
+:::
+
+[^1]: The billboard dataset records the billboard rank of songs in the year 2000.
+
+
+## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank"
+  )
+```
+:::
+
+::: {.column width="30%"}
+::: callout-important
+- `tidyr::pivot_longer` convert your data in "longer" fromat
+- `cols`: select which variable should be pivoting
+- `names_to`: define the column hosting the `cols` colnames
+- `values_to`: define the column hosting the `cols` values
+:::
+
+::: callout-warning
+Many possibly uninformative missing information!
+:::
+:::
+:::
+
+
+## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  )
+```
+:::
+
+::: {.column width="30%"}
+::: callout-important
+- `tidyr::pivot_longer` convert your data in "longer" fromat
+- `cols`: select which variable should be pivoting
+- `names_to`: define the column hosting the `cols` colnames
+- `values_to`: define the column hosting the `cols` values
+- `values_drop_na`: decide if rows with missing information in values should be removed
+:::
+
+:::
+:::
+
+## Selectors [^1] 
+
+-    `var1:var10`: variables lying between var1 on the left and var10 on the right.
+
+-    `starts_with("a")`: names that start with "a".
+
+-    `ends_with("z")`: names that end with "z".
+
+-    `contains("b")`: names that contain "b".
+
+-    `matches("x.y")`: names that match regular expression `x.y`. [^2]
+
+-    `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
+
+-    `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
+
+
+::: columns
+::: {.column width="50%"}
+-    `everything()`: all variables.
+
+-    `last_col()`: furthest column on the right.
+
+-    `where(is.numeric)`: all variables where is.numeric() returns TRUE.
+:::
+::: {.column width="50%"}
+
+::: callout-tip
+-    `!selection`: only variables that don't match selection.
+
+-    `selection1 & selection2`: only variables included in both selection1 and selection2.
+
+-    `selection1 | selection2`: all variables that match either selection1 or selection2
+:::
+:::
+:::
+
+[^1]: https://tidyselect.r-lib.org/reference/language.html
+[^2]: We will see regular expression in the next lesson
+
+
+# Data management
+
+## Select
+
+## Filter
+
+## Mutate
+
+# Data formats
+
+## Dates
+
+## Date-times
+
+## Strings - Regular Expressions
 
 # Homework
 
@@ -66,6 +251,7 @@ To create the current lesson, we explored, used, and adapted content from the fo
 
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
+- [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
