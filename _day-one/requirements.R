@@ -1,6 +1,9 @@
 # Dev -------------------------------------------------------------
 requireNamespace("devtools")
 requireNamespace("webshot2")
+requireNamespace("rmarkdown")
+requireNamespace("downlit")
+requireNamespace("xml2")
 
 
 # CRAN - BASE -----------------------------------------------------

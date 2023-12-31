@@ -9,7 +9,7 @@ title: "Slides"
 
 <!-- ::: center -->
 <!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/01-presentation.html" width="780" height="500"></iframe> -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe> -->
 <!-- ``` -->
 <!-- ::: -->
 
@@ -17,7 +17,7 @@ title: "Slides"
 
 <!-- ::: center -->
 <!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/02-intro-r.html" width="780" height="500"></iframe> -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe> -->
 <!-- ``` -->
 <!-- ::: -->
 
@@ -25,37 +25,45 @@ title: "Slides"
 
 <!-- ::: center -->
 <!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/03-infrastructure.html" width="780" height="500"></iframe> -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe> -->
 <!-- ``` -->
 <!-- ::: -->
 <!-- ::: -->
+
+
+
 
 <!-- # Day 2 -->
 
 <!-- ::: panel-tabset -->
-
 <!-- ## Pipe(s) & Visualization -->
 
 <!-- ::: {.center} -->
-
 <!-- ```{=html} -->
-
-<!-- <iframe class="slide-deck" src="_day-two/slide/04-visualization.html" width="780" height="500"></iframe> -->
-
+<!-- <iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe> -->
 <!-- ``` -->
-
 <!-- ::: -->
 
 <!-- ## Import/Export -->
 
 <!-- ::: {.center} -->
-
 <!-- ```{=html} -->
-
-<!-- <iframe class="slide-deck" src="_day-two/slide/05-import.html" width="780" height="500"></iframe> -->
-
+<!-- <iframe class="slide-deck" src="_day-two/slide/04-import.html"></iframe> -->
 <!-- ``` -->
-
+<!-- ::: -->
 <!-- ::: -->
 
+
+<!-- # Day 3 -->
+
+<!-- ::: panel-tabset -->
+<!-- ## Transform -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-three/slide/04-transform.html"></iframe> -->
+<!-- ``` -->
 <!-- ::: -->
+<!-- ::: -->
+
+

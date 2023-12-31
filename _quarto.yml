@@ -7,7 +7,9 @@ project:
     - "_day-two/assessment/"
     - "_day-two/slide/"
     - "_day-three/assessment/"
+    - "_day-three/slide/"
     - "_day-four/assessment/"
+    - "_day-four/slide/"
     - "_motivating-example/"
 
 
