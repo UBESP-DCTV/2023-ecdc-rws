@@ -516,6 +516,41 @@ You can have:
 :::
 :::
 
+. . . 
+
+::: columns
+::: {.column width="50%"}
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+1. List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
+
+:::
+:::
+:::
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "45%",
+  right = "5%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+
+
+
 ## Headers - skip-them-all {auto-animate="true"}
 
 We can completely skip the headers, and manually assign col names
@@ -604,7 +639,7 @@ For `{unheadr}` to work, the best option is to `rio::import` all the data withou
 ::: callout-tip
 ## Note
 
--   All the spreadsheet content is imported as data, and all columns are parsed as `characters.`
+-   All the spreadsheet content is imported as data, and all columns are parsed as `character`s.
 -   Actual column names are meaningless now, so we will set `keep_names = FALSE`.
 :::
 :::
@@ -857,6 +892,60 @@ here(
 
 
 
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `2.2. Ex17`, write (in a new line) which code will you use to perform the import as required there.
+
+2.  Then, open the script `09-clean.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+Most often you will not have to manage multi-row header nor implicit information. Depending on your data, missing information can be coded not with simple empty cells, so that you would need to set `na = c()` explicitely. On the other hand, the pattern
+
+```r
+library(rio)
+library(here)
+library(janitor)
+
+db <- here(<path>) |> 
+  import() |> 
+  clean_names() |> 
+  remove_empty(c("rows", "cols"))
+```
+
+will be quite standard anytime!
+:::
+:::
+
+
+
 # Homework
 
 ## Posit's RStudio Cloud Workspace
@@ -875,7 +964,11 @@ To create the current lesson, we explored, used, and adapted content from the fo
 
 -   [rio](https://gesistsa.github.io/rio/) package.
 
-- [unheadr](https://unheadr.liomys.mx/) package
+- [unheadr](https://unheadr.liomys.mx/) package.
+
+- [janitor](https://sfirke.github.io/janitor/) pakege.
+
+- [janitor](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) showcase
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
