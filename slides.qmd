@@ -1,0 +1,61 @@
+---
+title: "Slides"
+---
+
+<!-- # Day 1 -->
+
+<!-- ::: panel-tabset -->
+<!-- ## Presentation -->
+
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/01-presentation.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ## Introduction to R -->
+
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/02-intro-r.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+
+<!-- ## Infrastructure -->
+
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/03-infrastructure.html" width="780" height="500"></iframe> -->
+<!-- ``` -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- # Day 2 -->
+
+<!-- ::: panel-tabset -->
+
+<!-- ## Pipe(s) & Visualization -->
+
+<!-- ::: {.center} -->
+
+<!-- ```{=html} -->
+
+<!-- <iframe class="slide-deck" src="_day-two/slide/04-visualization.html" width="780" height="500"></iframe> -->
+
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ## Import/Export -->
+
+<!-- ::: {.center} -->
+
+<!-- ```{=html} -->
+
+<!-- <iframe class="slide-deck" src="_day-two/slide/05-import.html" width="780" height="500"></iframe> -->
+
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: -->

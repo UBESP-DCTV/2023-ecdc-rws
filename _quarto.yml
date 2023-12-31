@@ -43,18 +43,8 @@ website:
         href: personas.qmd
       - text: Agenda
         href: "agenda-absolute-beginners.qmd"
-      # - text: Slides
-      #   menu:
-      #     - text: "D1/01 - Presentation"
-      #       href: "_day-one/slide/01-presentation.html"
-      #     - text: "D1/02 - Intro to R"
-      #       href: "_day-one/slide/02-intro-r.html"
-      #     - text: "D1/03 - Infrastructure"
-      #       href: "_day-one/slide/03-infrastructure.html"
-      #     - text: "D2/01 - Pipes and Visualization"
-      #       href: "_day-two/slide/04-visualization.html"
-      #     - text: "D2/02 - Import"
-      #       href: "_day-two/slide/05-import.html"
+      - text: Slides
+        href: slides.qmd
   page-footer:
     left: ''
     center: |
