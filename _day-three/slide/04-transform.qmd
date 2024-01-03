@@ -1,0 +1,1048 @@
+---
+title: '[Day Three]{style="color:darkblue"}:<br>[Transform]{style="color:darkorange;"}'
+subtitle: "180 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set( 
+  echo = TRUE,
+  results = "hold"
+)
+options(width = 65)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+- What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
+- How to select some varaibles/columns only?
+- How to filter rows that match certain conditions?
+- How to modify (even create) the content of a variable?
+- How to handle dates and time in R?
+- How to handle strings in R?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+- Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.
+- Select/filter columns/rows of tibbles (i.e., dataframes).
+- Change content of variable programmatically, possibly ususing content from other variables.
+- convert textual date/time into date/time R objects
+- use simple regular expression to manage strings
+:::
+:::
+
+# Data shape
+
+## Tidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/tidy-data.jpg)
+
+## Untidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/untidy-data.jpg)
+
+## Why tidy data
+
+![Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://jules32.github.io/) and [Allison Horst](https://allisonhorst.com/allison-horst)](img/why-tidy-data.jpg)
+
+## Tidy rules
+
+There are three interrelated rules that make a dataset tidy:
+
+1. Each variable is a column; each column is a variable.
+2. Each observation is a row; each row is an observation.
+3. Each value is a cell; each cell is a single value.
+
+![](img/tidy-data-R4DS.png)
+
+## Why untidy data {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+Example: `tidyverse::billboard` dataset.[^1]
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard
+```
+:::
+
+::: {.column width="30%"}
+::: callout-warning
+
+- information in column:
+  - `wk1-wk76` should be a single variable: the week.
+  - cell values of `wk1-wk76` should be a single variable: the rank.
+:::
+:::
+:::
+
+[^1]: The billboard dataset records the billboard rank of songs in the year 2000.
+
+
+## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank"
+  )
+```
+:::
+
+::: {.column width="30%"}
+::: callout-important
+- `tidyr::pivot_longer` convert your data in "longer" fromat
+- `cols`: select which variable should be pivoting
+- `names_to`: define the column hosting the `cols` colnames
+- `values_to`: define the column hosting the `cols` values
+:::
+
+::: callout-warning
+Many possibly uninformative missing information!
+:::
+:::
+:::
+
+
+## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
+
+- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+
+::: columns
+::: {.column width="70%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  )
+```
+:::
+
+::: {.column width="30%"}
+::: callout-important
+- `tidyr::pivot_longer` convert your data in "longer" fromat
+- `cols`: select which variable should be pivoting
+- `names_to`: define the column hosting the `cols` colnames
+- `values_to`: define the column hosting the `cols` values
+- `values_drop_na`: decide if rows with missing information in values should be removed
+:::
+
+:::
+:::
+
+## Selectors [^1] 
+
+-    `var1:var10`: variables lying between var1 on the left and var10 on the right.
+
+-    `starts_with("a")`: names that start with "a".
+
+-    `ends_with("z")`: names that end with "z".
+
+-    `contains("b")`: names that contain "b".
+
+-    `matches("x.y")`: names that match regular expression `x.y`. [^2]
+
+-    `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
+
+-    `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
+
+
+::: columns
+::: {.column width="50%"}
+-    `everything()`: all variables.
+
+-    `last_col()`: furthest column on the right.
+
+-    `where(is.numeric)`: all variables where is.numeric() returns TRUE.
+:::
+::: {.column width="50%"}
+
+::: callout-tip
+-    `!selection`: only variables that don't match selection.
+
+-    `selection1 & selection2`: only variables included in both selection1 and selection2.
+
+-    `selection1 | selection2`: all variables that match either selection1 or selection2
+:::
+:::
+:::
+
+[^1]: https://tidyselect.r-lib.org/reference/language.html
+[^2]: We will see regular expression in the next lesson
+
+
+## Multiple variable in colnames {auto-animate=true}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+who2
+```
+
+::: callout-tip
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
+This way you can separate them in a furhter second step...
+
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  )
+
+```
+
+:::
+:::
+
+## Multiple variable in colnames {auto-animate=true}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+who2
+```
+
+::: callout-tip
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
+This way you can separate them in a furhter second step usign `tidyr::separate`.
+
+:::
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  ) |> 
+  separate(
+    col = diagnosis_gender_age,
+    into = c("diagnosis", "gender", "age"),
+    sep = "_"
+  )
+
+```
+
+:::
+:::
+
+
+
+
+## Multiple variable in colnames {auto-animate=true}
+
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "7-11"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = "diagnosis_gender_age", 
+    values_to = "count"
+  ) |> 
+  separate(
+    col = diagnosis_gender_age,
+    into = c("diagnosis", "gender", "age"),
+    sep = "_"
+  )
+
+```
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| output-location: default
+#| code-line-numbers: "4,5"
+who2 |> 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = c("diagnosis", "gender", "age"), 
+    names_sep = "_",
+    values_to = "count"
+  )
+
+```
+
+::: callout-tip
+You can also separate colnames containing multiple variables, and matching a regular pattern, into multiple variable in a single step.
+:::
+
+:::
+:::
+
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Answer in the pad, with an "x" next to the correct answers. What are the main option for `pivot_longer`?
+
+::: columns
+::: {.column width="50%"}
+- `names_from`
+- `names_to`
+:::
+
+::: {.column width="50%"}
+- `values_from`
+- `values_to`
+:::
+:::
+
+2.  Then, open the script `10-pivot_longer.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+To transform a table to a longer one, you need to put some of its columns `names_to` a new column, and their corresponding `values_to` another one! Possibly allowing `values_drop_na`.
+:::
+:::
+
+
+
+
+## `tidyr::pivot_wider`
+
+![Image from [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)](img/pivot-wider-carpentry.png)
+
+## Reverse pivot - `tidyr::pivot_wider`
+
+
+![[Animation of tidyverse verbs](https://www.garrickadenbuie.com/project/tidyexplain/) by [Garrick Aden-Buie](https://www.garrickadenbuie.com/) ](img/tidyr-pivoting.gif)
+
+
+## Reverse pivot - example
+
+```{r}
+library(tidyverse)
+library(janitor)
+
+bb_pivoted_twice <- billboard |> 
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank"
+  ) |>
+  pivot_wider(
+    names_from = "week",
+    values_from = "rank" 
+  )
+
+all.equal(
+  billboard |> remove_empty("cols"),
+  bb_pivoted_twice |> remove_empty("cols")
+)
+```
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Answer in the pad, with an "x" next to the correct answers. What are the main option for `pivot_wider`?
+
+::: columns
+::: {.column width="50%"}
+- `names_from`
+- `names_to`
+:::
+
+::: {.column width="50%"}
+- `values_from`
+- `values_to`
+:::
+:::
+
+2.  Then, open the script `11-pivot_wider.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+To transform a table to a wider one, you need to take new column `names_from` an existing column, and their corresponding `values_from` the associated one! Possibly with created missing `values_fill`ed.
+:::
+:::
+
+
+# Data management
+
+## `dplyr` - intro
+
+Common structure:
+
+- The first argument is always a data frame
+- The subsequent arguments typically describe which columns to operate on, using the variable names (without quotes).
+- The output is always a new data frame.
+
+::: callout-tip
+All verbs in Tidyverse are designed to do one thing mainly, and to it well! So, to solve complex problem we will often combine multiple verbs, and we use the pipe (`|>`) as we are already familiar!
+::: 
+
+## Rows - `dplyr::filter`
+
+::: callout-important
+`dplyr::filter` allows you to keep rows based on the values of the columns.
+:::
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+
+db <- here("data-raw", "Copenhagen_clean.xlsx") |> 
+  import(setclass = "tibble")
+
+db |> 
+  filter(age < 18)
+```
+
+
+## Rows - conditions
+
+We can use any kind of condition inside `dplyr::filter`; e.g., 
+
+
+### And
+```{r}
+db |> 
+  filter((age < 18) & case)
+```
+
+::: columns
+::: {.column width="50%"}
+
+::: callout-tip
+If a variable is already a logical one, you can use it directly as it is as a condition! E.g.
+
+```{r}
+#| eval: false
+db |> 
+  filter(case) ## instead of case == TRUE
+
+db |> 
+  filter(!case) ## instead of case == FALSE
+```
+
+:::
+:::
+:::
+
+## Rows - conditions
+
+We can use any kind of condition inside `dplyr::filter`; e.g., 
+
+
+### Or
+```{r}
+db |> 
+  filter(gastrosymptoms | ate_anything)
+```
+
+## Rows - conditions
+
+We can use any kind of condition inside `dplyr::filter`; e.g., 
+
+
+### In
+```{r}
+db |> 
+  filter(age %in% 19:25)
+```
+
+## Rows - conditions
+
+We can use any kind of condition inside `dplyr::filter`; e.g., 
+
+
+### Not equal
+
+```{r}
+db |> 
+  filter(group != "student")
+```
+
+
+## Rows - multiple conditions
+
+We can also combine together multiple condition of arbitrary compelxity at once
+
+```{r}
+db |> 
+  filter(!((age < 18) & case))
+```
+
+
+::: columns
+::: {.column width="50%"}
+::: callout-tip
+If a variable is already a logical one, you can use it directly as it is as a condition! E.g.
+
+```{r}
+#| eval: false
+db |> 
+  filter(case) ## instead of case == TRUE
+
+db |> 
+  filter(!case) ## instead of case == FALSE
+```
+
+:::
+:::
+
+::: {.column width="50%"}
+
+
+::: callout-tip
+It could be difficult to remind the priority order of logical operators. Using parentheses to group each conditions is a safe way to not be wrong!
+:::
+:::
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Immagine to have imported a db with a variabale `age`, and you want to keep rows with `age`  equal to 18 or 21. Before to evaluate it, does the following code return what you need? Answer in the pad, under the section `3.2. Ex20`.
+
+``` r
+library(tidyverse)
+
+db |>
+  filter(age == 18 | 21)
+```
+
+2.  Then, open the script `12-filter.R`, and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 2,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: columns
+::: {.column width="50%"}
+
+::: callout-important
+- First argument of `dplyr::filter` is always a data frame
+- Returned object of `dplyr::filter` is always a data frame
+- Original data frame won't be modified by `dplyr::filter`, never!
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-important
+- you can put arbitrary complex conditions returnign logical vectors of the same length of the number of rows of the data frame, involving any column of the data frame in use also.
+:::
+
+:::
+:::
+:::
+
+
+
+## Columns - `dplyr::select`
+
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+
+You can select the column to keep using the `dplyr::select()` verb providing:
+
+### The variables you like to keep
+
+```{r}
+library(tidyverse)
+
+db |> 
+  select(sex, age, case)
+```
+
+
+[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
+
+## Columns - `dplyr::select`
+
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+
+You can select the column to keep using the `dplyr::select()` verb providing:
+
+### A range of variables you like to keep
+
+```{r}
+library(tidyverse)
+
+db |> 
+  select(sex:class)
+```
+
+
+[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
+
+## Columns - `dplyr::select`
+
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+
+You can select the column to keep using the `dplyr::select()` verb providing:
+
+### Excludig the selection (`!`)
+
+```{r}
+library(tidyverse)
+
+db |> 
+  select(!diarrhoea:jointpain)
+```
+
+
+[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
+
+## Columns - `dplyr::select`
+
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+
+You can select the column to keep using the `dplyr::select()` verb providing:
+
+### Matching a condition - `where`
+
+```{r}
+library(tidyverse)
+
+db |> 
+  select(where(is.logical))
+```
+
+
+[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
+
+
+## Selectors [^1] 
+
+-    `var1:var10`: variables lying between var1 on the left and var10 on the right.
+
+-    `starts_with("a")`: names that start with "a".
+
+-    `ends_with("z")`: names that end with "z".
+
+-    `contains("b")`: names that contain "b".
+
+-    `matches("x.y")`: names that match regular expression `x.y`. [^2]
+
+-    `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
+
+-    `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
+
+
+::: columns
+::: {.column width="50%"}
+-    `everything()`: all variables.
+
+-    `last_col()`: furthest column on the right.
+
+-    `where(is.numeric)`: all variables where is.numeric() returns TRUE.
+:::
+::: {.column width="50%"}
+
+::: callout-tip
+-    `!selection`: only variables that don't match selection.
+
+-    `selection1 & selection2`: only variables included in both selection1 and selection2.
+
+-    `selection1 | selection2`: all variables that match either selection1 or selection2
+:::
+:::
+:::
+
+[^1]: https://tidyselect.r-lib.org/reference/language.html
+[^2]: We will see regular expression in the next lesson
+
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex21`, write (in a new line) all the possible ways you can immagine to select the variable `sex`, `age`, `group` using `dplyr::select` from our  dataframe `db` imported from `Copenhagen_clean.xlsx` .
+
+2. What do you expect the following code will return (including an error):
+
+```r
+db |>
+  select(any_of(c("age", "foo")))
+```
+
+3.  Then, open the script `13-select.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+- `all_of(vec)`  is for strict selection. If any of the variables in the character `vec` is missing, an error is thrown.
+- `any_of(vec)` doesn't check for missing variables. It is especially useful with negative selections, when you would like to make sure a variable is removed.
+:::
+:::
+
+
+
+## Mutate
+
+We can also add new columns which are calculated from existing ones.
+
+### We can use simple algebra
+
+```{r}
+library(tidyverse)
+
+db |> 
+  # select just to return few results
+  select(id, incubation) |> 
+  mutate(
+    incubation_days = incubation / 24
+  )
+```
+
+
+## Mutate
+
+We can also add new columns which are calculated from existing ones.
+
+### We can use functions on variables
+
+```{r}
+library(tidyverse)
+
+db |> 
+  # select just to return few results
+  select(id, incubation) |> 
+  mutate(
+    incubation_norm = (
+      incubation - mean(incubation, na.rm = TRUE)
+    ) / sd(incubation, na.rm = TRUE) 
+  )
+```
+
+## Mutate
+
+We can also add new columns which are calculated from existing ones.
+
+### We can use variables just created
+
+```{r}
+library(tidyverse)
+
+db |> 
+  # select just to return few results
+  select(id, age, group, class, case) |> 
+  mutate(
+    adult = (age > 18) & (
+      (group != "student") |
+      is.na(class)
+    ),
+    adult_case = adult & case
+  )
+```
+
+
+## Mutate
+
+We can also add new columns which are calculated from existing ones.
+
+### Pay attention on vecotized Vs. summary functions
+
+::: columns
+::: {.column width="75%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+sample_df <- tibble(
+  x = c(1, 5, 7),
+  y = c(3, 2, NA)
+)
+
+sample_df |> 
+  mutate(
+    # rows element-wise
+    min_vec = pmin(x, y, na.rm = TRUE),
+    max_vec = pmax(x, y, na.rm = TRUE),
+    # cols global
+    min_all = min(x, y, na.rm = TRUE),
+    max_all = max(x, y, na.rm = TRUE),
+  )
+```
+
+:::
+
+::: {.column width="25%"}
+::: callout-warning
+- **Summary** functions (e.g., `min`, `max`):
+  - Takes: vectors.
+  - Returns: a single value.
+- **Vectorized** functions  (e.g., `pmin`, `pmax`):
+  - Takes: vectors.
+  - Returns: vectors (the same length as the input).
+:::
+:::
+:::
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
+
+```r
+library(tidyverse)
+
+db |> 
+  mutate(
+  age = age * 365.25
+)
+```
+
+
+2.  Then, open the script `14-mutate.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 2,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+As all the other verbs in the Tidyverse, `dplyr::mutate`
+::: columns
+::: {.column width="50%"}
+- It takes a data frame in input, always.
+- It returns a data frame in output, always.
+:::
+::: {.column width="50%"}
+- It doesn't change it's input, never.
+:::
+:::
+:::
+:::
+
+
+
+
+# Data formats
+
+## Dates
+
+## Date-times
+
+
+## Strings - Regular Expressions
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+-   Project: Day-3
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-3 assessment under the tab "Summative Assessments".
+-   Script to complete on RStudio: `solution.R`
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+- [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
+
+- [Garrick Aden-Buie](https://www.garrickadenbuie.com/)'s [Tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+
+- [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Luis D. Verde Arregoitia](https://luisdva.github.io/) [Data Cleaning with R](https://rfortherestofus.com/courses/data-cleaning/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References
