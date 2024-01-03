@@ -11,6 +11,7 @@ title: "Slides"
 ```{=html}
 <iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe>
 ```
+[00-presentation.html](_day-one/slide/00-presentation.html)
 :::
 
 ## Introduction to R
