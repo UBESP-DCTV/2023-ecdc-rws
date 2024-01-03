@@ -2,33 +2,33 @@
 title: "Slides"
 ---
 
-<!-- # Day 1 -->
+# Day 1
 
-<!-- ::: panel-tabset -->
-<!-- ## Presentation -->
+::: panel-tabset
+## Presentation
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe> -->
-<!-- ``` -->
-<!-- ::: -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe>
+```
+:::
 
-<!-- ## Introduction to R -->
+## Introduction to R
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe> -->
-<!-- ``` -->
-<!-- ::: -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe>
+```
+:::
 
-<!-- ## Infrastructure -->
+## Infrastructure
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe> -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe>
+```
+:::
+:::
 
 
 

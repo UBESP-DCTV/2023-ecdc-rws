@@ -1,0 +1,409 @@
+---
+title: '[Day One]{style="color:darkblue"}:<br>[Introduction]{style="color:darkorange;"}'
+subtitle: "90 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    chalkboard: 
+      src: src/chalkboard-presentation.json
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE
+)
+library(tidyverse)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   Who we are?
+-   What are we going to do in the course?
+-   How is the course organized?
+-   How do you access/use the course material?
+-   R/RStudio/Tidyverse<br>Why and How?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To know the course
+
+-   Objectives and topics.
+-   Teachers and their contacts.
+
+#### To be able to do/use
+
+-   Course website and slides.
+-   Course cloud workspace.
+-   R sessions within RStudio.
+-   Basic operations in R.
+:::
+:::
+
+# Ts/TAs presentation
+
+## Corrado Lanera
+
+::: columns
+::: {.column width="30%"}
+![](img/profilo_CL.jpg){fig-align="center"}
+:::
+
+::: {.column width="70%"}
+-   Assistant professor at the Univ. of Padova - Italy.
+
+-   Responsible for the Laboratory of Artificial Intelligence for Medical Sciences.
+
+-   Rstudio [certified Instructor](https://education.rstudio.com/trainers/people/lanera+corrado/) in the Tidyverse.
+
+-   Daily working with R since 2014.
+
+-   Best citation: "The only way to go fast is to go well" - Robert *Uncle Bob* Martin.
+
+-   Contacts:
+
+    -   Mail: [corrado.lanera\@ubep.unipd.it](mailto:corrado.lanera@ubep.unipd.it)
+
+    -   GitHub, Telegram, Linkedin, X/Twitter: \@CorradoLanera.
+:::
+:::
+
+## Ileana Baldi
+
+::: columns
+::: {.column width="30%"}
+:::
+
+::: {.column width="70%"}
+:::
+:::
+
+# Course organization,<br>Teaching materials, and<br>Personalized assistance
+
+## 
+
+### Main Objective
+
+The training course is expected to cover an introduction to R for exploratory data analysis (EDA): data management, tabular descriptive analysis, and visualization.
+
+<br>
+
+::: columns
+::: {.column width="50%"}
+### Teaching Philosophy
+
+-   We are not professional programmers.
+-   We spend more time understanding rough code than writing it cleanly directly.
+-   We gain more enthusiasm from (even small) practical results than from theory.
+-   We'll learn better by doing, and cannot become professionals from beginners attending a single course.[^1]
+-   We solve problems better in groups than alone.
+:::
+
+::: {.column width="50%"}
+### So we will
+
+-   Present small pieces of concepts at a time.
+
+-   Select packages, functions, and coding styles to prioritize the ease of understanding.
+
+-   Ask you questions often and write and execute code at incremental stages of each topic.
+
+-   Assign you homework for *the* *next* lesson to discuss together.\
+    <br>
+
+-   Provide plattforms to answer and discuss collaboratively.
+:::
+:::
+
+[^1]:
+    -   The task requires 10000 hours of practice, more or less. [@wong2015]
+
+## Course organization
+
+The course will take place **virtually on Teams** every Monday and Thursday from 1:30-5:00 p.m. CET between **8-18 January** **2014** (4 half-days over two weeks)
+
+-   **Session 1:** 2024 January 08, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-1&iso=20240108T1330&p1=5654&ah=4) for your timezone).[^2]
+
+-   **Session 2:** 2024 January 11, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-2&iso=20240111T1330&p1=5654&ah=4) for your timezone).
+
+-   **Session 3:** 2024 January 15, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-3&iso=20240115T1330&p1=5654&ah=4) for your timezone).
+
+-   **Session 4:** 2024 January 18, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-4&iso=20240118T1330&p1=5654&ah=4) for your timezone).
+
+[^2]: Powered by <https://www.timeanddate.com/>
+
+## Teaching Materials & Resources
+
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| Teams' room:                                       |                                                                                                       |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| Website (agenda, slides, and assessments):         | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| RStudio cloud workspace:                           | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+| Really realtime collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
++----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+
+<br>
+
+### Assistance
+
+-   **Technical Assistance**: write on Teams chat, and a person from ECDC will contact you directly on a second Teams meeting (if your Teams doesn't work, write on the pad's chat)
+-   **Rstudio Cloud Assistance:** write on Teams chat, and a person from UBEP will contact you directly on a second Teams meeting
+-   **Coding issues and questions**: feel free to discuss and collaborate on the pad's chat
+
+## Slides
+
+-   From the website, you can access the slides of the day and navigate them independently
+
+-   You can follow and navigate the presentation slides on your phone, tablet, or laptop from the web. When the presenter changes slides in their screen-shared (master) presentations, everyone will follow and see the same content on their device.
+
+::: {.center style="margin:auto; width:50%;"}
+```{=html}
+<iframe width="780" height="500" src="https://ubesp-dctv.github.io/2023-ecdc-rws/_day-one/slide/day_one-presentation.html#/lessons-organization" title="UBEP's R Training for supervisors - Day-1"></iframe>
+```
+:::
+
+## Posit Cloud
+
+-   A fully functional RStudio IDE on the cloud.
+
+-   Free for you to use within the course workspace.[^3]
+
+-   Once you join the workspace, you can enter the R project provided for the day.
+
+-   The environment is already set for you
+
+[^3]: You need a free account to join workspaces. If you did't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio).
+
+## Suggested screen layout
+
+::: columns
+::: {.column width="35%"}
+1.  Your free-to-explore slides
+2.  Teams:
+    1.  Shared screen
+    2.  Speaker view
+    3.  Chat (assistance & reactions)
+3.  RStudio Cloud
+4.  Real-time collaborative pad:
+    1.  Exercise
+    2.  Comments
+    3.  Chat (your discussion place)
+:::
+
+::: {.column width="65%"}
+![](img/layout-code-and-slides.png){fig-align="center"}
+:::
+:::
+
+## Lessons organization {.center}
+
+::: columns
+::: {.column width="50%"}
+1.  Discussion on the previous lesson's homework.
+
+2.  Overview and aims of the day.
+
+3.  Passive-interactive-active cycles.
+
+4.  wrap up, summary, and concept map.
+
+5.  Homework assignment presentation.
+:::
+
+::: {.column width="50%"}
+-   **Passive**: slide presentation with sample code and suggestion.
+
+    ```{r}
+    #| eval: false
+    #| code-line-numbers: "1,2"
+    mtcars |> 
+      ggplot(aes(hp, mpg)) +
+      geom_point()
+    ```
+
+    ::: callout-tip
+    -   You *inject* (`|>`) the previous code's result into the subsequent function call
+    -   You *add* (`+`) layers to a plot.
+    :::
+
+-   **Interactive**: questions for you to answer.
+
+    ::: callout-caution
+    ## Your turn
+
+    Connect to our [pad](https://bit.ly/ubep-rws-pad) and present yourself.[^4]
+    :::
+
+-   **Active**: incremental coding project.
+:::
+:::
+
+[^4]: <https://bit.ly/ubep-rws-pad>
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  warn_when = 5,
+  left = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE
+)
+```
+
+# R/RStudio
+
+## R
+
+-   A language: we write R code in the R language.
+
+    ``` r
+    two <- sum(1 + 1)
+    ```
+
+. . .
+
+-   An Engine: able to execute computations, analyses, graphs, reports, ...
+
+    ```{r}
+    #| output-location: column
+    library(tidyverse)
+
+    mtcars |> 
+      ggplot(aes(hp, mpg)) +
+      geom_point(aes(colour = cyl)) +
+      labs(
+        x = "Gross horsepower",
+        y = "Miles/(US) gallon",
+        colour = "N cylinders"
+      )
+    ```
+
+. . .
+
+-   An Interpreter (that translates back-and-forth R code to executable code)
+
+    -   When we *run* code in R language, the interpreter translates it for execution.
+    -   When R has computed the results, the interpreter translates/prints it back to us.
+
+    ```{r}
+    sum(1:3)
+    ```
+
+## RStudio (in the cloud)
+
+::: columns
+::: {.column width="35%"}
+IDE = Integrated Development Environment (to work with R)
+
+0.  side- and top-bar for workspaces and projects navigation.
+
+1.  Multi-tab text editor to view, modify, execute (`CTRL/CMD + ENTER`) code in script files
+
+2.  An interactive console for the R interpreter.
+
+3.  Overview of defined R objects in the current session.
+
+4.  Embedded file explorer connected to the current session R working directory.
+:::
+
+::: {.column width="65%"}
+![](img/rstudio-full.png){.absolute top="10%" right="10%"}
+
+::: fragment
+![](img/rstudio-full-annoted.png){.absolute top="10%" right="10%"}
+:::
+
+::: fragment
+![](img/rstudio.png){.absolute top="20%" right="5%"}
+:::
+
+::: fragment
+![](img/rstudio-annoted.png){.absolute top="20%" right="5%"}
+:::
+
+::: fragment
+![](img/rstudio-notab.png){.absolute top="30%" right="0%"}
+:::
+
+::: fragment
+![](img/rstudio-notab-annoted.png){.absolute top="30%" right="0%"}
+:::
+:::
+:::
+
+## The Tidyverse
+
+The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
+
+<br>
+
+::: columns
+::: {.column width="28%"}
+### Design Principles
+
+-   Reuse existing data structures.
+-   Compose simple functions with the pipe.
+-   Embrace functional programming.
+-   [Design for humans]{style="background-color: yellow;"}.
+:::
+
+::: {.column width="70%"}
+### Packages
+
+-   `{ggplot2}`: create data visualizations using the Grammar of Graphics.
+-   `{dplyr}`: a set of verbs to solve data manipulation challenges.
+-   `{tidyr}`: a set of functions that help you get to tidy data.
+-   `{readr}`: a fast and friendly way to read rectangular data
+-   `{purrr}`: a consistent tools suite for functional programming.
+-   `{tibble}`: a modern re-imagining of the data frame.
+-   `{stringr}`: a set of functions to work with strings as easy as possible.
+-   `{forcats}`: a tool suite that solves common problems with factors.
+-   `{lubridate}`: a tool suite to work with dates and date-times.
+:::
+:::
+
+
+## Acknowledgment
+
+To create the current lesson we explored, use, and adapt contents from the following resources:
+
+-   [Carpentrie](https://carpentries.org/)'s [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
+-   [Carpentrie](https://carpentries.org/)'s [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
+-   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [kintr](https://yihui.org/knitr/).
+
+### Additionl Resources
+
+-   The [Tidyverse](https://www.tidyverse.org/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References
