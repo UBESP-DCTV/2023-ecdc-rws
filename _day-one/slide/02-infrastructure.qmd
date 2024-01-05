@@ -192,6 +192,14 @@ every time...
 That is manage efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
 :::
 
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `06-renv.R`
+
+
+
 ## Your turn
 
 ::: callout-caution
@@ -199,7 +207,7 @@ That is manage efficiently by a `{renv}` global cache, which permit to download 
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
--   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+-   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ...and:
 
@@ -337,7 +345,7 @@ Spend time to write/style names and codes that make as fast as possible to under
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
--   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+-   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ...and:
 :::
@@ -438,7 +446,9 @@ So, with rstudio projects, you can
 
 ::: columns
 ::: {.column width="50%"}
--   close and reopen you projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).
+
+
+-   close and reopen your projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).
 
 -   run multiple R session simultaneously, each one linked to its own wordking directory, i.e. working effectively on multiple projects.
 
@@ -557,15 +567,20 @@ And next, you can use your custom function within the script.
 ::: columns
 ::: {.column width="50%"}
 
-- Go to: https://bit.ly/ubep-rws-website
+- Go to: https://bit.ly/ubep-rws-rstudio
+::: callout-caution
+## Your turn
 - Create a new project
 - Install `{renv}` and activate it
 - Install `{ggplot2}`, and `{here}` and update the `renv.lock` file
 - Create the folders `R/`, `analyses/`, `output/`
-the following code
-
-::: callout-caution
-## Your turn
+- Create a script `R/functions.R` and define a function `make_plot()` that returns a `ggplot2` plot of the `mtcars` dataset
+- Create a script `analyses/analysis.R` that:
+  - attach the `ggplot2` package
+  - attach the `here` package
+  - attach the `functions.R` script
+  - calls the `make_plot()` function
+  - saves the plot in the `output/` folder
 - Run the whole `analyses/analysis.R` script.
 - Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad) (https://bit.ly/ubep-rws-pad).
 :::

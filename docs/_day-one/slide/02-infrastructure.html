@@ -592,6 +592,9 @@
 </div>
 </div>
 </div>
+</section><section id="my-turn" class="slide level2"><h2>My turn</h2>
+<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
+<p>ME: Connect to the Day-1 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>06-renv.R</code></p>
 </section><section id="your-turn" class="slide level2"><h2>Your turn</h2>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
@@ -604,7 +607,7 @@
 <div class="callout-content">
 <ul>
 <li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
-<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+<li><p>Connect to the Day-1 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>)</p></li>
 </ul>
 <p>…and:</p>
 <p>Follow the instructions in the pad</p>
@@ -614,7 +617,7 @@
 <div class="fragment fade-out" data-fragment-index="1">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_b467df6f" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_c4126414" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -782,7 +785,7 @@ report-draft-notes.txt</code></pre>
 <div class="callout-content">
 <ul>
 <li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</p></li>
-<li><p>Connect to the <a href="https://bit.ly/ubep-rws-rstudio-day-1">Day-1</a> project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio-day-1" class="uri">https://bit.ly/ubep-rws-rstudio-day-1</a>)</p></li>
+<li><p>Connect to the Day-1 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>)</p></li>
 </ul>
 <p>…and:</p>
 </div>
@@ -813,7 +816,7 @@ report-draft-notes.txt</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_81661a0e" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_cf4793d9" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -905,7 +908,7 @@ report-draft-notes.txt</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>close and reopen you projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).</p></li>
+<li><p>close and reopen your projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).</p></li>
 <li><p>run multiple R session simultaneously, each one linked to its own wordking directory, i.e.&nbsp;working effectively on multiple projects.</p></li>
 <li><p>send/store your projects out from your computer and it will still working</p></li>
 </ul>
@@ -1037,27 +1040,25 @@ report-draft-notes.txt</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Go to: https://bit.ly/ubep-rws-website</li>
+<li>Go to: https://bit.ly/ubep-rws-rstudio ::: callout-caution ## Your turn</li>
 <li>Create a new project</li>
 <li>Install <a href="https://rstudio.github.io/renv/">renv</a> and activate it</li>
 <li>Install <a href="https://ggplot2.tidyverse.org">ggplot2</a>, and <a href="https://here.r-lib.org/">here</a> and update the <code>renv.lock</code> file</li>
-<li>Create the folders <code>R/</code>, <code>analyses/</code>, <code>output/</code> the following code</li>
-</ul>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Your turn</strong></p>
-</div>
-<div class="callout-content">
+<li>Create the folders <code>R/</code>, <code>analyses/</code>, <code>output/</code>
+</li>
+<li>Create a script <code>R/functions.R</code> and define a function <code>make_plot()</code> that returns a <code>ggplot2</code> plot of the <code>mtcars</code> dataset</li>
+<li>Create a script <code>analyses/analysis.R</code> that:
 <ul>
+<li>attach the <code>ggplot2</code> package</li>
+<li>attach the <code>here</code> package</li>
+<li>attach the <code>functions.R</code> script</li>
+<li>calls the <code>make_plot()</code> function</li>
+<li>saves the plot in the <code>output/</code> folder</li>
+</ul>
+</li>
 <li>Run the whole <code>analyses/analysis.R</code> script.</li>
 <li>Answer the question reported in the <a href="https://bit.ly/ubep-rws-pad">pad</a> (https://bit.ly/ubep-rws-pad).</li>
 </ul>
-</div>
-</div>
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -1085,7 +1086,7 @@ report-draft-notes.txt</code></pre>
 <span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">here</span>(<span class="st">"output"</span>, <span class="st">"plot.png"</span>)</span>
 <span id="cb16-11"><a href="#cb16-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>:::</p>
 </section><section id="acknowledgment" class="slide level2"><h2>Acknowledgment</h2>
 <p>To create the current lesson, we explored, used, and adapted content from the following resources:</p>
 <ul>

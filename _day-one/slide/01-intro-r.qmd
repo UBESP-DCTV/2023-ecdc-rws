@@ -58,6 +58,71 @@ library(countdown)
 :::
 :::
 
+# Overview
+
+---
+
+
+<br>
+
+![](img/concept-map-1.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-2.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-3.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-4.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-5.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-6.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-7.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-8.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-9.PNG)
+
+---
+
+<br>
+
+![](img/concept-map-10.PNG)
+
+
+
 # R basics
 
 ## Language
@@ -118,7 +183,7 @@ three_two_one
 ::: {.column width="35%"}
 |        |              |
 |--------|--------------|
-| Subset | `?[` or `[[` |
+| Subset | `[` or `[[` |
 :::
 
 ::: {.column width="65%"}
@@ -469,6 +534,12 @@ all.equal(3*(1/5), 0.6)
 :::
 :::
 
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `01-base.R`
+
 ## Your turn
 
 ::: callout-caution
@@ -626,71 +697,6 @@ c(one = 1, two = 2, three = 3)
 :::
 :::
 
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
-
--   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.  Before to evaluate it, in the pad, under the section `1.1. Ex3`, write (in a new line) what is your expected result (including *an error*) from the following computation:
-
-``` r
-mixed_vector <- c(
-  one = TRUE, two = 2L,
-  three = 3.3, four = "four"
-)
-mixed_vector
-typeof(mixed_vector)
-```
-
-2.  Then, open the script `02-atomic-vectors.R` and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 1,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: columns
-::: {.column width="30%"}
-Coercion rule<br>from *specific* to *general*:<br><small>logical \> integer \> double \> character</small>
-:::
-
-::: {.column width="70%"}
-```{r}
-#| output-location: column
-mixed_vector <- c(
-  one = TRUE, two = 2L,
-  three = 3.3, four = "four"
-)
-mixed_vector
-```
-
-```{r}
-#| output-location: column
-typeof(mixed_vector)
-```
-:::
-:::
-:::
 
 ## Data structure: (other) vectors - Factors
 
@@ -862,6 +868,81 @@ str(date_time)
 :::
 
 [^6]: POSIXct: "Portable Operating System Interface - Calendar Time".
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `02-vectors.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `1.1. Ex3`, write (in a new line) what is your expected result (including *an error*) from the following computation:
+
+``` r
+mixed_vector <- c(
+  one = TRUE, two = 2L,
+  three = 3.3, four = "four"
+)
+mixed_vector
+typeof(mixed_vector)
+```
+
+2.  Then, open the script `02-atomic-vectors.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: columns
+::: {.column width="30%"}
+Coercion rule<br>from *specific* to *general*:<br><small>logical \> integer \> double \> character</small>
+:::
+
+::: {.column width="70%"}
+```{r}
+#| output-location: column
+mixed_vector <- c(
+  one = TRUE, two = 2L,
+  three = 3.3, four = "four"
+)
+mixed_vector
+```
+
+```{r}
+#| output-location: column
+typeof(mixed_vector)
+```
+:::
+:::
+:::
+
+
+
 
 ## Data structure: list (vectors)
 
@@ -1226,6 +1307,16 @@ db_df$height
 
 [^8]: Discouraged in non-interactive usage because of its unpredictable results due to partial matching (`?"$"` ).
 
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `03-matrices_dataframes.R`
+
+
+
 ## Your turn
 
 ::: callout-caution
@@ -1526,6 +1617,15 @@ x_exp_y(y = 3, 2)
 :::
 :::
 
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `04-cond_loop.R`
+
+
+
+
 ## Your turn
 
 ::: callout-caution
@@ -1642,6 +1742,15 @@ Functions and data are identified by their names (which cannot be duplicate with
 Attaching a package to an R session, it means to make its function and data names available for you to call/use. I.e., you have expanded the _language_ (within the session)!
 :::
 
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `05-packages.R`
+
+
 ## Your turn
 
 ::: callout-caution
@@ -1702,6 +1811,7 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
 ### Additionl Resources
 
 -   The [Tidyverse](https://www.tidyverse.org/)
+- RStudio cloud tutorials
 
 ### License
 
