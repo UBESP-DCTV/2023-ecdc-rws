@@ -44,7 +44,7 @@ website:
       - text: Personas
         href: personas.qmd
       - text: Agenda
-        href: "agenda-absolute-beginners.qmd"
+        href: agenda.qmd
       - text: Slides
         href: slides.qmd
   page-footer:

@@ -153,15 +153,12 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ## Teaching Materials & Resources
 
-+----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
+|                                                    |                                                                                                       |
+|-------------------------|-----------------------------------------------|
 | Teams' room:                                       |                                                                                                       |
-+----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | Website (agenda, slides, and assessments):         | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
-+----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | RStudio cloud workspace:                           | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
-+----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 | Really realtime collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
-+----------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 
 <br>
 
@@ -199,20 +196,39 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ::: columns
 ::: {.column width="35%"}
-1.  Your free-to-explore slides
-2.  Teams:
+1.  Teams:
     1.  Shared screen
     2.  Speaker view
     3.  Chat (assistance & reactions)
-3.  RStudio Cloud
-4.  Real-time collaborative pad:
+2.  RStudio Cloud
+3.  Real-time collaborative pad:
     1.  Exercise
     2.  Comments
     3.  Chat (your discussion place)
 :::
 
 ::: {.column width="65%"}
-![](img/layout-code-and-slides.png){fig-align="center"}
+{{< video img/layout-display.mp4 >}}
+:::
+:::
+
+## Suggested screen layout
+
+::: columns
+::: {.column width="35%"}
+1.  Teams:
+    1.  Shared screen
+    2.  Speaker view
+    3.  Chat (assistance & reactions)
+2.  RStudio Cloud
+3.  Real-time collaborative pad:
+    1.  Exercise
+    2.  Comments
+    3.  Chat (your discussion place)
+:::
+
+::: {.column width="65%"}
+![](img/layout-single-screen-annotated.png){fig-align="center"}
 :::
 :::
 
@@ -384,7 +400,6 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 -   `{lubridate}`: a tool suite to work with dates and date-times.
 :::
 :::
-
 
 ## Acknowledgment
 

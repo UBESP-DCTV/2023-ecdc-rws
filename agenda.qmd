@@ -18,11 +18,11 @@ The whole course will be conducted using the R programming languages [@R-base], 
 
 -   the `{tidyverse}` [@R-tidyverse] to activate the ecosystem on the R session
 
--   the RStudio projects, and the `{renv}` [@R-renv], and `{here}` [@R-here] packages for project management, reproducibility, and portability. On their side, the `{magrittr}` [@R-magrittr] together to the native *pipe,* to pipe instructions in an easy to write/read/understand way.
+-   the RStudio projects, and the `{renv}` [@R-renv], and `{here}` [@R-here] packages for project management, reproducibility, and portability. On their side, there will be introduced the native *pipe*, with only mentioning the {magrittr} \[\@R-magrittr\], to pipe instructions in an easy-to-write/read/understand way.
 
 -   `{ggplot2}` [@R-ggplot2] for graphics production
 
--   the `{readr}` [@R-readr], `{readxl}` [@R-readxl], `{writexl}` [@R-writexl], `{haven}` [@R-haven], and `{rio}` [@R-rio] for data reading/import and writing/export
+-   the `{rio}` [@R-rio] for data reading/import and writing/export
 
 -   `{janitor}` [@R-janitor], and `{tidyr}` [@R-tidyr] for data cleaning at import level, and the `{dplyr}` [@R-dplyr], `{forcats}` [@R-forcats], `{lubridate}` [@R-lubridate], and `{stringr}` [@R-stringr], and `{glue}` [@R-glue] for post-import data sets and type-specific data manipulation and management.
 
@@ -46,77 +46,95 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ::: panel-tabset
 ## Day 1
 
-### 0. \[90'\] Intros:
+### 0. \[40'\] Intros:
 
 -   \[10'\] Course's objectives and philosophy
 
 -   \[5'\] Ts/TAs presentation
 
--   \[30'\] R/RStudio
+-   \[10'\] Course organization, teaching materials, and personalized assistance
 
--   \[15'\] Tidyverse ecosystem, style, and perspectives
+-   \[15'\] Posit RStudio Cloud IDE presentation and setup
 
--   \[15'\] Course organization, teaching marerials, and personalized assistance
 
--   \[15'\] Posit Cloud presentation and setup
+### 1. \[120'\] Basic R and RStudio:
+
+- \[15'\] Math and Logic
+
+- \[15'\] Base R syntax
+
+- \[20'\] Base data structures
+  - Vectors (`logical`, `integer`, `double`, `character`, `factors`, `Date`, `POSIXct`)
+  - Lists (`list`, `data frame`/`tibble`)
+
+- \[20'\] Subsetting and Extractions
+
+- \[20'\] Control flow (`if`, `else`, `for`)
+
+- \[15'\] Functions (named and anonymous)
+
+- \[15'\] Packages, Tidyverse ecosystem, style, and perspectives
+
 
 ::: {.callout-note appearance="minimal"}
 \[20'\] `BREAK`{=html}
-:::
-
-### 1. \[120'\] Pipe(s) and visualization [^2]
-
--   \[15'\] {magrittr}'s and native's pipes
-
--   \[105\] Grammar of graphics
-
-    -   \[10'\] data and plots
-
-    -   \[15'\] aesthetics
-
-    -   \[30'\] geometries
-
-    -   \[15'\] facets
-
-    -   \[25'\] themes & labels
-
-    -   \[10'\] other components
-
-::: {.callout-note appearance="minimal"}
-\[10'\] RECAP & assignments
-:::
-
-## Day 2
-
-::: {.callout-note appearance="minimal"}
-\[30'\] RECAP & solutions
 :::
 
 ### 2. \[50'\] Infrastructures[^3]
 
 -   \[15'\] R projects
 
--   \[20'\] local environments
+-   \[20'\] Local environments
 
--   \[15'\] files organization (dev/ folder)
+-   \[15'\] Files organization (dev/ folder)
 
-### 3. \[40'\] Import
 
--   \[15'\] Base and Tidy alternatives[^4]
+::: {.callout-note appearance="minimal"}
+\[10'\] Recap & Assignments
+:::
 
--   \[25'\] Our solution[^5]
+## Day 2
+
+::: {.callout-note appearance="minimal"}
+\[30'\] Recap & Solutions
+:::
+
+### 3a. \[90'\] Pipe(s) and visualization [^2]
+
+-   \[15'\] Intro to data analysis cycle loop
+
+-   \[20'\] Function composition and pipes
+
+-   \[55'\] Intro to `{ggplot2}`
+
+    -   \[10'\] Tidy data, and the layered grammar of graphics.
+
+    -   \[45'\] Base template (data, aesthetics, and geometries)
+
 
 ::: {.callout-note appearance="minimal"}
 \[20'\] `BREAK`{=html}
 :::
 
-### 4. \[90'\] Tidying[^6]
+### 3b. \[50'\] Pipe(s) and visualization [^2]
 
--   \[30'\] var names & headers
+-   \[50'\] Intro to `{ggplot2}`
 
--   \[20'\] missing data
+    -   \[15'\] Labels
+    
+    -   \[10'\] Facets
+    
+    -   \[15'\] Themes and other components
+    
+    -   \[10'\] Saving plots
 
--   \[40'\] tidy format & pivoting
+
+### 4. \[40'\] Import
+
+-   \[20'\] Base and Tidy, and `rio`[^4] [^5]
+
+-   \[40'\] Headers, var names, and missing data
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -128,25 +146,31 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[30'\] RECAP & solutions
 :::
 
-### 5. (a) \[90'\] Transform -- manage formats[^7]
 
--   \[40'\] strings
+### 5. (a) \[60'\] Transform -- manage shape[^6]
 
--   \[20'\] factors
+-   \[60'\] Tidy format & pivoting
 
--   \[30'\] dates
 
 ::: {.callout-note appearance="minimal"}
 \[20'\] BREAK
 :::
 
-### 5. (b) \[90'\] Transform -- manage dataset[^8]
+### 5. (b) \[60'\] Transform -- manage dataset[^8]
+
+-   \[15'\] select (all_of...)
+
+-   \[15'\] filter (.data & .env)
 
 -   \[30'\] mutate (grouped) data contents & across
 
--   \[30'\] select (all_of...)
 
--   \[30'\] filter (.data & .env)
+### 5. (c) \[45'\] Transform -- manage formats[^7]
+
+-   \[15'\] dates
+
+-   \[30'\] strings
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -158,25 +182,17 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[30'\] RECAP & solutions
 :::
 
-### 6. \[90'\] Modeling (basic statistics)[^9]
+### 6. \[90'\] Modeling (summary statistics tables)[^9]
 
--   \[60'\] Summarize data on tables
+-   \[70'\] Summary tables
 
-    -   \[30'\] descriptive statistics
+    -   \[40'\] descriptive statistics
 
-    -   \[10'\] add information
+    -   \[15'\] cross-tables
+    
+    -   \[15'\] uni-variables
 
-    -   \[10'\] modify style
-
-    -   \[10'\] cross-tables
-
--   \[30'\] Summarize models
-
-    -   \[20'\] multi-variables
-
-    -   \[10'\] uni-variables
-
--   \[10'\] Merging (h) and stacking (v) tables
+-   \[20'\] Merging (h) and stacking (v) tables
 
 ::: {.callout-note appearance="minimal"}
 \[20'\] BREAK
@@ -225,7 +241,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 [^6]: pkgs: {janitor}, {tidyr}
 
-[^7]: pkgs: {dplyr}, {forcats}, {lubridate}, {stringr}, {glue}
+[^7]: pkgs: {dplyr}, {lubridate}, {stringr}, {glue}
 
 [^8]: pkgs: {dplyr}
 

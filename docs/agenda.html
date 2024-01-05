@@ -4659,7 +4659,7 @@ vertical-align: -.125em;
 <span class="menu-text">Personas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./agenda-absolute-beginners.html"> 
+    <a class="nav-link active" href="./agenda.html" aria-current="page"> 
 <span class="menu-text">Agenda</span></a>
   </li>  
   <li class="nav-item">
@@ -4760,9 +4760,9 @@ vertical-align: -.125em;
 <p>The whole course will be conducted using the R programming languages <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2023</a>)</span>, and it will introduce the main <strong>Tidyverse</strong> <span class="citation" data-cites="tidyverse2019">(<a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span> R-package ecosystem and philosophy for a uniform, composable, functional, and human-first design utilities to do data science. In particular, the following packages will be introduced and used during the course:</p>
 <ul>
 <li><p>the <code>{tidyverse}</code> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2023c</a>)</span> to activate the ecosystem on the R session</p></li>
-<li><p>the RStudio projects, and the <code>{renv}</code> <span class="citation" data-cites="R-renv">(<a href="#ref-R-renv" role="doc-biblioref">Ushey and Wickham 2023</a>)</span>, and <code>{here}</code> <span class="citation" data-cites="R-here">(<a href="#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> packages for project management, reproducibility, and portability. On their side, the <code>{magrittr}</code> <span class="citation" data-cites="R-magrittr">(<a href="#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span> together to the native <em>pipe,</em> to pipe instructions in an easy to write/read/understand way.</p></li>
+<li><p>the RStudio projects, and the <code>{renv}</code> <span class="citation" data-cites="R-renv">(<a href="#ref-R-renv" role="doc-biblioref">Ushey and Wickham 2023</a>)</span>, and <code>{here}</code> <span class="citation" data-cites="R-here">(<a href="#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> packages for project management, reproducibility, and portability. On their side, there will be introduced the native <em>pipe</em>, with only mentioning the {magrittr} [@R-magrittr], to pipe instructions in an easy-to-write/read/understand way.</p></li>
 <li><p><code>{ggplot2}</code> <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham, Chang, et al. 2023</a>)</span> for graphics production</p></li>
-<li><p>the <code>{readr}</code> <span class="citation" data-cites="R-readr">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2023</a>)</span>, <code>{readxl}</code> <span class="citation" data-cites="R-readxl">(<a href="#ref-R-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span>, <code>{writexl}</code> <span class="citation" data-cites="R-writexl">(<a href="#ref-R-writexl" role="doc-biblioref">Ooms 2023</a>)</span>, <code>{haven}</code> <span class="citation" data-cites="R-haven">(<a href="#ref-R-haven" role="doc-biblioref">Wickham, Miller, and Smith 2023</a>)</span>, and <code>{rio}</code> <span class="citation" data-cites="R-rio">(<a href="#ref-R-rio" role="doc-biblioref">Becker et al. 2023</a>)</span> for data reading/import and writing/export</p></li>
+<li><p>the <code>{rio}</code> <span class="citation" data-cites="R-rio">(<a href="#ref-R-rio" role="doc-biblioref">Becker et al. 2023</a>)</span> for data reading/import and writing/export</p></li>
 <li><p><code>{janitor}</code> <span class="citation" data-cites="R-janitor">(<a href="#ref-R-janitor" role="doc-biblioref">Firke 2023</a>)</span>, and <code>{tidyr}</code> <span class="citation" data-cites="R-tidyr">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham, Vaughan, and Girlich 2023</a>)</span> for data cleaning at import level, and the <code>{dplyr}</code> <span class="citation" data-cites="R-dplyr">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham, François, et al. 2023</a>)</span>, <code>{forcats}</code> <span class="citation" data-cites="R-forcats">(<a href="#ref-R-forcats" role="doc-biblioref">Wickham 2023a</a>)</span>, <code>{lubridate}</code> <span class="citation" data-cites="R-lubridate">(<a href="#ref-R-lubridate" role="doc-biblioref">Spinu, Grolemund, and Wickham 2023</a>)</span>, and <code>{stringr}</code> <span class="citation" data-cites="R-stringr">(<a href="#ref-R-stringr" role="doc-biblioref">Wickham 2023b</a>)</span>, and <code>{glue}</code> <span class="citation" data-cites="R-glue">(<a href="#ref-R-glue" role="doc-biblioref">Hester and Bryan 2022</a>)</span> for post-import data sets and type-specific data manipulation and management.</p></li>
 <li><p><code>{gtsummary}</code> <span class="citation" data-cites="R-gtsummary">(<a href="#ref-R-gtsummary" role="doc-biblioref">Sjoberg et al. 2023</a>)</span> to create summary tables for data and models and to include table data in a report’s narrative text sections directly, i.e., without copy-pasting them by hand.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
 </ul>
@@ -4779,14 +4779,28 @@ vertical-align: -.125em;
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <section id="intros" class="level3">
-<h3 class="anchored" data-anchor-id="intros">0. [90’] Intros:</h3>
+<h3 class="anchored" data-anchor-id="intros">0. [40’] Intros:</h3>
 <ul>
 <li><p>[10’] Course’s objectives and philosophy</p></li>
 <li><p>[5’] Ts/TAs presentation</p></li>
-<li><p>[30’] R/RStudio</p></li>
-<li><p>[15’] Tidyverse ecosystem, style, and perspectives</p></li>
-<li><p>[15’] Course organization, teaching marerials, and personalized assistance</p></li>
-<li><p>[15’] Posit Cloud presentation and setup</p></li>
+<li><p>[10’] Course organization, teaching materials, and personalized assistance</p></li>
+<li><p>[15’] Posit RStudio Cloud IDE presentation and setup</p></li>
+</ul>
+</section>
+<section id="basic-r-and-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="basic-r-and-rstudio">1. [120’] Basic R and RStudio:</h3>
+<ul>
+<li><p>[15’] Math and Logic</p></li>
+<li><p>[15’] Base R syntax</p></li>
+<li><p>[20’] Base data structures</p>
+<ul>
+<li>Vectors (<code>logical</code>, <code>integer</code>, <code>double</code>, <code>character</code>, <code>factors</code>, <code>Date</code>, <code>POSIXct</code>)</li>
+<li>Lists (<code>list</code>, <code>data frame</code>/<code>tibble</code>)</li>
+</ul></li>
+<li><p>[20’] Subsetting and Extractions</p></li>
+<li><p>[20’] Control flow (<code>if</code>, <code>else</code>, <code>for</code>)</p></li>
+<li><p>[15’] Functions (named and anonymous)</p></li>
+<li><p>[15’] Packages, Tidyverse ecosystem, style, and perspectives</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4799,19 +4813,12 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="pipes-and-visualization-2" class="level3">
-<h3 class="anchored" data-anchor-id="pipes-and-visualization-2">1. [120’] Pipe(s) and visualization <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h3>
+<section id="infrastructures3" class="level3">
+<h3 class="anchored" data-anchor-id="infrastructures3">2. [50’] Infrastructures<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h3>
 <ul>
-<li><p>[15’] {magrittr}’s and native’s pipes</p></li>
-<li><p>[105] Grammar of graphics</p>
-<ul>
-<li><p>[10’] data and plots</p></li>
-<li><p>[15’] aesthetics</p></li>
-<li><p>[30’] geometries</p></li>
-<li><p>[15’] facets</p></li>
-<li><p>[25’] themes &amp; labels</p></li>
-<li><p>[10’] other components</p></li>
-</ul></li>
+<li><p>[15’] R projects</p></li>
+<li><p>[20’] Local environments</p></li>
+<li><p>[15’] Files organization (dev/ folder)</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4819,7 +4826,7 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>[10’] RECAP &amp; assignments</p>
+<p>[10’] Recap &amp; Assignments</p>
 </div>
 </div>
 </div>
@@ -4832,23 +4839,20 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>[30’] RECAP &amp; solutions</p>
+<p>[30’] Recap &amp; Solutions</p>
 </div>
 </div>
 </div>
-<section id="infrastructures3" class="level3">
-<h3 class="anchored" data-anchor-id="infrastructures3">2. [50’] Infrastructures<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></h3>
+<section id="a.-90-pipes-and-visualization-2" class="level3">
+<h3 class="anchored" data-anchor-id="a.-90-pipes-and-visualization-2">3a. [90’] Pipe(s) and visualization <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></h3>
 <ul>
-<li><p>[15’] R projects</p></li>
-<li><p>[20’] local environments</p></li>
-<li><p>[15’] files organization (dev/ folder)</p></li>
-</ul>
-</section>
-<section id="import" class="level3">
-<h3 class="anchored" data-anchor-id="import">3. [40’] Import</h3>
+<li><p>[15’] Intro to data analysis cycle loop</p></li>
+<li><p>[20’] Function composition and pipes</p></li>
+<li><p>[55’] Intro to <code>{ggplot2}</code></p>
 <ul>
-<li><p>[15’] Base and Tidy alternatives<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p></li>
-<li><p>[25’] Our solution<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p></li>
+<li><p>[10’] Tidy data, and the layered grammar of graphics.</p></li>
+<li><p>[45’] Base template (data, aesthetics, and geometries)</p></li>
+</ul></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4861,12 +4865,23 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="tidying6" class="level3">
-<h3 class="anchored" data-anchor-id="tidying6">4. [90’] Tidying<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></h3>
+<section id="b.-50-pipes-and-visualization-2" class="level3">
+<h3 class="anchored" data-anchor-id="b.-50-pipes-and-visualization-2">3b. [50’] Pipe(s) and visualization <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></h3>
 <ul>
-<li><p>[30’] var names &amp; headers</p></li>
-<li><p>[20’] missing data</p></li>
-<li><p>[40’] tidy format &amp; pivoting</p></li>
+<li><p>[50’] Intro to <code>{ggplot2}</code></p>
+<ul>
+<li><p>[15’] Labels</p></li>
+<li><p>[10’] Facets</p></li>
+<li><p>[15’] Themes and other components</p></li>
+<li><p>[10’] Saving plots</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="import" class="level3">
+<h3 class="anchored" data-anchor-id="import">4. [40’] Import</h3>
+<ul>
+<li><p>[20’] Base and Tidy, and <code>rio</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
+<li><p>[40’] Headers, var names, and missing data</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4891,12 +4906,10 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="a-90-transform-manage-formats7" class="level3">
-<h3 class="anchored" data-anchor-id="a-90-transform-manage-formats7">5. (a) [90’] Transform – manage formats<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></h3>
+<section id="a-60-transform-manage-shape6" class="level3">
+<h3 class="anchored" data-anchor-id="a-60-transform-manage-shape6">5. (a) [60’] Transform – manage shape<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></h3>
 <ul>
-<li><p>[40’] strings</p></li>
-<li><p>[20’] factors</p></li>
-<li><p>[30’] dates</p></li>
+<li>[60’] Tidy format &amp; pivoting</li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4909,12 +4922,19 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="b-90-transform-manage-dataset8" class="level3">
-<h3 class="anchored" data-anchor-id="b-90-transform-manage-dataset8">5. (b) [90’] Transform – manage dataset<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></h3>
+<section id="b-60-transform-manage-dataset8" class="level3">
+<h3 class="anchored" data-anchor-id="b-60-transform-manage-dataset8">5. (b) [60’] Transform – manage dataset<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></h3>
 <ul>
+<li><p>[15’] select (all_of…)</p></li>
+<li><p>[15’] filter (.data &amp; .env)</p></li>
 <li><p>[30’] mutate (grouped) data contents &amp; across</p></li>
-<li><p>[30’] select (all_of…)</p></li>
-<li><p>[30’] filter (.data &amp; .env)</p></li>
+</ul>
+</section>
+<section id="c-45-transform-manage-formats7" class="level3">
+<h3 class="anchored" data-anchor-id="c-45-transform-manage-formats7">5. (c) [45’] Transform – manage formats<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h3>
+<ul>
+<li><p>[15’] dates</p></li>
+<li><p>[30’] strings</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4939,22 +4959,16 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="modeling-basic-statistics9" class="level3">
-<h3 class="anchored" data-anchor-id="modeling-basic-statistics9">6. [90’] Modeling (basic statistics)<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h3>
+<section id="modeling-summary-statistics-tables9" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-summary-statistics-tables9">6. [90’] Modeling (summary statistics tables)<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h3>
 <ul>
-<li><p>[60’] Summarize data on tables</p>
+<li><p>[70’] Summary tables</p>
 <ul>
-<li><p>[30’] descriptive statistics</p></li>
-<li><p>[10’] add information</p></li>
-<li><p>[10’] modify style</p></li>
-<li><p>[10’] cross-tables</p></li>
+<li><p>[40’] descriptive statistics</p></li>
+<li><p>[15’] cross-tables</p></li>
+<li><p>[15’] uni-variables</p></li>
 </ul></li>
-<li><p>[30’] Summarize models</p>
-<ul>
-<li><p>[20’] multi-variables</p></li>
-<li><p>[10’] uni-variables</p></li>
-</ul></li>
-<li><p>[10’] Merging (h) and stacking (v) tables</p></li>
+<li><p>[20’] Merging (h) and stacking (v) tables</p></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4968,7 +4982,7 @@ vertical-align: -.125em;
 </div>
 </section>
 <section id="communicate-tools-r-markdown-and-quarto10" class="level3">
-<h3 class="anchored" data-anchor-id="communicate-tools-r-markdown-and-quarto10">7. [60’] Communicate (tools: R markdown and Quarto)<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h3>
+<h3 class="anchored" data-anchor-id="communicate-tools-r-markdown-and-quarto10">7. [60’] Communicate (tools: R markdown and Quarto)<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h3>
 <ul>
 <li><p>[20’] (Visual) Quarto document structure</p>
 <ul>
@@ -5040,9 +5054,6 @@ Allaire, JJ. 2023. <em>Quarto: R Interface to Quarto Markdown Publishing System<
 <div id="ref-R-rmarkdown" class="csl-entry" role="listitem">
 Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2023. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown">https://github.com/rstudio/rmarkdown</a>.
 </div>
-<div id="ref-R-magrittr" class="csl-entry" role="listitem">
-Bache, Stefan Milton, and Hadley Wickham. 2022. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://magrittr.tidyverse.org">https://magrittr.tidyverse.org</a>.
-</div>
 <div id="ref-R-rio" class="csl-entry" role="listitem">
 Becker, Jason, Chung-hong Chan, David Schoch, and Thomas J. Leeper. 2023. <em>Rio: A Swiss-Army Knife for Data i/o</em>. <a href="https://github.com/gesistsa/rio">https://github.com/gesistsa/rio</a>.
 </div>
@@ -5057,9 +5068,6 @@ Hester, Jim, and Jennifer Bryan. 2022. <em>Glue: Interpreted String Literals</em
 </div>
 <div id="ref-R-here" class="csl-entry" role="listitem">
 Müller, Kirill. 2020. <em>Here: A Simpler Way to Find Your Files</em>. <a href="https://here.r-lib.org/">https://here.r-lib.org/</a>.
-</div>
-<div id="ref-R-writexl" class="csl-entry" role="listitem">
-Ooms, Jeroen. 2023. <em>Writexl: Export Data Frames to Excel Xlsx Format</em>. <a href="https://docs.ropensci.org/writexl/">https://docs.ropensci.org/writexl/</a>.
 </div>
 <div id="ref-R-base" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
@@ -5085,20 +5093,11 @@ Wickham, Hadley. 2023a. <em>Forcats: Tools for Working with Categorical Variable
 <div id="ref-tidyverse2019" class="csl-entry" role="listitem">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
 </div>
-<div id="ref-R-readxl" class="csl-entry" role="listitem">
-Wickham, Hadley, and Jennifer Bryan. 2023. <em>Readxl: Read Excel Files</em>. <a href="https://readxl.tidyverse.org">https://readxl.tidyverse.org</a>.
-</div>
 <div id="ref-R-ggplot2" class="csl-entry" role="listitem">
 Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2023. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
 <div id="ref-R-dplyr" class="csl-entry" role="listitem">
 Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>.
-</div>
-<div id="ref-R-readr" class="csl-entry" role="listitem">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://readr.tidyverse.org">https://readr.tidyverse.org</a>.
-</div>
-<div id="ref-R-haven" class="csl-entry" role="listitem">
-Wickham, Hadley, Evan Miller, and Danny Smith. 2023. <em>Haven: Import and Export SPSS, Stata and SAS Files</em>. <a href="https://haven.tidyverse.org">https://haven.tidyverse.org</a>.
 </div>
 <div id="ref-R-tidyr" class="csl-entry" role="listitem">
 Wickham, Hadley, Davis Vaughan, and Maximilian Girlich. 2023. <em>Tidyr: Tidy Messy Data</em>. <a href="https://tidyr.tidyverse.org">https://tidyr.tidyverse.org</a>.
@@ -5110,15 +5109,16 @@ Xie, Yihui. 2023. <em>Knitr: A General-Purpose Package for Dynamic Report Genera
 
 <ol>
 <li id="fn1"><p>The <code>{flextable}</code> <span class="citation" data-cites="R-flextable">(<a href="#ref-R-flextable" role="doc-biblioref">Gohel and Skintzos 2023</a>)</span> package will be not introduced explicitely because <code>{gtsummary}</code> can now manage MS Word tables as well. On the other side, it will be explained how to convert a <code>gtsummary</code> table on other formats, <code>flextable</code> included.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>pkg: {magrittr}, {ggplot2}<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>pkg: {renv}, {here}<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>pkgs: {readr}, {readxl}, {writexl}, {haven}<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>pkg: {rio}<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>pkgs: {janitor}, {tidyr}<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>pkgs: {dplyr}, {forcats}, {lubridate}, {stringr}, {glue}<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>pkg: {renv}, {here}<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>pkg: {magrittr}, {ggplot2}<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>pkg: {magrittr}, {ggplot2}<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>pkgs: {readr}, {readxl}, {writexl}, {haven}<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>pkg: {rio}<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>pkgs: {janitor}, {tidyr}<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>pkgs: {dplyr}<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>pkgs: {dplyr}, {gtsummary}<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>The <em>Communicate</em> section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>pkgs: {dplyr}, {lubridate}, {stringr}, {glue}<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>pkgs: {dplyr}, {gtsummary}<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>The <em>Communicate</em> section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
