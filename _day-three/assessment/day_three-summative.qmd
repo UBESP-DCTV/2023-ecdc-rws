@@ -31,7 +31,7 @@ At the end of the assessment, participants should have demonstrated their abilit
 
 -   Manage dates-time objects using functions in the package `{lubridate}`. [@R-lubridate]
 
--   Use the base `{dplyr}` verbs (i.e., `filter`, `select`, `mutate`, `group_by`, `summarise`), adverbs (i.e., `across`, `where`, `starts_with`, `ends_with`, `contains`, `matches`, `all_of`, `any_of`), and constructors (i.e., `tibble`, and `tribble`). [@R-dplyr]
+-   Use the base `{dplyr}` verbs (i.e., `filter`, `select`, `mutate`), adverbs (i.e., `across`, `where`, `starts_with`, `ends_with`, `contains`, `matches`, `all_of`, `any_of`), and constructors (i.e., `tibble`, and `tribble`). [@R-dplyr]
 :::
 
 # Preamble

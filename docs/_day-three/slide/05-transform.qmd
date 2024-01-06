@@ -1005,6 +1005,8 @@ As all the other verbs in the Tidyverse, `dplyr::mutate`
 
 # Data formats
 
+## Factors
+
 ## Dates
 
 ## Date-times
