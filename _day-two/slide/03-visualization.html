@@ -414,25 +414,17 @@
 <li>What is a <em>ggplot</em>, and what are its main components?</li>
 <li>How should data be provided to a ggplot?</li>
 <li>How can we create ggplots with the <a href="https://ggplot2.tidyverse.org">ggplot2</a> R package?</li>
-<li>What are:</li>
-<li>
-<code>aes</code>thetics?</li>
-<li>
-<code>geom</code>etries?</li>
-<li>
-<code>facet</code>s?</li>
-<li>Plot <code>theme</code>s and <code>labs</code>?</li>
+<li>What are <code>aes</code>thetics, <code>geom</code>etries, <code>facet</code>s, plot <code>theme</code>s and <code>labs</code>?</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <h3 id="lesson-objectives">Lesson Objectives</h3>
 <h4 id="to-be-able-to">To be able to</h4>
 <ul>
-<li>Use the R native pipe (<code>|&gt;</code>) to concatenate functions, knowing that the {magrittr} one (%&gt;%) has similar behavior.</li>
-<li>Create anonymous functions in the R native style as <code>\(x)</code> to use with, but not limited to, pipes.</li>
-<li>Create basic plots with <a href="https://ggplot2.tidyverse.org">ggplot2</a> (scatter, histogram, barplot, boxplot, and time-series), including grouped plots with or without colors and plots of multiple types.</li>
+<li>Use the R native pipe (<code>|&gt;</code>) to concatenate functions, knowing that the <a href="https://magrittr.tidyverse.org">magrittr</a> one (<code>%\&gt;%</code>) has similar behavior.</li>
+<li>Create anonymous functions in the R native style as <code>\(x)</code> to use with pipes (and not only).</li>
+<li>Create basic plots with <a href="https://ggplot2.tidyverse.org">ggplot2</a>.</li>
 <li>Use the <code>facet_*</code> functions to stratify plots according to data.</li>
 <li>Modify the main style component of a plot (i.e., sub-/titles, labels, legends)</li>
-<li>Use the main <a href="https://patchwork.data-imaginist.com">patchwork</a> functions to compose a plot by multiple ones.</li>
 <li>Save a plot as a stand-alone image file.</li>
 </ul>
 </div>
@@ -497,8 +489,7 @@
 <code><a href="https://rdrr.io/r/stats/filter.html">stats::filter()</a></code>.</li>
 <li>
 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code>.</li>
-<li>A <error> due to ambiguity.</error>
-</li>
+<li>An error due to ambiguity.</li>
 <li>I don’t know what <code><a href="https://rdrr.io/r/stats/filter.html">stats::filter()</a></code> or <code><a href="https://dplyr.tidyverse.org/reference/filter.html">dplyr::filter()</a></code> means in R.</li>
 </ul>
 <ol type="1">
@@ -539,8 +530,8 @@
 <p>Suppose you have the following functions:</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sum_x_y <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
-<span id="cb3-2"><a href="#cb3-2"></a>multiply_x_y <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">*</span> y</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) x <span class="sc">+</span> y</span>
+<span id="cb3-2"><a href="#cb3-2"></a>multiply_by <span class="ot">&lt;-</span> <span class="cf">function</span>(x, by) x <span class="sc">*</span> by</span>
 <span id="cb3-3"><a href="#cb3-3"></a>divide_by_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">/</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 
@@ -548,7 +539,7 @@
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Pretend that it is a difficult problem, and you want to use only those functions to find a trapezoid area with the following data already defined in your R session:</p>
+<p>Pretend that it is a difficult problem, and you want to use those functions <strong>only</strong> to find a trapezoid area with the following data already defined in your R session:</p>
 <div class="cell columns column-output-location">
 <div class="column">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
@@ -578,7 +569,7 @@
 <li>Connect to our <a href="https://bit.ly/ubep-rws-pad">pad</a>(<a href="https://bit.ly/ubep-rws-pad" class="uri">https://bit.ly/ubep-rws-pad</a>)</li>
 </ul>
 <ol type="1">
-<li>Write (in new lines under section 1.2. Ex8) ways you can manage objects in R that will be progressively modified by a sequence of operations (i.e., functions).</li>
+<li>Write (in new lines under section 1.2. Ex8) your purposed solution.</li>
 </ol>
 </div>
 </div>
@@ -589,7 +580,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_5ee87f85" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:60%;right:5%;bottom:10;left:45%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_eba4458f" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:60%;right:5%;bottom:10;left:45%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -600,9 +591,9 @@
 </section><section id="overwrite-the-result" class="slide level2"><h2>Overwrite the result</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>res <span class="ot">&lt;-</span> <span class="fu">sum_x_y</span>(a, b)</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>res <span class="ot">&lt;-</span> <span class="fu">add</span>(a, b)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>res <span class="ot">&lt;-</span> <span class="fu">divide_by_two</span>(res)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_x_y</span>(res, h)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_by</span>(res, h)</span>
 <span id="cb5-4"><a href="#cb5-4"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -620,9 +611,9 @@
 </section><section id="create-middle-objects" class="slide level2"><h2>Create middle objects</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>bases <span class="ot">&lt;-</span> <span class="fu">sum_x_y</span>(a, b)</span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>bases <span class="ot">&lt;-</span> <span class="fu">add</span>(a, b)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>half_bases <span class="ot">&lt;-</span> <span class="fu">divide_by_two</span>(bases)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>area <span class="ot">&lt;-</span> <span class="fu">multiply_x_y</span>(half_bases, h)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>area <span class="ot">&lt;-</span> <span class="fu">multiply_by</span>(half_bases, h)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>area</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -637,9 +628,9 @@
 <p>We must think of meaningful (unuseful!) names for all the intermediate objects, because we surely want to avoid situations like the following one</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>res_1 <span class="ot">&lt;-</span> <span class="fu">sum_x_y</span>(a, b)</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>res_1 <span class="ot">&lt;-</span> <span class="fu">add</span>(a, b)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>res_2 <span class="ot">&lt;-</span> <span class="fu">divide_by_two</span>(res_1)</span>
-<span id="cb9-3"><a href="#cb9-3"></a>res_final <span class="ot">&lt;-</span> <span class="fu">multiply_x_y</span>(res_2, h)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>res_final <span class="ot">&lt;-</span> <span class="fu">multiply_by</span>(res_2, h)</span>
 <span id="cb9-4"><a href="#cb9-4"></a>res_final</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -655,7 +646,7 @@
 </section><section id="compose-function-calls" class="slide level2"><h2>Compose function calls</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_x_y</span>(<span class="fu">divide_by_two</span>(<span class="fu">sum_x_y</span>(a, b)), h)</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_by</span>(<span class="fu">divide_by_two</span>(<span class="fu">add</span>(a, b)), h)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
@@ -664,15 +655,15 @@
 </div>
 </div>
 <ol type="1">
-<li>Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., <code>multiply_x_y</code> is the first name appearing, and its second argument <code>h</code> is the last one!)</li>
+<li>Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., <code>multiply_by</code> is the first name appearing, and its second argument <code>h</code> is the last one!)</li>
 </ol>
 <div class="fragment">
 <p>We could improve readability by indenting our code (which is surely a good thing to do)</p>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_x_y</span>(</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>res <span class="ot">&lt;-</span> <span class="fu">multiply_by</span>(</span>
 <span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">divide_by_two</span>(</span>
-<span id="cb13-3"><a href="#cb13-3"></a>    <span class="fu">sum_x_y</span>(a, b)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="fu">add</span>(a, b)</span>
 <span id="cb13-4"><a href="#cb13-4"></a>  ),</span>
 <span id="cb13-5"><a href="#cb13-5"></a>  h</span>
 <span id="cb13-6"><a href="#cb13-6"></a>)</span>
@@ -723,10 +714,11 @@
 </div>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>res <span class="ot">&lt;-</span> <span class="fu">sum_x_y</span>(a, b) <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">divide_by_two</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">multiply_x_y</span>(h)</span>
-<span id="cb15-4"><a href="#cb15-4"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>res <span class="ot">&lt;-</span> a <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">add</span>(b) <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">divide_by_two</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">multiply_by</span>(h)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
@@ -775,7 +767,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_2e3c11bf" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_8085d900" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1185,7 +1177,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_0b1c6a45" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_f0cdee95" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:5%;bottom:0;left:45%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1416,7 +1408,7 @@
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_c31b3ec1" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_127eebe7" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
@@ -1668,7 +1660,7 @@
 </ol>
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_d25e23cc" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_0bebaa07" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
