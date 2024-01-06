@@ -81,7 +81,6 @@ The present work is released under the GPL-3 License.
 This section is for context only. Nothing has to be done in this section by the participants.
 :::
 
-
 At the end of the case study, participants should be able to:
 
 -   Conduct an investigation to identify the source of an outbreak
@@ -323,6 +322,7 @@ skimr::skim(linelist)
 ```
 
 ## Data Cleaning
+
 ::: callout-important
 ## Instructions
 
@@ -353,12 +353,12 @@ linelist <- linelist |>
 
 linelist
 ```
-1. The argument `truncated = 2` will result in dates with missing `time_start_hour` still being converted to date-time, with the missing time being set to `00:00` (midnight). Whether you want to deal with missing `time_start_hour` in this way or prefer to code these date-times as `NA` will depend on how you want them to be represented in your analysis.
+
+1.  The argument `truncated = 2` will result in dates with missing `time_start_hour` still being converted to date-time, with the missing time being set to `00:00` (midnight). Whether you want to deal with missing `time_start_hour` in this way or prefer to code these date-times as `NA` will depend on how you want them to be represented in your analysis.
 
 ### Recoding values
-There is a variable in the data set called `group`.
-In this variable, teachers have been encoded as `0`, while students were encoded as `1`.
-We can convert the `group` variable to a factor and give each factor level the appropriate label.
+
+There is a variable in the data set called `group`. In this variable, teachers have been encoded as `0`, while students were encoded as `1`. We can convert the `group` variable to a factor and give each factor level the appropriate label.
 
 We will convert to factor also the `demo_sex` variable
 
@@ -375,7 +375,6 @@ linelist <- linelist |>
 linelist
 ```
 
-
 Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-original) we can highlight and fix some typographical errors.[^3]
 
 ```{r}
@@ -385,9 +384,10 @@ Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-orig
 linelist |> 
   tbl_cross(demo_age, demo_group)
 ```
-   + There is one teacher aged 16 (likely digit reversal - should be 61)
-   + There is one student aged 8 (likely missing a digit - should be 18)
-   + There is one student aged 180 (likely has an extra digit - should be 18)
+
+-   There is one teacher aged 16 (likely digit reversal - should be 61)
+-   There is one student aged 8 (likely missing a digit - should be 18)
+-   There is one student aged 180 (likely has an extra digit - should be 18)
 
 We will fix those values accordingly. (@tbl-age-group-fixed)
 
@@ -413,8 +413,8 @@ linelist |>
   tbl_cross(demo_age, demo_group)
 ```
 
-
 ### Variable Class
+
 Most variables are either binary symptoms or food exposures, that have been encoded as 0 (where the symptom was absent or there was no exposure) or 1 (symptom present or person was exposed to the food item). We will convert them to logicals (i.e., `TRUE`/`FALSE`).
 
 ```{r}
@@ -432,9 +432,6 @@ linelist <- linelist |>
 linelist
 ```
 
-
-
-
 ## Case Definition
 
 ::: callout-important
@@ -447,66 +444,63 @@ This section is for context only. Nothing has to be done in this section by the 
 The current section is not interested for the present exercise, so we just perform the computations hidden behind the scene.
 :::
 
-The final step to undertake before proceeding to descriptive analysis, is to create a new column in the data set to hold the case definition.  You can call this column `case` and set it to `TRUE` if the individual meets the case definition criteria and `FALSE` if not.
+The final step to undertake before proceeding to descriptive analysis, is to create a new column in the data set to hold the case definition. You can call this column `case` and set it to `TRUE` if the individual meets the case definition criteria and `FALSE` if not.
 
 **Variables of interest:**
 
-Your exposure of interest is the school dinner party held on 11 November 2006 at 18:00. You may have noticed while skimming the data, that there is a binary variable called `food_meal`.  This variable indicates whether people attended the school dinner party and ate a meal there, or not.
+Your exposure of interest is the school dinner party held on 11 November 2006 at 18:00. You may have noticed while skimming the data, that there is a binary variable called `food_meal`. This variable indicates whether people attended the school dinner party and ate a meal there, or not.
 
-Other variables that will be helpful to include in your case definition are `time_datetime_onset` (hint: check that case onset date/time is **after** exposure) and symptom variables (hint: not everyone on the linelist fell ill).  The symptoms included in the data set are:
+Other variables that will be helpful to include in your case definition are `time_datetime_onset` (hint: check that case onset date/time is **after** exposure) and symptom variables (hint: not everyone on the linelist fell ill). The symptoms included in the data set are:
 
-   + `symptoms_abdo` (abdominal pain)
-   + `symptoms_diarrhoea`
-   + `symptoms_bloody` (bloody diarrhoea)
-   + `symptoms_nausea`
-   + `symptoms_vomiting`
-   + `symptoms_fever`
-   + `symptoms_headache`
-   + `symptoms_jointpain`
+-   `symptoms_abdo` (abdominal pain)
+-   `symptoms_diarrhoea`
+-   `symptoms_bloody` (bloody diarrhoea)
+-   `symptoms_nausea`
+-   `symptoms_vomiting`
+-   `symptoms_fever`
+-   `symptoms_headache`
+-   `symptoms_jointpain`
 
 ### Defining a case
 
-To demonstrate how this works, we will first construct an example case definition in words:  
+To demonstrate how this works, we will first construct an example case definition in words:
 
 A case was defined as a person who:
 
-   + attended the school dinner on 11 November 2006 (i.e. is on the linelist)
-   + ate a meal at the school dinner (i.e. was exposed)
-   + fell ill after the start of the meal
-   + fell ill no later than two days after the school dinner
-   + suffered from diarrhoea with or without blood, or vomiting
-
+-   attended the school dinner on 11 November 2006 (i.e. is on the linelist)
+-   ate a meal at the school dinner (i.e. was exposed)
+-   fell ill after the start of the meal
+-   fell ill no later than two days after the school dinner
+-   suffered from diarrhoea with or without blood, or vomiting
 
 Non cases were defined as people who:
 
-   + attended the school dinner on 11 November 2006 (i.e. are on the linelist)
-   + ate a meal at the school dinner (i.e. were exposed)
-   + did not fall ill within the time period of interest
-   + did not develop diarrhoea (with or without blood) or vomiting
-
+-   attended the school dinner on 11 November 2006 (i.e. are on the linelist)
+-   ate a meal at the school dinner (i.e. were exposed)
+-   did not fall ill within the time period of interest
+-   did not develop diarrhoea (with or without blood) or vomiting
 
 For the sake of the analysis, we exclude any people from the cohort who didn't eat at the dinner, because we specifically hypothesise a food item to be the vehicle of infection in this outbreak. Excluding people reduces the sample size and therefore the power slightly, but the investigators considered that this would increase specificity.
 
 The variables needed to define this case definition are:
 
-   + `food_meal`
-   + `time_datetime_onset`
-   + `symptoms_diarrhoea`
-   + `symptoms_bloody`
-   + `symptoms_vomiting`
+-   `food_meal`
+-   `time_datetime_onset`
+-   `symptoms_diarrhoea`
+-   `symptoms_bloody`
+-   `symptoms_vomiting`
 
 ### Case definition
 
-First, we create a column for the date and time of the meal.  We can use this column to determine if onset date/times occured before or after the meal.  We can limit the case definition to people who had onset date/times after the meal, since we hypothesise that the meal is where exposure to the pathogen occured.
+First, we create a column for the date and time of the meal. We can use this column to determine if onset date/times occured before or after the meal. We can limit the case definition to people who had onset date/times after the meal, since we hypothesise that the meal is where exposure to the pathogen occured.
 
 Moreover, for the case definition, we are primarily interested in three symptoms:
 
-   + `symptoms_diarrhoea` (without blood)
-   + `symptoms_bloody` (diarrhoea with blood)
-   + `symptoms_vomiting` 
+-   `symptoms_diarrhoea` (without blood)
+-   `symptoms_bloody` (diarrhoea with blood)
+-   `symptoms_vomiting`
 
-However, these are not the only symptoms in the data set.  When creating the case definition, it would be easier to refer to these three symptoms if there was one column, indicating whether people had those symptoms or not.  We can call this column `symptoms_gastro`.  
-
+However, these are not the only symptoms in the data set. When creating the case definition, it would be easier to refer to these three symptoms if there was one column, indicating whether people had those symptoms or not. We can call this column `symptoms_gastro`.
 
 ```{r}
 #| label: case-def
@@ -523,18 +517,15 @@ linelist <- linelist |>
 linelist
 ```
 
-
-
-> Note that we have included people who have no data for all three symptoms of interest, and categorised them as `FALSE`.  This means that they will be defined as non-cases in the next step.  
+> Note that we have included people who have no data for all three symptoms of interest, and categorised them as `FALSE`. This means that they will be defined as non-cases in the next step.
 
 **Creating the case definition column**
 
-Next, we can create a column for the case definition, in which we will define all the respondents as either cases, non-cases or `NA`.  
+Next, we can create a column for the case definition, in which we will define all the respondents as either cases, non-cases or `NA`.
 
-We can define non-cases as those who attended the meal, but didn't develop any gastro symptoms, or if they did, developed them before the meal took place.  
+We can define non-cases as those who attended the meal, but didn't develop any gastro symptoms, or if they did, developed them before the meal took place.
 
-We can exclude (define as `NA`) respondents that answered the survey, but did not attend the meal.  
-
+We can exclude (define as `NA`) respondents that answered the survey, but did not attend the meal.
 
 ```{r}
 #| label: ate-meal
@@ -560,7 +551,8 @@ tbl_ate_meal <- linelist |>
   tbl_cross(food_meal, ate_anything)
 tbl_ate_meal
 ```
-We can see from this table that `r inline_text(tbl_ate_meal, col_level = "TRUE", row_level = "FALSE")` respondents said they didn't have a meal, but did actually consume items on the party meal menu, according to their answers for the food and drink questions.  
+
+We can see from this table that `r inline_text(tbl_ate_meal, col_level = "TRUE", row_level = "FALSE")` respondents said they didn't have a meal, but did actually consume items on the party meal menu, according to their answers for the food and drink questions.
 
 We can therefore recode the `food_meal` column for these individuals as `TRUE`.
 
@@ -589,7 +581,6 @@ tbl_ate_meal
 
 Now that these values are corrected, we can proceed with the case definition:
 
-
 ```{r}
 #| label: case-definition
 #| echo: false
@@ -617,7 +608,7 @@ linelist
 
 ### Incubation times
 
-A suitable incubation period to use in the case definition can be defined by calculating the time between exposure (to the meal) and onset of symptoms, and then looking at the distribution of these time differences.  In this outbreak, incubation periods are easy to calculate, because everyone was exposed at (roughly) the same time and on the same day (eating the meal at the school dinner party).  
+A suitable incubation period to use in the case definition can be defined by calculating the time between exposure (to the meal) and onset of symptoms, and then looking at the distribution of these time differences. In this outbreak, incubation periods are easy to calculate, because everyone was exposed at (roughly) the same time and on the same day (eating the meal at the school dinner party).
 
 We will create a column for incubation times (date and time of meal subtracted from the date and time of symptom onset).
 
@@ -635,7 +626,7 @@ linelist
 
 We can now refine the case definition and limit the maximum incubation period to 48 hours after the meal, as the data points to a fast-acting bacterial toxin or a virus.
 
-We will update the case definition, this time only changing values which were previously defined as a case but had onset of symptoms after 13 November 2006 at 18:00.  Respondents that meet this condition will be reclassified as non cases (i.e. `case = FALSE`).
+We will update the case definition, this time only changing values which were previously defined as a case but had onset of symptoms after 13 November 2006 at 18:00. Respondents that meet this condition will be reclassified as non cases (i.e. `case = FALSE`).
 
 ```{r}
 #| label: case-update
@@ -649,7 +640,7 @@ linelist <- linelist |>
 linelist
 ```
 
-As it happens, there is no change in the number of cases, because none of them had an onset date and time that was more than two days after the meal.  We can double-check this by cross-tabulating the onset date/time and case status (@tbl-case-onset).
+As it happens, there is no change in the number of cases, because none of them had an onset date and time that was more than two days after the meal. We can double-check this by cross-tabulating the onset date/time and case status (@tbl-case-onset).
 
 ```{r}
 #| label: tbl-case-onset
@@ -664,7 +655,7 @@ We can see that the onset dates of all cases were from 11 to 13 November 2006 in
 
 ### Exclusions
 
-Ultimately, the investigation team decided to remove respondents that did not meet the definition for a case or a non-case from the data set prior to analysis.  We can do this easily with the function `drop_na()`:
+Ultimately, the investigation team decided to remove respondents that did not meet the definition for a case or a non-case from the data set prior to analysis. We can do this easily with the function `drop_na()`:
 
 ```{r drop_nacase}
 
@@ -673,11 +664,13 @@ linelist <- linelist |>
   drop_na(case)
 linelist
 ```
-
-
 :::
 
+[^1]: This version of the dataset is slightlty modified respect the original `Copenhagen_raw.csv` raw dataset to include some additional *messiness* useful for the assessment purposes.[@epiet/ou]
 
+[^2]: If you have downloaded it in your local environment, you can double click on the `project.Rproj` project file.
+
+[^3]: Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!
 
 # Descriptive analysis
 
@@ -708,7 +701,6 @@ Many of the descriptive features can be illustrated graphically, for which we wi
 
 This section is for context only. Nothing has to be done in this section by the participants.
 :::
-
 
 In theory, you create an analysis plan before data collection - it is an important way to ensure you collect all the data you need and that you *only* collect the data you need (think: data protection!). However, during outbreak investigations, you may need to deploy questionnaires as soon as possible and before a plan has been developed. In these cases, your experience will be an important resource to fall back on.
 
@@ -772,12 +764,12 @@ incplot <- linelist |>
 # Print plot:
 incplot
 ```
+
 ### Epidemic curve
 
 To create an *epicurve*, we are going to use `ggplot2`. `ggplot2` is a versatile package that helps create beautiful visualizations in `R`. There are plenty good in-depth guides to the package, for example: [*The Epidemiologist R Handbook* Chapter on *ggplot*](https://epirhandbook.com/en/ggplot-basics.html) and [*ggplot2 - Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html).
 
 First, we can create an epicurve for the date of onset, limiting the input data to cases:
-
 
 ```{r}
 #| label: epicurve-date
@@ -810,13 +802,12 @@ epicurve_date <- linelist |>
 # Print epicurve:
 epicurve_date
 ```
-1. Note that `case` is logical, so we can use it as a filter directly (i.e., `case == TRUE` is exactly the same as `case` alone).
 
+1.  Note that `case` is logical, so we can use it as a filter directly (i.e., `case == TRUE` is exactly the same as `case` alone).
 
 As you can see, the epicurve is quite crude, because most cases had their disease onset on 12 November. To increase resolution, we could enhance the time information to include both day and hour.
 
 During the data preparation session, we already concatenated the variables `time_day_onset` and `start_hour` together and formatted them with the `lubridate` package to create a new date-time variable called `time_datetime_onset`. We can now create the epicurve with this variable:
-
 
 ```{r}
 #| label: epicurve-hour
@@ -899,15 +890,13 @@ epicurve_strata <- linelist |>
 epicurve_strata
 ```
 
-
 ## Person
 
 In this section, we will describe the outbreak in terms of personal characteristics (age, sex and symptoms of cases).
 
-
 ### Age & sex
 
-During the data cleaning exercise, we already looked at the age characteristics of the cohort, since there were some typographic errors that needed to be corrected.  However, we have not yet looked at the distribution of cases and non-cases by sex (@tbl-case-sex).
+During the data cleaning exercise, we already looked at the age characteristics of the cohort, since there were some typographic errors that needed to be corrected. However, we have not yet looked at the distribution of cases and non-cases by sex (@tbl-case-sex).
 
 ```{r}
 #| label: tbl-case-sex
@@ -931,7 +920,7 @@ linelist |>
 
 We can see that the majority of respondents are students; this is true for both cases and non-cases.
 
-Lastly, we will look at school class.  The respondents belong to three classes (@tbl-case-class).
+Lastly, we will look at school class. The respondents belong to three classes (@tbl-case-class).
 
 ```{r}
 #| label: tbl-case-class
@@ -944,7 +933,7 @@ linelist |>
 
 ### Symptoms
 
-In the first part of this case study, we selected three symptoms to use in the case definition; these were diarrhoea (with or without blood) and vomiting.  However, other symptoms were also recorded in the survey.  
+In the first part of this case study, we selected three symptoms to use in the case definition; these were diarrhoea (with or without blood) and vomiting. However, other symptoms were also recorded in the survey.
 
 It may be useful to determine which symptoms are most common among cases and non-cases (@tbl-symptoms).
 
@@ -982,12 +971,9 @@ tbl_symptoms <- linelist |>
 tbl_symptoms
 ```
 
-Looking at the table, do you think the symptoms selected for the case definition were the right ones, or would you change anything?
-This might be a bit easier to assess if we look at the symptoms in an ordered bar chart.
-To do this, we will need to reshape the data, so that one column contains symptoms and another column contains the proportion of respondents with a given symptom in each case.
+Looking at the table, do you think the symptoms selected for the case definition were the right ones, or would you change anything? This might be a bit easier to assess if we look at the symptoms in an ordered bar chart. To do this, we will need to reshape the data, so that one column contains symptoms and another column contains the proportion of respondents with a given symptom in each case.
 
 We will reshape the data, and tally up the counts for each symptom, stratified by case definition.
-
 
 ::: callout-important
 ## Instructions
@@ -995,7 +981,6 @@ We will reshape the data, and tally up the counts for each symptom, stratified b
 In this section, participants should fill in `___` the proper instructions to correctly reshape the data set of symptoms to have intermediate data set composed by three columns: `case`, `symptoms`, and `value`.
 
 To do that, use the proper `pivot_*` function of hte `{tidyr}` package.
-
 :::
 
 ::: {.panel-tabset group="ex-sol"}
@@ -1055,7 +1040,6 @@ tbl_symptoms_case <- linelist |>
 tbl_symptoms_case
 ```
 
-
 ```{r}
 #| label: pivot-plot
 fig_symptoms_case <- tbl_symptoms_case |> 
@@ -1080,22 +1064,7 @@ fig_symptoms_case <- tbl_symptoms_case |>
 fig_symptoms_case
 ```
 :::
-
-
-
 :::
-
-
-
-
-
-
-
-[^1]: This version of the dataset is slightlty modified respect the original `Copenhagen_raw.csv` raw dataset to include some additional *messiness* useful for the assessment purposes.[@epiet/ou]
-
-[^2]: If you have downloaded it in your local environment, you can double click on the `project.Rproj` project file.
-
-[^3]: Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!
 
 ```{r}
 #| label: pkg-bib
