@@ -42,11 +42,7 @@ library(countdown)
 -   What is a *ggplot*, and what are its main components?
 -   How should data be provided to a ggplot?
 -   How can we create ggplots with the `{ggplot2}` R package?
--   What are:
--   `aes`thetics?
--   `geom`etries?
--   `facet`s?
--   Plot `theme`s and `labs`?
+-   What are `aes`thetics, `geom`etries, `facet`s, plot `theme`s and `labs`?
 :::
 
 ::: {.column width="50%"}
@@ -54,12 +50,11 @@ library(countdown)
 
 #### To be able to
 
--   Use the R native pipe (`|>`) to concatenate functions, knowing that the {magrittr} one (%\>%) has similar behavior.
--   Create anonymous functions in the R native style as `\(x)` to use with, but not limited to, pipes.
--   Create basic plots with `{ggplot2}` (scatter, histogram, barplot, boxplot, and time-series), including grouped plots with or without colors and plots of multiple types.
+-   Use the R native pipe (`|>`) to concatenate functions, knowing that the `{magrittr}` one (`%\>%`) has similar behavior.
+-   Create anonymous functions in the R native style as `\(x)` to use with pipes (and not only).
+-   Create basic plots with `{ggplot2}`.
 -   Use the `facet_*` functions to stratify plots according to data.
 -   Modify the main style component of a plot (i.e., sub-/titles, labels, legends)
--   Use the main `{patchwork}` functions to compose a plot by multiple ones.
 -   Save a plot as a stand-alone image file.
 :::
 :::
@@ -99,7 +94,7 @@ If you attach the `{tidyverse}` alone `library(tidyverse)` in a new R session, a
 
 -   `stats::filter()`.
 -   `dplyr::filter()`.
--   A <error> due to ambiguity.
+-   An error due to ambiguity.
 -   I don't know what `stats::filter()` or `dplyr::filter()` means in R.
 
 1.  Put an `X` next to the correct answer, under section 1.2. Ex7 in the pad.
@@ -136,14 +131,14 @@ One of the advantages of the Tidyverse is that common standards make everything 
 Suppose you have the following functions:
 
 ```{r}
-sum_x_y <- function(x, y) x + y
-multiply_x_y <- function(x, y) x * y
+add <- function(x, y) x + y
+multiply_by <- function(x, by) x * by
 divide_by_two <- function(x) x / 2
 ```
 
 ::: columns
 ::: {.column width="50%"}
-Pretend that it is a difficult problem, and you want to use only those functions to find a trapezoid area with the following data already defined in your R session:
+Pretend that it is a difficult problem, and you want to use those functions **only** to find a trapezoid area with the following data already defined in your R session:
 
 ```{r}
 a <- 2
@@ -166,7 +161,7 @@ Area = $\frac{a+b}{2}h$
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
-1.  Write (in new lines under section 1.2. Ex8) ways you can manage objects in R that will be progressively modified by a sequence of operations (i.e., functions).
+1.  Write (in new lines under section 1.2. Ex8) your purposed solution.
 :::
 :::
 
@@ -192,9 +187,9 @@ countdown(
 ## Overwrite the result
 
 ```{r}
-res <- sum_x_y(a, b)
+res <- add(a, b)
 res <- divide_by_two(res)
-res <- multiply_x_y(res, h)
+res <- multiply_by(res, h)
 res
 ```
 
@@ -207,9 +202,9 @@ res
 ## Create middle objects
 
 ```{r}
-bases <- sum_x_y(a, b)
+bases <- add(a, b)
 half_bases <- divide_by_two(bases)
-area <- multiply_x_y(half_bases, h)
+area <- multiply_by(half_bases, h)
 area
 ```
 
@@ -220,9 +215,9 @@ area
 We must think of meaningful (unuseful!) names for all the intermediate objects, because we surely want to avoid situations like the following one
 
 ```{r}
-res_1 <- sum_x_y(a, b)
+res_1 <- add(a, b)
 res_2 <- divide_by_two(res_1)
-res_final <- multiply_x_y(res_2, h)
+res_final <- multiply_by(res_2, h)
 res_final
 ```
 
@@ -233,20 +228,20 @@ Which takes the worst of both, adding the difficult in debugging and correcting 
 ## Compose function calls
 
 ```{r}
-res <- multiply_x_y(divide_by_two(sum_x_y(a, b)), h)
+res <- multiply_by(divide_by_two(add(a, b)), h)
 res
 ```
 
-1.  Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., `multiply_x_y` is the first name appearing, and its second argument `h` is the last one!)
+1.  Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., `multiply_by` is the first name appearing, and its second argument `h` is the last one!)
 
 . . .
 
 We could improve readability by indenting our code (which is surely a good thing to do)
 
 ```{r}
-res <- multiply_x_y(
+res <- multiply_by(
   divide_by_two(
-    sum_x_y(a, b)
+    add(a, b)
   ),
   h
 )
@@ -276,15 +271,58 @@ Try to read the pipe as "and than..."
 :::
 
 ```{r}
-res <- sum_x_y(a, b) |> 
+res <- a |> 
+  add(b) |> 
   divide_by_two() |> 
-  multiply_x_y(h)
+  multiply_by(h)
 res
 ```
 
 1.  Every argument is exactly next to its function call
 2.  We create the result object only
 3.  We can naturally *read* what the code do: "it takes the sum of a and b, *and then...* divide the result by two, *and then...* multiply the result by h"; and that's it, the spelled formula of trapezoid areas!
+
+## Anonymous functions
+
+::: callout-important
+Native pipe operator `|>` and anonymous functions were both introduced in R 4.1.0.
+:::
+
+Anonymous functions are... functions without a name! They are often used for short, throwaway operations.
+
+- Syntax (definition): `\(x) { ... }` where `x` is the argument and `{ ... }` is the function body.
+- Syntax (call): `(\(x) { ... })(val)` where `val` is the value to pass to the function.
+
+```{r}
+(\(x) x^2)(3)
+```
+::: columns
+::: {.column width="50%"}
+::: callout-important
+The right side of the pipe must be a function call, and not a function definition! So, we need to enclose the function definition in parentheses `()` to make us able to call it immediately addin
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Anonymous functions are often used with pipes, because we can define a function directly in the pipe, and use it immediately.
+:::
+:::
+:::
+
+```{r}
+1:5 |>
+  (\(x) x^2)()
+```
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-pipe.R`
+
+
 
 ## Your turn
 

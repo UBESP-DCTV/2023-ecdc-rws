@@ -282,6 +282,48 @@ res
 2.  We create the result object only
 3.  We can naturally *read* what the code do: "it takes the sum of a and b, *and then...* divide the result by two, *and then...* multiply the result by h"; and that's it, the spelled formula of trapezoid areas!
 
+## Anonymous functions
+
+::: callout-important
+Native pipe operator `|>` and anonymous functions were both introduced in R 4.1.0.
+:::
+
+Anonymous functions are... functions without a name! They are often used for short, throwaway operations.
+
+- Syntax (definition): `\(x) { ... }` where `x` is the argument and `{ ... }` is the function body.
+- Syntax (call): `(\(x) { ... })(val)` where `val` is the value to pass to the function.
+
+```{r}
+(\(x) x^2)(3)
+```
+::: columns
+::: {.column width="50%"}
+::: callout-important
+The right side of the pipe must be a function call, and not a function definition! So, we need to enclose the function definition in parentheses `()` to make us able to call it immediately addin
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Anonymous functions are often used with pipes, because we can define a function directly in the pipe, and use it immediately.
+:::
+:::
+:::
+
+```{r}
+1:5 |>
+  (\(x) x^2)()
+```
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-pipe.R`
+
+
+
 ## Your turn
 
 ::: callout-caution

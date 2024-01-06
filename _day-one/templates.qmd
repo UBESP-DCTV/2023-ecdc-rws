@@ -113,6 +113,13 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
 # Your turn ----------------
 
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `01-base.R`
+
+
 ## Your turn
 
 ::: callout-caution
