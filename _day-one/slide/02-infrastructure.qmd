@@ -189,7 +189,7 @@ Installing a package means:
 
 every time...
 
-That is manage efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
+That is managed efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
 :::
 
 ## My turn
@@ -488,15 +488,14 @@ On the other hand, R understand and can manage both the standards in all the sys
 
 Sometimes the working directory can change with or without our control.[^5]
 
+
+::: columns
+::: {.column width="50%"}
 To use `{here}` in your scripts, simply attach it!
 
 ```{r}
 library(here)
 ```
-
-
-::: columns
-::: {.column width="50%"}
 
 
 - `here()` function always uses project-relative paths
@@ -508,6 +507,7 @@ library(here)
 
   ```{r}
   here("img", "here.png")
+  here("img/here.png")
   ```
 :::
 ::: {.column width="50%"}
@@ -525,15 +525,17 @@ library(here)
 ## Folder organization
 
 Now that you:
+
 - have a main project folder to work inside
 - can write scripts to store code used for you analyses
-- can write/read files to/from the disk
-- can define robust path relative to the peoject main folder
+- (can write/read files to/from the disk)
+- can define robust path relative to the project main folder
 
 You are free to organize and move your scripts and data in well designed folder structures
 
 ::: callout-tip
 Some of the standard R folders are:
+
 - `data-raw/`: to store raw data, the original ones _they_ send us
 - `data/`: processed data we will use into our analyses
 - `R/`: a folder to store custom functions source code only (advanced topic)
@@ -542,19 +544,30 @@ Some of the standard R folders are:
 # Suggested folder organization
 
 - `R/`: if any, custom functions defined and used within the project.
-- `data-raw/`: to store raw data, the original ones _they_ send us.
+- `data-raw/`: to store raw data (i.e., the original ones _they_ send us), and the scripts to preprocess them in preparation for the analyses.
 - `data/`: processed data we will use into our analyses.
 - `analysis/`: analysis scripts.
 - `output/`: report, figure and table produced.
+
+
+::: columns
+::: {.column width="50%"}
 
 ::: callout-tip
 If you create an `R/functions.R` script into which you define custom functions, you can make them available during analyses computations including, after the `library()` calls at the top of the script, the following code:
 
 ```r
-source(here("R", "functions.R"))
+source(here("R/functions.R"))
 ```
 
 And next, you can use your custom function within the script.
+:::
+:::
+::: {.column width="50%"}
+::: callout-tip
+`source` is a base R function that allows to run a whole script, i.e., to execute all the code contained in it.
+:::
+:::
 :::
 
 
@@ -568,13 +581,14 @@ And next, you can use your custom function within the script.
 ::: {.column width="50%"}
 
 - Go to: https://bit.ly/ubep-rws-rstudio
+
 ::: callout-caution
 ## Your turn
 - Create a new project
 - Install `{renv}` and activate it
 - Install `{ggplot2}`, and `{here}` and update the `renv.lock` file
 - Create the folders `R/`, `analyses/`, `output/`
-- Create a script `R/functions.R` and define a function `make_plot()` that returns a `ggplot2` plot of the `mtcars` dataset
+- Create a script `R/functions.R` and define a function `make_plot()` returning a `ggplot2` plot of `mtcars`
 - Create a script `analyses/analysis.R` that:
   - attach the `ggplot2` package
   - attach the `here` package
