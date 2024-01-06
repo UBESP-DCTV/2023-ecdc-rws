@@ -24,9 +24,6 @@
 :::
 :::
 
-
-
-
 # topic --------------------
 
 # Topic
@@ -39,9 +36,6 @@
 ::: callout-caution
 ## Your turn
 :::
-
-
-
 
 # Code ---------------------
 
@@ -61,9 +55,6 @@
 :::
 :::
 
-
-
-
 # Columns ------------------
 
 ::: columns
@@ -73,9 +64,6 @@
 ::: {.column width="50%"}
 :::
 :::
-
-
-
 
 # Summary ------------------
 
@@ -96,17 +84,24 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 :::
 :::
 
-## Homework
+## Posit's RStudio Cloud Workspace
 
-### Posit's RStudio Cloud Workspace
+**Instructions 1**
 
--   Project:
--   Instructions:
--   Script to complete:
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
 
+::: callout-caution
+## Your turn
 
+-   Project: day-1
+-   Instructions: `homework/day_one-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
 
-
+:::
 
 # Break --------------------
 
@@ -115,10 +110,6 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 [20 minutes](https://apps.garrickadenbuie.com/countdown/?_inputs_&time=%2220%3A00%22&update_every=%221%22&warn_time=%2204%3A00%22)[^templates-1]
 
 [^templates-1]: <https://apps.garrickadenbuie.com/countdown>
-
-
-
-
 
 # Your turn ----------------
 

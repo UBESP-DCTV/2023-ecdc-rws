@@ -93,29 +93,27 @@ library(countdown)
 ::: {.column width="50%"}
 ### Administrative
 
-- Giulia Lazzaretti
-- Chiara Giarracca
+-   Giulia Lazzaretti
+-   Chiara Giarracca
 
 ### Scientific
 
-- Ileana Baldi
-- Dario Gregori
-- Corrado Lanera
+-   Ileana Baldi
+-   Dario Gregori
+-   Corrado Lanera
 :::
-::: {.column width="50%"}
 
+::: {.column width="50%"}
 ### Support
 
-- Ajsi Kanapari
-- Ali Aqsa
-- Allegra Sartore
-- Daniele Sabbatini
-- Konstantina Pilali
-- Sara Ahsani
-
+-   Ajsi Kanapari
+-   Ali Aqsa
+-   Allegra Sartore
+-   Daniele Sabbatini
+-   Konstantina Pilali
+-   Sara Ahsani
 :::
 :::
-
 
 # Course organization,<br>Teaching materials, and<br>Personalized assistance
 
@@ -150,7 +148,7 @@ The training course is expected to cover an introduction to R for exploratory da
 -   Assign you homework for *the* *next* lesson to discuss together.\
     <br>
 
--   Provide plattforms to answer and discuss collaboratively.
+-   Provide platforms to answer and discuss collaboratively.
 :::
 :::
 
@@ -173,22 +171,24 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ## Teaching Materials & Resources
 
-|                                                    |                                                                                                       |
-|-------------------------|-----------------------------------------------|
-| Teams' room:                                       |                                                                                                       |
-| Website (agenda, slides, and assessments):         | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
-| RStudio cloud workspace:                           | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
-| Really realtime collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
+|                                                     |                                                                                                       |
+|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| Teams' room:                                        |                                                                                                       |
+| Website (agenda, slides, and assessments):          | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
+| RStudio cloud workspace:                            | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
+| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
 
 <br>
 
 ### Assistance
 
 -   **Technical Assistance**: no infrastructural technical assistance will be provided during the session by UBEP staff. Please contact your ECDC IT staff for this matter.
+
 -   **Rstudio Cloud Assistance:** write on Teams chat, and a person from UBEP will contact you directly on a separate Teams meeting
+
 -   **Coding issues and questions**: feel free to discuss and collaborate on the pad's chat
 
-- **Local installation of R/RStudio**: Local installation is not required for the course, and we won't teach the course on your local installation. However, if you want to install R and RStudio on your computer, we will provide you instructions and support (possibly after the course). Please, contact the supporting staff for this matter during the class, or the administrative staff after the course.
+-   **Local installation of R/RStudio**: Local installation is not required for the course, and we won't teach the course on your local installation. However, if you want to install R and RStudio on your computer, we will provide you instructions and support (possibly after the course). Please, contact the supporting staff for this matter during the class, or the administrative staff after the course.
 
 ## Slides
 
@@ -212,9 +212,9 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 -   The environment is already set for you
 
-![](img/posit-cloud-day1.png){.absolute top="35%" left="5%" height="50%"}
+[^3]: You need a free account to join workspaces. If you didn't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio).
 
-[^3]: You need a free account to join workspaces. If you did't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio).
+![](img/posit-cloud-day1.png){.absolute top="35%" left="5%" height="50%"}
 
 ## Suggested screen layout
 
@@ -255,7 +255,6 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 ![](img/layout-single-screen-annotated.png){fig-align="center"}
 :::
 :::
-
 
 ## Lessons organization {.center}
 

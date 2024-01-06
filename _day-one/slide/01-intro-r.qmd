@@ -35,14 +35,13 @@ library(countdown)
 ::: {.column width="50%"}
 ### Questions
 
-- What can I actually do with R?
-- How can I start working in R from scratch?
-- What kind of objects have R?
-- How can I manage them?
-- How can I control the flow of code execution?
-- How can I define custom functions?
-- What are and how can I use extension packages in R?
-
+-   What can I actually do with R?
+-   How can I start working in R from scratch?
+-   What kind of objects have R?
+-   How can I manage them?
+-   How can I control the flow of code execution?
+-   How can I define custom functions?
+-   What are and how can I use extension packages in R?
 :::
 
 ::: {.column width="50%"}
@@ -50,78 +49,74 @@ library(countdown)
 
 #### To be able to do/use
 
-- Basic operations in R (math, logic, assign, subsetting).
-- Define `for` loops and `if` conditional executions
-- Create functions
-- install, and attach packages, and getting help
-
+-   Basic operations in R (math, logic, assign, subsetting).
+-   Define `for` loops and `if` conditional executions
+-   Create functions
+-   install, and attach packages, and getting help
 :::
 :::
 
 # Overview
 
----
-
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide1.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide2.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide3.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide4.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide5.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide6.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide7.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide8.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide9.PNG)
 
----
+------------------------------------------------------------------------
 
 <br>
 
 ![](img/concept-map/Slide10.PNG)
-
-
 
 # R basics
 
@@ -181,8 +176,8 @@ three_two_one
 
 ::: columns
 ::: {.column width="35%"}
-|        |              |
-|--------|--------------|
+|        |             |
+|--------|-------------|
 | Subset | `[` or `[[` |
 :::
 
@@ -245,10 +240,10 @@ mean(x = c(1, 2, 3))
 
 ::: columns
 ::: {.column width="35%"}
-|                 |        |
-|-----------------|--------|
-| R's null object | `NULL` |
-| R's _missing_ object | `NA` |
+|                      |        |
+|----------------------|--------|
+| R's null object      | `NULL` |
+| R's *missing* object | `NA`   |
 :::
 
 ::: {.column width="65%"}
@@ -333,7 +328,7 @@ countdown(
 
 ```{r}
 #| output-location: column
-# Standrard order of precedence
+# Standard order of precedence
 5 + sqrt(4) / 2 * 3^(2 - 1)
 ```
 :::
@@ -699,7 +694,6 @@ c(one = 1, two = 2, three = 3)
 :::
 :::
 
-
 ## Data structure: (other) vectors - Factors
 
 Other structure in R are based on atomic vectors, i.e. are of one of the base types but have more *structure* (similar structures are called `?class`)
@@ -788,9 +782,9 @@ str(gender)
 
 Other structure in R are based on atomic vectors, i.e. are of one of the base types but have more *structure* (similar structures are called `?class`)
 
-**Dates** are counts (based on `?double`s) of days since 1970-01-01.[^5]
+**Dates** are counts (based on `?double`s) of days since 1970-01-01.[^1]
 
-[^5]: This date is know as the Unix Epoch.
+[^1]: This date is know as the Unix Epoch.
 
 ::: columns
 ::: {.column width="30%"}
@@ -834,7 +828,7 @@ str(date)
 ::: {.column width="30%"}
 |            |                   |
 |------------|-------------------|
-| Date-times | `?as.POSIXct`[^6] |
+| Date-times | `?as.POSIXct`[^2] |
 :::
 
 ::: {.column width="70%"}
@@ -869,7 +863,7 @@ str(date_time)
 :::
 :::
 
-[^6]: POSIXct: "Portable Operating System Interface - Calendar Time".
+[^2]: POSIXct: "Portable Operating System Interface - Calendar Time".
 
 ## My turn
 
@@ -942,9 +936,6 @@ typeof(mixed_vector)
 :::
 :::
 :::
-
-
-
 
 ## Data structure: list (vectors)
 
@@ -1058,7 +1049,6 @@ Think of objects in R (any objects in R!) as a train (either atomic or list) mad
 
 ![`x <- list(a = 1:3, b = "a", 4:6)` (image adapted from [Advanced-R](https://adv-r.hadley.nz/subsetting.html))](img/train-labels.png)
 
-
 ## Data structure: Subsetting data - subset
 
 ::: callout-important
@@ -1121,7 +1111,7 @@ db_df[c("height", "age")]
 ::: {.column width="30%"}
 |                     |     |
 |---------------------|-----|
-| Subset by logic[^7] | `[` |
+| Subset by logic[^3] | `[` |
 :::
 
 ::: {.column width="70%"}
@@ -1132,7 +1122,7 @@ db_df[c(TRUE, FALSE, FALSE, TRUE)]
 :::
 :::
 
-[^7]: Logical subsetting vector **must** be the same `?lenght` of the object (i.e., number of train's wagons).
+[^3]: Logical subsetting vector **must** be the same `?lenght` of the object (i.e., number of train's wagons).
 
 ## Data structure: Subsetting data - coordinates
 
@@ -1299,7 +1289,7 @@ db_df[["height"]]
 ::: {.column width="30%"}
 |            |         |
 |------------|---------|
-| Extracting | `$`[^8] |
+| Extracting | `$`[^4] |
 :::
 
 ::: {.column width="70%"}
@@ -1310,17 +1300,13 @@ db_df$height
 :::
 :::
 
-[^8]: Discouraged in non-interactive usage because of its unpredictable results due to partial matching (`?"$"` ).
-
-
+[^4]: Discouraged in non-interactive usage because of its unpredictable results due to partial matching (`?"$"` ).
 
 ## My turn
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `03-matrices_dataframes.R`
-
-
 
 ## Your turn
 
@@ -1428,13 +1414,13 @@ db_df[4][[3]]
 
 ::: columns
 ::: {.column width="45%"}
-+---------------------+------------------------------------+
-| If-then             | ``` r                              |
-|                     | if (cond) {                        |
-|                     |   # <code>                         |
-|                     | }                                  |
-|                     | ```                                |
-+---------------------+------------------------------------+
++---------+-------------+
+| If-then | ``` r       |
+|         | if (cond) { |
+|         |   # <code>  |
+|         | }           |
+|         | ```         |
++---------+-------------+
 :::
 
 ::: {.column width="55%"}
@@ -1456,15 +1442,15 @@ print("end")
 
 ::: columns
 ::: {.column width="45%"}
-+---------------------+------------------------------------+
-| If-then-else        | ``` r                              |
-|                     | if (cond) {                        |
-|                     |   # <code>                         |
-|                     | } else {                           |
-|                     |   # <code>                         |
-|                     | }                                  |
-|                     | ```                                |
-+---------------------+------------------------------------+
++--------------+-------------+
+| If-then-else | ``` r       |
+|              | if (cond) { |
+|              |   # <code>  |
+|              | } else {    |
+|              |   # <code>  |
+|              | }           |
+|              | ```         |
++--------------+-------------+
 :::
 
 ::: {.column width="55%"}
@@ -1508,13 +1494,13 @@ if (is_to_print) {
 
 ::: columns
 ::: {.column width="45%"}
-+---------------------+------------------------------------+
-| For cycles          | ``` r                              |
-|                     | for (<var> in <vector>) {          |
-|                     |   # <code>                         |
-|                     | }                                  |
-|                     | ```                                |
-+---------------------+------------------------------------+
++------------+---------------------------+
+| For cycles | ``` r                     |
+|            | for (<var> in <vector>) { |
+|            |   # <code>                |
+|            | }                         |
+|            | ```                       |
++------------+---------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1534,13 +1520,13 @@ print("start")
 
 ::: columns
 ::: {.column width="45%"}
-+---------------------+-------------------------------+
-| Definition          | ``` r                         |
-|                     | name <- function(args) {      |
-|                     |   # body code of the funciton |
-|                     | }                             |
-|                     | ```                           |
-+---------------------+-------------------------------+
++------------+-------------------------------+
+| Definition | ``` r                         |
+|            | name <- function(args) {      |
+|            |   # body code of the function |
+|            | }                             |
+|            | ```                           |
++------------+-------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1561,13 +1547,13 @@ sum_one(x = 3)
 
 ::: columns
 ::: {.column width="45%"}
-+---------------------+------------------------------------+
-| Default             | ``` r                              |
-|                     | name <- function(args = default) { |
-|                     |   # body code of the funciton      |
-|                     | }                                  |
-|                     | ```                                |
-+---------------------+------------------------------------+
++---------+------------------------------------+
+| Default | ``` r                              |
+|         | name <- function(args = default) { |
+|         |   # body code of the function      |
+|         | }                                  |
+|         | ```                                |
++---------+------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1587,9 +1573,9 @@ sum_one(x = 3)
 
 ::: columns
 ::: {.column width="45%"}
-+----------------------+-------------------------------+
-| Positional arg match | `?function`                   |
-+----------------------+-------------------------------+
+|                      |             |
+|----------------------|-------------|
+| Positional arg match | `?function` |
 :::
 
 ::: {.column width="55%"}
@@ -1627,9 +1613,6 @@ x_exp_y(y = 3, 2)
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `04-cond_loop.R`
-
-
-
 
 ## Your turn
 
@@ -1688,13 +1671,13 @@ A **library** is a folder in your computer that store packages. They can be of t
 :::
 
 ::: columns
-::: {.column width="55%"}
+::: {.column width="50%"}
 |                  |                     |
 |------------------|---------------------|
 | Install packages | `?install.packages` |
 :::
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| output-location: column
 #| results: hold
@@ -1704,13 +1687,13 @@ install.packages("tibble")
 :::
 
 ::: columns
-::: {.column width="55%"}
+::: {.column width="50%"}
 |                 |            |
 |-----------------|------------|
 | Attach packages | `?library` |
 :::
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| output-location: column
 #| results: hold
@@ -1720,13 +1703,13 @@ library("tibble")
 :::
 
 ::: columns
-::: {.column width="55%"}
+::: {.column width="50%"}
 |          |                                |
 |----------|--------------------------------|
-| Help[^9] | `help(package = "<pkg_name>")` |
+| Help[^5] | `help(package = "<pkg_name>")` |
 :::
 
-::: {.column width="45%"}
+::: {.column width="50%"}
 ```{r}
 #| output-location: column
 #| results: hold
@@ -1735,26 +1718,31 @@ help(package = "tibble")
 :::
 :::
 
-[^9]: Packages help pages include the list (with link to the corresponding documentation) of all their functions and data sets.
+[^5]: Packages help pages include the list (with link to the corresponding documentation) of all their functions and data sets.
 
+::: columns
+::: {.column width="50%"}
 ::: callout-important
-*Install* a package means store its R executable code in one of the libraries.<br>*Attach* a package means be able to use its functions and dataset within the current R session.
+*Install* a package stores its R executable code in a library.<br>*Attach* a package let you able to use its functions and dataset **within the current R session**.
 
-You need to **install** a package you want to use once only (plus updates or if you need it inside multiple libraries).<br>Anytime you (re)start an R session, you need to **attach** packages you want to use.
-
-Functions and data are identified by their names (which cannot be duplicate within the same package).
-
-Attaching a package to an R session, it means to make its function and data names available for you to call/use. I.e., you have expanded the _language_ (within the session)!
+You need to **install** a package you want to use once only.<br>All the time you (re)start an R session, you need to **`library(<pkg>)`** again.
+:::
 :::
 
+::: {.column width="50%"}
+::: callout-important
+Functions and data are identified by their names (which cannot be duplicate within the same package).
 
+Attaching a package to an R session, it means to make its function and data names available for you to call/use. I.e., you have expanded the *language* (within the session)!
+:::
+:::
+:::
 
 ## My turn
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `05-packages.R`
-
 
 ## Your turn
 
@@ -1768,7 +1756,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Run the code below and compare data frames and tibbles trying exploring its structure, subsetting it, or extracting some cloumn, rows, value(s). You can use `05-packages.R`. Which difference do you see? Write your opinions in the pad (we will discuss in a different lesson).
+1.  Run the code below and compare data frames and tibbles trying exploring its structure, subsetting it, or extracting some column, rows, value(s). You can use `05-packages.R`. Which difference do you see? Write your opinions in the pad (we will discuss in a different lesson).
 
 ``` r
 library(tibble)
@@ -1816,7 +1804,7 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
 ### Additionl Resources
 
 -   The [Tidyverse](https://www.tidyverse.org/)
-- RStudio cloud tutorials
+-   RStudio cloud tutorials
 
 ### License
 
@@ -1824,4 +1812,3 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
  <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 ```
 ### References
-
