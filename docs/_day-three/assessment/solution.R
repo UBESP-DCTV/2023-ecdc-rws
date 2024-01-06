@@ -5,38 +5,50 @@ library(janitor)
 library(unheadr)
 library(rio)
 
-linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+
+# Ex1 -------------------------
+
+
+# linelist_raw <- import(here("Copenhagen_raw.xlsx"))
+# linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("../Copenhagen_raw.xlsx")
+# linelist_raw <- read(here("Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("../Copenhagen_raw.xlsx")
+
 linelist_raw
 
-
-
-
-# Ex-1 ------------------------------------------------------------
-
+# Ex2 -------------------------
 # read and import the dataset
 # use the working instructions used previously
 # In the first line, create the path to the data set only
-linelist <- here("data-raw/Copenhagen_raw.xlsx") |>
+linelist <- ___("___") |>  # here is the path only
   # import the data
-  # don't consider the first row (headers' groups) as column names
-  import(col_names = FALSE) |>
+  # don't consider the first row (headers' groups) as column names!
+  ___(col_names = FALSE) |>
   # mash together the four rows composing the headers
   # merge the groups' headers with the proper headers in a single row
   # (tip.: use a function in the `{unheadr}`)
-  mash_colnames(                                                  #  <1>
-    n_name_rows = 4,  # how many rows has to be mashed?
-    keep_names = FALSE, # do we count/consider current colnames?
-    sliding_headers = TRUE  # are there grouping headers'name (1st row)
+  ___(
+    n_name_rows = ___,  # how many rows has to be mashed?
+    keep_names = FALSE,  # do we count/consider current colnames?
+    sliding_headers = ___  # are there grouping headers'name (1st row)
   ) |>
-  # remove empty columns (tip.: use a function in the `{janitor}`)
-  remove_empty(which = c("cols")) |>
+  # remove empty cols (tip.: use a function in the `{janitor}`)
+  ___(which = c("___")) |>
   # clean all the names
   # convert them using standard cammel_case convention
   # (tip.: use a function in the `{janitor}`)
-  clean_names() |>
+  ___() |>
   # fill the `sex` column to have a complete data set (remind that we
   # have mashed the groups'heaaders with the columns'names)
-  fill(demo_sex) |>
+  ___(demo_sex) |>
   # Because of our importing strategy, all columns are pure characters.
   # We can use the `parse_guess` function of the {readr} package to
   # mutate every columns to a suitable proper type across each one.
@@ -44,13 +56,14 @@ linelist <- here("data-raw/Copenhagen_raw.xlsx") |>
     ___(everything(), \(x) parse_guess(x, guess_integer = TRUE))
   )
 
+
+
 linelist
 
 
+skimr::skim(linelist)
 
-
-# Ex-2 ------------------------------------------------------------
-
+# Ex3 -------------------------
 # Update linelist:
 linelist <- linelist |>
   ___(
@@ -62,9 +75,7 @@ linelist <- linelist |>
 linelist
 
 
-
-
-# Ex-3 ------------------------------------------------------------
+# Ex4 -------------------------
 linelist <- linelist |>
   ___(
     demo_sex = factor(demo_sex),
@@ -74,9 +85,10 @@ linelist <- linelist |>
 linelist
 
 
+linelist |>
+  tbl_cross(demo_age, demo_group)
 
-
-# Ex-4 ------------------------------------------------------------
+# Ex5 -------------------------
 linelist <- linelist |>
   ___(
     demo_age = case_when(
@@ -88,9 +100,10 @@ linelist <- linelist |>
 linelist
 
 
+linelist |>
+  tbl_cross(demo_age, demo_group)
 
-
-# Ex-5 ------------------------------------------------------------
+# Ex6 -------------------------
 # Update linelist
 linelist <- linelist |>
   ## Please note: the following sequence of three `___` is a one of the
@@ -104,10 +117,18 @@ linelist <- linelist |>
   )
 linelist
 
+# Update linelist
+linelist <- linelist |>
+  mutate(
+    across(
+      where(\(x) all(x %in% c(0, 1, NA))),
+      as.logical
+    )
+  )
+linelist
 
+# Ex7 -------------------------
 
-
-# Ex-6 ------------------------------------------------------------
 linelist <- linelist |>
   ___(
     meal_datetime = ymd_h("2006-11-11 18"),
@@ -119,10 +140,7 @@ linelist <- linelist |>
   )
 linelist
 
-
-
-
-# Ex-7 ------------------------------------------------------------
+# Ex8 -------------------------
 linelist <- linelist |>
   rowwise() |>
   ___(
@@ -136,9 +154,12 @@ linelist <- linelist |>
 linelist
 
 
+tbl_ate_meal <- linelist |>
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
 
+# Ex9 -------------------------
 
-# Ex-8 ------------------------------------------------------------
 linelist <- linelist |>
   # modify the food_meal column for people who ate something but didn't
   # have a meal
@@ -152,9 +173,11 @@ linelist <- linelist |>
 linelist
 
 
+tbl_ate_meal <- linelist |>
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
 
-
-# Ex-9 ------------------------------------------------------------
+# Ex10 -------------------------
 # Start with linelist:
 linelist <- linelist |>
   # Create case definition:
@@ -181,10 +204,7 @@ linelist <- linelist |>
   )
 linelist
 
-
-
-
-# Ex-10 -----------------------------------------------------------
+# Ex11 -------------------------
 linelist <- linelist |>
   # Update incubation to be NA if case is not TRUE:
   ___(
@@ -193,9 +213,6 @@ linelist <- linelist |>
 linelist
 
 
-
-
-# Ex-11 -----------------------------------------------------------
 # Update the case definition to limit to onset three days after meal
 linelist <- linelist |>
   ___(
@@ -204,18 +221,16 @@ linelist <- linelist |>
 linelist
 
 
+linelist |>
+  tbl_cross(time_datetime_onset, case)
 
-
-# Ex-12 -----------------------------------------------------------
+# Ex12 -------------------------
 linelist <- linelist |>
   # Remove rows where case is NA:
   drop_na(___)
 linelist
 
-
-
-
-# Ex-13 -----------------------------------------------------------
+# Ex13 -------------------------
 incplot <- linelist |>
 
   # Remove missing values from incubation column:
@@ -242,10 +257,7 @@ incplot <- linelist |>
 # Print plot:
 incplot
 
-
-
-
-# Ex-14 -----------------------------------------------------------
+# Ex14 -------------------------
 # Fetch data:
 epicurve_date <- linelist |>
 
@@ -269,9 +281,7 @@ epicurve_date <- linelist |>
 epicurve_date
 
 
-
-
-# Ex-15 -----------------------------------------------------------
+# Ex15 -------------------------
 # Fetch data:
 epicurve_hour <- linelist |>
 
@@ -302,9 +312,7 @@ epicurve_hour <- linelist |>
 epicurve_hour
 
 
-
-
-# Ex-16 -----------------------------------------------------------
+# Ex16 -------------------------
 # Fetch data:
 epicurve_strata <- linelist |>
 
@@ -347,9 +355,45 @@ epicurve_strata <- linelist |>
 epicurve_strata
 
 
+linelist |>
+  tbl_cross(case, demo_sex, percent = "row", digits = c(0, 2))
 
+linelist |>
+  tbl_cross(case, demo_group, percent = "row", digits = c(0, 2))
 
-# Ex-17 -----------------------------------------------------------
+linelist |>
+  tbl_cross(case, demo_class, percent = "row", digits = c(0, 2))
+
+tbl_symptoms <- linelist |>
+  tbl_summary(
+    by = case,
+    include = starts_with("symptoms"),
+    percent = "column",
+    # Create nice labels:
+    label  = list(
+      symptoms_diarrhoea   ~ "Diarrhoea",
+      symptoms_bloody      ~ "Dysentary",
+      symptoms_vomiting    ~ "Vomiting",
+      symptoms_abdo        ~ "Abdominal pain",
+      symptoms_nausea      ~ "Nausea",
+      symptoms_fever       ~ "Fever",
+      symptoms_headache    ~ "Headache",
+      symptoms_joint_pain   ~ "Joint pain"
+    )
+  ) |>
+  add_overall() |>
+  add_p() |>
+  bold_labels() |>
+  italicize_labels() |>
+    # Modify header:
+  modify_header(
+    stat_1 = "**Non-case**\n *N* = {n}",
+    stat_2 = "**Case**\n *N* = {n}",
+    p.value = "**P value**"
+    )
+tbl_symptoms
+
+# Ex17 -------------------------
 tbl_symptoms_case <- linelist |>
   # Select all symptoms columns, i.e., those starting with "symptoms":
   ___(case, ___("symptoms")) |>
@@ -357,10 +401,10 @@ tbl_symptoms_case <- linelist |>
   ___() |>
 
   # Reshape the dataset from wide to long
-  pivot_longer(
-    -case,
-    names_to = "symptoms",
-    values_to = "value",
+  ___(
+    -___,
+    names_to = "___",
+    ___ = "value",
     values_drop_na = TRUE
   ) |>
   # Keep only TRUE `value`s:

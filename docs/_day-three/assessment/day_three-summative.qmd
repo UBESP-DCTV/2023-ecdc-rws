@@ -23,7 +23,13 @@ params:
 ::: {.callout-note appearance="minimal"}
 ## Learning Objectives
 
-At the end of the assessment, participants should have demonstrated their ability to: [@R-dplyr; @R-stringr, @R-forcats, @R-lubridate]
+At the end of the assessment, participants should have demonstrated their ability to: [@R-dplyr; @R-janitor; @R-tidyr; @R-stringr; @R-forcats; @R-lubridate]
+
+-   Know that exists specialized importing function and how to access their documentation, if in needs to use customized imports. In particular, the ones in the `{readr}`, and `{haven}` packages. [@R-readr; @R-haven]
+
+-   Know how to manage table headers, and missing data at import stage using `{janitor}` (`clean_names`, `remove_empty` ), and `{unheadr}` (`mash_colnames`) , `{tidyr}` (`fill`).[@R-janitor; @R-unheadr; @R-tidyr]
+
+-   Convert a dataset to a tidy one using `{tidyr}` (`separate`, `unite`, `pivot_longer`, `pivot_wider`).[@R-tidyr]
 
 -   Manage strings using basic regular expression and the package `{stringr}` .[@R-stringr]
 
@@ -45,7 +51,7 @@ This section is for context only. Nothing has to be done in this section by the 
 ::: panel-tabset
 ## Instructions
 
-This assessment is the tird of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
+This assessment is the third of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
 
 To solve the exercise follow the text and find the assessments in which you need to fill the `___` where required in the code. Next, go to the corresponding section of the R script `solution.R` and try/run sequentially your code.
 
@@ -126,12 +132,59 @@ library(unheadr)
 library(rio)
 ```
 
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
 ```{r}
 #| label: import-raw-ex
 #| code-fold: false
-linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+#| eval: false
+
+# linelist_raw <- import(here("Copenhagen_raw.xlsx"))
+# linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("../Copenhagen_raw.xlsx")
+# linelist_raw <- read(here("Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("../Copenhagen_raw.xlsx")
+
 linelist_raw
 ```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: import-raw-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# import(here("Copenhagen_raw.xlsx"))
+linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- import("../Copenhagen_raw.xlsx")
+# linelist_raw <- read(here("Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read(here("../data-raw/Copenhagen_raw.xlsx"))
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("data-raw/Copenhagen_raw.xlsx")
+# linelist_raw <- read("../Copenhagen_raw.xlsx")
+
+linelist_raw
+```
+:::
 
 You should now see that you have a `data.frame` called `linelist_raw` in your environment tab. You should also be able to see how many observations and variables it contains.
 
@@ -163,27 +216,27 @@ In this section, participants should fill in `___` the proper instructions to co
 # read and import the dataset
 # use the working instructions used previously
 # In the first line, create the path to the data set only
-linelist <- here("data-raw/Copenhagen_raw.xlsx") |> 
+linelist <- ___("___") |>  # here is the path only
   # import the data
-  # don't consider the first row (headers' groups) as column names
-  import(col_names = FALSE) |>
+  # don't consider the first row (headers' groups) as column names!
+  ___(col_names = FALSE) |>
   # mash together the four rows composing the headers
   # merge the groups' headers with the proper headers in a single row
   # (tip.: use a function in the `{unheadr}`)
-  mash_colnames(                                                  #  <1>
-    n_name_rows = 4,  # how many rows has to be mashed?
-    keep_names = FALSE, # do we count/consider current colnames?
-    sliding_headers = TRUE  # are there grouping headers'name (1st row)
-  ) |>  
-  # remove empty columns (tip.: use a function in the `{janitor}`)
-  remove_empty(which = c("cols")) |> 
+  ___(
+    n_name_rows = ___,  # how many rows has to be mashed?
+    keep_names = FALSE,  # do we count/consider current colnames?
+    sliding_headers = ___  # are there grouping headers'name (1st row)
+  ) |> 
+  # remove empty cols (tip.: use a function in the `{janitor}`)
+  ___(which = c("___")) |> 
   # clean all the names
   # convert them using standard cammel_case convention
   # (tip.: use a function in the `{janitor}`)
-  clean_names() |> 
+  ___() |> 
   # fill the `sex` column to have a complete data set (remind that we
   # have mashed the groups'heaaders with the columns'names)
-  fill(demo_sex) |> 
+  ___(demo_sex) |> 
   # Because of our importing strategy, all columns are pure characters.
   # We can use the `parse_guess` function of the {readr} package to 
   # mutate every columns to a suitable proper type across each one.
@@ -1475,10 +1528,10 @@ tbl_symptoms_case <- linelist |>
   ___() |> 
   
   # Reshape the dataset from wide to long
-  pivot_longer(
-    -case, 
-    names_to = "symptoms",
-    values_to = "value",
+  ___(
+    -___, 
+    names_to = "___",
+    ___ = "value",
     values_drop_na = TRUE
   ) |> 
   # Keep only TRUE `value`s:
