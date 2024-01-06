@@ -1,0 +1,1381 @@
+---
+title: '[Day Two]{style="color:darkblue"}:<br>[Pipe(s)]{style="color:darkorange;"}<br>and<br>[Visualization]{style="color:darkorange;"}'
+subtitle: "120 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  results = "hold"
+)
+library(countdown)
+```
+
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   What is a `pipe,` and how it works?
+-   Which pipes should we know and care about?
+-   What is a *ggplot*, and what are its main components?
+-   How should data be provided to a ggplot?
+-   How can we create ggplots with the `{ggplot2}` R package?
+-   What are:
+-   `aes`thetics?
+-   `geom`etries?
+-   `facet`s?
+-   Plot `theme`s and `labs`?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   Use the R native pipe (`|>`) to concatenate functions, knowing that the {magrittr} one (%\>%) has similar behavior.
+-   Create anonymous functions in the R native style as `\(x)` to use with, but not limited to, pipes.
+-   Create basic plots with `{ggplot2}` (scatter, histogram, barplot, boxplot, and time-series), including grouped plots with or without colors and plots of multiple types.
+-   Use the `facet_*` functions to stratify plots according to data.
+-   Modify the main style component of a plot (i.e., sub-/titles, labels, legends)
+-   Use the main `{patchwork}` functions to compose a plot by multiple ones.
+-   Save a plot as a stand-alone image file.
+:::
+:::
+
+# Pipes
+
+..., and then..., and then..., and then ..., ...
+
+## Setup
+
+We adopted the Tidyverse ecosystem during the course using the `{tidyverse}` R package.
+
+::: columns
+::: {.column width="40%"}
+
+```{r}
+#| message: true
+#| output-location: default
+library(tidyverse)
+```
+
+:::
+
+::: {.column width="60%"}
+::: callout-tip
+-   `pkg::fun()` explicitly tells R the package to look for the function.
+-   If multiple packages have functions with the same name, and if the package is not indicated explicitly in the call, the last attached one (i.e., `?library`ed) has the priority (i.e., it *masks* the others).
+-   Using `pkg::fun()` instead of `fun()`, you are sure about the function R calls.
+:::
+:::
+:::
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+If you attach the `{tidyverse}` alone `library(tidyverse)` in a new R session, and you call `filter()` alone, which function are you calling?
+
+-   `stats::filter()`.
+-   `dplyr::filter()`.
+-   A <error> due to ambiguity.
+-   I don't know what `stats::filter()` or `dplyr::filter()` means in R.
+
+1.  Put an `X` next to the correct answer, under section 1.2. Ex7 in the pad.
+:::
+
+## Tidyverse convention
+
+One of the advantages of the Tidyverse is that common standards make everything easier to remember, understand (e.g., when reading the code for self or other people), and apply.
+
+::: callout-important
+1.  Functions are *verbs* (they *do* something)
+2.  argument and objects are *nouns* (they *are* something)
+3.  Functions first argument is always data (tibble/data frames)
+4.  Output is always data.
+5.  Output is always *the same* type of data (whatever input or option is provided)
+:::
+
+## Data analyses: a sequence of actions
+
+**Import**: define a path, *and then...* read it, *and then...* initial fixes (e.g., removing empty rows or columns)
+
+**Tidying**: take the data, *and then...* separate merged information, *and then...*, ..., *and then...* reshape the data to tidy them
+
+**Transforming**: take the data, *and then...* mutate some variables accordingly to desiderata (e.g., making factors, converting dates, or cleaning text, *and then...* filter unwanted observations for the current study.
+
+**Visualize**: take the data, *and then...* select what to plot, *and then...* define how to plot, *and then...* restyle accordingly to desiderata, *and then...* save it.
+
+**Analyse**: take the data, *and then...* reshape it accordingly to the model requirements, *and then...* fit the model, *and then...* summarize the model, *and then...* plot the results
+
+![](img/tidyverse-loop.png)
+
+## Your Turn
+
+Suppose you have the following functions:
+
+
+```{r}
+sum_x_y <- function(x, y) x + y
+multiply_x_y <- function(x, y) x * y
+divide_by_two <- function(x) x / 2
+```
+
+
+::: columns
+::: {.column width="50%"}
+Pretend that it is a difficult problem, and you want to use only those functions to find a trapezoid area with the following data already defined in your R session:
+
+
+```{r}
+a <- 2
+b <- 3
+h <- 4
+```
+
+:::
+
+::: {.column width="50%"}
+Area = $\frac{a+b}{2}h$
+
+![](img/trapezoid.png)
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+::: callout-caution
+## Your Turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+1.  Write (in new lines under section 1.2. Ex8) ways you can manage objects in R that will be progressively modified by a sequence of operations (i.e., functions).
+:::
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "45%",
+  right = "5%",
+  top = "60%",
+  bottom = "10",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## Overwrite the result
+
+
+```{r}
+res <- sum_x_y(a, b)
+res <- divide_by_two(res)
+res <- multiply_x_y(res, h)
+res
+```
+
+
+-   What if we need to debug this code? If we make mistakes, we'll need to re-run the complete pipeline from the beginning!
+
+-   It is hard to follow what is change each line considering that we repeated `res` (that is the name of our *final* result) six time!
+
+> Change name every time can surely solve 2. Let see.
+
+## Create middle objects
+
+
+```{r}
+bases <- sum_x_y(a, b)
+half_bases <- divide_by_two(bases)
+area <- multiply_x_y(half_bases, h)
+area
+```
+
+
+-   We didn't repeat names, but now we have a lot of unuseful names (and objects!) defined in our workspace.
+
+. . .
+
+We must think of meaningful (unuseful!) names for all the intermediate objects, because we surely want to avoid situations like the following one
+
+
+```{r}
+res_1 <- sum_x_y(a, b)
+res_2 <- divide_by_two(res_1)
+res_final <- multiply_x_y(res_2, h)
+res_final
+```
+
+
+Which takes the worst of both, adding the difficult in debugging and correcting all the numbers in intermediate changes happened; or, worst, starting having non-sequential numbered variable names!
+
+> So we can compose functions one inside other to get the resutl directly! Let see
+
+## Compose function calls
+
+
+```{r}
+res <- multiply_x_y(divide_by_two(sum_x_y(a, b)), h)
+res
+```
+
+
+1.  Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., `multiply_x_y` is the first name appearing, and its second argument `h` is the last one!)
+
+. . .
+
+We could improve readability by indenting our code (which is surely a good thing to do)
+
+
+```{r}
+res <- multiply_x_y(
+  divide_by_two(
+    sum_x_y(a, b)
+  ),
+  h
+)
+res
+```
+
+
+But, it remain quite difficult to understand *what* the function does; at least, it is not immediate natural!
+
+> So that are the reasons wy we need a tool, and that is the *pipe*. Let's have a look at it.
+
+## Use pipes
+
+In it simpler definition the pipe (which now a native symbol in R `|>`) is an operator that thakes the result of whatever is evaluated in its left and use it as the first input of the function call at its right (that must be a proper function call, with at least one argument)
+
+::: columns
+::: {.column width="50%"}
+::: callout-tip
+In math point of view, pipe transforms $f(x,\ y)$ into $x\ |> f(y)$. So that we can restructure $f(g(x))$ as $g(x)\ |> f()$.
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Try to read the pipe as "and than..."
+:::
+:::
+:::
+
+
+```{r}
+res <- sum_x_y(a, b) |> 
+  divide_by_two() |> 
+  multiply_x_y(h)
+res
+```
+
+
+1.  Every argument is exactly next to its function call
+2.  We create the result object only
+3.  We can naturally *read* what the code do: "it takes the sum of a and b, *and then...* divide the result by two, *and then...* multiply the result by h"; and that's it, the spelled formula of trapezoid areas!
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+
+Imagine we have a dataset representing the daily number of new infection cases reported in a specific area over a week. Unfortunately, there was a day when data couldn't be collected due to a system malfunction, resulting in a missing value. Our goal is to calculate the average (2 significant digits) day-to-day fluctuation in the number of new cases reported over the week.This measure can help public health officials understand the volatility in the spread of the infection and potentially identify any unusual spikes or drops in case numbers.
+
+1.  Open the script `06-pipe.R`, and reformat the code using the native pipe the code.
+
+2.  In the pad, under section `1.2 - Ex.9` report your preference putting an X next to your selection.
+:::
+
+You can solve the problem with the following code:
+
+
+```{r}
+new_cases <- c(125, 150, NA, 140, 165, 130)
+avg_fluctuation <- 
+  round(mean(abs(diff(new_cases)), na.rm = TRUE), 2)
+avg_fluctuation
+```
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "45%",
+  right = "5%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## `{magrittr}` vs native
+
+Pipes in R first appear with the `{magrittr}` package in 2014 as `%>%`, and it has been part of the tidyverse since that time. Now it still in the tidyverse, and still the default in RStudio IDE keyboard shortcut `CTRL/CMD + SHIFT + M`.
+
+Now, Tidyverse team suggest to switch to the native pipe, appearing in R 4.0.1 in 2021.[^1]
+
+[^1]: If you are interested, you can read more at <https://r4ds.hadley.nz/data-transform#sec-the-pipe>.
+
+::: callout-tip
+Change the RStudio default shortcut `CTRL/CMD + SHIFT + M` to use the native pipe.
+:::
+
+![](img/rstudio-native-pipe.png){.absolute left="412" width="824"}
+
+## Pipes in composing plots
+
+In the next section we will learn how to create plots with `ggplot2`.
+
+We will create plots progressively *adding* what we will call **layers** of the plot.
+
+For `ggplot2` plots composition only, we have a dedicated *pipe* that is the plus sign `+`, reminding that we are adding elements.
+
+::: callout-tip
+Functions in `{ggplot2}` are *nouns* and not *verbs*, exactly because we (sequentially) *add* them to the plot we are creating![^2]
+:::
+
+[^2]: Are you curious why there is a distinct pipe for ggplots? Check out the answer of `{ggplot2}` author, Hadley Wickham [here](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7).
+
+# `{ggplot2}`
+
+The R Layered Grammar of Graphics
+
+## Setup
+
+First of all setup our environment for this lesson, and load some data.[^3]
+
+[^3]: In the next lessons, we will investigate the meaning of all the instructions reported here below.
+
+::: callout-tip
+## The Data
+
+On November 14th 2006 the director of a high school in Greater Copenhagen, Denmark, contacted the regional public health authorities to inform them about an outbreak of diarrhoea and vomiting among participants from a school dinner party held on the 11th of November 2006. Almost all students and teachers of the school (750 people) attended the party.[^4]
+:::
+
+[^4]: From the Tidyverse [R 4 data science](https://r4ds.hadley.nz/data-visualize#the-penguins-data-frame) directly
+
+
+```{r}
+#| code-line-numbers: "1,9"
+library(tidyverse)
+library(here)
+library(rio)
+
+linelist <- here("data-raw/Copenhagen_clean.xlsx") |> 
+  import() |> 
+  mutate(across(where(is.character), fct))
+
+head(linelist) # for slides, first 6 obs only.
+```
+
+
+## Definitions:[^5] *Tidy* data.
+
+[^5]: From the Tidyverse [R 4 data science](https://r4ds.hadley.nz/data-visualize#the-penguins-data-frame) directly
+
+-   A **variable** is a *quantity*, *quality*, or *property* that you can measure.
+
+-   A **value** is the state of a variable when you measure it. The value of a variable may change from measurement to measurement.
+
+-   An **observation** is a set of measurements made under similar conditions (you usually make all of the measurements in an observation at the same time and on the same object). An observation will contain several values, each associated with a different variable. We'll sometimes refer to an observation as a data point.
+
+**Tabular data** is a set of values, each associated with a variable and an observation.
+
+::: columns
+::: {.column width="50%"}
+> In the next lessons, we will focus more on this, including how to convert non tidy dataset in tidy ones!
+:::
+
+::: {.column width="50%"}
+::: callout-important
+Tabular data is ***tidy*** if:
+
+-   Each value is placed in its own "cell".
+-   Each variable in its own column.
+-   Each observation in its own row.
+:::
+:::
+:::
+
+## Why a Layered Grammar for Graphics
+
+Using the `{ggplot2}` system to create graphs, we won't need to learn all the commands to produce every plot but we can learn a single system, a grammar, that will make us able to produce quite every kind of graph.
+
+::: columns
+::: {.column width="75%"}
+`{ggplot2}` will allow us to build graphs by:
+
+1.  plot information in our **data**
+
+2.  mapping each of them to the **aesthetics** of our choice (e.g., x, y, colors)
+
+3.  using the **geometrical** representation we need (e.g., points, lines, bars)
+
+4.  after having possibly transformed them by some **statistics**
+
+5.  accordingly to possibly different **coordinate systems** (e.g., polar)
+
+6.  maybe **stratifying** the plot for some information in the data itself
+
+7.  and customize its theme with regard to our stylistic needs and metadata (e.g., title, labels, ...)
+:::
+
+::: {.column width="25%"}
+::: callout-important
+By learning the *grammar* to control these 7 components, we can build quite any kind of graph using quite any kind of personalization.
+:::
+
+::: callout-tip
+We will rarely need to use all these components. In this course, we will provide the basis for 1-3 (required to \_have\_ a plot), 6, and 7, while we will only mention at 4 and 5.
+:::
+:::
+:::
+
+## The practical aim of the lesson
+
+## `ggplot` plots components
+
+![Image adapted from [Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0)](img/ggplot-layers.png)
+
+## 1. Data {auto-animate="true"}
+
+Each part of the plot will be build using a single variable in our data, so that we can build the plot up the data we have, and, on the other side, we can control any part of the plot by our data.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| output-location: default
+#| eval: false
+ggplot(linelist)
+```
+
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| output-location: default
+#| echo: false
+ggplot(linelist)
+```
+
+
+::: callout-important
+All the `{ggplot2}` plots start from tabular data, calling `ggplot` on them.
+:::
+
+::: callout-tip
+Calling `ggplot` on data provide a white canvas to start building the plot.
+:::
+:::
+:::
+
+## 1. Data {auto-animate="true"}
+
+Each part of the plot will be build using a single variable in our data, so that we can build the plot up the data we have, and, on the other side, we can control any part of the plot by our data.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than...
+  ggplot()  # create a plot
+```
+
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot()  # create a plot
+```
+
+
+::: callout-important
+All the `{ggplot2}` plots start from tabular data, calling `ggplot` on them.
+:::
+
+::: callout-tip
+Calling `ggplot` on data provide a white canvas to start building the plot.
+:::
+:::
+:::
+
+## 2. Aesthetics {auto-animate="true"}
+
+Let's say we want to investigate the distribution of the dayonset. We should map the dayonset variable to the x axis!
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "3-5"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  )
+```
+
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "3-5"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  )
+```
+
+
+::: callout-important
+The `aes` function maps variables to aesthetics of our plot.
+:::
+:::
+:::
+
+## Main `aes`thetics
+
+::: callout-important
+You use `aes`thetics for *visualize the data*.
+:::
+
+-   `x`, `y`: position along the x and y axes.
+
+-   `alpha`: the transparency of the geometries.
+
+-   `colour`: the color of the geometries according to the data.
+
+-   `fill`: the interior color of the geometries.
+
+-   `group`: to which group a geometry belongs.
+
+-   `linetype`: the type of line used (solid, dotted, etc.).
+
+-   `shape`: the shape of the points.
+
+-   `size`: the size of the points or lines.
+
+## 3. Geometries
+
+Once having the canvas and the mappings, we can *add* a geometrical layer. In this case, we what to add bars for `dayonset` (i.e., x).
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar() # drawing bars
+```
+
+
+::: callout-tip
+In the help description of each `geom_*` there are the required aesthetics that it neededs to be used.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar()
+```
+
+
+::: callout-important
+All geometry functions are called `geom_*`, with `*` indicating the type of geometry:
+
+`?geom_point`, `?geom_line`, `?geom_bar`, `?geom_boxplot`, `?gome_histogram`, ...
+:::
+:::
+:::
+
+## Main `geom_*`etries
+
+::: callout-important
+You use `geom_*`etries for *shape the data*.
+:::
+
+-   `geom_point`: scatter-plot
+
+-   `geom_line`: lines connecting points
+
+-   `geom_smooth`: function line based on data
+
+-   `geom_boxplot`: box plot for categorical variables
+
+-   `geom_bar`: bar charts for categorical x axis
+
+-   `geom_histogram`: histogram for continuous x axis
+
+-   `geom_violin`: distribution kernel of data dispersion
+
+-   `geom_path`: lines connecting points in sequence of appearance
+
+## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
+
+Suppose we would like to have the bars filled in blue.
+
+Why this produces red bars, and the legend report "fill" as header and "blue" as level?
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "5"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset,
+      fill = "blue"
+    )
+  ) + 
+  geom_bar()
+```
+
+
+::: callout-caution
+## Your Turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "5"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset,
+      fill = "blue"
+    )
+  ) + 
+  geom_bar()
+```
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 1,
+  left = "45%",
+  right = "5%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+:::
+:::
+
+## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
+
+Suppose we would like to have the bars filled in blue.
+
+Why this produces red bars, and the legend report "fill" as header and "blue" as level?
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue")
+```
+
+
+::: callout-caution
+## Your Turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "7"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue")
+```
+
+:::
+:::
+
+::: callout-important
+For having a blue bar chart, put the parameter within the `geom_*`etry call, and **out of the `aes` call**: these are parameters used to set aesthetics to a fixed value, like `colour = "red"` or `size = 3`, instead of mapping data to the aesthetics!
+:::
+
+## Multiple `geom_*`etries
+
+We can also *add* multiple `geom_*`etries one *on top* of the others. In which case, it could be useful to set personalized `aes`thetics and customized the position of the geoms.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "8-11"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  )
+```
+
+
+::: callout-tip
+We can set also `aes`thetics within a single `geom_*` without affecting the other.
+:::
+
+::: callout-important
+We would like to also set the *position* of the `geom_*` we are creating.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "8-11"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  )
+```
+
+:::
+:::
+
+## Multiple `geom_*`etries
+
+We can also *add* multiple `geom_*`etries one *on top* of the others. In which case, it could be useful to set personalized `aes`thetics and customized the position of the geoms.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "7-11"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  )
+  geom_bar(fill = "blue")
+```
+
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "7-11"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) +
+  geom_bar(fill = "blue")
+```
+
+
+::: callout-important
+`geom_*`s are **added** in order, so the operation is NOT commutative!
+:::
+:::
+:::
+
+## Main `position`s
+
+::: callout-important
+You use `position`s for **place** the `geom_*`s.
+:::
+
+-   `"stack"`: (default) multiple bars occupying the same `x` position will be stacked atop one another.
+
+-   `"dodge"`: dodged side-to-side.
+
+-   `"fill"`: shows relative proportions at each x by stacking the bars and then standardising each bar to have the same height.
+
+-   `"jitter"`: adds random noise to a plot making it easier to read, sometimes.
+
+## Base template {auto-animate="true"}
+
+Up to now, we can have a minimal set of instructions to define a base template for our plots.
+
+``` r
+<DATA> |> 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
+    <GEOM_FUNCTION>(
+      aes(<LOCAL_MAPPINGS>)
+    )
+```
+
+## Base template (+ optionals) {auto-animate="true"}
+
+Up to now, we can have a minimal set of instructions to define a base template for our plots.
+
+``` r
+<DATA> |> 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
+    <GEOM_FUNCTION>(
+      aes(<LOCAL_MAPPINGS>),
+      position = <LOCAL_POSITION> # optional
+      <AESTHETIC> = <LOCAL_CONSTANT> # optional
+    )
+```
+
+::: callout-important
+Local `aes`thetic mappings overwrite the global ones!
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Open the script `07-ggplot.R` and follow the instruction step by step to create a plot.
+
+> Using the data provided, think of a simple plot, and build it mapping data to the right aestetics, and adding the right `geom_*`.
+
+2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex11`.
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## Facets
+
+We can then stratify our plot by the levels of one or two discrete data in our data set, creating distinct plot with the data for each class, displyed in distinct facets..
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "12-14"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  )
+```
+
+
+::: callout-important
+`facet_grid` forms a matrix of panels defined by row and column faceting variables.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "12-14"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  )
+```
+
+
+::: callout-tip
+`facet_grid` is most useful when you have two discrete variables, and all combinations of the variables exist in the data. If you have only one variable with many levels, try `?facet_wrap`.
+:::
+:::
+:::
+
+## Customize metadata: primary labels
+
+Now we can start to make it nicer, adding and improving some text and label, as the title, axis and legend labels, and a caption.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "15-24"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  )
+```
+
+
+::: callout-important
+`facet_grid` forms a matrix of panels defined by row and column faceting variables.
+:::
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "15-24"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  )
+
+```
+
+
+::: callout-tip
+`facet_grid` is most useful when you have two discrete variables, and all combinations of the variables exist in the data. If you have only one variable with many levels, try `?facet_wrap`.
+:::
+:::
+:::
+
+## Theme
+
+Many other options we can finally consider to fine tune the appearance of our plot.
+
+::: columns
+::: {.column width="35%"}
+
+```{r}
+#| code-line-numbers: "25-28"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top"
+  )
+
+```
+
+:::
+
+::: {.column width="65%"}
+
+```{r}
+#| code-line-numbers: "25-28"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = dayonset
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  facet_grid(
+    class ~ group
+  ) + 
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+  ) + 
+  theme_minimal() +
+  theme(
+    legend.position = "top"
+  )
+
+```
+
+:::
+:::
+
+## Themes: showcase
+
+Theme customiz parameters are quite much, here we report a representation of a number of them.
+
+![Theme Elements Reference Sheet by [Isabella Benabaye](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)](img/ggplot2-theme-elements-reference-v2.png)
+
+## A more complete template
+
+We can finally have a bigger set of instructions to define a more exhaustive template for our plots.
+
+``` r
+<DATA> |> 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
+    <GEOM_FUNCTION>(
+      aes(<LOCAL_MAPPINGS>),
+      position = <LOCAL_POSITION>
+      <AESTHETIC> = <LOCAL_CONSTANT>
+    ) +
+    <FACET_FUNCTION> +
+    labs(
+      ## aesthetics
+      <AES_NAME> = "<TEXT>"
+      
+      ## meta-data
+      <METADATA_NAME> = "<TEXT>"
+    ) +
+    <THEME>()
+```
+
+## Saving plots
+
+To save a ggplot on your disk, you can call teh function `ggsave`. Many kind of output are supported.
+
+
+```{r}
+#| eval: false
+#| output-location: default
+cases_dates_by_grp_cls <- linelist |> 
+  ggplot(
+    aes(
+      # ...
+    )
+  ) + 
+  geom_bar(
+      # ...
+  ) + 
+  facet_grid(
+      # ...
+  ) + 
+  labs(
+    ## aesthetics
+      # ...
+    ## metadata
+      # ...
+  ) + 
+  theme(
+      # ...
+  )
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+cases_dates_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.png")
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+dist_cases_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.jpeg")
+
+```
+
+```{r}
+#| eval: false
+#| output-location: default
+dist_cases_by_grp_cls |> 
+  ggsave("cases_dates_by_grp_cls.pdf")
+```
+
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+
+...and:
+:::
+
+1.  Open again the script `07-ggplot.R` and improve your plot `facet_*`ing it, including `?labs` and customized somehow the `?theme`.
+
+2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex12`. Next, save it in a file format of your choice, and send the file inthe Teams chat.
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 3,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## Break
+
+[20 minutes](https://apps.garrickadenbuie.com/countdown/?_inputs_&time=%2220%3A00%22&update_every=%221%22&warn_time=%2204%3A00%22)[^templates-1]
+
+[^templates-1]: <https://apps.garrickadenbuie.com/countdown>
+
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Carpentrie](https://carpentries.org/)'s [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
+-   [Carpentrie](https://carpentries.org/)'s [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
+-   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science](https://r4ds.had.co.nz/)
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+-   [qcbs](https://qcbs.ca/)'s [Introduction à `ggplot2`](https://r.qcbs.ca/workshop03/)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Hadley Wickham](https://hadley.nz/)'s [Tidyverse style guide](https://style.tidyverse.org/index.html)
+-   [Hadley Wickham]()'s [answer](https://community.rstudio.com/t/why-cant-ggplot2-use/4372/7) to why `+` in `{ggplot2}` instead of *standard* pipe.
+
+### License
+
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+
+### References
+

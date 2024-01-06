@@ -22,9 +22,11 @@ params:
 ::: {.callout-note appearance="minimal"}
 ## Learning Objectives
 
-At the end of the assessment, participants should have demonstrated their ability to: [@R-ggplot2]
+At the end of the assessment, participants should have demonstrated their ability to: [@R-ggplot2] [@R-rio]
 
 -   Use the native pipe (`|>`) and the `{ggplot2}` plus-sign (`+`) correctly
+
+-   Use the `{rio}` (`import`) for general-purpose import. [@R-rio]
 
 -   Create general plots using `{ggplot2}` package and corresponding grammar; in particular:
 
@@ -52,7 +54,7 @@ This section is for context only. Nothing has to be done in this section by the 
 ::: panel-tabset
 ## Instructions
 
-This assessment is the first of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
+This assessment is the second of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
 
 To solve the exercise follow the text and find the assessments in which you need to fill the `___` where required in the code. Next, go to the corresponding section of the R script `solution.R` and try/run sequentially your code.
 
@@ -60,7 +62,7 @@ All the exercise are presented in a tabset panel with a tab containing all the m
 
 ## RStudio cloud
 
-You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-1" project, and find inside all the data, script and resources useful to complete the assessment.
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-2" project, and find inside all the data, script and resources useful to complete the assessment.
 
 ## Attribution
 
@@ -101,7 +103,7 @@ ___(here)
 ___(rio)
 
 linelist <- here("data-raw/Copenhagen_clean.xlsx") ___ 
-  import() ___ 
+  ___() ___ 
   mutate(across(where(is.character), fct))
 ```
 
