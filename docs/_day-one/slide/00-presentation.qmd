@@ -73,7 +73,7 @@ library(countdown)
 
 -   Responsible for the Laboratory of Artificial Intelligence for Medical Sciences.
 
--   Rstudio [certified Instructor](https://education.rstudio.com/trainers/people/lanera+corrado/) in the Tidyverse.
+-   Rstudio [Certified Instructor](https://education.rstudio.com/trainers/people/lanera+corrado/) in the Tidyverse.
 
 -   Daily working with R since 2014.
 
@@ -87,15 +87,35 @@ library(countdown)
 :::
 :::
 
-## Ileana Baldi
+## Staff
 
 ::: columns
-::: {.column width="30%"}
+::: {.column width="50%"}
+### Administrative
+
+- Giulia Lazzaretti
+- Chiara Giarracca
+
+### Scientific
+
+- Ileana Baldi
+- Dario Gregori
+- Corrado Lanera
+:::
+::: {.column width="50%"}
+
+### Support
+
+- Ajsi Kanapari
+- Ali Aqsa
+- Allegra Sartore
+- Daniele Sabbatini
+- Konstantina Pilali
+- Sara Ahsani
+
+:::
 :::
 
-::: {.column width="70%"}
-:::
-:::
 
 # Course organization,<br>Teaching materials, and<br>Personalized assistance
 
@@ -164,9 +184,11 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ### Assistance
 
--   **Technical Assistance**: write on Teams chat, and a person from ECDC will contact you directly on a second Teams meeting (if your Teams doesn't work, write on the pad's chat)
--   **Rstudio Cloud Assistance:** write on Teams chat, and a person from UBEP will contact you directly on a second Teams meeting
+-   **Technical Assistance**: no infrastructural technical assistance will be provided during the session by UBEP staff. Please contact your ECDC IT staff for this matter.
+-   **Rstudio Cloud Assistance:** write on Teams chat, and a person from UBEP will contact you directly on a separate Teams meeting
 -   **Coding issues and questions**: feel free to discuss and collaborate on the pad's chat
+
+- **Local installation of R/RStudio**: Local installation is not required for the course, and we won't teach the course on your local installation. However, if you want to install R and RStudio on your computer, we will provide you instructions and support (possibly after the course). Please, contact the supporting staff for this matter during the class, or the administrative staff after the course.
 
 ## Slides
 
@@ -176,7 +198,7 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ::: {.center style="margin:auto; width:50%;"}
 ```{=html}
-<iframe width="780" height="500" src="https://ubesp-dctv.github.io/2023-ecdc-rws/_day-one/slide/day_one-presentation.html#/lessons-organization" title="UBEP's R Training for supervisors - Day-1"></iframe>
+<iframe width="780" height="500" src="https://ubesp-dctv.github.io/2023-ecdc-rws/_day-one/slide/00-presentation.html" title="UBEP's R Training for supervisors - Day-1"></iframe>
 ```
 :::
 
@@ -189,6 +211,8 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 -   Once you join the workspace, you can enter the R project provided for the day.
 
 -   The environment is already set for you
+
+![](img/posit-cloud-day1.png){.absolute top="35%" left="5%" height="50%"}
 
 [^3]: You need a free account to join workspaces. If you did't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio).
 
@@ -231,6 +255,7 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 ![](img/layout-single-screen-annotated.png){fig-align="center"}
 :::
 :::
+
 
 ## Lessons organization {.center}
 
