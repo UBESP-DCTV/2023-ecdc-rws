@@ -1512,7 +1512,14 @@ ggsave("epicurve.ps", plot = epicurve)
 ggsave("epicurve.tex", plot = epicurve)
 
 ```
+
 :::
+:::
+
+::: callout-tip
+- The `plot` argument of `ggsave` is optional, if not specified the last plot created and displayed is saved!
+
+- The `ggsave` function guesses the type of graphics device from the extension of the filename.
 :::
 
 ## My turn
@@ -1553,25 +1560,6 @@ countdown(
 )
 ```
 
-## Break[^templates-1]
-
-```{r}
-#| echo: false
-countdown(
-  minutes = 20,
-  warn_when = 4,
-  left = "25%",
-  right = "25%",
-  top = "25%",
-  bottom = "25%",
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-
-[^templates-1]: <https://apps.garrickadenbuie.com/countdown>
 
 
 ## Acknowledgment{.smaller}
@@ -1587,6 +1575,9 @@ To create the current lesson, we explored, used, and adapted content from the fo
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
+
+::: columns
+::: {.column width="60%"}
 ### Additional resources
 
 -   [Hadley Wickham](https://hadley.nz/)'s [Tidyverse style guide](https://style.tidyverse.org/index.html)
@@ -1598,3 +1589,29 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
  <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 ```
 ### References
+
+:::
+
+::: {.column width="40%"}
+### Break[^templates-1]
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  warn_when = 4,
+  left = "60%",
+  right = "10%",
+  top = "60%",
+  bottom = "10%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+[^templates-1]: <https://apps.garrickadenbuie.com/countdown>
+
+:::
+:::
