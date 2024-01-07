@@ -629,13 +629,14 @@ ggsave(
 ## Your turn
 
 -   Project: day-1
--   Instructions: `homework/day_one-summative.html`
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-1 assessment under the tab "Summative Assessments".
+    - (on RStudio Cloud) `homework/day_one-summative.html`
 -   Script to complete: `homework/solution.R`
 :::
 :::
-
 :::
-
 
 ## Acknowledgment
 
