@@ -663,7 +663,7 @@ You use `aes`thetics for *visualize the data*.
 
 ## 3. Geometries
 
-Once having the canvas and the mappings, we can *add* a geometrical layer. In this case, we what to add bars for `dayonset` (i.e., x).
+Once having the canvas and the mappings, we can *add* a geometrical layer. In this case, we what to add bars for `onset_datetime` (i.e., x).
 
 ::: columns
 ::: {.column width="35%"}
@@ -981,7 +981,7 @@ Up to now, we can have a minimal set of instructions to define a base template f
   ) + 
     <GEOM_FUNCTION>(
       aes(<LOCAL_MAPPINGS>),
-      position = <LOCAL_POSITION> # optional
+      position = <LOCAL_POSITION>, # optional
       <AESTHETIC> = <LOCAL_CONSTANT> # optional
     )
 ```
@@ -1464,14 +1464,14 @@ We can finally have a bigger set of instructions to define a more exhaustive tem
   ) + 
     <GEOM_FUNCTION>(
       aes(<LOCAL_MAPPINGS>),
-      position = <LOCAL_POSITION>
+      position = <LOCAL_POSITION>,
       <AESTHETIC> = <LOCAL_CONSTANT>
     ) +
     <SCALE_FUNCTION> +
     <FACET_FUNCTION> +
     labs(
       ## aesthetics
-      <AES_NAME> = "<TEXT>"
+      <AES_NAME> = "<TEXT>",
       
       ## meta-data
       <METADATA_NAME> = "<TEXT>"
@@ -1487,32 +1487,13 @@ To save a ggplot on your disk, you can call the function `ggsave`. Many kind of 
 ::: {.column width="35%"}
 ``` r
 epicurve <- linelist |> 
-  ggplot(
-    aes(
-      # ...
-    )
-  ) + 
-  geom_bar(
-      # ...
-  ) + 
-  scales_x_datetime(
-      # ...
-  ) +
-  scales_y_continuous(
-      # ...
-  ) +
-  facet_grid(
-      # ...
-  ) + 
-  labs(
-    ## aesthetics
-      # ...
-    ## metadata
-      # ...
-  ) + 
-  theme(
-      # ...
-  )
+  ggplot(aes(...)) + 
+  geom_bar(...) + 
+  scales_x_datetime(...) +
+  scales_y_continuous(...) +
+  facet_grid(...) + 
+  labs(...) + 
+  theme(...)
 ```
 :::
 
