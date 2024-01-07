@@ -232,7 +232,7 @@ res <- multiply_by(divide_by_two(add(a, b)), h)
 res
 ```
 
-1.  Quite unreadable and extremely difficoult to follow; mainly because each argument is at a increasing distance from its function names (e.g., `multiply_by` is the first name appearing, and its second argument `h` is the last one!)
+1.  Quite unreadable and extremely difficult to follow; mainly because each argument is at a increasing distance from its function names (e.g., `multiply_by` is the first name appearing, and its second argument `h` is the last one!)
 
 . . .
 
@@ -254,7 +254,7 @@ But, it remain quite difficult to understand *what* the function does; at least,
 
 ## Use pipes
 
-In it simpler definition the pipe (which now a native symbol in R `|>`) is an operator that thakes the result of whatever is evaluated in its left and use it as the first input of the function call at its right (that must be a proper function call, with at least one argument)
+In it simpler definition the pipe (which now a native symbol in R `|>`) is an operator that takes the result of whatever is evaluated in its left and use it as the first input of the function call at its right (that must be a proper function call, with at least one argument)
 
 ::: columns
 ::: {.column width="50%"}
@@ -478,7 +478,7 @@ Using the `{ggplot2}` system to create graphs, we won't need to learn all the co
 
 ::: {.column width="25%"}
 ::: callout-important
-By learning the *grammar* to control these 7 components, we can build quite any kind of graph using quite any kind of personalization.
+By learning the *grammar* to control these 7 components, we can build quite any kind of graph using quite any kind of customization.
 :::
 
 ::: callout-tip
@@ -488,6 +488,52 @@ We will rarely need to use all these components. In this course, we will provide
 :::
 
 ## The practical aim of the lesson
+
+```{r}
+#| echo: false
+linelist |>  
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = onset_datetime
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
+  facet_grid(
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
+  ) + 
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
+  labs(
+    ## aesthetics used titles
+    x = "Onset date",
+    y = "Count (N person)",
+    fill = "Sex",
+    ## plot metadata
+    title = "Distribution of cases across days.",
+    subtitle = "Stratified by group and class.",
+    caption = "Data from ECDC EPIET Outbreak Investigation (https://github.com/EPIET/OutbreakInvestigation)."
+  ) + 
+  theme_bw() +
+  theme(
+    legend.position = "top"
+  )
+```
+
+
 
 ## `ggplot` plots components
 
@@ -557,7 +603,7 @@ Calling `ggplot` on data provide a white canvas to start building the plot.
 
 ## 2. Aesthetics {auto-animate="true"}
 
-Let's say we want to investigate the distribution of the dayonset. We should map the dayonset variable to the x axis!
+Let's say we want to investigate the distribution of the onset time. We should map the `onset_datetime` variable to the x axis!
 
 ::: columns
 ::: {.column width="35%"}
@@ -568,7 +614,7 @@ Let's say we want to investigate the distribution of the dayonset. We should map
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   )
 ```
@@ -582,7 +628,7 @@ linelist |>  # start from data, and than
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   )
 ```
@@ -628,14 +674,14 @@ Once having the canvas and the mappings, we can *add* a geometrical layer. In th
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar() # drawing bars
 ```
 
 ::: callout-tip
-In the help description of each `geom_*` there are the required aesthetics that it neededs to be used.
+In the help description of each `geom_*` there are the required aesthetics that it needs to be used.
 :::
 :::
 
@@ -647,7 +693,7 @@ In the help description of each `geom_*` there are the required aesthetics that 
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar()
@@ -698,7 +744,7 @@ Why this produces red bars, and the legend report "fill" as header and "blue" as
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset,
+      x = onset_datetime,
       fill = "blue"
     )
   ) + 
@@ -722,7 +768,7 @@ Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset,
+      x = onset_datetime,
       fill = "blue"
     )
   ) + 
@@ -750,7 +796,7 @@ countdown(
 
 Suppose we would like to have the bars filled in blue.
 
-Why this produces red bars, and the legend report "fill" as header and "blue" as level?
+Why this produces blue bars, and there is no legend?
 
 ::: columns
 ::: {.column width="35%"}
@@ -761,7 +807,7 @@ Why this produces red bars, and the legend report "fill" as header and "blue" as
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue")
@@ -784,7 +830,7 @@ Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue")
@@ -809,7 +855,7 @@ We can also *add* multiple `geom_*`etries one *on top* of the others. In which c
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -836,7 +882,7 @@ We would like to also set the *position* of the `geom_*` we are creating.
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -861,7 +907,7 @@ We can also *add* multiple `geom_*`etries one *on top* of the others. In which c
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(
@@ -880,7 +926,7 @@ linelist |>  # start from data, and than
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(
@@ -906,7 +952,7 @@ You use `position`s for **place** the `geom_*`s.
 
 -   `"dodge"`: dodged side-to-side.
 
--   `"fill"`: shows relative proportions at each x by stacking the bars and then standardising each bar to have the same height.
+-   `"fill"`: shows relative proportions at each x by stacking the bars and then standardizing each bar to have the same height.
 
 -   `"jitter"`: adds random noise to a plot making it easier to read, sometimes.
 
@@ -944,6 +990,14 @@ Up to now, we can have a minimal set of instructions to define a base template f
 Local `aes`thetic mappings overwrite the global ones!
 :::
 
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (up to base)
+
+
 ## Your turn
 
 ::: callout-caution
@@ -977,20 +1031,21 @@ countdown(
 )
 ```
 
-## Facets
 
-We can then stratify our plot by the levels of one or two discrete data in our data set, creating distinct plot with the data for each class, displyed in distinct facets..
+## Scales
+
+Scales control the mapping from data to aesthetics. They are required to have a plot, but they are often set automatically. We can customize them to have a better control on the plot.
 
 ::: columns
 ::: {.column width="35%"}
 ```{r}
-#| code-line-numbers: "12-14"
+#| code-line-numbers: "12-18"
 #| output-location: default
 #| eval: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -998,8 +1053,86 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  )
+```
+
+::: callout-important
+Scales names are composed as `scale_<aes>_<type>`, where `<aes>` is the aesthetic, and `<type>` is the type of scale.
+
+see `?scale_y_continuous`, and `?scale_x_datetime`.
+:::
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "12-18"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = onset_datetime
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  )
+```
+
+::: callout-tip
+Package `{scales}` provides a set of functions to customize scales. We used `label_date_short` and `breaks_pretty` to have a better control on the labels and breaks.
+:::
+:::
+:::
+
+
+
+
+## Facets
+
+We can then stratify our plot by the levels of one or two discrete data in our data set, creating distinct plot with the data for each class, displayed in distinct facets..
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "19-21"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = onset_datetime
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class
   )
 ```
 
@@ -1010,13 +1143,13 @@ linelist |>  # start from data, and than
 
 ::: {.column width="65%"}
 ```{r}
-#| code-line-numbers: "12-14"
+#| code-line-numbers: "19-21"
 #| output-location: default
 #| echo: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -1024,8 +1157,15 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class
   )
 ```
 
@@ -1034,6 +1174,86 @@ linelist |>  # start from data, and than
 :::
 :::
 :::
+
+
+## Facets
+
+We can then stratify our plot by the levels of one or two discrete data in our data set, creating distinct plot with the data for each class, displayed in distinct facets..
+
+::: columns
+::: {.column width="35%"}
+```{r}
+#| code-line-numbers: "19-23"
+#| output-location: default
+#| eval: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = onset_datetime
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
+  facet_grid(
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
+  )
+```
+
+:::
+
+::: {.column width="65%"}
+```{r}
+#| code-line-numbers: "19-23"
+#| output-location: default
+#| echo: false
+linelist |>  # start from data, and than 
+  ggplot(  # create a plot
+    aes(  # with aesthetics:
+      x = onset_datetime
+    )
+  ) + 
+  geom_bar(fill = "blue") +
+  geom_bar(
+    aes(fill = sex),
+    position = "dodge"
+  ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
+  facet_grid(
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
+  )
+```
+
+::: callout-tip
+- `scales`: are scales shared across all facets (the default, "fixed"), or do they vary across rows ("free_x"), columns ("free_y"), or both rows and columns ("free")?
+
+- `labeller` default labeller (i.e., `"label_value"`) labels the rows and columns with their names; `"label_both"` displays both the variable name and the factor value.
+:::
+:::
+:::
+
+
+
+
 
 ## Customize metadata: primary labels
 
@@ -1042,13 +1262,13 @@ Now we can start to make it nicer, adding and improving some text and label, as 
 ::: columns
 ::: {.column width="35%"}
 ```{r}
-#| code-line-numbers: "15-24"
+#| code-line-numbers: "24-32"
 #| output-location: default
 #| eval: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -1056,8 +1276,16 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class,
+    scales = "free_y"
   ) + 
   labs(
     ## aesthetics used titles
@@ -1067,24 +1295,21 @@ linelist |>  # start from data, and than
     ## plot metadata
     title = "Distribution of cases across days.",
     subtitle = "Stratified by group and class.",
-    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+    caption = "Data from ECDC EPIET Outbreak Investigation (https://github.com/EPIET/OutbreakInvestigation)."
   )
 ```
 
-::: callout-important
-`facet_grid` forms a matrix of panels defined by row and column faceting variables.
-:::
 :::
 
 ::: {.column width="65%"}
 ```{r}
-#| code-line-numbers: "15-24"
+#| code-line-numbers: "24-32"
 #| output-location: default
 #| echo: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -1092,8 +1317,17 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
   ) + 
   labs(
     ## aesthetics used titles
@@ -1103,14 +1337,11 @@ linelist |>  # start from data, and than
     ## plot metadata
     title = "Distribution of cases across days.",
     subtitle = "Stratified by group and class.",
-    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+    caption = "Data from ECDC EPIET Outbreak Investigation (https://github.com/EPIET/OutbreakInvestigation)."
   )
 
 ```
 
-::: callout-tip
-`facet_grid` is most useful when you have two discrete variables, and all combinations of the variables exist in the data. If you have only one variable with many levels, try `?facet_wrap`.
-:::
 :::
 :::
 
@@ -1121,13 +1352,13 @@ Many other options we can finally consider to fine tune the appearance of our pl
 ::: columns
 ::: {.column width="35%"}
 ```{r}
-#| code-line-numbers: "25-28"
+#| code-line-numbers: "33-36"
 #| output-location: default
 #| eval: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -1135,8 +1366,17 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
   ) + 
   labs(
     ## aesthetics used titles
@@ -1146,9 +1386,9 @@ linelist |>  # start from data, and than
     ## plot metadata
     title = "Distribution of cases across days.",
     subtitle = "Stratified by group and class.",
-    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+    caption = "Data from ECDC EPIET Outbreak Investigation (https://github.com/EPIET/OutbreakInvestigation)."
   ) +
-  theme_minimal() +
+  theme_bw() +
   theme(
     legend.position = "top"
   )
@@ -1158,13 +1398,13 @@ linelist |>  # start from data, and than
 
 ::: {.column width="65%"}
 ```{r}
-#| code-line-numbers: "25-28"
+#| code-line-numbers: "33-36"
 #| output-location: default
 #| echo: false
 linelist |>  # start from data, and than 
   ggplot(  # create a plot
     aes(  # with aesthetics:
-      x = dayonset
+      x = onset_datetime
     )
   ) + 
   geom_bar(fill = "blue") +
@@ -1172,9 +1412,21 @@ linelist |>  # start from data, and than
     aes(fill = sex),
     position = "dodge"
   ) + 
+  scale_x_datetime(
+    date_breaks = "12 hours", 
+    labels = scales::label_date_short()
+  ) +
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   facet_grid(
-    class ~ group
+    group ~ class,
+    scales = "free_y",
+    labeller = "label_both"
   ) + 
+  scale_y_continuous(
+    breaks = scales::breaks_pretty()
+  ) +
   labs(
     ## aesthetics used titles
     x = "Onset date",
@@ -1183,20 +1435,19 @@ linelist |>  # start from data, and than
     ## plot metadata
     title = "Distribution of cases across days.",
     subtitle = "Stratified by group and class.",
-    caption = "Data from ECDC EPIET Outbreak Investigation ([https://github.com/EPIET/OutbreakInvestigation](https://github.com/EPIET/OutbreakInvestigation))."
+    caption = "Data from ECDC EPIET Outbreak Investigation (https://github.com/EPIET/OutbreakInvestigation)."
   ) + 
-  theme_minimal() +
+  theme_bw() +
   theme(
     legend.position = "top"
   )
-
 ```
 :::
 :::
 
 ## Themes: showcase
 
-Theme customiz parameters are quite much, here we report a representation of a number of them.
+Theme custom parameters are quite much, here we report a representation of a number of them.
 
 ![Theme Elements Reference Sheet by [Isabella Benabaye](https://isabella-b.com/blog/ggplot2-theme-elements-reference/)](img/ggplot2-theme-elements-reference-v2.png)
 
@@ -1204,7 +1455,9 @@ Theme customiz parameters are quite much, here we report a representation of a n
 
 We can finally have a bigger set of instructions to define a more exhaustive template for our plots.
 
-``` r
+```{r}
+#| eval: false
+#| output-location: default
 <DATA> |> 
   ggplot(
     aes(<GLOBAL_MAPPINGS>)
@@ -1214,6 +1467,7 @@ We can finally have a bigger set of instructions to define a more exhaustive tem
       position = <LOCAL_POSITION>
       <AESTHETIC> = <LOCAL_CONSTANT>
     ) +
+    <SCALE_FUNCTION> +
     <FACET_FUNCTION> +
     labs(
       ## aesthetics
@@ -1227,12 +1481,12 @@ We can finally have a bigger set of instructions to define a more exhaustive tem
 
 ## Saving plots
 
-To save a ggplot on your disk, you can call teh function `ggsave`. Many kind of output are supported.
+To save a ggplot on your disk, you can call the function `ggsave`. Many kind of output are supported.
 
-```{r}
-#| eval: false
-#| output-location: default
-cases_dates_by_grp_cls <- linelist |> 
+::: columns
+::: {.column width="35%"}
+``` r
+epicurve <- linelist |> 
   ggplot(
     aes(
       # ...
@@ -1241,6 +1495,12 @@ cases_dates_by_grp_cls <- linelist |>
   geom_bar(
       # ...
   ) + 
+  scales_x_datetime(
+      # ...
+  ) +
+  scales_y_continuous(
+      # ...
+  ) +
   facet_grid(
       # ...
   ) + 
@@ -1254,28 +1514,32 @@ cases_dates_by_grp_cls <- linelist |>
       # ...
   )
 ```
+:::
 
+::: {.column width="65%"}
 ```{r}
 #| eval: false
 #| output-location: default
-cases_dates_by_grp_cls |> 
-  ggsave("cases_dates_by_grp_cls.png")
-```
+ggsave("epicurve.pdf", plot = epicurve)
+ggsave("epicurve.png", plot = epicurve)
+ggsave("epicurve.jpeg", plot = epicurve)
+ggsave("epicurve.tiff", plot = epicurve)
+ggsave("epicurve.bmp", plot = epicurve)
+ggsave("epicurve.svg", plot = epicurve)
+ggsave("epicurve.eps", plot = epicurve)
+ggsave("epicurve.ps", plot = epicurve)
+ggsave("epicurve.tex", plot = epicurve)
 
-```{r}
-#| eval: false
-#| output-location: default
-dist_cases_by_grp_cls |> 
-  ggsave("cases_dates_by_grp_cls.jpeg")
-
 ```
+:::
+:::
 
-```{r}
-#| eval: false
-#| output-location: default
-dist_cases_by_grp_cls |> 
-  ggsave("cases_dates_by_grp_cls.pdf")
-```
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (from complete)
+
 
 ## Your turn
 
@@ -1291,7 +1555,7 @@ dist_cases_by_grp_cls |>
 
 1.  Open again the script `07-ggplot.R` and improve your plot `facet_*`ing it, including `?labs` and customized somehow the `?theme`.
 
-2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex12`. Next, save it in a file format of your choice, and send the file inthe Teams chat.
+2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex12`. Next, save it in a file format of your choice, and send the file in the Teams chat.
 
 ```{r}
 #| echo: false
@@ -1308,14 +1572,28 @@ countdown(
 )
 ```
 
-## Break
+## Break[^templates-1]
 
-[20 minutes](https://apps.garrickadenbuie.com/countdown/?_inputs_&time=%2220%3A00%22&update_every=%221%22&warn_time=%2204%3A00%22)[^templates-1]
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  warn_when = 4,
+  left = "25%",
+  right = "25%",
+  top = "25%",
+  bottom = "25%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
 
 [^templates-1]: <https://apps.garrickadenbuie.com/countdown>
 
 
-## Acknowledgment
+## Acknowledgment{.smaller}
 
 To create the current lesson, we explored, used, and adapted content from the following resources:
 
