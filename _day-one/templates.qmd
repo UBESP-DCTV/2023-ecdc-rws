@@ -24,9 +24,6 @@
 :::
 :::
 
-
-
-
 # topic --------------------
 
 # Topic
@@ -39,9 +36,6 @@
 ::: callout-caution
 ## Your turn
 :::
-
-
-
 
 # Code ---------------------
 
@@ -61,9 +55,6 @@
 :::
 :::
 
-
-
-
 # Columns ------------------
 
 ::: columns
@@ -73,9 +64,6 @@
 ::: {.column width="50%"}
 :::
 :::
-
-
-
 
 # Summary ------------------
 
@@ -96,16 +84,28 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 :::
 :::
 
-## Homework
+# Homework
 
-### Posit's RStudio Cloud Workspace
+## Posit's RStudio Cloud Workspace
 
--   Project:
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-1
 -   Instructions:
--   Script to complete:
-
-
-
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-2 assessment under the tab "Summative Assessments".
+    - (on RStudio Cloud) `homework/day_one-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
 
 
 # Break --------------------
@@ -116,11 +116,14 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
 [^templates-1]: <https://apps.garrickadenbuie.com/countdown>
 
-
-
-
-
 # Your turn ----------------
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `01-base.R`
+
 
 ## Your turn
 
