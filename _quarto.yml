@@ -47,6 +47,11 @@ website:
         href: agenda.qmd
       - text: Slides
         href: slides.qmd
+      - text: Summative Assessment
+        menu:
+          - text: "Day 1"
+            href: "_day-one/assessment/day_one-summative.html"
+
   page-footer:
     left: ''
     center: |

@@ -2,38 +2,38 @@
 title: "Slides"
 ---
 
-<!-- # Day 1 -->
+# Day 1
 
-<!-- ::: panel-tabset -->
-<!-- ## Presentation -->
+::: panel-tabset
+## Presentation
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe> -->
-<!-- ``` -->
-<!-- [00-presentation.html](_day-one/slide/00-presentation.html) -->
-<!-- ::: -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe>
+```
+[00-presentation.html](_day-one/slide/00-presentation.html)
+:::
 
-<!-- ## Introduction to R -->
+## Introduction to R
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe> -->
-<!-- ``` -->
-<!-- [01-intro-r.html](_day-one/slide/01-intro-r.html) -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe>
+```
+[01-intro-r.html](_day-one/slide/01-intro-r.html)
 
-<!-- ::: -->
+:::
 
-<!-- ## Infrastructure -->
+## Infrastructure
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe> -->
-<!-- ``` -->
-<!-- [02-infrastructure.html](_day-one/slide/02-infrastructure.html) -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe>
+```
+[02-infrastructure.html](_day-one/slide/02-infrastructure.html)
 
-<!-- ::: -->
-<!-- ::: -->
+:::
+:::
 
 
 
