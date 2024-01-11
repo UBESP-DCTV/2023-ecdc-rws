@@ -138,7 +138,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
     -   \[10'\] Saving plots
 
-### 4a. \[25'\] Import
+### 4a. \[25'\] Import and cleaning
 
 -   \[25'\] Base and Tidy, and `rio`[^5] [^6]
 
@@ -152,7 +152,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[15'\] RECAP & solutions
 :::
 
-### 4b. \[40'\] Import
+### 4b. \[40'\] Import and cleaning
 
 -   \[40'\] Headers, var names, and missing data
 
