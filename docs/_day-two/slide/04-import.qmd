@@ -1,6 +1,6 @@
 ---
 title: '[Day Two]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
-subtitle: "60 min approx"
+subtitle: "20 + 40 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -58,7 +58,7 @@ library(countdown)
 :::
 :::
 
-# R Import/Export
+# Part I: R Import/Export
 
 ## Data file
 
@@ -613,7 +613,7 @@ countdown(
 :::
 :::
 
-# Cleaning imported data
+# Part II: Cleaning imported data
 
 ## Standard data issues
 

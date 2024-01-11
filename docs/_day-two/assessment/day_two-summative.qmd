@@ -426,9 +426,9 @@ Set the following labels:
 epicurve_date <- linelist |> 
   
   # Filter for cases where dayonset is not missing:
-  ___(
-    ___ == TRUE,
-    !is.na(___)
+  filter(
+    case == TRUE,
+    !is.na(dayonset)
   ) ___
   
   # Add dayonset to ggplot aesthetic:
@@ -531,7 +531,7 @@ epicurve_hour <- linelist |>
   
   # Filter for cases where onset_datetime is not missing:
   filter(
-    ___ == TRUE,
+    onset_datetime == TRUE,
     !___(onset_datetime)
   ) ___
   

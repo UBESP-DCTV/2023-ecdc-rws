@@ -1,6 +1,6 @@
 ---
 title: '[Day One]{style="color:darkblue"}:<br>[Introduction]{style="color:darkorange;"}'
-subtitle: "90 min approx"
+subtitle: "40 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)

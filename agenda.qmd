@@ -56,36 +56,37 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[15'\] Posit RStudio Cloud IDE presentation and setup
 
-### 1. \[120'\] Basic R and RStudio:
+### 1a. \[30'\] Basic R and RStudio:
 
 -   \[15'\] Math and Logic
 
 -   \[15'\] Base R syntax
 
--   \[20'\] Base data structures
+::: {.callout-note appearance="minimal"}
+\[10'\] `BREAK`{=html}
+:::
+
+### 1b. \[60'\] Basic R and RStudio:
+
+-   \[30'\] Base data structures
 
     -   Vectors (`logical`, `integer`, `double`, `character`, `factors`, `Date`, `POSIXct`)
     -   Lists (`list`, `data frame`/`tibble`)
 
--   \[20'\] Subsetting and Extractions
-
--   \[20'\] Control flow (`if`, `else`, `for`)
-
--   \[15'\] Functions (named and anonymous)
-
--   \[15'\] Packages, Tidyverse ecosystem, style, and perspectives
+-   \[30'\] Subsetting and Extractions
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] `BREAK`{=html}
+\[10'\] `BREAK`{=html}
 :::
 
-### 2. \[50'\] Infrastructures[^2]
+### 1c. \[80'\] Basic R and RStudio:
 
--   \[15'\] R projects
+-   \[30'\] Control flow (`if`, `else`, `for`)
 
--   \[20'\] Local environments
+-   \[30'\] Functions (named and anonymous)
 
--   \[15'\] Files organization (dev/ folder)
+-   \[20'\] Packages, Tidyverse ecosystem, style, and perspectives
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] Recap & Assignments
@@ -94,12 +95,24 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 2
 
 ::: {.callout-note appearance="minimal"}
-\[30'\] Recap & Solutions
+\[15'\] Recap & Solutions
 :::
 
-### 3a. \[90'\] Pipe(s) and visualization [^3]
+### 2. \[40'\] Infrastructures[^2]
 
--   \[15'\] Intro to data analysis cycle loop
+-   \[15'\] R projects
+
+-   \[15'\] Local environments
+
+-   \[10'\] Files organization (dev/ folder)
+
+::: {.callout-note appearance="minimal"}
+\[10'\] `BREAK`{=html}
+:::
+
+### 3a. \[85'\] Pipe(s) and visualization [^3]
+
+-   \[10'\] Intro to data analysis cycle loop
 
 -   \[20'\] Function composition and pipes
 
@@ -110,26 +123,24 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
     -   \[45'\] Base template (data, aesthetics, and geometries)
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] `BREAK`{=html}
+\[10'\] `BREAK`{=html}
 :::
 
-### 3b. \[50'\] Pipe(s) and visualization [^4]
+### 3b. \[45'\] Pipe(s) and visualization [^4]
 
--   \[50'\] Intro to `{ggplot2}`
+-   \[45'\] Intro to `{ggplot2}`
 
-    -   \[15'\] Labels
+    -   \[10'\] Scales
 
     -   \[10'\] Facets
 
-    -   \[15'\] Themes and other components
+    -   \[15'\] Labels and Themes
 
     -   \[10'\] Saving plots
 
-### 4. \[40'\] Import
+### 4a. \[25'\] Import
 
--   \[20'\] Base and Tidy, and `rio`[^5] [^6]
-
--   \[40'\] Headers, var names, and missing data
+-   \[25'\] Base and Tidy, and `rio`[^5] [^6]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -138,7 +149,15 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 3
 
 ::: {.callout-note appearance="minimal"}
-\[30'\] RECAP & solutions
+\[15'\] RECAP & solutions
+:::
+
+### 4b. \[40'\] Import
+
+-   \[40'\] Headers, var names, and missing data
+
+::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
 :::
 
 ### 5. (a) \[60'\] Transform -- manage shape[^7]
@@ -146,24 +165,25 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 -   \[60'\] Tidy format & pivoting
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] BREAK
+\[10'\] BREAK
 :::
 
-### 5. (b) \[60'\] Transform -- manage dataset[^8]
+### 5. (b) \[50'\] Transform -- manage dataset[^8]
 
 -   \[15'\] select (all_of...)
 
 -   \[15'\] filter (.data & .env)
 
--   \[30'\] mutate (grouped) data contents & across
+-   \[20'\] mutate (grouped) data contents & across
 
-### 5. (c) \[60'\] Transform -- manage formats[^9]
 
--   \[15'\] factors
+### 5. (c) \[45'\] Transform -- manage formats[^9]
 
--   \[15'\] dates
+-   \[10'\] factors
 
--   \[30'\] strings
+-   \[10'\] dates
+
+-   \[25'\] strings
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -172,7 +192,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 4
 
 ::: {.callout-note appearance="minimal"}
-\[30'\] RECAP & solutions
+\[15'\] RECAP & solutions
 :::
 
 ### 6. \[90'\] Modeling (summary statistics tables)[^10]

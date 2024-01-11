@@ -1,6 +1,6 @@
 ---
 title: '[Day One]{style="color:darkblue"}:<br>[Introduction to R]{style="color:darkorange;"}'
-subtitle: "90 min approx"
+subtitle: "170 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -158,6 +158,51 @@ two
 Var names can contain letters, numbers, underscores and periods only. They must start with a letter.
 :::
 
+
+::: columns
+::: {.column width="35%"}
+|           |                  |
+|-----------|------------------|
+| functions | `fun(arg = val)` |
+:::
+
+::: {.column width="65%"}
+```{r}
+#| output-location: column
+# Use `=` to assign vals to args
+mean(x = c(1, 2, 3))
+```
+:::
+:::
+
+::: columns
+::: {.column width="35%"}
+|               |           |
+|---------------|-----------|
+| Help function | `?fun`    |
+| Help operator | `?"<op>"` |
+:::
+
+::: {.column width="65%"}
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#| output-location: column
+?sum
+?"+"
+```
+:::
+
+::: {.column width="45%"}
+![](img/mean-help-crop.png)
+:::
+:::
+:::
+:::
+
+
 ::: columns
 ::: {.column width="35%"}
 |                |     |
@@ -170,23 +215,6 @@ Var names can contain letters, numbers, underscores and periods only. They must 
 #| output-location: column
 three_two_one <- c(3, two, 1)
 three_two_one
-```
-:::
-:::
-
-::: columns
-::: {.column width="35%"}
-|        |             |
-|--------|-------------|
-| Subset | `[` or `[[` |
-:::
-
-::: {.column width="65%"}
-```{r}
-#| output-location: column
-#| results: hold
-three_two_one[c(2, 3)] 
-three_two_one[[1]] # R counts from 1
 ```
 :::
 :::
@@ -222,21 +250,7 @@ ls()
 :::
 :::
 
-::: columns
-::: {.column width="35%"}
-|           |                  |
-|-----------|------------------|
-| functions | `fun(arg = val)` |
-:::
 
-::: {.column width="65%"}
-```{r}
-#| output-location: column
-# Use `=` to assign vals to args
-mean(x = c(1, 2, 3))
-```
-:::
-:::
 
 ::: columns
 ::: {.column width="35%"}
@@ -256,32 +270,6 @@ NA
 :::
 :::
 
-::: columns
-::: {.column width="35%"}
-|               |           |
-|---------------|-----------|
-| Help function | `?fun`    |
-| Help operator | `?"<op>"` |
-:::
-
-::: {.column width="65%"}
-::: columns
-::: {.column width="50%"}
-```{r}
-#| eval: false
-#| echo: true
-#| output-location: column
-?sum
-?"+"
-```
-:::
-
-::: {.column width="45%"}
-![](img/mean-help-crop.png)
-:::
-:::
-:::
-:::
 
 ## Your turn
 
@@ -296,7 +284,7 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 2,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -561,7 +549,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -583,6 +571,22 @@ countdown(
 -   Prefer `?seq`, `?seq_len` and `?seq_along` instead of `?":"` when bounds are not proper number but variables and you are writing scripts (not always interactive): they have more consistent behavior and edge-situations error handling.
 :::
 :::
+
+## Break
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
 
 ## Data structure: (atomic) vectors
 
@@ -900,7 +904,7 @@ typeof(mixed_vector)
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 3,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1345,7 +1349,7 @@ db_df[4][[3]]
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "65%",
@@ -1410,17 +1414,34 @@ db_df[4][[3]]
 -   Crucial to know if you are working on a subset of an object or its content.
 :::
 
+## Break
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
 ## Control flow
 
 ::: columns
 ::: {.column width="45%"}
-+---------+-------------+
-| If-then | ``` r       |
-|         | if (cond) { |
-|         |   # <code>  |
-|         | }           |
-|         | ```         |
-+---------+-------------+
++----------+-------------+
+| If-then  | ``` r       |
+|          | if (cond) { |
+|          |   # <code>  |
+|          | }           |
+|          | ```         |
++----------+-------------+
 :::
 
 ::: {.column width="55%"}
@@ -1494,13 +1515,13 @@ if (is_to_print) {
 
 ::: columns
 ::: {.column width="45%"}
-+------------+---------------------------+
-| For cycles | ``` r                     |
-|            | for (<var> in <vector>) { |
-|            |   # <code>                |
-|            | }                         |
-|            | ```                       |
-+------------+---------------------------+
++--------------+---------------------------+
+| For cycles   | ``` r                     |
+|              | for (<var> in <vector>) { |
+|              |   # <code>                |
+|              | }                         |
+|              | ```                       |
++--------------+---------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1520,13 +1541,13 @@ print("start")
 
 ::: columns
 ::: {.column width="45%"}
-+------------+-------------------------------+
-| Definition | ``` r                         |
-|            | name <- function(args) {      |
-|            |   # body code of the function |
-|            | }                             |
-|            | ```                           |
-+------------+-------------------------------+
++--------------+-------------------------------+
+| Definition   | ``` r                         |
+|              | name <- function(args) {      |
+|              |   # body code of the function |
+|              | }                             |
+|              | ```                           |
++--------------+-------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1547,13 +1568,13 @@ sum_one(x = 3)
 
 ::: columns
 ::: {.column width="45%"}
-+---------+------------------------------------+
-| Default | ``` r                              |
-|         | name <- function(args = default) { |
-|         |   # body code of the function      |
-|         | }                                  |
-|         | ```                                |
-+---------+------------------------------------+
++------------+------------------------------------+
+| Default    | ``` r                              |
+|            | name <- function(args = default) { |
+|            |   # body code of the function      |
+|            | }                                  |
+|            | ```                                |
++------------+------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1775,20 +1796,29 @@ db_tbl
 
 2.  Find a package of your choice on Internet. Install it, attach it, explore its documentation. Find a function you like to use within the package; access its documentation, and provide an example code to use it.
 
-```{r}
-#| echo: false
-countdown(
-  minutes = 20,
-  left = "45%",
-  right = "5%",
-  top = "55%",
-  bottom = "15%",
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
+
+# Homework
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-1
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-1 assessment under the tab "Summative Assessments".
+    - (on RStudio Cloud) `homework/day_one-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
+
 
 ## Acknowledgment
 

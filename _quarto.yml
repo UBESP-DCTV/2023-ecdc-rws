@@ -50,7 +50,9 @@ website:
       - text: Summative Assessment
         menu:
           - text: "Day 1"
-            href: "_day-one/assessment/day_one-summative.html"
+            href: "_day-one/assessment/day_one-summative_solved.html"
+          - text: "Day 2"
+            href: "_day-two/assessment/day_two-summative.html"
 
   page-footer:
     left: ''

@@ -1,6 +1,6 @@
 ---
-title: '[Day One]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
-subtitle: "50 min approx"
+title: '[Day Two]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
+subtitle: "40 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -211,7 +211,7 @@ Follow the instructions in the pad
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 3,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -557,11 +557,7 @@ And next, you can use your custom function within the script.
 :::
 :::
 
-# Homework
-
-## Posit's RStudio Cloud Workspace
-
-**Instructions 1**
+# Your turn
 
 ::: columns
 ::: {.column width="50%"}
@@ -617,27 +613,6 @@ ggsave(
 :::
 :::
 
-## Posit's RStudio Cloud Workspace
-
-**Instructions 2**
-
-::: columns
-::: {.column width="50%"}
--   Go to: https://bit.ly/ubep-rws-rstudio
-
-::: callout-caution
-## Your turn
-
--   Project: day-1
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-1 assessment under the tab "Summative Assessments".
-    - (on RStudio Cloud) `homework/day_one-summative.html`
--   Script to complete: `homework/solution.R`
-:::
-:::
-:::
-
 ## Acknowledgment
 
 To create the current lesson, we explored, used, and adapted content from the following resources:
@@ -660,3 +635,20 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
  <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 ```
 ### References
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
