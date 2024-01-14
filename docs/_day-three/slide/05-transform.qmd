@@ -1,6 +1,6 @@
 ---
 title: '[Day Three]{style="color:darkblue"}:<br>[Transform]{style="color:darkorange;"}'
-subtitle: "180 min approx"
+subtitle: "145 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -1014,15 +1014,30 @@ As all the other verbs in the Tidyverse, `dplyr::mutate`
 
 ## Strings - Regular Expressions
 
+## Strings - `{stringr}`
+
 # Homework
 
 ## Posit's RStudio Cloud Workspace
 
--   Project: Day-3
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-3
 -   Instructions:
     -   Go to: https://bit.ly/ubep-rws-website
     -   The text is the Day-3 assessment under the tab "Summative Assessments".
--   Script to complete on RStudio: `solution.R`
+    -   (on RStudio Cloud) `homework/day_three-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
 
 ## Acknowledgment
 

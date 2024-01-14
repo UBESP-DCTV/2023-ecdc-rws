@@ -4676,8 +4676,12 @@ vertical-align: -.125em;
  <span class="dropdown-text">Day 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./_day-two/assessment/day_two-summative.html">
+    <a class="dropdown-item" href="./_day-two/assessment/day_two-summative_solved.html">
  <span class="dropdown-text">Day 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./_day-three/assessment/day_three-summative.html">
+ <span class="dropdown-text">Day 3</span></a>
   </li>  
     </ul>
   </li>
@@ -4775,7 +4779,7 @@ vertical-align: -.125em;
 <p>The whole course will be conducted using the R programming languages <span class="citation" data-cites="R-base">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2023</a>)</span>, and it will introduce the main <strong>Tidyverse</strong> <span class="citation" data-cites="tidyverse2019">(<a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span> R-package ecosystem and philosophy for a uniform, composable, functional, and human-first design utilities to do data science. In particular, the following packages will be introduced and used during the course:</p>
 <ul>
 <li><p>the <code>{tidyverse}</code> <span class="citation" data-cites="R-tidyverse">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2023c</a>)</span> to activate the ecosystem on the R session</p></li>
-<li><p>the RStudio projects, and the <code>{renv}</code> <span class="citation" data-cites="R-renv">(<a href="#ref-R-renv" role="doc-biblioref">Ushey and Wickham 2023</a>)</span>, and <code>{here}</code> <span class="citation" data-cites="R-here">(<a href="#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> packages for project management, reproducibility, and portability. On their side, there will be introduced the native <em>pipe</em>, with only mentioning the {magrittr} [@R-magrittr], to pipe instructions in an easy-to-write/read/understand way.</p></li>
+<li><p>the RStudio projects, and the <code>{renv}</code> <span class="citation" data-cites="R-renv">(<a href="#ref-R-renv" role="doc-biblioref">Ushey and Wickham 2023</a>)</span>, and <code>{here}</code> <span class="citation" data-cites="R-here">(<a href="#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> packages for project management, reproducibility, and portability. On their side, there will be introduced the native <em>pipe</em>, with only mentioning the <code>{magrittr}</code> [@R-magrittr], to pipe instructions in an easy-to-write/read/understand way.</p></li>
 <li><p><code>{ggplot2}</code> <span class="citation" data-cites="R-ggplot2">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham, Chang, et al. 2023</a>)</span> for graphics production</p></li>
 <li><p>the <code>{rio}</code> <span class="citation" data-cites="R-rio">(<a href="#ref-R-rio" role="doc-biblioref">Becker et al. 2023</a>)</span> for data reading/import and writing/export</p></li>
 <li><p><code>{janitor}</code> <span class="citation" data-cites="R-janitor">(<a href="#ref-R-janitor" role="doc-biblioref">Firke 2023</a>)</span>, and <code>{tidyr}</code> <span class="citation" data-cites="R-tidyr">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham, Vaughan, and Girlich 2023</a>)</span> for data cleaning at import level, and the <code>{dplyr}</code> <span class="citation" data-cites="R-dplyr">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham, François, et al. 2023</a>)</span>, <code>{forcats}</code> <span class="citation" data-cites="R-forcats">(<a href="#ref-R-forcats" role="doc-biblioref">Wickham 2023a</a>)</span>, <code>{lubridate}</code> <span class="citation" data-cites="R-lubridate">(<a href="#ref-R-lubridate" role="doc-biblioref">Spinu, Grolemund, and Wickham 2023</a>)</span>, and <code>{stringr}</code> <span class="citation" data-cites="R-stringr">(<a href="#ref-R-stringr" role="doc-biblioref">Wickham 2023b</a>)</span>, and <code>{glue}</code> <span class="citation" data-cites="R-glue">(<a href="#ref-R-glue" role="doc-biblioref">Hester and Bryan 2022</a>)</span> for post-import data sets and type-specific data manipulation and management.</p></li>
@@ -4921,12 +4925,6 @@ vertical-align: -.125em;
 <li><p>[10’] Saving plots</p></li>
 </ul></li>
 </ul>
-</section>
-<section id="a.-25-import-and-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="a.-25-import-and-cleaning">4a. [25’] Import and cleaning</h3>
-<ul>
-<li>[25’] Base and Tidy, and <code>rio</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-</ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -4950,10 +4948,11 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="b.-40-import-and-cleaning" class="level3">
-<h3 class="anchored" data-anchor-id="b.-40-import-and-cleaning">4b. [40’] Import and cleaning</h3>
+<section id="import-and-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="import-and-cleaning">4. [50’] Import and cleaning</h3>
 <ul>
-<li>[40’] Headers, var names, and missing data</li>
+<li>[20’] Base and Tidy, and <code>rio</code><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li>[30’] Headers, var names, and missing data<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4966,10 +4965,10 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="a-60-transform-manage-shape7" class="level3">
-<h3 class="anchored" data-anchor-id="a-60-transform-manage-shape7">5. (a) [60’] Transform – manage shape<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></h3>
+<section id="a-55-transform-manage-shape8" class="level3">
+<h3 class="anchored" data-anchor-id="a-55-transform-manage-shape8">5. (a) [55’] Transform – manage shape<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></h3>
 <ul>
-<li>[60’] Tidy format &amp; pivoting</li>
+<li>[55’] Tidy format &amp; pivoting</li>
 </ul>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -4982,16 +4981,16 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="b-50-transform-manage-dataset8" class="level3">
-<h3 class="anchored" data-anchor-id="b-50-transform-manage-dataset8">5. (b) [50’] Transform – manage dataset<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></h3>
+<section id="b-45-transform-manage-dataset9" class="level3">
+<h3 class="anchored" data-anchor-id="b-45-transform-manage-dataset9">5. (b) [45’] Transform – manage dataset<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h3>
 <ul>
 <li><p>[15’] select (all_of…)</p></li>
 <li><p>[15’] filter (.data &amp; .env)</p></li>
-<li><p>[20’] mutate (grouped) data contents &amp; across</p></li>
+<li><p>[15’] mutate (grouped) data contents &amp; across</p></li>
 </ul>
 </section>
-<section id="c-45-transform-manage-formats9" class="level3">
-<h3 class="anchored" data-anchor-id="c-45-transform-manage-formats9">5. (c) [45’] Transform – manage formats<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></h3>
+<section id="c-45-transform-manage-formats10" class="level3">
+<h3 class="anchored" data-anchor-id="c-45-transform-manage-formats10">5. (c) [45’] Transform – manage formats<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h3>
 <ul>
 <li><p>[10’] factors</p></li>
 <li><p>[10’] dates</p></li>
@@ -5020,8 +5019,8 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="modeling-summary-statistics-tables10" class="level3">
-<h3 class="anchored" data-anchor-id="modeling-summary-statistics-tables10">6. [90’] Modeling (summary statistics tables)<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></h3>
+<section id="modeling-summary-statistics-tables11" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-summary-statistics-tables11">6. [90’] Modeling (summary statistics tables)<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h3>
 <ul>
 <li><p>[70’] Summary tables</p>
 <ul>
@@ -5042,8 +5041,8 @@ vertical-align: -.125em;
 </div>
 </div>
 </section>
-<section id="communicate-tools-r-markdown-and-quarto11" class="level3">
-<h3 class="anchored" data-anchor-id="communicate-tools-r-markdown-and-quarto11">7. [60’] Communicate (tools: R markdown and Quarto)<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></h3>
+<section id="communicate-tools-r-markdown-and-quarto12" class="level3">
+<h3 class="anchored" data-anchor-id="communicate-tools-r-markdown-and-quarto12">7. [60’] Communicate (tools: R markdown and Quarto)<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></h3>
 <ul>
 <li><p>[20’] (Visual) Quarto document structure</p>
 <ul>
@@ -5169,17 +5168,18 @@ Xie, Yihui. 2023. <em>Knitr: A General-Purpose Package for Dynamic Report Genera
 </div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>The <code>{flextable}</code> <span class="citation" data-cites="R-flextable">(<a href="#ref-R-flextable" role="doc-biblioref">Gohel and Skintzos 2023</a>)</span> package will be not introduced explicitely because <code>{gtsummary}</code> can now manage MS Word tables as well. On the other side, it will be explained how to convert a <code>gtsummary</code> table on other formats, <code>flextable</code> included.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>pkg: {renv}, {here}<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>pkg: {magrittr}, {ggplot2}<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>pkg: {magrittr}, {ggplot2}<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>pkgs: {readr}, {readxl}, {writexl}, {haven}<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>pkg: {rio}<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>pkgs: {janitor}, {tidyr}<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>pkgs: {dplyr}<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>pkgs: {dplyr}, {lubridate}, {stringr}, {glue}<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>pkgs: {dplyr}, {gtsummary}<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>The <em>Communicate</em> section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The <code>{flextable}</code> <span class="citation" data-cites="R-flextable">(<a href="#ref-R-flextable" role="doc-biblioref">Gohel and Skintzos 2023</a>)</span> package will be not introduced explicitly because <code>{gtsummary}</code> can now manage MS Word tables as well. On the other side, it will be explained how to convert a <code>gtsummary</code> table on other formats, <code>flextable</code> included.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>pkgs: <code>{renv}</code>, <code>{here}</code><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>pkgs: <code>{magrittr}</code>, <code>{ggplot2}</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>pkgs: <code>{magrittr}</code>, <code>{ggplot2}</code><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>pkgs: <code>{readr}</code>, <code>{readxl}</code>, <code>{writexl}</code>, <code>{haven}</code><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>pkg: <code>{rio}</code><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>pkgs: <code>{unheadr}</code><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>pkgs: <code>{janitor}</code>, <code>{tidyr}</code><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>pkgs: <code>{dplyr}</code><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>pkgs: <code>{dplyr}</code>, <code>{lubridate}</code>, <code>{stringr}</code>, <code>{glue}</code><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>pkgs: <code>{dplyr}</code>, <code>{gtsummary}</code><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>The <em>Communicate</em> section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </aside></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
