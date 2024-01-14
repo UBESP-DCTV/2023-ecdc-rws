@@ -158,7 +158,6 @@ two
 Var names can contain letters, numbers, underscores and periods only. They must start with a letter.
 :::
 
-
 ::: columns
 ::: {.column width="35%"}
 |           |                  |
@@ -201,7 +200,6 @@ mean(x = c(1, 2, 3))
 :::
 :::
 :::
-
 
 ::: columns
 ::: {.column width="35%"}
@@ -250,8 +248,6 @@ ls()
 :::
 :::
 
-
-
 ::: columns
 ::: {.column width="35%"}
 |                      |        |
@@ -269,7 +265,6 @@ NA
 ```
 :::
 :::
-
 
 ## Your turn
 
@@ -573,6 +568,7 @@ countdown(
 :::
 
 ## Break
+
 ```{r}
 #| echo: false
 countdown(
@@ -1415,6 +1411,7 @@ db_df[4][[3]]
 :::
 
 ## Break
+
 ```{r}
 #| echo: false
 countdown(
@@ -1430,18 +1427,17 @@ countdown(
 )
 ```
 
-
 ## Control flow
 
 ::: columns
 ::: {.column width="45%"}
-+----------+-------------+
-| If-then  | ``` r       |
-|          | if (cond) { |
-|          |   # <code>  |
-|          | }           |
-|          | ```         |
-+----------+-------------+
++---------+-------------+
+| If-then | ``` r       |
+|         | if (cond) { |
+|         |   # <code>  |
+|         | }           |
+|         | ```         |
++---------+-------------+
 :::
 
 ::: {.column width="55%"}
@@ -1515,13 +1511,13 @@ if (is_to_print) {
 
 ::: columns
 ::: {.column width="45%"}
-+--------------+---------------------------+
-| For cycles   | ``` r                     |
-|              | for (<var> in <vector>) { |
-|              |   # <code>                |
-|              | }                         |
-|              | ```                       |
-+--------------+---------------------------+
++------------+---------------------------+
+| For cycles | ``` r                     |
+|            | for (<var> in <vector>) { |
+|            |   # <code>                |
+|            | }                         |
+|            | ```                       |
++------------+---------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1541,13 +1537,13 @@ print("start")
 
 ::: columns
 ::: {.column width="45%"}
-+--------------+-------------------------------+
-| Definition   | ``` r                         |
-|              | name <- function(args) {      |
-|              |   # body code of the function |
-|              | }                             |
-|              | ```                           |
-+--------------+-------------------------------+
++------------+-------------------------------+
+| Definition | ``` r                         |
+|            | name <- function(args) {      |
+|            |   # body code of the function |
+|            | }                             |
+|            | ```                           |
++------------+-------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1568,13 +1564,13 @@ sum_one(x = 3)
 
 ::: columns
 ::: {.column width="45%"}
-+------------+------------------------------------+
-| Default    | ``` r                              |
-|            | name <- function(args = default) { |
-|            |   # body code of the function      |
-|            | }                                  |
-|            | ```                                |
-+------------+------------------------------------+
++---------+------------------------------------+
+| Default | ``` r                              |
+|         | name <- function(args = default) { |
+|         |   # body code of the function      |
+|         | }                                  |
+|         | ```                                |
++---------+------------------------------------+
 :::
 
 ::: {.column width="55%"}
@@ -1796,8 +1792,8 @@ db_tbl
 
 2.  Find a package of your choice on Internet. Install it, attach it, explore its documentation. Find a function you like to use within the package; access its documentation, and provide an example code to use it.
 
-
 # Homework
+
 ## Posit's RStudio Cloud Workspace
 
 **Instructions**
@@ -1813,12 +1809,11 @@ db_tbl
 -   Instructions:
     -   Go to: https://bit.ly/ubep-rws-website
     -   The text is the Day-1 assessment under the tab "Summative Assessments".
-    - (on RStudio Cloud) `homework/day_one-summative.html`
+    -   (on RStudio Cloud) `homework/day_one-summative.html`
 -   Script to complete: `homework/solution.R`
 :::
 :::
 :::
-
 
 ## Acknowledgment
 
