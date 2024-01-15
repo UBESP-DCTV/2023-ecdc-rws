@@ -71,8 +71,8 @@ title: "Slides"
 ::: {.center}
 ```{=html}
 <iframe class="slide-deck" src="_day-three/slide/05-transform.html"></iframe>
-[05-transform.html](_day-three/slide/05-transform.html)
 ```
+[05-transform.html](_day-three/slide/05-transform.html)
 :::
 :::
 
