@@ -503,7 +503,7 @@ Copenhagen_clean |>
 
 ## `{rio}` - multiple-sheets Excel
 
-You can directly save a multi-sheet Excel file writing a list of dataframes...
+You can directly save a multi-sheet Excel file writing a list of data frames...
 
 ::: columns
 ::: {.column width="50%"}
@@ -532,7 +532,7 @@ list(mtcars = mtcars, iris = iris) |>
 
 ## `{rio}` - multiple-sheets Excel
 
-... and import multiple sheet data in a (list of) dataframe(s)
+... and import multiple sheet data in a (list of) data frame(s)
 
 ### list of dataframes, from single multi-sheets file
 

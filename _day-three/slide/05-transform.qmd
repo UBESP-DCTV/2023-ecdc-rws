@@ -1182,7 +1182,7 @@ y2_tidy <- x2 |>
 
 ## Factors - reorder levels
 
-It could be usefull to reordering levels, e.g. when plotting informations.
+It could be useful to reordering levels, e.g. when plotting information.
 
 We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
 
@@ -1216,7 +1216,7 @@ gss_cat
 
 ## Factors - reorder levels
 
-It could be usefull to reordering levels, e.g. when plotting informations.
+It could be useful to reordering levels, e.g. when plotting information.
 
 We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
 
@@ -1253,7 +1253,7 @@ relig_summary
 
 ## Factors - reorder levels
 
-It could be usefull to reordering levels, e.g. when plotting informations.
+It could be useful to reordering levels, e.g. when plotting information.
 
 We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
 
@@ -1447,7 +1447,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) teh variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
 
 2.  Then, open the script `15-factors.R` and follow the instruction step by step.
 
@@ -1706,7 +1706,7 @@ The `{stringr}` package provides a consistent set of functions for working with 
 -   `str_detect()`: does a string contain a pattern?
 -   `str_which()`: which strings match a pattern?
 -   `str_subset()`: subset of strings that match a pattern
--   `str_sub()`: extract a substring by position
+-   `str_sub()`: extract a sub-string by position
 -   `str_replace()`: replace the first match with a replacement
 -   `str_replace_all()`: replace all matches with a replacement
 -   `str_remove()`: remove the first match
