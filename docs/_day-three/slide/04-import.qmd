@@ -1,6 +1,6 @@
 ---
-title: '[Day Two]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
-subtitle: "20 + 40 min approx"
+title: '[Day Three]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
+subtitle: "50 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -83,6 +83,7 @@ R tabular data structure is the `data.frame`
 #| paged.print: FALSE
 mtcars
 ```
+
 ```{r}
 #| output-location: default
 class(mtcars)
@@ -91,7 +92,6 @@ class(mtcars)
 ::: callout-warning
 Row names are not data, but an attribute of the data frame, so `as_tibble` will remove them.
 :::
-
 :::
 
 ::: {.column width="50%"}
@@ -107,7 +107,6 @@ In the tidyverse, we will use a modern version of the data frame called *tibble*
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 #| output: false
 library(tidyverse)
@@ -121,7 +120,6 @@ mtcars_tbl
 # `tibble`s are `data.frame`s!
 class(mtcars_tbl) 
 ```
-
 :::
 
 ::: {.column width="50%"}
@@ -147,6 +145,7 @@ R tabular data structure is the `data.frame`
 #| paged.print: FALSE
 mtcars
 ```
+
 ```{r}
 #| output-location: default
 class(mtcars)
@@ -157,8 +156,6 @@ Row names are not data, but an attribute of the data frame, so `as_tibble` will 
 
 To keep row names, use `rownames = "<name>"`.
 :::
-
-
 :::
 
 ::: {.column width="50%"}
@@ -174,7 +171,6 @@ In the tidyverse, we will use a modern version of the data frame called *tibble*
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 #| paged.print: FALSE
 #| output: false
@@ -192,10 +188,6 @@ mtcars_tbl
 # `tibble`s are `data.frame`s!
 class(mtcars_tbl) 
 ```
-
-
-
-
 :::
 
 ::: {.column width="50%"}
@@ -511,7 +503,7 @@ Copenhagen_clean |>
 
 ## `{rio}` - multiple-sheets Excel
 
-You can directly save a multi-sheet Excel file writing a list of dataframes...
+You can directly save a multi-sheet Excel file writing a list of data frames...
 
 ::: columns
 ::: {.column width="50%"}
@@ -540,7 +532,7 @@ list(mtcars = mtcars, iris = iris) |>
 
 ## `{rio}` - multiple-sheets Excel
 
-... and import multiple sheet data in a (list of) dataframe(s)
+... and import multiple sheet data in a (list of) data frame(s)
 
 ### list of dataframes, from single multi-sheets file
 
@@ -566,8 +558,7 @@ c(
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
-
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
 
 ## Your turn
 
@@ -593,7 +584,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -640,18 +631,16 @@ You can have:
 :::
 :::
 
-. . . 
+. . .
 
 ::: columns
 ::: {.column width="50%"}
-
 ::: callout-caution
 ## Your turn
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
-1. List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
-
+1.  List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
 :::
 :::
 :::
@@ -670,10 +659,6 @@ countdown(
   font_size = "4em"
 )
 ```
-
-
-
-
 
 ## Headers - skip-them-all {auto-animate="true"}
 
@@ -782,11 +767,12 @@ here(
 ) |> 
   import(header = FALSE)
 ```
+
 ::: callout-caution
 ## What's next
+
 First topmost header row is a grouping name for columns. In Excel, reported in the first column of each group (even if cells are merged).
 :::
-
 :::
 :::
 
@@ -829,9 +815,9 @@ here(
 
 ::: callout-caution
 ## What's next
+
 We need to include all the other three header rows in the colnames, merging them with the corresponding group name.
 :::
-
 :::
 :::
 
@@ -876,14 +862,11 @@ here(
 
 ::: callout-caution
 ## What's next
+
 Now that we have merged all the rows reporting column names components, it is extremely useful to guarantee that naming are syntactically correct and with a consistent convention across the dataset.
 :::
 :::
 :::
-
-
-
-
 
 ## Variable names {auto-animate="true"}
 
@@ -914,6 +897,7 @@ here(
 
 ::: callout-caution
 ## What's next
+
 Now colnames are fine, but still some empty column and rows in the dataset, we would like to remove to have a clean structure.
 :::
 
@@ -945,10 +929,9 @@ here(
 
 ::: callout-caution
 ## What's next
+
 We have finished working on meta-data now. We can start to look at the data them self. First, `demo_sex` column as implicit repeated values we would like to make explicit.
 :::
-
-
 
 ## Fill default content {auto-animate="true"}
 
@@ -975,17 +958,18 @@ here(
   remove_empty(c("rows", "cols")) |> 
   fill(demo_sex)
 ```
+
 ::: callout-important
 To fill the implicit content within the data, we can use the `{tidyr}` package, which is part of the `{tidyverse}`, and automatically attached by it.
 :::
 
 ::: callout-caution
 ## What's next
+
 We are quite to the end, we only need to make consistent convention for missing information. They are both reported as empty (already parsed as `NA`, correctly) and with `??`. We need to tell `rio::import` that also them are missing information
 :::
 
 ## Missing data {auto-animate="true"}
-
 
 ```{r}
 #| code-line-numbers: "14"
@@ -1018,10 +1002,9 @@ here(
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
 
-
-## Your turn
+## Your turn (Break included)
 
 ::: callout-caution
 ## Your turn
@@ -1038,10 +1021,11 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 2.  Then, open the script `09-clean.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
+
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1058,7 +1042,7 @@ countdown(
 ::: callout-important
 Most often you will not have to manage multi-row header nor implicit information. Depending on your data, missing information can be coded not with simple empty cells, so that you would need to set `na = c()` explicitly. On the other hand, the pattern
 
-```r
+``` r
 library(rio)
 library(here)
 library(janitor)
@@ -1074,32 +1058,7 @@ will be quite standard anytime!
 :::
 
 
-
-# Homework
-
-## Posit's RStudio Cloud Workspace
-
-**Instructions**
-
-::: columns
-::: {.column width="50%"}
--   Go to: https://bit.ly/ubep-rws-rstudio
-
-::: callout-caution
-## Your turn
-
--   Project: day-1
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-2 assessment under the tab "Summative Assessments".
-    - (on RStudio Cloud) `homework/day_one-summative.html`
--   Script to complete: `homework/solution.R`
-:::
-:::
-:::
-
-
-## Acknowledgment{.smaller}
+## Acknowledgment {.smaller}
 
 To create the current lesson, we explored, used, and adapted content from the following resources:
 
@@ -1107,17 +1066,17 @@ To create the current lesson, we explored, used, and adapted content from the fo
 
 -   [rio](https://gesistsa.github.io/rio/) package.
 
-- [unheadr](https://unheadr.liomys.mx/) package.
+-   [unheadr](https://unheadr.liomys.mx/) package.
 
-- [janitor](https://sfirke.github.io/janitor/) package.
+-   [janitor](https://sfirke.github.io/janitor/) package.
 
-- [janitor](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) showcase
+-   [janitor](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) showcase
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 
 ### Additional resources
 
--  [Luis D. Verde Arregoitia](https://luisdva.github.io/) [Data Cleaning with R](https://rfortherestofus.com/courses/data-cleaning/)
+-   [Luis D. Verde Arregoitia](https://luisdva.github.io/) [Data Cleaning with R](https://rfortherestofus.com/courses/data-cleaning/)
 
 ### License
 

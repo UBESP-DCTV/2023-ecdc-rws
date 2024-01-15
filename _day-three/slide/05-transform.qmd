@@ -1,6 +1,6 @@
 ---
 title: '[Day Three]{style="color:darkblue"}:<br>[Transform]{style="color:darkorange;"}'
-subtitle: "180 min approx"
+subtitle: "145 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -38,12 +38,13 @@ library(countdown)
 ::: {.column width="50%"}
 ### Questions
 
-- What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
-- How to select some varaibles/columns only?
-- How to filter rows that match certain conditions?
-- How to modify (even create) the content of a variable?
-- How to handle dates and time in R?
-- How to handle strings in R?
+-   What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
+-   How to select some variables/columns only?
+-   How to filter rows/cases that match certain conditions?
+-   How to modify (even create) the content of a (possibly new) variable?
+-   How to handle factors effectively in R/Tidyverse?
+-   How to handle dates and time in R/Tidyverse?
+-   How to handle strings in R/Tidyverse?
 :::
 
 ::: {.column width="50%"}
@@ -51,11 +52,12 @@ library(countdown)
 
 #### To be able to
 
-- Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.
-- Select/filter columns/rows of tibbles (i.e., dataframes).
-- Change content of variable programmatically, possibly ususing content from other variables.
-- convert textual date/time into date/time R objects
-- use simple regular expression to manage strings
+-   Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.
+-   Select/filter columns/rows of tibbles (i.e., data frames).
+-   Change content of variable programmatically, possibly using content from other variables.
+-   perform basic factor data management.
+-   convert textual date/time into date/time R objects
+-   use simple regular expression and main `str_*` functions to manage strings
 :::
 :::
 
@@ -77,17 +79,19 @@ library(countdown)
 
 There are three interrelated rules that make a dataset tidy:
 
-1. Each variable is a column; each column is a variable.
-2. Each observation is a row; each row is an observation.
-3. Each value is a cell; each cell is a single value.
+1.  Each variable is a column; each column is a variable.
+2.  Each observation is a row; each row is an observation.
+3.  Each value is a cell; each cell is a single value.
 
 ![](img/tidy-data-R4DS.png)
 
-## Why untidy data {auto-animate=true}
+## Why untidy data {auto-animate="true"}
 
-- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+-   Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
 
 Example: `tidyverse::billboard` dataset.[^1]
+
+[^1]: https://tidyselect.r-lib.org/reference/language.html
 
 ::: columns
 ::: {.column width="70%"}
@@ -101,20 +105,16 @@ billboard
 
 ::: {.column width="30%"}
 ::: callout-warning
-
-- information in column:
-  - `wk1-wk76` should be a single variable: the week.
-  - cell values of `wk1-wk76` should be a single variable: the rank.
+-   information in column:
+    -   `wk1-wk76` should be a single variable: the week.
+    -   cell values of `wk1-wk76` should be a single variable: the rank.
 :::
 :::
 :::
 
-[^1]: The billboard dataset records the billboard rank of songs in the year 2000.
+## Start Tidying - `tidyr::pivot_longer` {auto-animate="true"}
 
-
-## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
-
-- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+-   Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
 
 ::: columns
 ::: {.column width="70%"}
@@ -133,10 +133,10 @@ billboard |>
 
 ::: {.column width="30%"}
 ::: callout-important
-- `tidyr::pivot_longer` convert your data in "longer" fromat
-- `cols`: select which variable should be pivoting
-- `names_to`: define the column hosting the `cols` colnames
-- `values_to`: define the column hosting the `cols` values
+-   `tidyr::pivot_longer` convert your data in "longer" format
+-   `cols`: select which variable should be pivoting
+-   `names_to`: define the column hosting the `cols` colnames
+-   `values_to`: define the column hosting the `cols` values
 :::
 
 ::: callout-warning
@@ -145,10 +145,9 @@ Many possibly uninformative missing information!
 :::
 :::
 
+## Start Tidying - `tidyr::pivot_longer` {auto-animate="true"}
 
-## Start Tidying - `tidyr::pivot_longer` {auto-animate=true}
-
-- Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
+-   Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
 
 ::: columns
 ::: {.column width="70%"}
@@ -168,58 +167,56 @@ billboard |>
 
 ::: {.column width="30%"}
 ::: callout-important
-- `tidyr::pivot_longer` convert your data in "longer" fromat
-- `cols`: select which variable should be pivoting
-- `names_to`: define the column hosting the `cols` colnames
-- `values_to`: define the column hosting the `cols` values
-- `values_drop_na`: decide if rows with missing information in values should be removed
-:::
-
+-   `tidyr::pivot_longer` convert your data in "longer" format
+-   `cols`: select which variable should be pivoting
+-   `names_to`: define the column hosting the `cols` colnames
+-   `values_to`: define the column hosting the `cols` values
+-   `values_drop_na`: decide if rows with missing information in values should be removed
 :::
 :::
+:::
 
-## Selectors [^1] 
+## Selectors [^2]
 
--    `var1:var10`: variables lying between var1 on the left and var10 on the right.
+[^2]: https://tidyselect.r-lib.org/reference/language.html
 
--    `starts_with("a")`: names that start with "a".
+-   `var1:var10`: variables lying between var1 on the left and var10 on the right.
 
--    `ends_with("z")`: names that end with "z".
+-   `starts_with("a")`: names that start with "a".
 
--    `contains("b")`: names that contain "b".
+-   `ends_with("z")`: names that end with "z".
 
--    `matches("x.y")`: names that match regular expression `x.y`. [^2]
+-   `contains("b")`: names that contain "b".
 
--    `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
+-   `matches("x.y")`: names that match regular expression `x.y`. [^3]
 
--    `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
+-   `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
 
+-   `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
+
+[^3]: We will see regular expression in the next lesson
 
 ::: columns
 ::: {.column width="50%"}
--    `everything()`: all variables.
+-   `everything()`: all variables.
 
--    `last_col()`: furthest column on the right.
+-   `last_col()`: furthest column on the right.
 
--    `where(is.numeric)`: all variables where is.numeric() returns TRUE.
+-   `where(is.numeric)`: all variables where is.numeric() returns TRUE.
 :::
+
 ::: {.column width="50%"}
-
 ::: callout-tip
--    `!selection`: only variables that don't match selection.
+-   `!selection`: only variables that don't match selection.
 
--    `selection1 & selection2`: only variables included in both selection1 and selection2.
+-   `selection1 & selection2`: only variables included in both selection1 and selection2.
 
--    `selection1 | selection2`: all variables that match either selection1 or selection2
+-   `selection1 | selection2`: all variables that match either selection1 or selection2
 :::
 :::
 :::
 
-[^1]: https://tidyselect.r-lib.org/reference/language.html
-[^2]: We will see regular expression in the next lesson
-
-
-## Multiple variable in colnames {auto-animate=true}
+## Multiple variable in colnames {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -229,11 +226,8 @@ who2
 ```
 
 ::: callout-tip
-In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
-This way you can separate them in a furhter second step...
-
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure. This way you can separate them in a further second step...
 :::
-
 :::
 
 ::: {.column width="50%"}
@@ -248,11 +242,10 @@ who2 |>
   )
 
 ```
-
 :::
 :::
 
-## Multiple variable in colnames {auto-animate=true}
+## Multiple variable in colnames {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -262,11 +255,8 @@ who2
 ```
 
 ::: callout-tip
-In case of multiple variable in each colname, you can pivoting them maintaining the underling structure.
-This way you can separate them in a furhter second step usign `tidyr::separate`.
-
+In case of multiple variable in each colname, you can pivoting them maintaining the underling structure. This way you can separate them in a further second step using `tidyr::separate`.
 :::
-
 :::
 
 ::: {.column width="50%"}
@@ -286,15 +276,10 @@ who2 |>
   )
 
 ```
-
 :::
 :::
 
-
-
-
-## Multiple variable in colnames {auto-animate=true}
-
+## Multiple variable in colnames {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -314,7 +299,6 @@ who2 |>
   )
 
 ```
-
 :::
 
 ::: {.column width="50%"}
@@ -334,11 +318,14 @@ who2 |>
 ::: callout-tip
 You can also separate colnames containing multiple variables, and matching a regular pattern, into multiple variable in a single step.
 :::
-
 :::
 :::
 
+## My turn
 
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
 
 ## Your turn
 
@@ -356,13 +343,13 @@ You can also separate colnames containing multiple variables, and matching a reg
 
 ::: columns
 ::: {.column width="50%"}
-- `names_from`
-- `names_to`
+-   `names_from`
+-   `names_to`
 :::
 
 ::: {.column width="50%"}
-- `values_from`
-- `values_to`
+-   `values_from`
+-   `values_to`
 :::
 :::
 
@@ -372,7 +359,7 @@ You can also separate colnames containing multiple variables, and matching a reg
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -391,18 +378,13 @@ To transform a table to a longer one, you need to put some of its columns `names
 :::
 :::
 
-
-
-
 ## `tidyr::pivot_wider`
 
 ![Image from [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)](img/pivot-wider-carpentry.png)
 
 ## Reverse pivot - `tidyr::pivot_wider`
 
-
-![[Animation of tidyverse verbs](https://www.garrickadenbuie.com/project/tidyexplain/) by [Garrick Aden-Buie](https://www.garrickadenbuie.com/) ](img/tidyr-pivoting.gif)
-
+![[Animation of tidyverse verbs](https://www.garrickadenbuie.com/project/tidyexplain/) by [Garrick Aden-Buie](https://www.garrickadenbuie.com/)](img/tidyr-pivoting.gif)
 
 ## Reverse pivot - example
 
@@ -427,6 +409,11 @@ all.equal(
 )
 ```
 
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
 
 ## Your turn
 
@@ -444,13 +431,13 @@ all.equal(
 
 ::: columns
 ::: {.column width="50%"}
-- `names_from`
-- `names_to`
+-   `names_from`
+-   `names_to`
 :::
 
 ::: {.column width="50%"}
-- `values_from`
-- `values_to`
+-   `values_from`
+-   `values_to`
 :::
 :::
 
@@ -460,7 +447,7 @@ all.equal(
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -479,20 +466,19 @@ To transform a table to a wider one, you need to take new column `names_from` an
 :::
 :::
 
-
 # Data management
 
 ## `dplyr` - intro
 
 Common structure:
 
-- The first argument is always a data frame
-- The subsequent arguments typically describe which columns to operate on, using the variable names (without quotes).
-- The output is always a new data frame.
+-   The first argument is always a data frame
+-   The subsequent arguments typically describe which columns to operate on, using the variable names (without quotes).
+-   The output is always a new data frame.
 
 ::: callout-tip
 All verbs in Tidyverse are designed to do one thing mainly, and to it well! So, to solve complex problem we will often combine multiple verbs, and we use the pipe (`|>`) as we are already familiar!
-::: 
+:::
 
 ## Rows - `dplyr::filter`
 
@@ -512,13 +498,12 @@ db |>
   filter(age < 18)
 ```
 
-
 ## Rows - conditions
 
-We can use any kind of condition inside `dplyr::filter`; e.g., 
-
+We can use any kind of condition inside `dplyr::filter`; e.g.,
 
 ### And
+
 ```{r}
 db |> 
   filter((age < 18) & case)
@@ -526,29 +511,26 @@ db |>
 
 ::: columns
 ::: {.column width="50%"}
-
 ::: callout-tip
 If a variable is already a logical one, you can use it directly as it is as a condition! E.g.
 
-```{r}
-#| eval: false
+```r
 db |> 
   filter(case) ## instead of case == TRUE
 
 db |> 
   filter(!case) ## instead of case == FALSE
 ```
-
 :::
 :::
 :::
 
 ## Rows - conditions
 
-We can use any kind of condition inside `dplyr::filter`; e.g., 
-
+We can use any kind of condition inside `dplyr::filter`; e.g.,
 
 ### Or
+
 ```{r}
 db |> 
   filter(gastrosymptoms | ate_anything)
@@ -556,10 +538,10 @@ db |>
 
 ## Rows - conditions
 
-We can use any kind of condition inside `dplyr::filter`; e.g., 
-
+We can use any kind of condition inside `dplyr::filter`; e.g.,
 
 ### In
+
 ```{r}
 db |> 
   filter(age %in% 19:25)
@@ -567,8 +549,7 @@ db |>
 
 ## Rows - conditions
 
-We can use any kind of condition inside `dplyr::filter`; e.g., 
-
+We can use any kind of condition inside `dplyr::filter`; e.g.,
 
 ### Not equal
 
@@ -577,42 +558,28 @@ db |>
   filter(group != "student")
 ```
 
-
 ## Rows - multiple conditions
 
-We can also combine together multiple condition of arbitrary compelxity at once
+We can also combine together multiple condition of arbitrary complexity at once
 
 ```{r}
 db |> 
   filter(!((age < 18) & case))
 ```
 
-
 ::: columns
 ::: {.column width="50%"}
-::: callout-tip
-If a variable is already a logical one, you can use it directly as it is as a condition! E.g.
-
-```{r}
-#| eval: false
-db |> 
-  filter(case) ## instead of case == TRUE
-
-db |> 
-  filter(!case) ## instead of case == FALSE
-```
-
-:::
-:::
-
-::: {.column width="50%"}
-
-
 ::: callout-tip
 It could be difficult to remind the priority order of logical operators. Using parentheses to group each conditions is a safe way to not be wrong!
 :::
 :::
 :::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
 ## Your turn
 
@@ -626,7 +593,7 @@ It could be difficult to remind the priority order of logical operators. Using p
 ...and:
 :::
 
-1.  Immagine to have imported a db with a variabale `age`, and you want to keep rows with `age`  equal to 18 or 21. Before to evaluate it, does the following code return what you need? Answer in the pad, under the section `3.2. Ex20`.
+1.  Imagine to have imported a db with a variable `age`, and you want to keep rows with `age` equal to 18 or 21. Before to evaluate it, does the following code return what you need? Answer in the pad, under the section `3.2. Ex20`.
 
 ``` r
 library(tidyverse)
@@ -656,29 +623,27 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: columns
-::: {.column width="50%"}
-
+::: {.column width="60%"}
 ::: callout-important
-- First argument of `dplyr::filter` is always a data frame
-- Returned object of `dplyr::filter` is always a data frame
-- Original data frame won't be modified by `dplyr::filter`, never!
+-   First argument of `dplyr::filter` is always a data frame
+-   Returned object of `dplyr::filter` is always a data frame
+-   Original data frame won't be modified by `dplyr::filter`, never!
 :::
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 ::: callout-important
-- you can put arbitrary complex conditions returnign logical vectors of the same length of the number of rows of the data frame, involving any column of the data frame in use also.
-:::
-
+-   you can put arbitrary complex conditions returning logical vectors of the same length of the number of rows of the data frame, involving any column of the data frame in use also.
 :::
 :::
 :::
-
-
+:::
 
 ## Columns - `dplyr::select`
 
-For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^4]
+
+[^4]: https://tidyselect.r-lib.org/reference/language.html
 
 You can select the column to keep using the `dplyr::select()` verb providing:
 
@@ -691,12 +656,11 @@ db |>
   select(sex, age, case)
 ```
 
-
-[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
-
 ## Columns - `dplyr::select`
 
-For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^5]
+
+[^5]: https://tidyselect.r-lib.org/reference/language.html
 
 You can select the column to keep using the `dplyr::select()` verb providing:
 
@@ -709,12 +673,11 @@ db |>
   select(sex:class)
 ```
 
-
-[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
-
 ## Columns - `dplyr::select`
 
-For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^6]
+
+[^6]: https://tidyselect.r-lib.org/reference/language.html
 
 You can select the column to keep using the `dplyr::select()` verb providing:
 
@@ -727,12 +690,11 @@ db |>
   select(!diarrhoea:jointpain)
 ```
 
-
-[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
-
 ## Columns - `dplyr::select`
 
-For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^1]
+For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^7]
+
+[^7]: https://tidyselect.r-lib.org/reference/language.html
 
 You can select the column to keep using the `dplyr::select()` verb providing:
 
@@ -745,51 +707,51 @@ db |>
   select(where(is.logical))
 ```
 
+## Selectors [^8]
 
-[^1]: Clearly, if you work with big data, it could be crucial to maintain in your computational environment only the actual data you need.
+[^8]: https://tidyselect.r-lib.org/reference/language.html
 
+-   `var1:var10`: variables lying between var1 on the left and var10 on the right.
 
-## Selectors [^1] 
+-   `starts_with("a")`: names that start with "a".
 
--    `var1:var10`: variables lying between var1 on the left and var10 on the right.
+-   `ends_with("z")`: names that end with "z".
 
--    `starts_with("a")`: names that start with "a".
+-   `contains("b")`: names that contain "b".
 
--    `ends_with("z")`: names that end with "z".
+-   `matches("x.y")`: names that match regular expression `x.y`. [^9]
 
--    `contains("b")`: names that contain "b".
+-   `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
 
--    `matches("x.y")`: names that match regular expression `x.y`. [^2]
+-   `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
 
--    `num_range(x, 1:4)`: names following the pattern, `x1`, `x2`, ..., `x4`.
-
--    `all_of(vars)/any_of(vars)`: names stored in the character vector vars. `all_of(vars)` will error if the variables aren't present; `any_of(var)` will match just the variables that exist.
-
+[^9]: We will see regular expression in the next lesson
 
 ::: columns
 ::: {.column width="50%"}
--    `everything()`: all variables.
+-   `everything()`: all variables.
 
--    `last_col()`: furthest column on the right.
+-   `last_col()`: furthest column on the right.
 
--    `where(is.numeric)`: all variables where is.numeric() returns TRUE.
+-   `where(is.numeric)`: all variables where is.numeric() returns TRUE.
 :::
+
 ::: {.column width="50%"}
-
 ::: callout-tip
--    `!selection`: only variables that don't match selection.
+-   `!selection`: only variables that don't match selection.
 
--    `selection1 & selection2`: only variables included in both selection1 and selection2.
+-   `selection1 & selection2`: only variables included in both selection1 and selection2.
 
--    `selection1 | selection2`: all variables that match either selection1 or selection2
+-   `selection1 | selection2`: all variables that match either selection1 or selection2
 :::
 :::
 :::
 
-[^1]: https://tidyselect.r-lib.org/reference/language.html
-[^2]: We will see regular expression in the next lesson
+## My turn
 
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
 ## Your turn
 
@@ -803,11 +765,11 @@ db |>
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex21`, write (in a new line) all the possible ways you can immagine to select the variable `sex`, `age`, `group` using `dplyr::select` from our  dataframe `db` imported from `Copenhagen_clean.xlsx` .
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex21`, write (in a new line) all the possible ways you can imagine to select the variable `sex`, `age`, `group` using `dplyr::select` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
 
-2. What do you expect the following code will return (including an error):
+2.  What do you expect the following code will return (including an error):
 
-```r
+``` r
 db |>
   select(any_of(c("age", "foo")))
 ```
@@ -833,12 +795,10 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
-- `all_of(vec)`  is for strict selection. If any of the variables in the character `vec` is missing, an error is thrown.
-- `any_of(vec)` doesn't check for missing variables. It is especially useful with negative selections, when you would like to make sure a variable is removed.
+-   `all_of(vec)` is for strict selection. If any of the variables in the character `vec` is missing, an error is thrown.
+-   `any_of(vec)` doesn't check for missing variables. It is especially useful with negative selections, when you would like to make sure a variable is removed.
 :::
 :::
-
-
 
 ## Mutate
 
@@ -856,7 +816,6 @@ db |>
     incubation_days = incubation / 24
   )
 ```
-
 
 ## Mutate
 
@@ -898,12 +857,11 @@ db |>
   )
 ```
 
-
 ## Mutate
 
 We can also add new columns which are calculated from existing ones.
 
-### Pay attention on vecotized Vs. summary functions
+### Pay attention on vectorized Vs. summary functions
 
 ::: columns
 ::: {.column width="75%"}
@@ -926,21 +884,117 @@ sample_df |>
     max_all = max(x, y, na.rm = TRUE),
   )
 ```
-
 :::
 
 ::: {.column width="25%"}
 ::: callout-warning
-- **Summary** functions (e.g., `min`, `max`):
-  - Takes: vectors.
-  - Returns: a single value.
-- **Vectorized** functions  (e.g., `pmin`, `pmax`):
-  - Takes: vectors.
-  - Returns: vectors (the same length as the input).
+-   **Summary** functions (e.g., `min`, `max`):
+    -   Takes: vectors.
+    -   Returns: a single value.
+-   **Vectorized** functions (e.g., `pmin`, `pmax`):
+    -   Takes: vectors.
+    -   Returns: vectors (the same length as the input).
 :::
 :::
 :::
 
+## Conditional mutates - Binary: `dplyr::if_else`
+
+To mutate a variable accordingly to a binary condition
+
+```{r}
+library(tidyverse)
+
+db |> 
+  mutate(
+    age_class = if_else(
+      age >= 18,
+      "adult",
+      "child"
+    )
+  ) |> 
+  select(age, age_class)
+
+```
+
+::: callout-important
+`dplyr::if_else` requires compatible types in the output.
+:::
+
+## Conditional mutates - Subsequent: `dplyr::case_when`
+
+To mutate a variable accordingly to multiple subsequent conditions
+
+```{r}
+library(tidyverse)
+
+db |> 
+  mutate(
+    age_class = case_when(
+      age >  24 ~ "adult (prof)",
+      age >= 18 ~ "adult (stud)",
+      age >= 15 ~ "young (stud)",
+      TRUE      ~ "child"
+    )
+  ) |> 
+  select(age, age_class)
+```
+
+::: callout-important
+`dplyr::case_when` takes `condition ~ value` pairs. `condition` must be a logical vector; when it’s `TRUE`, the `valule` will be used.
+
+-   If none of the cases match, the output gets an `NA`.
+-   Conditions are considered in order, so you should put the most specific case first!
+-   `TRUE ~ <dafault_value>` is used to specify the “default”/catch all value.
+:::
+
+## Grouping and summarizing
+
+We can group rows into groups meaningful for your analysis by one or more variables, and then summarize each group into a single row performing a summary operation.
+
+```{r}
+library(tidyverse)
+
+db |> 
+  group_by(class) |> 
+  summarize(
+    mean_age = age |> 
+      mean(na.rm = TRUE),
+    
+    n = n(),
+    
+    n_teachers = sum(
+      group == "teacher",
+      na.rm = TRUE
+    )
+  )
+```
+
+## Counts
+
+If we want to count the number of rows in each group, we can use simply `dplyr::count` instead of `dplyr::group_by` and `dplyr::summarize`.
+
+::: panel-tabset
+## single var
+
+```{r}
+db |> 
+  count(class)
+```
+
+## multiple var
+
+```{r}
+db |> 
+  count(class, group)
+```
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
 
 ## Your turn
 
@@ -956,7 +1010,7 @@ sample_df |>
 
 1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
 
-```r
+``` r
 library(tidyverse)
 
 db |> 
@@ -965,14 +1019,13 @@ db |>
 )
 ```
 
-
 2.  Then, open the script `14-mutate.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 2,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -988,41 +1041,880 @@ countdown(
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
 As all the other verbs in the Tidyverse, `dplyr::mutate`
+
 ::: columns
 ::: {.column width="50%"}
-- It takes a data frame in input, always.
-- It returns a data frame in output, always.
+-   It takes a data frame in input, always.
+-   It returns a data frame in output, always.
 :::
+
 ::: {.column width="50%"}
-- It doesn't change it's input, never.
+-   It doesn't change it's input, never.
 :::
 :::
 :::
 :::
 
+# Mange principal formats
+
+## Factors - why
+
+Using strings for categories is not always the best choice. Factors are the best way to represent categories in R.
+
+-   sorting issues
+
+```{r}
+x1 <- c("Dec", "Apr", "Jan", "Mar")
+sort(x1)
+```
+
+-   missing/wrong levels issues
+
+```{r}
+x2 <- c("Dec", "Apr", "Jam", "Mar")
+x2
+
+```
+
+-   tabulation issues
+
+```{r}
+table(x1)
+```
+
+## Factors - how
+
+Define a set of possible values (levels), as a standard character vector.
+
+```{r}
+month_levels <- c(
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+)
+month_levels
+```
+
+And define a variable as factor, specifying the levels using that.
+
+::: columns
+::: {.column width="50%"}
+**Base**
+
+```{r}
+
+
+y1_base <- factor(x1, levels = month_levels)
+y1_base
+```
+:::
+
+::: {.column width="50%"}
+**Tidyverse - (`{forcats}`)**
+
+```{r}
+library(tidyverse)
+
+y1_tidy <- fct(x1, levels = month_levels)
+y1_tidy
+```
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+```{r}
+sort(y1_base)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+sort(y1_tidy)
+```
+:::
+:::
+
+## Factors - why tidyverse (`{forcats}`)
+
+If we don't provide explicit levels, the levels are the unique values in the vector, sorted alphabetically in base R, or in the order of appearance in `{forcats}`.
+
+::: columns
+::: {.column width="50%"}
+**Base**
+
+```{r}
+factor(x1)
+```
+:::
+
+::: {.column width="50%"}
+**Tidyverse - (`{forcats}`)**
+
+```{r}
+fct(x1)
+```
+:::
+:::
+
+<br> <br>
+
+If there are wrong values in the values used to create a factor, they are included as missing (`NA`) in base R silently, while `{forcats}` throws an (informative!) error.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+y2_base <- x2 |> 
+  factor(levels = month_levels)
+y2_base
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| error: true
+y2_tidy <- x2 |> 
+  fct(levels = month_levels)
+```
+:::
+:::
+
+## Factors - reorder levels
+
+It could be useful to reordering levels, e.g. when plotting information.
+
+We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
+
+::: callout-tip
+Often, the numerical value you use to reorder a factor is another variable in your dataset!
+:::
+
+::: columns
+::: {.column width="40%"}
+``` r
+library(tidyverse)
+
+# sample dataset from `{forcats}`
+# ?gss_cat for information
+gss_cat 
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+library(tidyverse)
+
+# sample dataset from `{forcats}`
+# ?gss_cat for information
+# A sample of categorical variables from the General Social survey from 2000 to 2016.
+gss_cat 
+```
+:::
+:::
+
+## Factors - reorder levels
+
+It could be useful to reordering levels, e.g. when plotting information.
+
+We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
+
+::: callout-tip
+Often, the numerical value you use to reorder a factor is another variable in your dataset!
+:::
+
+::: columns
+::: {.column width="40%"}
+``` r
+relig_summary <- gss_cat |> 
+  group_by(relig) |> 
+  summarize(
+    tv_hours = tvhours |> 
+      mean(na.rm = TRUE)
+  )
+relig_summary
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+relig_summary <- gss_cat |> 
+  group_by(relig) |> 
+  summarize(
+    tv_hours = tvhours |> 
+      mean(na.rm = TRUE)
+  )
+relig_summary
+```
+:::
+:::
+
+## Factors - reorder levels
+
+It could be useful to reordering levels, e.g. when plotting information.
+
+We can use `forcats::fct_relevel` to reorder levels. Its first argument is the factor to reorder, and the following argument is a numeric vector you want to use to reorder the levels.
+
+::: callout-tip
+Often, the numerical value you use to reorder a factor is another variable in your dataset!
+:::
+
+::: panel-tabset
+## Natural
+
+::: columns
+::: {.column width="40%"}
+``` r
+relig_summary |> 
+  ggplot(aes(
+    x = tv_hours,
+    y = relig
+  )) +
+  geom_point()
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+relig_summary |> 
+  ggplot(aes(
+    x = tv_hours,
+    y = relig
+  )) +
+  geom_point()
+```
+:::
+:::
+
+## Reordered
+
+::: columns
+::: {.column width="40%"}
+``` r
+relig_summary |> 
+  ggplot(aes(
+    x = tv_hours,
+    y = relig |> 
+      fct_reorder(tv_hours)
+  )) +
+  geom_point()
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+relig_summary |> 
+  ggplot(aes(
+    x = tv_hours,
+    y = relig |> 
+      fct_reorder(tv_hours)
+  )) +
+  geom_point()
+```
+:::
+:::
+:::
+
+## Factors - reorder levels
+
+There are also many other useful functions in `{forcats}` to reorder levels, e.g., `fct_infreq` and `fct_rev`. To see all of them, refer to its website https://forcats.tidyverse.org/.
+
+::: columns
+::: {.column width="40%"}
+``` r
+gss_cat |>
+  mutate(
+    marital = marital |>
+      # order by frequency
+      fct_infreq() |>
+      # reverse the order
+      fct_rev()
+  ) |>
+  ggplot(aes(x = marital)) +
+  geom_bar()
+```
+:::
+
+::: {.column width="60%"}
+```{r}
+#| echo: false
+gss_cat |>
+  mutate(
+    marital = marital |>
+      # order by frequency
+      fct_infreq() |>
+      # reverse the order
+      fct_rev()
+  ) |>
+  ggplot(aes(x = marital)) +
+  geom_bar()
+```
+:::
+:::
+
+## Factors - modify (AKA recode) levels {auto-animate="true"}
+
+We can also modify levels, e.g., to change the wording, or to merge some of them together.
+
+### Change the wording
+
+```{r}
+gss_cat |>
+  mutate(
+    partyid = fct_recode(partyid,
+      "Republican, strong"    = "Strong republican",
+      "Republican, weak"      = "Not str republican",
+      "Independent, near rep" = "Ind,near rep",
+      "Independent, near dem" = "Ind,near dem",
+      "Democrat, weak"        = "Not str democrat",
+      "Democrat, strong"      = "Strong democrat",
+      "Other"                 = "No answer",
+      "Other"                 = "Don't know",
+      "Other"                 = "Other party"
+    )
+  ) |>
+  count(partyid)
+```
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+`forcats::fct_recode` will leave the levels that aren’t explicitly mentioned as is, and will warn you if you accidentally refer to a level that doesn’t exist.
+:::
+:::
+
+::: {.column width="50%"}
+::: calout-tip
+To combine groups, you can assign multiple old levels to the same new level, or... use `forcats::fct_collapse`!
+:::
+:::
+:::
+
+## Factors - modify (AKA recode) levels {auto-animate="true"}
+
+We can also modify levels, e.g., to change the wording, or to merge some of them together.
+
+### Change the wording
+
+```{r}
+gss_cat |>
+  mutate(
+    partyid = fct_collapse(partyid,
+      "other" = c("No answer", "Don't know", "Other party"),
+      "rep" = c("Strong republican", "Not str republican"),
+      "ind" = c("Ind,near rep", "Independent", "Ind,near dem"),
+      "dem" = c("Not str democrat", "Strong democrat")
+    )
+  ) |>
+  count(partyid)
+```
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+`forcats::fct_recode` will leave the levels that aren’t explicitly mentioned as is, and will warn you if you accidentally refer to a level that doesn’t exist.
+:::
+:::
+
+::: {.column width="50%"}
+::: calout-tip
+To combine groups, you can assign multiple old levels to the same new level, or... use `forcats::fct_collapse`!
+:::
+:::
+:::
 
 
 
-# Data formats
+## My turn
 
-## Factors
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
-## Dates
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `14-factors.R`
 
-## Date-times
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
+
+2.  Then, open the script `15-factors.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+`factors` from base R, or `forcats::fct` from `{forcats}` are the best way to represent categories in R. They work similarly, but `{forcats}` is more informative and more flexible.
+:::
+:::
+
+
+
+
+
+
+
+
+
+
+## Dates and Time
+
+In the Tidyverse, the main package to manage dates and time is `{lubridate}`.
+
+::: callout-tip
+## Remind
+
+-   Dates are counts (based on ?doubles) of days since 1970-01-01.
+-   Date-Time are counts (based on ?doubles) of seconds since 1970-01-01.
+:::
+
+To get the current date or date-time you can use `today()` or `now()`:
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+today()
+now()
+```
+
+## Dates and Time - conversion from strings
+
+### Dates
+
+```{r}
+ymd("2017-01-31")
+mdy("January 31st, 2017")
+dmy("31-Jan-2017")
+```
+
+### Dates-time
+
+```{r}
+ymd_hms("2017-01-31 20:11:59")
+mdy_hm("01/31/2017 20:11")
+mdy_h("01/31/2017 20")
+
+# Force date-time supplying a timezone
+ymd("2017-01-31", tz = "UTC")
+```
+
+### Date \<-\> Date-time conversion
+
+```{r}
+as_datetime(today()) |> 
+  str()
+as_date(now()) |> 
+  str()
+```
+
+## Extracting/Changing components
+
+::: columns
+::: {.column width="50%"}
+We can extract or modify components from date/date-time objects using:
+
+-   `year()`
+-   `month()`
+-   `day()`
+-   `hour()`
+-   `minute()`
+-   `second()`
+-   `wday()` (day of the week)
+-   `yday()` (day of the year)
+-   `week()` (week of the year)
+-   `quarter()` (quarter of the year).
+:::
+
+::: {.column width="50%"}
+### Extract
+
+```{r}
+(today_now <- now())
+year(today_now)
+month(today_now)
+day(today_now)
+hour(today_now)
+minute(today_now)
+second(today_now)
+wday(today_now)
+yday(today_now)
+week(today_now)
+quarter(today_now)
+```
+
+### Change
+
+```{r}
+year(today_now)  <- 2020
+today_now
+month(today_now) <- 12
+today_now
+day(today_now) <- 30
+today_now
+hour(today_now) <- 17
+today_now
+minute(today_now) <- 14
+today_now
+second(today_now) <- 56
+today_now
+```
+:::
+:::
+
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `15-date-time.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex24`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `dayonset` (which is a datetime as imported) to pure Date format using `{lbridate}` functions (from our data frame `db` imported from `Copenhagen_clean.xlsx`).
+
+2.  Then, open the script `16-date-time.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+`Date` and `Date-time` are counts of days/seconds since 1970-01-01.
+Managing them in R is not easy, but `{lubridate}` makes it easier.
+:::
+:::
+
+
+
+
+
 
 
 ## Strings - Regular Expressions
+
+Regular expressions are a powerful tool for matching text patterns. They are used in many programming languages to find and manipulate strings, and in R are implemented in the `{stringr}` package.
+
+::: columns
+::: {.column width="40%"}
+::: callout-important
+## Base syntax for regular expressions
+
+-   `.` matches any character
+-   `*` matches zero or more times
+-   `+` matches one or more times
+-   `?` matches zero or one time
+-   `^` matches the start of a string
+-   `$` matches the end of a string
+-   `[]` matches any one of the characters inside
+-   `[^]` matches any character **not** inside the square brackets
+-   `|` matches the pattern either on the left or the right
+-   `()` groups together the pattern on the left and the right
+:::
+:::
+
+::: {.column width="60%"}
+
+::: callout-caution
+## Example
+
+The following match any string that:
+
+-   `a` contains `a` (`str_view("banana", "a")`: `r print(str_view("banana", "a"))`)
+-   `^a` starts with `a`
+-   `a$` ends with `a`
+-   `^a$` starts and ends with `a`
+-   `^a.*a$` starts and ends with `a`, with any number of characters in between
+-   `^a.+a$` starts and ends with `a`, with at least one character in between
+-   `^a[bc]+a$` starts and ends with `a`, with at least one `b` or `c` in between
+-   `^a(b|c)d$` starts with `a`, followed by either `b` or `c`, followed by an ending`d`.
+:::
+
+
+::: callout-tip
+To match special characters, you need to escape them with a double backslash (`\\`). I.e., you need to use `\\.`, `\\*`, `\\+`, `\\?`, `\\^`, `\\$`, `\\[`, `\\]`, `\\|`, `\\(`, `\\)`.
+
+To match a backslash, you need `\\\\`.
+:::
+:::
+:::
+
+
+## Strings - `{stringr}`
+
+The `{stringr}` package provides a consistent set of functions for working with strings, and it is designed to work consistently with the pipe.
+
+
+::: columns
+::: {.column width="50%"}
+
+::: callout-important
+## Functions
+
+-   `str_detect()`: does a string contain a pattern?
+-   `str_which()`: which strings match a pattern?
+-   `str_subset()`: subset of strings that match a pattern
+-   `str_sub()`: extract a sub-string by position
+-   `str_replace()`: replace the first match with a replacement
+-   `str_replace_all()`: replace all matches with a replacement
+-   `str_remove()`: remove the first match
+-   `str_remove_all()`: remove all matches
+-   `str_split()`: split up a string into pieces
+-   `str_extract()`: extract the first match
+-   `str_extract_all()`: extract all matches
+-   `str_locate()`: locate the first match
+-   `str_locate_all()`: locate all matches
+-   `str_count()`: count the number of matches
+-   `str_length()`: the number of characters in a string
+:::
+:::
+
+::: {.column width="50%"}
+
+::: callout-tip
+Because all `{stringr}` functions start with `str_`,  in RStudio you can type `str_` and then pressing `TAB` to see all its available functions.
+:::
+
+
+::: callout-tip
+## Examples
+
+
+::: panel-tabset
+## Detect
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_detect(x, "[aeiou]")
+str_which(x, "[aeiou]")
+
+```
+## Subset
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_subset(x, "[aeiou]")
+str_sub(x, 1, 3)
+```
+
+## Replace
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_replace(x, "[aeiou]", "x")
+str_replace_all(x, "[aeiou]", "x")
+str_remove(x, "[aeiou]")
+str_remove_all(x, "[aeiou]")
+```
+
+
+## Split
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_split(x, "[aeiou]")
+str_extract(x, "[aeiou]")
+str_extract_all(x, "[aeiou]")
+```
+
+## Locate
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_locate(x, "[aeiou]")
+str_locate_all(x, "[aeiou]")
+```
+
+## Count
+
+```{r}
+#| output-location: default
+#| results: markup
+library(tidyverse)
+
+x <- c("apple", "banana", "pear")
+str_count(x, "[aeiou]")
+str_length(x)
+```
+
+:::
+:::
+
+
+:::
+:::
+
+
+## Strings - concatenate
+
+-   `str_c`: takes any number of vectors as arguments and returns a character vector of the concatenated values.
+
+-   `str_glue`: takes a string and interpolates values into it.
+
+```{r}
+library(tidyverse)
+
+tibble(
+    x = c("apple", "banana", "pear"),
+    y = c("red", "yellow", "green"),
+    z = c("round", "long", "round")
+  ) |> 
+  mutate(
+    fruit = str_c(x, y, z),
+    fruit_space = str_c(x, y, z, sep = " "),
+    fruit_comma = str_c(x, y, z, sep = ", "),
+    fruit_glue = str_glue("I like {x}, {y} and {z} fruits")
+  )
+```
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `16-strings.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex25`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
+
+2.  Then, open the script `17-strings.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+- All functions in `{stringr}` start with `str_`, so you can type `str_` and then pressing `TAB` to see all its available functions.
+
+- You can use `str_view` to see how a regular expression matches a string.
+
+- `str_glue` is a powerful tool to concatenate strings and variables.
+:::
+:::
+
+
+
+
 
 # Homework
 
 ## Posit's RStudio Cloud Workspace
 
--   Project: Day-3
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-3
 -   Instructions:
     -   Go to: https://bit.ly/ubep-rws-website
     -   The text is the Day-3 assessment under the tab "Summative Assessments".
--   Script to complete on RStudio: `solution.R`
+    -   (on RStudio Cloud) `homework/day_three-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
 
 ## Acknowledgment
 
@@ -1030,11 +1922,11 @@ To create the current lesson, we explored, used, and adapted content from the fo
 
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
-- [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
+-   [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
 
-- [Garrick Aden-Buie](https://www.garrickadenbuie.com/)'s [Tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+-   [Garrick Aden-Buie](https://www.garrickadenbuie.com/)'s [Tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
 
-- [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)
+-   [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)
 
 The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
 

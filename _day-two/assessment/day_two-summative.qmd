@@ -1,5 +1,5 @@
 ---
-title: "Day One - Assessment"
+title: "Day Two - Assessment"
 subtitle: "UBEP's R training for supervisors"
 format:
   html:

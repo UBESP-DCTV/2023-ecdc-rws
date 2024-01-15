@@ -87,7 +87,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[20'\] Packages, Tidyverse ecosystem, style, and perspectives
 
-
 ::: {.callout-note appearance="minimal"}
 \[10'\] Recap & Assignments
 :::
@@ -175,7 +174,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 -   \[15'\] filter (.data & .env)
 
 -   \[20'\] mutate (grouped) data contents & across
-
 
 ### 5. (c) \[45'\] Transform -- manage formats[^9]
 

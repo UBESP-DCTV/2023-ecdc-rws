@@ -1593,6 +1593,28 @@ countdown(
 )
 ```
 
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-2
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-2 assessment under the tab "Summative Assessments".
+    -   (on RStudio Cloud) `homework/day_two-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
 
 
 ## Acknowledgment{.smaller}
