@@ -18,7 +18,7 @@ The whole course will be conducted using the R programming languages [@R-base], 
 
 -   the `{tidyverse}` [@R-tidyverse] to activate the ecosystem on the R session
 
--   the RStudio projects, and the `{renv}` [@R-renv], and `{here}` [@R-here] packages for project management, reproducibility, and portability. On their side, there will be introduced the native *pipe*, with only mentioning the `{magrittr}` \[\@R-magrittr\], to pipe instructions in an easy-to-write/read/understand way.
+-   the RStudio projects, and the `{renv}` [@R-renv], and `{here}` [@R-here] packages for project management, reproducibility, and portability. On their side, there will be introduced the native *pipe*, with only mentioning the {magrittr} \[\@R-magrittr\], to pipe instructions in an easy-to-write/read/understand way.
 
 -   `{ggplot2}` [@R-ggplot2] for graphics production
 
@@ -28,7 +28,7 @@ The whole course will be conducted using the R programming languages [@R-base], 
 
 -   `{gtsummary}` [@R-gtsummary] to create summary tables for data and models and to include table data in a report's narrative text sections directly, i.e., without copy-pasting them by hand.[^1]
 
-[^1]: The `{flextable}` [@R-flextable] package will be not introduced explicitly because `{gtsummary}` can now manage MS Word tables as well. On the other side, it will be explained how to convert a `gtsummary` table on other formats, `flextable` included.
+[^1]: The `{flextable}` [@R-flextable] package will be not introduced explicitely because `{gtsummary}` can now manage MS Word tables as well. On the other side, it will be explained how to convert a `gtsummary` table on other formats, `flextable` included.
 
 <!-- -->
 
@@ -137,6 +137,10 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
     -   \[10'\] Saving plots
 
+### 4a. \[25'\] Import and cleaning
+
+-   \[25'\] Base and Tidy, and `rio`[^5] [^6]
+
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
 :::
@@ -147,32 +151,31 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[15'\] RECAP & solutions
 :::
 
-### 4. \[50'\] Import and cleaning
+### 4b. \[40'\] Import and cleaning
 
--   \[20'\] Base and Tidy, and `rio`[^5] [^6]
--   \[30'\] Headers, var names, and missing data[^7]
-
-::: {.callout-note appearance="minimal"}
-\[10'\] BREAK
-:::
-
-### 5. (a) \[55'\] Transform -- manage shape[^8]
-
--   \[55'\] Tidy format & pivoting
+-   \[40'\] Headers, var names, and missing data
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
 :::
 
-### 5. (b) \[45'\] Transform -- manage dataset[^9]
+### 5. (a) \[60'\] Transform -- manage shape[^7]
+
+-   \[60'\] Tidy format & pivoting
+
+::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
+:::
+
+### 5. (b) \[50'\] Transform -- manage dataset[^8]
 
 -   \[15'\] select (all_of...)
 
 -   \[15'\] filter (.data & .env)
 
--   \[15'\] mutate (grouped) data contents & across
+-   \[20'\] mutate (grouped) data contents & across
 
-### 5. (c) \[45'\] Transform -- manage formats[^10]
+### 5. (c) \[45'\] Transform -- manage formats[^9]
 
 -   \[10'\] factors
 
@@ -190,7 +193,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[15'\] RECAP & solutions
 :::
 
-### 6. \[90'\] Modeling (summary statistics tables)[^11]
+### 6. \[90'\] Modeling (summary statistics tables)[^10]
 
 -   \[70'\] Summary tables
 
@@ -206,7 +209,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[20'\] BREAK
 :::
 
-### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^12]
+### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^11]
 
 -   \[20'\] (Visual) Quarto document structure
 
@@ -239,26 +242,24 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 :::
 :::
 
-[^2]: pkgs: `{renv}`, `{here}`
+[^2]: pkg: {renv}, {here}
 
-[^3]: pkgs: `{magrittr}`, `{ggplot2}`
+[^3]: pkg: {magrittr}, {ggplot2}
 
-[^4]: pkgs: `{magrittr}`, `{ggplot2}`
+[^4]: pkg: {magrittr}, {ggplot2}
 
-[^5]: pkgs: `{readr}`, `{readxl}`, `{writexl}`, `{haven}`
+[^5]: pkgs: {readr}, {readxl}, {writexl}, {haven}
 
-[^6]: pkg: `{rio}`
+[^6]: pkg: {rio}
 
-[^7]: pkgs: `{unheadr}`
+[^7]: pkgs: {janitor}, {tidyr}
 
-[^8]: pkgs: `{janitor}`, `{tidyr}`
+[^8]: pkgs: {dplyr}
 
-[^9]: pkgs: `{dplyr}`
+[^9]: pkgs: {dplyr}, {lubridate}, {stringr}, {glue}
 
-[^10]: pkgs: `{dplyr}`, `{lubridate}`, `{stringr}`, `{glue}`
+[^10]: pkgs: {dplyr}, {gtsummary}
 
-[^11]: pkgs: `{dplyr}`, `{gtsummary}`
-
-[^12]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.
+[^11]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.
 
 ## Bibliography
