@@ -584,7 +584,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1004,7 +1004,7 @@ YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
 
-## Your turn
+## Your turn (Break included)
 
 ::: callout-caution
 ## Your turn
@@ -1021,10 +1021,11 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 2.  Then, open the script `09-clean.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
+
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1055,23 +1056,6 @@ db <- here(<path>) |>
 will be quite standard anytime!
 :::
 :::
-
-## Break
-
-```{r}
-#| echo: false
-countdown(
-  minutes = 10,
-  left = "15%",
-  right = "15%",
-  top = "15%",
-  bottom = "15%",
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
 
 
 ## Acknowledgment {.smaller}

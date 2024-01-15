@@ -40,10 +40,11 @@ library(countdown)
 
 -   What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
 -   How to select some variables/columns only?
--   How to filter rows that match certain conditions?
--   How to modify (even create) the content of a variable?
--   How to handle dates and time in R?
--   How to handle strings in R?
+-   How to filter rows/cases that match certain conditions?
+-   How to modify (even create) the content of a (possibly new) variable?
+-   How to handle factors effectively in R/Tidyverse?
+-   How to handle dates and time in R/Tidyverse?
+-   How to handle strings in R/Tidyverse?
 :::
 
 ::: {.column width="50%"}
@@ -56,7 +57,7 @@ library(countdown)
 -   Change content of variable programmatically, possibly using content from other variables.
 -   perform basic factor data management.
 -   convert textual date/time into date/time R objects
--   use simple regular expression to manage strings
+-   use simple regular expression and main `str_*` functions to manage strings
 :::
 :::
 
@@ -358,7 +359,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -446,7 +447,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -513,8 +514,7 @@ db |>
 ::: callout-tip
 If a variable is already a logical one, you can use it directly as it is as a condition! E.g.
 
-```{r}
-#| eval: false
+```r
 db |> 
   filter(case) ## instead of case == TRUE
 
@@ -931,10 +931,10 @@ library(tidyverse)
 db |> 
   mutate(
     age_class = case_when(
-      age > 24 ~ "adult (prof)",
+      age >  24 ~ "adult (prof)",
       age >= 18 ~ "adult (stud)",
       age >= 15 ~ "young (stud)",
-      TRUE ~ "child"
+      TRUE      ~ "child"
     )
   ) |> 
   select(age, age_class)
@@ -1025,7 +1025,7 @@ db |>
 ```{r}
 #| echo: false
 countdown(
-  minutes = 2,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1208,6 +1208,7 @@ library(tidyverse)
 
 # sample dataset from `{forcats}`
 # ?gss_cat for information
+# A sample of categorical variables from the General Social survey from 2000 to 2016.
 gss_cat 
 ```
 :::
@@ -1426,6 +1427,62 @@ To combine groups, you can assign multiple old levels to the same new level, or.
 :::
 :::
 
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `14-factors.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) teh variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
+
+2.  Then, open the script `15-factors.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+`factors` from base R, or `forcats::fct` from `{forcats}` are the best way to represent categories in R. They work similarly, but `{forcats}` is more informative and more flexible.
+:::
+:::
+
+
+
+
+
+
+
+
+
+
 ## Dates and Time
 
 In the Tidyverse, the main package to manage dates and time is `{lubridate}`.
@@ -1531,6 +1588,60 @@ today_now
 ```
 :::
 :::
+
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `15-date-time.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex24`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `dayonset` (which is a datetime as imported) to pure Date format using `{lbridate}` functions (from our data frame `db` imported from `Copenhagen_clean.xlsx`).
+
+2.  Then, open the script `16-date-time.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+`Date` and `Date-time` are counts of days/seconds since 1970-01-01.
+Managing them in R is not easy, but `{lubridate}` makes it easier.
+:::
+:::
+
+
+
+
+
+
 
 ## Strings - Regular Expressions
 
@@ -1727,6 +1838,59 @@ tibble(
     fruit_glue = str_glue("I like {x}, {y} and {z} fruits")
   )
 ```
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `16-strings.R`
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+...and:
+:::
+
+1.  Before to evaluate it, in the pad, under the section `3.2. Ex25`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
+
+2.  Then, open the script `17-strings.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 5,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-tip
+- All functions in `{stringr}` start with `str_`, so you can type `str_` and then pressing `TAB` to see all its available functions.
+
+- You can use `str_view` to see how a regular expression matches a string.
+
+- `str_glue` is a powerful tool to concatenate strings and variables.
+:::
+:::
+
+
+
 
 
 # Homework
