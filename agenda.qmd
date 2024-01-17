@@ -148,12 +148,12 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 3
 
 ::: {.callout-note appearance="minimal"}
-\[15'\] RECAP & solutions
+\[20'\] RECAP & solutions
 :::
 
-### 4b. \[40'\] Import and cleaning
+### 4b. \[50'\] Import and cleaning
 
--   \[40'\] Headers, var names, and missing data
+-   \[50'\] Headers, var names, and missing data
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
@@ -167,21 +167,14 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] BREAK
 :::
 
-### 5. (b) \[50'\] Transform -- manage dataset[^8]
+### 5. (b) \[80'\] Transform -- manage dataset[^8]
 
--   \[15'\] select (all_of...)
+-   \[20'\] select (all_of...)
 
--   \[15'\] filter (.data & .env)
+-   \[20'\] filter (.data & .env)
 
--   \[20'\] mutate (grouped) data contents & across
+-   \[40'\] mutate (grouped) data contents & across
 
-### 5. (c) \[45'\] Transform -- manage formats[^9]
-
--   \[10'\] factors
-
--   \[10'\] dates
-
--   \[25'\] strings
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -190,7 +183,19 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 4
 
 ::: {.callout-note appearance="minimal"}
-\[15'\] RECAP & solutions
+\[20'\] RECAP & solutions
+:::
+
+### 5. (c) \[60'\] Transform -- manage main types[^9]
+
+-   \[15'\] factors
+
+-   \[15'\] dates/datetimes
+
+-   \[30'\] strings
+
+::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
 :::
 
 ### 6. \[90'\] Modeling (summary statistics tables)[^10]
@@ -206,24 +211,24 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 -   \[20'\] Merging (h) and stacking (v) tables
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] BREAK
+\[10'\] BREAK
 :::
 
-### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^11]
+<!-- ### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^11] -->
 
--   \[20'\] (Visual) Quarto document structure
+<!-- -   \[20'\] (Visual) Quarto document structure -->
 
-    -   \[10'\] types & creating
+<!--     -   \[10'\] types & creating -->
 
-    -   \[5'\] header
+<!--     -   \[5'\] header -->
 
-    -   \[5'\] content
+<!--     -   \[5'\] content -->
 
--   \[15'\] Base Markdown syntax
+<!-- -   \[15'\] Base Markdown syntax -->
 
--   \[20'\] chunks, inline code, and inline tables content
+<!-- -   \[20'\] chunks, inline code, and inline tables content -->
 
--   \[5'\] chunk options
+<!-- -   \[5'\] chunk options -->
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & final assignments
@@ -260,6 +265,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 [^10]: pkgs: {dplyr}, {gtsummary}
 
-[^11]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available.
+<!-- [^11]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available. -->
 
 ## Bibliography

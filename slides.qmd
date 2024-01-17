@@ -66,28 +66,38 @@ title: "Slides"
 [04-import.html](_day-three/slide/04-import.html)
 :::
 
-## Transform
+## Transform (data sets)
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-three/slide/05-transform.html"></iframe>
+<iframe class="slide-deck" src="_day-three/slide/05-transform-dbs.html"></iframe>
 ```
-[05-transform.html](_day-three/slide/05-transform.html)
+[05-transform-dbs.html](_day-three/slide/05-transform-dbs.html)
 :::
 :::
 
 
-<!-- # Day 4 -->
+# Day 4
 
-<!-- ::: panel-tabset -->
-<!-- ## Summary tables -->
+::: panel-tabset
+## Transform (Types)
 
-<!-- ::: {.center} -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe> -->
-<!-- [06-gtsummary.html](_day-four/slide/06-gtsummary.html) -->
-<!-- ``` -->
-<!-- ::: -->
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-three/slide/05-transform-types.html"></iframe>
+```
+[05-transform-types.html](_day-three/slide/05-transform-types.html)
+:::
+
+
+## Summary tables
+
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe>
+[06-gtsummary.html](_day-four/slide/06-gtsummary.html)
+```
+:::
 
 <!-- ## Communicate -->
 
@@ -107,5 +117,5 @@ title: "Slides"
 <!-- ``` -->
 <!-- ::: -->
 
-<!-- ::: -->
+:::
 
