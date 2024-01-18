@@ -108,14 +108,14 @@ title: "Slides"
 <!-- ``` -->
 <!-- ::: -->
 
-<!-- ## Finale -->
+## Finale
 
-<!-- ::: {.center} -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe> -->
-<!-- [08-finale.html](_day-four/slide/08-finale.html) -->
-<!-- ``` -->
-<!-- ::: -->
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe>
+[08-finale.html](_day-four/slide/08-finale.html)
+```
+:::
 
 :::
 

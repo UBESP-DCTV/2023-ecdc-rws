@@ -246,9 +246,7 @@ Which argument of `tbl_summary` you should use to select the variables to includ
 - `data`
 - `covariates`
 
-2. Under the section `4.2. Ex27`, answer to the following question with an x next to the correct answer.
-
-Which argument of `tbl_summary` you should use to stratify the table by a variable?
+2. Which argument of `tbl_summary` you should use to stratify the table by a variable?
 
 - `select`
 - `strata`
@@ -698,7 +696,7 @@ ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.   Under the section `4.2. Ex28`, answer to the following question with an x next to the correct answer.
+1.   Under the section `4.2. Ex27`, answer to the following question with an x next to the correct answer.
 
 Can you use tidyverse selectors to select variables to include in the table, i.e., as the `include` argument of `tbl_summary`?
 
@@ -798,7 +796,7 @@ ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-
 ...and:
 :::
 
-1.   Under the section `4.2. Ex29`, answer to the following question with an x next to the correct answer.
+1.   Under the section `4.2. Ex28`, answer to the following question with an x next to the correct answer.
 
 Can you pass two vectors to the `row` and `col` arguments of `tbl_cross` to create a cross-table?
 
@@ -954,7 +952,7 @@ ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-
 ...and:
 :::
 
-1.  Under the section `4.2. Ex30`, answer to the following question with an x next to the correct answer.
+1.  Under the section `4.2. Ex29`, answer to the following question with an x next to the correct answer.
 
 What do you pass in the method argument of `tbl_uvregression`, a model object or a function?
 
@@ -1072,6 +1070,39 @@ tbl_stack(list(resp_uv, resp_adj))
 - you can include only specific variables in the table (but the model can be fit with more variables)
 :::
 
+## `gtsave` {auto-animate=true}
+
+-   The `gtsave()` function is used to save gtsummary tables as images or HTML files.
+
+```{r}
+#| eval: false
+library(tidyverse)  
+library(gtsummary)
+
+tbl_trial <- trial |> 
+  tbl_uvregression(
+    include = c(trt, grade, age),
+    y = response, 
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE
+)
+
+as_gt(tbl_trial) |> 
+  gt::gtsave("trial.png")
+
+as_gt(tbl_trial) |> 
+  gt::gtsave("trial.pdf")
+
+as_gt(tbl_trial) |> 
+  gt::gtsave("trial.docx")
+
+# ...and so on
+```
+
+::: callout-tip
+- `gtsave` can save tables as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files; just set the file extension in the filename argument accordingly. 
+:::
 
 # Your turn ----------------
 
@@ -1093,7 +1124,7 @@ ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Under the section `4.2. Ex31`, answer to the following question with an x next to the correct answer.
+1.  Under the section `4.2. Ex30`, answer to the following question with an x next to the correct answer.
 
 What happens if you pass two tables with different (but same number of) variables  to `tbl_merge`?
 
@@ -1107,7 +1138,7 @@ What happens if you pass two tables with different (but same number of) variable
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 5,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1122,14 +1153,22 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
--   `a:b` create a sequence of from `a` to `b`
--   `a` and `b` can be zero or negative
--   The sequence start from `a` and go through `b` in by steps of length `1`, without surpasses `b`
--   Math and logic works on vectors (i.e., sequences) input and output!
+- `tbl_merge` merges tables horizontally
+- `tbl_stack` stacks tables vertically
+- `gt::gtsave(as_gt(<tbl>), here("path/to/file.<ext>"))` saves table <tbl> as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files (depending on the extension <ext>).
 :::
 :::
 
 
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+-   Project: Day-4
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-4 assessment under the tab "Summative Assessments".
+-   Script to complete on RStudio: `solution.R`
 
 
 
@@ -1141,15 +1180,6 @@ countdown(
 
 [^1]: <https://apps.garrickadenbuie.com/countdown>
 
-# Homework
-
-## Posit's RStudio Cloud Workspace
-
--   Project: Day-4
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-4 assessment under the tab "Summative Assessments".
--   Script to complete on RStudio: `solution.R`
 
 ## Acknowledgment
 
