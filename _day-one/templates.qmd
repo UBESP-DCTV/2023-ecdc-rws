@@ -101,12 +101,11 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 -   Instructions:
     -   Go to: https://bit.ly/ubep-rws-website
     -   The text is the Day-2 assessment under the tab "Summative Assessments".
-    - (on RStudio Cloud) `homework/day_one-summative.html`
+    -   (on RStudio Cloud) `homework/day_one-summative.html`
 -   Script to complete: `homework/solution.R`
 :::
 :::
 :::
-
 
 # Break --------------------
 
@@ -122,8 +121,7 @@ Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `01-base.R`
-
+ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
 ## Your turn
 
@@ -132,24 +130,24 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
 
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.1. Ex18`, write (in a new line) what is your expected result from the following computation:
+1.  Before to evaluate it, in the pad, under the section `4.2. Ex29`, write (in a new line) what is your expected result from the following computation:
 
 ``` r
 <code>
 ```
 
-2.  Then, open the script `01-math_and_logic.R` and follow the instruction step by step.
+2.  Then, open the script `19-tbl_cross.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 1,
+  minutes = 3,
   left = "25%",
   right = "25%",
   top = "70%",

@@ -14,7 +14,7 @@ format:
     multiplex: true
     df-print: paged
     chalkboard: 
-      src: src/chalkboard-pipes-and-visualization.json
+      src: src/chalkboard-import.json
 output-location: column
 bibliography: references.bib
 ---
