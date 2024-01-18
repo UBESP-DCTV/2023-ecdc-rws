@@ -84,9 +84,9 @@ title: "Slides"
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-three/slide/05-transform-types.html"></iframe>
+<iframe class="slide-deck" src="_day-four/slide/05-transform-types.html"></iframe>
 ```
-[05-transform-types.html](_day-three/slide/05-transform-types.html)
+[05-transform-types.html](_day-four/slide/05-transform-types.html)
 :::
 
 
@@ -95,8 +95,8 @@ title: "Slides"
 ::: {.center}
 ```{=html}
 <iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe>
-[06-gtsummary.html](_day-four/slide/06-gtsummary.html)
 ```
+[06-gtsummary.html](_day-four/slide/06-gtsummary.html)
 :::
 
 <!-- ## Communicate -->
@@ -113,8 +113,8 @@ title: "Slides"
 ::: {.center}
 ```{=html}
 <iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe>
-[08-finale.html](_day-four/slide/08-finale.html)
 ```
+[08-finale.html](_day-four/slide/08-finale.html)
 :::
 
 :::
