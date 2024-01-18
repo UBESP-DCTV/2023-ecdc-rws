@@ -57,6 +57,8 @@ website:
             href: "_day-three/assessment/day_three-summative_solved.html"
           - text: "Day 4"
             href: "_day-four/assessment/day_four-summative_solved.html"
+          - text: "Final"
+            href: "_motivating-example/ExOIR.html"
 
   page-footer:
     left: ''

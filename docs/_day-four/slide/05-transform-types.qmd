@@ -445,7 +445,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
+1.  Before to evaluate it, in the pad, under the section `4.1. Ex23`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `sex` (which is a character as imported) to factors using `forcats::fct` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
 
 2.  Then, open the script `15-factors.R` and follow the instruction step by step.
 
@@ -596,7 +596,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex24`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `dayonset` (which is a datetime as imported) to pure Date format using `{lbridate}` functions (from our data frame `db` imported from `Copenhagen_clean.xlsx`).
+1.  Before to evaluate it, in the pad, under the section `4.1. Ex24`, write (in a new line) how can you convert (within the same `db`, possibly reassigning its modification to the same name) the variable `dayonset` (which is a datetime as imported) to pure Date format using `{lbridate}` functions (from our data frame `db` imported from `Copenhagen_clean.xlsx`).
 
 2.  Then, open the script `16-date-time.R` and follow the instruction step by step.
 
@@ -825,7 +825,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex25`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
+1.  Before to evaluate it, in the pad, under the section `4.1. Ex25`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
 
 2.  Then, open the script `17-strings.R` and follow the instruction step by step.
 
