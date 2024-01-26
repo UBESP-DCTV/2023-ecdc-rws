@@ -232,7 +232,7 @@ tbl
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 :::
 
@@ -680,7 +680,7 @@ tbl
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
@@ -689,7 +689,7 @@ ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -780,7 +780,7 @@ trial |>
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
@@ -789,7 +789,7 @@ ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -936,7 +936,7 @@ trial |>
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
@@ -945,7 +945,7 @@ ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -1108,7 +1108,7 @@ as_gt(tbl_trial) |>
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
@@ -1117,7 +1117,7 @@ ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 

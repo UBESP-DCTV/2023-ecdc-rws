@@ -1,6 +1,6 @@
 ---
 title: '[Day One]{style="color:darkblue"}:<br>[Introduction to R]{style="color:darkorange;"}'
-subtitle: "170 min approx"
+subtitle: "110 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -271,7 +271,7 @@ NA
 ::: callout-caution
 ## Your turn
 
-Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and:
+Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and:
 
 1.  Put `x`s next to the correct variable names.
 :::
@@ -516,7 +516,7 @@ all.equal(3*(1/5), 0.6)
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `01-base.R`
 
@@ -525,7 +525,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -867,7 +867,7 @@ str(date_time)
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `02-vectors.R`
 
@@ -876,7 +876,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -1304,7 +1304,7 @@ db_df$height
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `03-matrices_dataframes.R`
 
@@ -1313,7 +1313,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -1362,7 +1362,7 @@ countdown(
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -1627,7 +1627,7 @@ x_exp_y(y = 3, 2)
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `04-cond_loop.R`
 
@@ -1636,7 +1636,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -1757,7 +1757,7 @@ Attaching a package to an R session, it means to make its function and data name
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `05-packages.R`
 
@@ -1766,7 +1766,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn & Break
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 

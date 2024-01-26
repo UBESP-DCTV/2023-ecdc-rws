@@ -556,7 +556,7 @@ c(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
 
@@ -565,7 +565,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -638,7 +638,7 @@ You can have:
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 1.  List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
 :::
@@ -1000,7 +1000,7 @@ here(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad) (<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
 
@@ -1009,7 +1009,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 

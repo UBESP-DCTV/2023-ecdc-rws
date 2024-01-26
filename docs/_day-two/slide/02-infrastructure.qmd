@@ -189,7 +189,7 @@ That is managed efficiently by a `{renv}` global cache, which permit to download
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `06-renv.R`
 
@@ -198,7 +198,7 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -336,7 +336,7 @@ Spend time to write/style names and codes that make as fast as possible to under
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
@@ -380,7 +380,7 @@ countdown(
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad)(<https://bit.ly/ubep-rws-pad>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
 
@@ -578,7 +578,7 @@ And next, you can use your custom function within the script.
     -   calls the `make_plot()` function
     -   saves the plot in the `output/` folder
 -   Run the whole `analyses/analysis.R` script.
--   Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad) (https://bit.ly/ubep-rws-pad).
+-   Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad-ed2) (https://bit.ly/ubep-rws-pad-ed2).
 :::
 :::
 

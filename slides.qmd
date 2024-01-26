@@ -2,120 +2,123 @@
 title: "Slides"
 ---
 
-# Day 1
+<!-- # Day 1 -->
 
-::: panel-tabset
-## Presentation
+<!-- ::: panel-tabset -->
+<!-- ## Presentation -->
 
-::: center
-```{=html}
-<iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe>
-```
-[00-presentation.html](_day-one/slide/00-presentation.html)
-:::
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/00-presentation.html"></iframe> -->
+<!-- ``` -->
+<!-- [00-presentation.html](_day-one/slide/00-presentation.html) -->
+<!-- ::: -->
 
-## Introduction to R
+<!-- ## Introduction to R -->
 
-::: center
-```{=html}
-<iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe>
-```
-[01-intro-r.html](_day-one/slide/01-intro-r.html)
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe> -->
+<!-- ``` -->
+<!-- [01-intro-r.html](_day-one/slide/01-intro-r.html) -->
 
-:::
+<!-- ::: -->
 
-:::
-
-
+<!-- ::: -->
 
 
-# Day 2
-
-::: panel-tabset
-## Infrastructure
-
-::: center
-```{=html}
-<iframe class="slide-deck" src="_day-two/slide/02-infrastructure.html"></iframe>
-```
-[02-infrastructure.html](_day-two/slide/02-infrastructure.html)
-
-:::
-
-## Pipe(s) & Visualization
-
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe>
-```
-[03-visualization.html](_day-two/slide/03-visualization.html)
-:::
-:::
 
 
-# Day 3
+<!-- # Day 2 -->
 
-::: panel-tabset
+<!-- ::: panel-tabset -->
+<!-- ## Infrastructure -->
 
-## Import/Export
+<!-- ::: center -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-two/slide/02-infrastructure.html"></iframe> -->
+<!-- ``` -->
+<!-- [02-infrastructure.html](_day-two/slide/02-infrastructure.html) -->
 
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-three/slide/04-import.html"></iframe>
-```
-[04-import.html](_day-three/slide/04-import.html)
-:::
+<!-- ::: -->
 
-## Transform (data sets)
-
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-three/slide/05-transform-dbs.html"></iframe>
-```
-[05-transform-dbs.html](_day-three/slide/05-transform-dbs.html)
-:::
-:::
-
-
-# Day 4
-
-::: panel-tabset
-## Transform (Types)
-
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-four/slide/05-transform-types.html"></iframe>
-```
-[05-transform-types.html](_day-four/slide/05-transform-types.html)
-:::
-
-
-## Summary tables
-
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe>
-```
-[06-gtsummary.html](_day-four/slide/06-gtsummary.html)
-:::
-
-<!-- ## Communicate -->
+<!-- ## Pipe(s) & Visualization -->
 
 <!-- ::: {.center} -->
 <!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-four/slide/07-quarto.html"></iframe> -->
-<!-- [07-quarto.html](_day-four/slide/07-quarto.html) -->
+<!-- <iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe> -->
 <!-- ``` -->
+<!-- [03-visualization.html](_day-two/slide/03-visualization.html) -->
+<!-- ::: -->
 <!-- ::: -->
 
-## Finale
 
-::: {.center}
-```{=html}
-<iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe>
-```
-[08-finale.html](_day-four/slide/08-finale.html)
-:::
+<!-- # Day 3 -->
 
-:::
+<!-- ::: panel-tabset -->
+
+<!-- ## Import/Export -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-three/slide/04-import.html"></iframe> -->
+<!-- ``` -->
+<!-- [04-import.html](_day-three/slide/04-import.html) -->
+<!-- ::: -->
+
+<!-- ## Transform (data sets) -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-three/slide/05-transform-dbs.html"></iframe> -->
+<!-- ``` -->
+<!-- [05-transform-dbs.html](_day-three/slide/05-transform-dbs.html) -->
+<!-- ::: -->
+<!-- ::: -->
+
+
+<!-- # Day 4 -->
+
+<!-- ::: panel-tabset -->
+
+<!-- ## Summary tables -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe> -->
+<!-- ``` -->
+<!-- [06-gtsummary.html](_day-four/slide/06-gtsummary.html) -->
+<!-- ::: -->
+
+
+<!-- ## Transform (Types) -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-four/slide/05-transform-types.html"></iframe> -->
+<!-- ``` -->
+<!-- [05-transform-types.html](_day-four/slide/05-transform-types.html) -->
+<!-- ::: -->
+
+
+
+<!-- <!-- ## Communicate --> -->
+
+<!-- <!-- ::: {.center} --> -->
+<!-- <!-- ```{=html} --> -->
+<!-- <!-- <iframe class="slide-deck" src="_day-four/slide/07-quarto.html"></iframe> --> -->
+<!-- <!-- [07-quarto.html](_day-four/slide/07-quarto.html) --> -->
+<!-- <!-- ``` --> -->
+<!-- <!-- ::: --> -->
+
+<!-- ## Finale -->
+
+<!-- ::: {.center} -->
+<!-- ```{=html} -->
+<!-- <iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe> -->
+<!-- ``` -->
+<!-- [08-finale.html](_day-four/slide/08-finale.html) -->
+<!-- ::: -->
+
+<!-- ::: -->
 

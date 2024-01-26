@@ -176,7 +176,7 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 | Teams' room:                                        |                                                                                                       |
 | Website (agenda, slides, and assessments):          | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
 | RStudio cloud workspace:                            | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
-| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad)               |
+| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-ed2)           |
 
 <br>
 
@@ -292,14 +292,14 @@ The course will take place **virtually on Teams** every Monday and Thursday from
     ::: callout-caution
     ## Your turn
 
-    Connect to our [pad](https://bit.ly/ubep-rws-pad) and present yourself.[^4]
+    Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) and present yourself.[^4]
     :::
 
 -   **Active**: incremental coding project.
 :::
 :::
 
-[^4]: <https://bit.ly/ubep-rws-pad>
+[^4]: <https://bit.ly/ubep-rws-pad-ed2>
 
 ```{r}
 #| echo: false

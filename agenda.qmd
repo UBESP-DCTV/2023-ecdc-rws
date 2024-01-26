@@ -6,13 +6,11 @@ embed-resources: true
 
 ## Intro
 
-The course will alternate between face-to-face presentations and quick, continuous exercises (1-5 minute each) on the covered micro-topics.
-
-Once participants complete a valuable set of micro-topics, they will engage in hands-on exercises. Each exercise offers an opportunity to apply what they have learned independently. Finally, the instructor will provide the "official" answer to the challenge. That not only offers a comparative learning experience but also sets the stage for the next topic. Each new chapter begins in a collaborative environment, with the official solution to the previous challenge implemented, ensuring a smooth transition and cohesive learning path.
+The course will alternate between face-to-face presentations and exercises (15-20 minute each) on the covered topics. Next, the instructor will provide the "official" answer to the challenge. That not only offers a comparative learning experience but also sets the stage for the next topic. Each new chapter begins in a collaborative environment, with the official solution to the previous challenge implemented, ensuring a smooth transition and cohesive learning path.
 
 At the end of each day, participants will have the option to tackle an longer hands-on exercise covering the day's topics; the solution will be discussed and presented in the first half-hour of the next class.
 
-At the end of the course, we will suggest a comprehensive exercise to be done independently at home. We will send a questionnaire to participants one month later to assess the retention of the concepts presented in the course.
+At the end of the course, we will suggest a comprehensive exercise to be done independently at home. We will also send a questionnaire to participants to assess the retention of the concepts presented in the course.
 
 The whole course will be conducted using the R programming languages [@R-base], and it will introduce the main **Tidyverse** [@tidyverse2019] R-package ecosystem and philosophy for a uniform, composable, functional, and human-first design utilities to do data science. In particular, the following packages will be introduced and used during the course:
 
@@ -24,11 +22,11 @@ The whole course will be conducted using the R programming languages [@R-base], 
 
 -   the `{rio}` [@R-rio] for data reading/import and writing/export
 
--   `{janitor}` [@R-janitor], and `{tidyr}` [@R-tidyr] for data cleaning at import level, and the `{dplyr}` [@R-dplyr], `{forcats}` [@R-forcats], `{lubridate}` [@R-lubridate], and `{stringr}` [@R-stringr], and `{glue}` [@R-glue] for post-import data sets and type-specific data manipulation and management.
+-   `{janitor}` [@R-janitor], and `{tidyr}` [@R-tidyr] for data cleaning at import level, and the `{dplyr}` [@R-dplyr], `{forcats}` [@R-forcats], `{lubridate}` [@R-lubridate], and (optionally at teh end of teh course) `{stringr}` [@R-stringr], and `{glue}` [@R-glue] for post-import data sets and type-specific data manipulation and management.
 
 -   `{gtsummary}` [@R-gtsummary] to create summary tables for data and models and to include table data in a report's narrative text sections directly, i.e., without copy-pasting them by hand.[^1]
 
-[^1]: The `{flextable}` [@R-flextable] package will be not introduced explicitely because `{gtsummary}` can now manage MS Word tables as well. On the other side, it will be explained how to convert a `gtsummary` table on other formats, `flextable` included.
+[^1]: The `{flextable}` [@R-flextable] package will be not introduced explicitly because `{gtsummary}` can now manage MS Word tables as well. On the other side, it will be explained how to convert a `gtsummary` table on other formats, `flextable` included.
 
 <!-- -->
 
@@ -56,36 +54,47 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[15'\] Posit RStudio Cloud IDE presentation and setup
 
-### 1a. \[30'\] Basic R and RStudio:
+### 1a. \[40'\] Basic R and RStudio:
 
--   \[15'\] Math and Logic
+-   \[20'\] Math and Logic
 
--   \[15'\] Base R syntax
+-   \[20'\] Base R syntax
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 1b. \[60'\] Basic R and RStudio:
+### 1b. \[50'\] Basic R and RStudio:
 
--   \[30'\] Base data structures
+-   \[25'\] Base data structures
 
     -   Vectors (`logical`, `integer`, `double`, `character`, `factors`, `Date`, `POSIXct`)
     -   Lists (`list`, `data frame`/`tibble`)
 
--   \[30'\] Subsetting and Extractions
+-   \[25'\] Subsetting and Extractions
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 1c. \[80'\] Basic R and RStudio:
+### 1c. \[20'\] Basic R and RStudio:
 
--   \[30'\] Control flow (`if`, `else`, `for`)
+<!-- -   \[30'\] Control flow (`if`, `else`, `for`) -->
 
--   \[30'\] Functions (named and anonymous)
+<!-- -   \[30'\] Functions (named and anonymous) -->
 
 -   \[20'\] Packages, Tidyverse ecosystem, style, and perspectives
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] Recap & Assignments
@@ -94,26 +103,31 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 2
 
 ::: {.callout-note appearance="minimal"}
-\[15'\] Recap & Solutions
+\[10'\] Recap & Solutions
 :::
 
-### 2. \[40'\] Infrastructures[^2]
+### 2. \[35'\] Infrastructures[^2]
 
 -   \[15'\] R projects
 
 -   \[15'\] Local environments
 
--   \[10'\] Files organization (dev/ folder)
+-   \[5'\] Files organization (dev/ folder)
+
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 3a. \[85'\] Pipe(s) and visualization [^3]
+### 3a. \[75'\] Pipe(s) and visualization [^3]
 
 -   \[10'\] Intro to data analysis cycle loop
 
--   \[20'\] Function composition and pipes
+-   \[10'\] Function composition and pipes
 
 -   \[55'\] Intro to `{ggplot2}`
 
@@ -121,25 +135,29 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
     -   \[45'\] Base template (data, aesthetics, and geometries)
 
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
+
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 3b. \[45'\] Pipe(s) and visualization [^4]
+### 3b. \[10'\] Pipe(s) and visualization [^4]
 
--   \[45'\] Intro to `{ggplot2}`
+-   \[10'\] Intro to `{ggplot2}`
 
-    -   \[10'\] Scales
+    -   \[5'\] Scales, Facets, Labels, and Themes
 
-    -   \[10'\] Facets
+    -   \[5'\] Saving plots
 
-    -   \[15'\] Labels and Themes
+### 4a. \[20'\] Import and cleaning
 
-    -   \[10'\] Saving plots
+-   \[20'\] Base and Tidy, and `rio`[^5] [^6]
 
-### 4a. \[25'\] Import and cleaning
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
 
--   \[25'\] Base and Tidy, and `rio`[^5] [^6]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -148,32 +166,45 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 3
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] RECAP & solutions
+\[10'\] RECAP & solutions
 :::
 
 ### 4b. \[50'\] Import and cleaning
 
 -   \[50'\] Headers, var names, and missing data
 
-::: {.callout-note appearance="minimal"}
-\[10'\] BREAK
-:::
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
 
-### 5. (a) \[60'\] Transform -- manage shape[^7]
-
--   \[60'\] Tidy format & pivoting
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
 :::
 
-### 5. (b) \[80'\] Transform -- manage dataset[^8]
+### 5. (a) \[10'\] Transform -- manage shape[^7]
+
+-   \[10'\] Tidy format
+
+
+### 5. (b) \[40'\] Transform -- manage dataset[^8]
 
 -   \[20'\] select (all_of...)
 
 -   \[20'\] filter (.data & .env)
 
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
+::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
+:::
+
+### 5. (b) \[40'\] Transform -- manage dataset[^8]
+
 -   \[40'\] mutate (grouped) data contents & across
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
 
 
 ::: {.callout-note appearance="minimal"}
@@ -183,26 +214,27 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ## Day 4
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] RECAP & solutions
+\[10'\] RECAP & solutions
 :::
 
-### 5. (c) \[60'\] Transform -- manage main types[^9]
 
--   \[15'\] factors
+### 6. \[55'\] Modeling (summary statistics tables)[^10]
 
--   \[15'\] dates/datetimes
+-   \[55'\] Summary tables
 
--   \[30'\] strings
+    -   \[55'\] descriptive statistics
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
 :::
 
-### 6. \[90'\] Modeling (summary statistics tables)[^10]
 
--   \[70'\] Summary tables
+### 6. \[50'\] Modeling (summary statistics tables)[^10]
 
-    -   \[40'\] descriptive statistics
+-   \[30'\] Summary tables
 
     -   \[15'\] cross-tables
 
@@ -210,9 +242,20 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   \[20'\] Merging (h) and stacking (v) tables
 
-::: {.callout-note appearance="minimal"}
-\[10'\] BREAK
-:::
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
+
+
+
+### 5. (c) \[30'\] Transform -- manage main types[^9]
+
+-   \[15'\] factors
+
+-   \[15'\] dates/datetimes
+
+-   (\[30'\] strings (optional if time allows))
+
 
 <!-- ### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^11] -->
 
@@ -231,20 +274,18 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 <!-- -   \[5'\] chunk options -->
 
 ::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
+:::
+
+
+::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & final assignments
 :::
 
 ::: {.callout-note appearance="minimal"}
-\[20'\] OVERALL RECAP w/ a from-zero-to-hero complete live-coding example & next-month assignment
+\[25'\] finale w/ OVERALL RECAP, next-month assignment, support access instructions, and final survey
 :::
 
-::: {.callout-note appearance="minimal"}
-\[10'\] end of course survey
-:::
-
-::: {.callout-note appearance="minimal"}
-\[10'\] finale & continuous support access instructions
-:::
 :::
 
 [^2]: pkg: {renv}, {here}
