@@ -6,6 +6,6 @@ ___(here)
 ___(rio)
 
 # the file to be imported is in the data-raw folder and it is called Copenhagen_clean.xlsx
-linelist <- ___("___", "___") |>
+linelist <- here("data-raw", "Copenhagen_clean.xlsx") |>
   import() |>
   mutate(across(where(is.character), fct))

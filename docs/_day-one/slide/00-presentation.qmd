@@ -159,24 +159,24 @@ The training course is expected to cover an introduction to R for exploratory da
 
 The course will take place **virtually on Teams** every Monday and Thursday from 1:30-5:00 p.m. CET between **8-18 January** **2014** (4 half-days over two weeks)
 
--   **Session 1:** 2024 January 08, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-1&iso=20240108T1330&p1=5654&ah=4) for your timezone).[^2]
+-   **Session 1:** 2024 January 29, 1:30-5:30 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-1&iso=20240129T1330&p1=5654&ah=4) for your timezone).[^2]
 
--   **Session 2:** 2024 January 11, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-2&iso=20240111T1330&p1=5654&ah=4) for your timezone).
+-   **Session 2:** 2024 February 01, 1:30-5:30 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-2&iso=20240201T1330&p1=5654&ah=4) for your timezone).
 
--   **Session 3:** 2024 January 15, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-3&iso=20240115T1330&p1=5654&ah=4) for your timezone).
+-   **Session 3:** 2024 February 05, 1:30-5:30 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-3&iso=20240205T1330&p1=5654&ah=4) for your timezone).
 
--   **Session 4:** 2024 January 18, 1:30-5:00 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-4&iso=20240118T1330&p1=5654&ah=4) for your timezone).
+-   **Session 4:** 2024 February 08, 1:30-5:30 p.m. CET (Click [here](https://www.timeanddate.com/worldclock/fixedtime.html?msg=UBEP%27s+R+Course+for+Supervisors+-+Day-4&iso=20240208T1330&p1=5654&ah=4) for your timezone).
 
 [^2]: Powered by <https://www.timeanddate.com/>
 
 ## Teaching Materials & Resources
 
 |                                                     |                                                                                                       |
-|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+|-------------------------|-----------------------------------------------|
 | Teams' room:                                        |                                                                                                       |
-| Website (agenda, slides, and assessments):          | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website){.uri} |
+| Website (agenda, slides, and assessments):          | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website) |
 | RStudio cloud workspace:                            | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
-| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws-[pad]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-ed2)           |
+| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws[-pad-ed2]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-ed2)       |
 
 <br>
 
