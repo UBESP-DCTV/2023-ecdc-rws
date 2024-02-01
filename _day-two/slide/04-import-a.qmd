@@ -1,6 +1,6 @@
 ---
-title: '[Day Three]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
-subtitle: "50 min approx"
+title: '[Day Two]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
+subtitle: "20 (+ 50) min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -52,9 +52,6 @@ library(countdown)
 -   Know basics of `?readr::read_csv`, and `?readr::write_csv`.
 -   Know basics of `{heaven}` package.
 -   Working with `?rio::import`, and `?rio::export`.
--   Mange presence/absence/multiple-empty header lines in source data.
--   Select best data variable/column names for working with code
--   Handle missing data (including empty rows and columns).
 :::
 :::
 
@@ -554,11 +551,6 @@ c(
   str(0) # structure for the top level only
 ```
 
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
 
 ## Your turn
 
@@ -584,7 +576,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -604,458 +596,38 @@ countdown(
 :::
 :::
 
-# Part II: Cleaning imported data
-
-## Standard data issues
-
-Often, when data where collected in real life in Excel, they do not have an optimal shape for importing them into programs.
-
-::: columns
-::: {.column width="50%"}
-You can have:
-
--   leading header's groups
--   empty columns and rows
--   multi-line headers
--   space and special characters in names
--   missing information
--   repeated-data reported at first occurrence only
-:::
-
-::: {.column width="50%"}
-![](img/cop-headers.png){.absolute top="15%" right="10%"}
-
-![](img/cop-first-only.png){.absolute top="20%" right="15%"}
-
-![](img/cop-multiline.png){.absolute top="40%" right="10%"}
-:::
-:::
-
-. . .
-
-::: columns
-::: {.column width="50%"}
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
-1.  List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
-:::
-:::
-:::
-
-```{r}
-#| echo: false
-countdown(
-  minutes = 1,
-  left = "45%",
-  right = "5%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-
-## Headers - skip-them-all {auto-animate="true"}
-
-We can completely skip the headers, and manually assign col names
-
-::: callout-tip
-`rio::import` useful options:
-
--   `skip = n`: ignore first n lines
--   `header = FALSE` = doesn't use (first-line-after-skipped) data to create headers.
-:::
-
-```{r}
-db_raw <- here("data-raw", "Copenhagen_raw.xlsx") |> 
-  # ignore first 4 lines
-  # do not any header in import
-  import(skip = 4, header = FALSE)
-db_raw
-```
-
-## Headers - manual defined headers {auto-animate="true"}
-
-We can completely skip the headers, and manually assign col names
-
-::: callout-tip
-`rio::import` useful options:
-
--   `skip = n`: ignore first n lines
--   `header = FALSE` = doesn't use (first-line-after-skipped) data to create headers.
-:::
-
-```{r}
-#| code-line-numbers: "6-12"
-db_raw <- here("data-raw", "Copenhagen_raw.xlsx") |> 
-  # ignore first 4 lines
-  # do not any header in import
-  import(skip = 4, header = FALSE)
-
-# so we can define proper name manually...
-col_names <- paste(
-  sample(letters, 43, replace = TRUE),
-  1:43,
-  sep = "_"
-)
-col_names
-```
-
-## Headers - set manual headers {auto-animate="true"}
-
-We can completely skip the headers, and manually assign col names
-
-::: callout-tip
-`rio::import` useful options:
-
--   `skip = n`: ignore first n lines
--   `header = FALSE` = doesn't use (first-line-after-skipped) data to create headers.
-:::
-
-```{r}
-#| code-line-numbers: "13-14"
-db_raw <- here("data-raw", "Copenhagen_raw.xlsx") |> 
-  # ignore first 4 lines
-  # do not any header in import
-  import(skip = 4, header = FALSE)
-
-# so we can define proper name manually...
-col_names <- paste(
-  sample(letters, 43, replace = TRUE),
-  1:43,
-  sep = "_"
-)
-
-names(db_raw) <- col_names
-db_raw
-```
-
-## Headers - `{unheadr}` {auto-animate="true"}
-
-The `{unheadr}` package purpose is exactly: "...functions to work with messy data, often derived from spreadsheets...", in particular, its `?unheadr::mash_colnames` makes many header rows into column names.
-
-::: columns
-::: {.column width="30%"}
-::: callout-important
-For `{unheadr}` to work, the best option is to `rio::import` all the data **without considering any structure**, so that with `header = FALSE` activated. If so, we can keep `n_name_rows = n` with `n` exactly equal to the number of rows that compose the header.
-:::
-
-::: callout-tip
-## Note
-
--   All the spreadsheet content is imported as data, and all columns are parsed as `character`s.
--   Actual column names are meaningless now, so we will set `keep_names = FALSE`.
-:::
-:::
-
-::: {.column width="70%"}
-```{r}
-#| code-line-numbers: "10"
-library(rio)
-library(here)
-library(unheadr)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE)
-```
-
-::: callout-caution
-## What's next
-
-First topmost header row is a grouping name for columns. In Excel, reported in the first column of each group (even if cells are merged).
-:::
-:::
-:::
-
-## Headers - `{unheadr}` {auto-animate="true"}
-
-The `{unheadr}` package purpose is exactly: "...functions to work with messy data, often derived from spreadsheets...", in particular, its `?unheadr::mash_colnames` makes many header rows into column names.
-
-::: columns
-::: {.column width="30%"}
-::: callout-important
-If we have a (single!) topmost leading rows of grouping column names, and we like to maintain them (otherwise `skip = 1`), we will activate the option `sliding_headers = TRUE`. Setting the `n_name_rows = n` accordingly.
-:::
-
-::: callout-tip
-## Note
-
--   The group column names are repeated forward to all the empty columns up to the next non empty one.
-:::
-:::
-
-::: {.column width="70%"}
-```{r}
-#| code-line-numbers: "11-15"
-library(rio)
-library(here)
-library(unheadr)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 1,
-    sliding_headers = TRUE
-  )
-```
-
-::: callout-caution
-## What's next
-
-We need to include all the other three header rows in the colnames, merging them with the corresponding group name.
-:::
-:::
-:::
-
-## Headers - `{unheadr}` {auto-animate="true"}
-
-The `{unheadr}` package purpose is exactly: "...functions to work with messy data, often derived from spreadsheets...", in particular, its `?unheadr::mash_colnames` makes many header rows into column names.
-
-::: columns
-::: {.column width="30%"}
-::: callout-important
-Including in `n_name_rows = n` all the rows composing the header(s) (topmost grouping one eventually included!), `{unheadr}` will merge them all using underscores (i.e., `_`) to separate words.
-:::
-
-::: callout-tip
-## Note
-
--   Considering all the rows composing the header is enough to complete the import.
-
-This way, even if multiple column have the same name on distinct groups, we keep distinct column names in our imported dataset!
-:::
-:::
-
-::: {.column width="70%"}
-```{r}
-#| code-line-numbers: "13"
-library(rio)
-library(here)
-library(unheadr)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 4,
-    sliding_headers = TRUE
-  )
-```
-
-::: callout-caution
-## What's next
-
-Now that we have merged all the rows reporting column names components, it is extremely useful to guarantee that naming are syntactically correct and with a consistent convention across the dataset.
-:::
-:::
-:::
-
-## Variable names {auto-animate="true"}
-
-`{janitor}` can also convert colnames consistently in a specific convention.[^1]
-
-[^1]: *snake_case* by default. See the [Artwork](img/cases.jpeg) by [Allison Horst](https://allisonhorst.com/).
-
-```{r}
-#| code-line-numbers: "4,17"
-library(rio)
-library(here)
-library(unheadr)
-library(janitor)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 4,
-    sliding_headers = TRUE
-  ) |> 
-  clean_names()
-```
-
-::: callout-caution
-## What's next
-
-Now colnames are fine, but still some empty column and rows in the dataset, we would like to remove to have a clean structure.
-:::
-
-## Empty rows and columns {auto-animate="true"}
-
-We can use `{janitor}` package to remove empty columns and rows.
-
-```{r}
-#| code-line-numbers: "18"
-library(rio)
-library(here)
-library(unheadr)
-library(janitor)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 4,
-    sliding_headers = TRUE
-  ) |> 
-  clean_names() |> 
-  remove_empty(c("rows", "cols"))
-```
-
-::: callout-caution
-## What's next
-
-We have finished working on meta-data now. We can start to look at the data them self. First, `demo_sex` column as implicit repeated values we would like to make explicit.
-:::
-
-## Fill default content {auto-animate="true"}
-
-```{r}
-#| code-line-numbers: "5,20"
-library(rio)
-library(here)
-library(unheadr)
-library(janitor)
-library(tidyverse)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(header = FALSE) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 4,
-    sliding_headers = TRUE
-  ) |> 
-  clean_names() |> 
-  remove_empty(c("rows", "cols")) |> 
-  fill(demo_sex)
-```
-
-::: callout-important
-To fill the implicit content within the data, we can use the `{tidyr}` package, which is part of the `{tidyverse}`, and automatically attached by it.
-:::
-
-::: callout-caution
-## What's next
-
-We are quite to the end, we only need to make consistent convention for missing information. They are both reported as empty (already parsed as `NA`, correctly) and with `??`. We need to tell `rio::import` that also them are missing information
-:::
-
-## Missing data {auto-animate="true"}
-
-```{r}
-#| code-line-numbers: "14"
-library(rio)
-library(here)
-library(unheadr)
-library(janitor)
-library(tidyverse)
-options(rio.import.class = "tibble")
-
-here(
-  "data-raw",
-  "Copenhagen_raw.xlsx"
-) |> 
-  import(
-    header = FALSE,
-    na = c("", "??")
-  ) |> 
-  mash_colnames(
-    keep_names = FALSE,
-    n_name_rows = 4,
-    sliding_headers = TRUE
-  ) |> 
-  clean_names() |> 
-  remove_empty(c("rows", "cols")) |> 
-  fill(demo_sex)
-```
-
 ## My turn
 
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
+ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
 
-## Your turn (Break included)
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
 
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.  Before to evaluate it, in the pad, under the section `2.2. Ex17`, write (in a new line) which code will you use to perform the import as required there.
-
-2.  Then, open the script `09-clean.R` and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-
-```{r}
-#| echo: false
-countdown(
-  minutes = 15,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-important
-Most often you will not have to manage multi-row header nor implicit information. Depending on your data, missing information can be coded not with simple empty cells, so that you would need to set `na = c()` explicitly. On the other hand, the pattern
-
-``` r
-library(rio)
-library(here)
-library(janitor)
-
-db <- here(<path>) |> 
-  import() |> 
-  clean_names() |> 
-  remove_empty(c("rows", "cols"))
-```
-
-will be quite standard anytime!
+-   Project: day-2
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-2 assessment under the tab "Summative Assessments".
+    -   (on RStudio Cloud) `homework/day_two-summative.html`
+-   Script to complete: `homework/solution.R`
 :::
 :::
+:::
+
+
 
 
 ## Acknowledgment {.smaller}

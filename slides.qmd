@@ -29,41 +29,52 @@ title: "Slides"
 
 
 
-<!-- # Day 2 -->
+# Day 2
 
-<!-- ::: panel-tabset -->
-<!-- ## Infrastructure -->
+::: panel-tabset
+## Infrastructure
 
-<!-- ::: center -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-two/slide/02-infrastructure.html"></iframe> -->
-<!-- ``` -->
-<!-- [02-infrastructure.html](_day-two/slide/02-infrastructure.html) -->
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-two/slide/02-infrastructure.html"></iframe>
+```
+[02-infrastructure.html](_day-two/slide/02-infrastructure.html)
 
-<!-- ::: -->
+:::
 
-<!-- ## Pipe(s) & Visualization -->
+## Pipe(s) & Visualization
 
-<!-- ::: {.center} -->
-<!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe> -->
-<!-- ``` -->
-<!-- [03-visualization.html](_day-two/slide/03-visualization.html) -->
-<!-- ::: -->
-<!-- ::: -->
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe>
+```
+[03-visualization.html](_day-two/slide/03-visualization.html)
+:::
+
+
+## Import/Export - a
+
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-two/slide/04-import-a.html"></iframe>
+```
+[04-import-a.html](_day-two/slide/04-import-a.html)
+
+:::
+:::
 
 
 <!-- # Day 3 -->
 
 <!-- ::: panel-tabset -->
 
-<!-- ## Import/Export -->
+<!-- ## Import/Export - b-->
 
 <!-- ::: {.center} -->
 <!-- ```{=html} -->
-<!-- <iframe class="slide-deck" src="_day-three/slide/04-import.html"></iframe> -->
+<!-- <iframe class="slide-deck" src="_day-three/slide/04-import-b.html"></iframe> -->
 <!-- ``` -->
-<!-- [04-import.html](_day-three/slide/04-import.html) -->
+<!-- [04-import-b.html](_day-three/slide/04-import-b.html) -->
 <!-- ::: -->
 
 <!-- ## Transform (data sets) -->

@@ -1,6 +1,6 @@
 ---
 title: '[Day Two]{style="color:darkblue"}:<br>[Pipe(s)]{style="color:darkorange;"}<br>and<br>[Visualization]{style="color:darkorange;"}'
-subtitle: "120 min approx"
+subtitle: "105 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -90,14 +90,16 @@ library(tidyverse)
 
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
-If you attach the `{tidyverse}` alone `library(tidyverse)` in a new R session, and you call `filter()` alone, which function are you calling?
+1.  Put an `X` next to the correct answer, under section 2.2 Ex9 in the pad.
 
--   `stats::filter()`.
--   `dplyr::filter()`.
--   An error due to ambiguity.
--   I don't know what `stats::filter()` or `dplyr::filter()` means in R.
+If you attach only the `{tidyverse}` package in a new R session, and you call `filter()`, which function are you calling?
 
-1.  Put an `X` next to the correct answer, under section 1.2. Ex7 in the pad.
+- `stats::filter()`.
+- `dplyr::filter()`.
+- An error due to ambiguity.
+- I don't know what `stats::filter()` or `dplyr::filter()` means in R.
+- Other (please specify)
+
 :::
 
 ```{r}
@@ -142,7 +144,7 @@ One of the advantages of the Tidyverse is that common standards make everything 
 
 ![](img/tidyverse-loop.png)
 
-## Your Turn
+## Mental exercise
 
 Suppose you have the following functions:
 
@@ -161,6 +163,16 @@ a <- 2
 b <- 3
 h <- 4
 ```
+
+
+::: callout-caution
+## Your Turn
+
+You can type your answer on sec 2.2 Ex.10 in the pad.
+
+:::
+
+
 :::
 
 ::: {.column width="50%"}
@@ -170,25 +182,11 @@ Area = $\frac{a+b}{2}h$
 :::
 :::
 
-::: columns
-::: {.column width="50%"}
-::: callout-caution
-## Your Turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
-1.  Write (in new lines under section 1.2. Ex8) your purposed solution.
-:::
-:::
-
-::: {.column width="50%"}
-:::
-:::
 
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 2,
   left = "45%",
   right = "5%",
   top = "60%",
@@ -298,7 +296,7 @@ res
 2.  We create the result object only
 3.  We can naturally *read* what the code do: "take a, *and then...* add b, *and then...* divide the result by two, *and then...* multiply the result by h"; and that's it, the spelled formula of trapezoid areas!
 
-## Anonymous functions
+## Anonymous functions (Optional)
 
 ::: callout-important
 Native pipe operator `|>` and anonymous functions were both introduced in R 4.1.0.
@@ -332,24 +330,28 @@ Anonymous functions are often used with pipes, because we can define a function 
 ```
 
 
-## My turn
+## `{magrittr}` vs native
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+Pipes in R first appear with the `{magrittr}` package in 2014 as `%>%`, and it has been part of the tidyverse since that time. Now it still in the tidyverse, and still the default in RStudio IDE keyboard shortcut `CTRL/CMD + SHIFT + M`.
 
-ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-pipe.R`
+Now, Tidyverse team suggest to switch to the native pipe, appearing in R 4.0.1 in 2021.[^1]
 
+[^1]: If you are interested, you can read more at <https://r4ds.hadley.nz/data-transform#sec-the-pipe>.
 
+::: callout-tip
+Change the RStudio default shortcut `CTRL/CMD + SHIFT + M` to use the native pipe.
+:::
+
+![](img/rstudio-native-pipe.png){.absolute left="412" width="824"}
 
 ## Your turn
 
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) (Ex. 11)
 
--   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
-
-...and:
+-   Connect to our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 Imagine we have a dataset representing the daily number of new infection cases reported in a specific area over a week. Unfortunately, there was a day when data couldn't be collected due to a system malfunction, resulting in a missing value. Our goal is to calculate the average (2 significant digits) day-to-day fluctuation in the number of new cases reported over the week.This measure can help public health officials understand the volatility in the spread of the infection and potentially identify any unusual spikes or drops in case numbers.
 
@@ -370,7 +372,7 @@ avg_fluctuation
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 10,
   left = "45%",
   right = "5%",
   top = "70%",
@@ -382,19 +384,13 @@ countdown(
 )
 ```
 
-## `{magrittr}` vs native
 
-Pipes in R first appear with the `{magrittr}` package in 2014 as `%>%`, and it has been part of the tidyverse since that time. Now it still in the tidyverse, and still the default in RStudio IDE keyboard shortcut `CTRL/CMD + SHIFT + M`.
+## My turn
 
-Now, Tidyverse team suggest to switch to the native pipe, appearing in R 4.0.1 in 2021.[^1]
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
-[^1]: If you are interested, you can read more at <https://r4ds.hadley.nz/data-transform#sec-the-pipe>.
+ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-pipe.R`
 
-::: callout-tip
-Change the RStudio default shortcut `CTRL/CMD + SHIFT + M` to use the native pipe.
-:::
-
-![](img/rstudio-native-pipe.png){.absolute left="412" width="824"}
 
 ## Pipes in composing plots
 
@@ -745,7 +741,7 @@ You use `geom_*`etries for *shape the data*.
 
 -   `geom_path`: lines connecting points in sequence of appearance
 
-## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
+## `aes`thetic mapping vs `aes`thetics parameters?
 
 Suppose we would like to have the bars filled in blue.
 
@@ -767,13 +763,6 @@ linelist |>  # start from data, and than
   geom_bar()
 ```
 
-::: callout-caution
-## Your Turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
-Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
-:::
 :::
 
 ::: {.column width="65%"}
@@ -791,24 +780,11 @@ linelist |>  # start from data, and than
   geom_bar()
 ```
 
-```{r}
-#| echo: false
-countdown(
-  minutes = 1,
-  left = "45%",
-  right = "5%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
+
 :::
 :::
 
-## Your Turn: `aes`thetic mapping vs `aes`thetics parameters
+## `aes`thetic mapping vs `aes`thetics parameters!
 
 Suppose we would like to have the bars filled in blue.
 
@@ -829,13 +805,7 @@ linelist |>  # start from data, and than
   geom_bar(fill = "blue")
 ```
 
-::: callout-caution
-## Your Turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
-Under the section `1.3. Ex10`, write (in a new line) what is your opinion.
-:::
 :::
 
 ::: {.column width="65%"}
@@ -1007,11 +977,6 @@ Local `aes`thetic mappings overwrite the global ones!
 :::
 
 
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (up to base)
 
 
 ## Your turn
@@ -1022,20 +987,14 @@ ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
-
-...and:
 :::
 
-1.  Open the script `07-ggplot.R` and follow the instruction step by step to create a plot.
-
-> Using the data provided, think of a simple plot, and build it mapping data to the right aestetics, and adding the right `geom_*`.
-
-2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex11`.
+1.  Open the script `07-ggplot.R` and follow the instruction step by step to create a plot and upload it on the pad.
 
 ```{r}
 #| echo: false
 countdown(
-  minutes = 3,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1046,6 +1005,13 @@ countdown(
   font_size = "4em"
 )
 ```
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (up to base)
+
 
 ## Break
 
@@ -1555,66 +1521,13 @@ ggsave("epicurve.tex", plot = epicurve)
 - The `ggsave` function guesses the type of graphics device from the extension of the filename.
 :::
 
-## My turn
+## Our turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our Day2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>) and save your plot using an R instruction instead of the RStudio GUI.
 
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (from complete)
+ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (from complete)
 
 
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
-
-...and:
-:::
-
-1.  Open again the script `07-ggplot.R` and improve your plot `facet_*`ing it, including `?labs` and customized somehow the `?theme`.
-
-2.  Take a screenshot (Win: `SHIFT + Win + S`; Mac: `SHIFT + CMD + 3`) of your plot and paste it on the pad, for other to share, under the section `1.3. Ex12`. Next, save it in a file format of your choice, and send the file in the Teams chat.
-
-```{r}
-#| echo: false
-countdown(
-  minutes = 3,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-
-# Homework
-
-## Posit's RStudio Cloud Workspace
-
-**Instructions**
-
-::: columns
-::: {.column width="50%"}
--   Go to: https://bit.ly/ubep-rws-rstudio
-
-::: callout-caution
-## Your turn
-
--   Project: day-2
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-2 assessment under the tab "Summative Assessments".
-    -   (on RStudio Cloud) `homework/day_two-summative.html`
--   Script to complete: `homework/solution.R`
-:::
-:::
-:::
 
 
 ## Acknowledgment{.smaller}
