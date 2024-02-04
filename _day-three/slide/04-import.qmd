@@ -552,7 +552,6 @@ c(
   str(0) # structure for the top level only
 ```
 
-
 ## Your turn
 
 ::: callout-caution
@@ -561,8 +560,6 @@ c(
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-
 :::
 
 1.  Which function(s) can you use to read excel data from disk?
@@ -602,9 +599,6 @@ countdown(
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
-
-
-
 
 # Part II: Cleaning imported data
 
@@ -1000,7 +994,6 @@ here(
   fill(demo_sex)
 ```
 
-
 ## Your turn
 
 ::: callout-caution
@@ -1009,8 +1002,6 @@ here(
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-
 :::
 
 1.  Before to evaluate it, in the pad, under the section `2.2. Ex17`, write (in a new line) which code will you use to perform the import as required there.
@@ -1059,9 +1050,6 @@ YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
 
-
-
-
 ## Acknowledgment {.smaller}
 
 To create the current lesson, we explored, used, and adapted content from the following resources:
@@ -1088,8 +1076,6 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
  <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 ```
 ### References
-
-
 
 ## Break
 
