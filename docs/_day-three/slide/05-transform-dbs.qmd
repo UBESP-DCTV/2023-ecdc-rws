@@ -38,7 +38,7 @@ library(countdown)
 ::: {.column width="50%"}
 ### Questions
 
--   What are Tidy data, why are they useful, and how to transform untidy data to tidy one?
+-   What are Tidy data, why are they useful(, and how to transform untidy data to tidy one)?
 -   How to select some variables/columns only?
 -   How to filter rows/cases that match certain conditions?
 -   How to modify (even create) the content of a (possibly new) variable?
@@ -52,7 +52,7 @@ library(countdown)
 
 #### To be able to
 
--   Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.
+-   (Use `pivot_*`, `separate`, `unite` function from the `{tidyr}` package in the Tidyverse to reshape data into tidy one.)
 -   Select/filter columns/rows of tibbles (i.e., data frames).
 -   Change content of variable programmatically, possibly using content from other variables.
 -   perform basic factor data management.
@@ -112,7 +112,7 @@ billboard
 :::
 :::
 
-## Start Tidying - `tidyr::pivot_longer` {auto-animate="true"}
+## Start Tidying - `tidyr::pivot_longer` (Optional) {auto-animate="true"}
 
 -   Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
 
@@ -145,7 +145,7 @@ Many possibly uninformative missing information!
 :::
 :::
 
-## Start Tidying - `tidyr::pivot_longer` {auto-animate="true"}
+## Start Tidying - `tidyr::pivot_longer` (Optional) {auto-animate="true"}
 
 -   Data is often organized to facilitate some goal other than analysis. For example, it’s common for data to be structured to make data entry, not analysis, easy.
 
@@ -216,7 +216,7 @@ billboard |>
 :::
 :::
 
-## Multiple variable in colnames {auto-animate="true"}
+## Multiple variable in colnames (Optional) {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -245,7 +245,7 @@ who2 |>
 :::
 :::
 
-## Multiple variable in colnames {auto-animate="true"}
+## Multiple variable in colnames (Optional) {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -279,7 +279,7 @@ who2 |>
 :::
 :::
 
-## Multiple variable in colnames {auto-animate="true"}
+## Multiple variable in colnames (Optional) {auto-animate="true"}
 
 ::: columns
 ::: {.column width="50%"}
@@ -321,64 +321,8 @@ You can also separate colnames containing multiple variables, and matching a reg
 :::
 :::
 
-## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
-
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.  Answer in the pad, with an "x" next to the correct answers. What are the main option for `pivot_longer`?
-
-::: columns
-::: {.column width="50%"}
--   `names_from`
--   `names_to`
-:::
-
-::: {.column width="50%"}
--   `values_from`
--   `values_to`
-:::
-:::
-
-2.  Then, open the script `10-pivot_longer.R` and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 5,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-important
-To transform a table to a longer one, you need to put some of its columns `names_to` a new column, and their corresponding `values_to` another one! Possibly allowing `values_drop_na`.
-:::
-:::
-
-## `tidyr::pivot_wider`
+## `tidyr::pivot_wider` (Optional)
 
 ![Image from [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)](img/pivot-wider-carpentry.png)
 
@@ -386,7 +330,7 @@ To transform a table to a longer one, you need to put some of its columns `names
 
 ![[Animation of tidyverse verbs](https://www.garrickadenbuie.com/project/tidyexplain/) by [Garrick Aden-Buie](https://www.garrickadenbuie.com/)](img/tidyr-pivoting.gif)
 
-## Reverse pivot - example
+## Reverse pivot - example (Optional)
 
 ```{r}
 library(tidyverse)
@@ -409,11 +353,6 @@ all.equal(
 )
 ```
 
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
 
 ## Your turn
 
@@ -424,10 +363,13 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
-...and:
+
 :::
 
-1.  Answer in the pad, with an "x" next to the correct answers. What are the main option for `pivot_wider`?
+1.  Answer in the pad, with an "x" next to the correct answers. 
+
+  - What are the main option for `pivot_longer`?
+  - What are the main option for `pivot_wider`?
 
 ::: columns
 ::: {.column width="50%"}
@@ -441,17 +383,17 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 :::
 :::
 
-2.  Then, open the script `11-pivot_wider.R` and follow the instruction step by step.
+2.  Open the scripts `10-pivot_longer.R` and `11-pivot_wider.R`, and follow the instruction.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
+  minutes = 15,
+  left = "55%",
+  right = 0,
+  top = "10%",
+  bottom = "60%",
   blink_colon = TRUE,
   play_sound = TRUE,
   margin = "5%",
@@ -462,9 +404,19 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
-To transform a table to a wider one, you need to take new column `names_from` an existing column, and their corresponding `values_from` the associated one! Possibly with created missing `values_fill`ed.
+- To transform a table to a longer one, you need to put some of its columns `names_to` a new column, and their corresponding `values_to` another one! Possibly allowing `values_drop_na`.
+
+- To transform a table to a wider one, you need to take new column `names_from` an existing column, and their corresponding `values_from` the associated one! Possibly with created missing `values_fill`ed.
 :::
 :::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
+
+
 
 # Data management
 
@@ -575,69 +527,7 @@ It could be difficult to remind the priority order of logical operators. Using p
 :::
 :::
 
-## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
-
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.  Imagine to have imported a db with a variable `age`, and you want to keep rows with `age` equal to 18 or 21. Before to evaluate it, does the following code return what you need? Answer in the pad, under the section `3.2. Ex20`.
-
-``` r
-library(tidyverse)
-
-db |>
-  filter(age == 18 | 21)
-```
-
-2.  Then, open the script `12-filter.R`, and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 2,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: columns
-::: {.column width="60%"}
-::: callout-important
--   First argument of `dplyr::filter` is always a data frame
--   Returned object of `dplyr::filter` is always a data frame
--   Original data frame won't be modified by `dplyr::filter`, never!
-:::
-:::
-
-::: {.column width="40%"}
-::: callout-important
--   you can put arbitrary complex conditions returning logical vectors of the same length of the number of rows of the data frame, involving any column of the data frame in use also.
-:::
-:::
-:::
-:::
 
 ## Columns - `dplyr::select`
 
@@ -747,11 +637,6 @@ db |>
 :::
 :::
 
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
 ## Your turn
 
@@ -761,26 +646,17 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `3.2. Ex21`, write (in a new line) all the possible ways you can imagine to select the variable `sex`, `age`, `group` using `dplyr::select` from our data frame `db` imported from `Copenhagen_clean.xlsx` .
+1.  Answer in the pad, under the section `3.2. Ex20`, and `3.2. Ex21`.
 
-2.  What do you expect the following code will return (including an error):
-
-``` r
-db |>
-  select(any_of(c("age", "foo")))
-```
-
-3.  Then, open the script `13-select.R` and follow the instruction step by step.
+2.  Then, open the script `12-filter.R` and `13-select.R`, and follow the instruction.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -795,10 +671,43 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
+-   First argument of `dplyr::filter` and `dplyr::select` is always a data frame
+-   Returned object of `dplyr::filter` and `dplyr::select` is always a data frame
+-   Original data frame won't be modified by `dplyr::filter` nor `dplyr::select`, never!
+:::
+
+::: callout-important
+-   you can put arbitrary complex conditions returning logical vectors of the same length of the number of rows of the data frame, involving any column of the data frame in use also.
 -   `all_of(vec)` is for strict selection. If any of the variables in the character `vec` is missing, an error is thrown.
 -   `any_of(vec)` doesn't check for missing variables. It is especially useful with negative selections, when you would like to make sure a variable is removed.
 :::
 :::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
+
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
 
 ## Mutate
 
@@ -948,27 +857,73 @@ db |>
 -   `TRUE ~ <dafault_value>` is used to specify the “default”/catch all value.
 :::
 
-## Grouping and summarizing
 
-We can group rows into groups meaningful for your analysis by one or more variables, and then summarize each group into a single row performing a summary operation.
+
+## Apply Functions Across Selected Columns - `dplyr::across`
+
+When working with datasets, it's often necessary to apply transformations or calculations across multiple columns. The `dplyr::across` function, used within `dplyr::mutate`, enables these operations to be performed succinctly and efficiently.
+
+::: callout-tip
+You can use all of the selectors we have seen before to select the columns to apply the function to. In particular, `where` is very useful to select the columns to apply the function to!
+:::
 
 ```{r}
+#| code-line-numbers: "7-10"
 library(tidyverse)
 
 db |> 
-  group_by(class) |> 
-  summarize(
-    mean_age = age |> 
-      mean(na.rm = TRUE),
-    
-    n = n(),
-    
-    n_teachers = sum(
-      group == "teacher",
-      na.rm = TRUE
+  mutate(
+    id = as.character(id),
+    class = fct(class),
+    across(  # apply a function to selected columns
+      where(is.double),  # selector
+      scale              # function
     )
   )
 ```
+
+
+
+## Grouping and summarizing
+
+With `.by` argument, we can group rows into groups meaningful for your analysis by one or more variables, and then `dplyr::mutate` each row, or `dplyr::summarize` to a single row per group.
+
+```{r}
+#| code-line-numbers: "3-13"
+library(tidyverse)
+
+db |> 
+  mutate(
+    mean_age = age |> 
+      mean(na.rm = TRUE),
+    n = n(),
+    n_teachers = sum(
+      group == "teacher",
+      na.rm = TRUE
+    ),
+    .by = class
+  ) |> 
+  select(
+    class, mean_age, n, n_teachers,
+    everything()
+  )
+```
+
+
+```{r}
+db |> 
+  summarize(
+    mean_age = age |> 
+      mean(na.rm = TRUE),
+    n = n(),
+    n_teachers = sum(
+      group == "teacher",
+      na.rm = TRUE
+    ),
+    .by = class
+  )
+```
+
 
 ## Counts
 
@@ -990,12 +945,6 @@ db |>
 ```
 :::
 
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
-
 ## Your turn
 
 ::: callout-caution
@@ -1005,7 +954,7 @@ ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstu
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
-...and:
+
 :::
 
 1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
@@ -1025,7 +974,7 @@ db |>
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1054,6 +1003,13 @@ As all the other verbs in the Tidyverse, `dplyr::mutate`
 :::
 :::
 :::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
+
 
 # Homework
 
