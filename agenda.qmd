@@ -106,11 +106,11 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] Recap & Solutions
 :::
 
-### 2. \[35'\] Infrastructures[^2]
+### 2. \[40'\] Infrastructures[^2]
 
 -   \[15'\] R projects
 
--   \[15'\] Local environments
+-   \[20'\] Local environments
 
 -   \[5'\] Files organization (dev/ folder)
 
@@ -123,11 +123,11 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] `BREAK`{=html}
 :::
 
-### 3a. \[75'\] Pipe(s) and visualization [^3]
+### 3a. \[85'\] Pipe(s) and visualization [^3]
 
 -   \[10'\] Intro to data analysis cycle loop
 
--   \[10'\] Function composition and pipes
+-   \[20'\] Function composition and pipes
 
 -   \[55'\] Intro to `{ggplot2}`
 
@@ -151,13 +151,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
     -   \[5'\] Saving plots
 
-### 4a. \[20'\] Import and cleaning
-
--   \[20'\] Base and Tidy, and `rio`[^5] [^6]
-
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
-
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
@@ -169,8 +162,9 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] RECAP & solutions
 :::
 
-### 4b. \[50'\] Import and cleaning
+### 4. \[70'\] Import and cleaning
 
+-   \[20'\] Base and Tidy, and `rio`[^5] [^6]
 -   \[50'\] Headers, var names, and missing data
 
 ### EXERCISE \[15'\]
@@ -199,9 +193,9 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] BREAK
 :::
 
-### 5. (b) \[40'\] Transform -- manage dataset[^8]
+### 5. (b) \[20'\] Transform -- manage dataset[^8]
 
--   \[40'\] mutate (grouped) data contents & across
+-   \[20'\] mutate (grouped) data contents & across
 
 ### EXERCISE \[15'\]
 ### SOLUTION \[5'\]
