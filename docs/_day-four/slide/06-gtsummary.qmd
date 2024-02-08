@@ -1,6 +1,6 @@
 ---
 title: '[Day Four]{style="color:darkblue"}:<br>[Summary tables]{style="color:darkorange;"}'
-subtitle: "90 min approx"
+subtitle: "145 min approx"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -222,67 +222,6 @@ tbl
 ```
 :::
 :::
-
-
-
-# Your turn ----------------
-
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
-:::
-
-1.  Under the section `4.2. Ex26`, answer to the following question with an x next to the correct answer.
-
-Which argument of `tbl_summary` you should use to select the variables to include in the table?
-
-- `select`
-- `include`
-- `vars`
-- `data`
-- `covariates`
-
-2. Which argument of `tbl_summary` you should use to stratify the table by a variable?
-
-- `select`
-- `strata`
-- `by`
-- `vars`
-- `response`
-
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 1,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-important
-- `include` selects the variables to include in the table
-- `by` stratifies the table by a variable
-:::
-:::
-
-
-
-
-
 
 
 ## `tbl_summary()` - types {auto-animate=true}
@@ -676,37 +615,25 @@ tbl
 
 
 
-# Your turn ----------------
-
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
-
 ## Your turn
 
 ::: callout-caution
 ## Your turn
-
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
-...and:
 :::
 
-1.   Under the section `4.2. Ex27`, answer to the following question with an x next to the correct answer.
+1.  Under the section `4.1. Ex23 Ex24`, answer to the questions with an x next to the correct answer.
 
-Can you use tidyverse selectors to select variables to include in the table, i.e., as the `include` argument of `tbl_summary`?
-
-2.  Then, open the script `18-tbl_summary.R` and follow the instruction step by step.
+2.  Open the script `15-tbl_summary.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -721,12 +648,36 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
+- `include` selects the variables to include in the table
+- `by` stratifies the table by a variable
 - you can use tidyverse selectors to select variables to include in the table, i.e., as the `include` argument of `tbl_summary`
 :::
 :::
 
 
+## My turn
 
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
 
 
 
@@ -771,69 +722,6 @@ trial |>
 ::: callout-tip
 - `tbl_cross` can use the same arguments, adders, and stylers as `tbl_summary`.
 :::
-
-
-
-
-
-# Your turn ----------------
-
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
-
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.   Under the section `4.2. Ex28`, answer to the following question with an x next to the correct answer.
-
-Can you pass two vectors to the `row` and `col` arguments of `tbl_cross` to create a cross-table?
-
-yes
-no
-
-
-2.  Then, open the script `19-tbl_cross.R` and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 5,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-important
--   `tbl_cross` accept a data frame and two of its variables names as input.
-
-- to formats the digits of the percentages, you can use the `digits` argument. For example, if the statistic being calculated is `"{n} ({p}%)"` and you want the percent rounded to 2 decimal places use digits = c(0, 2)
-:::
-:::
-
-
-
-
 
 
 
@@ -927,72 +815,6 @@ trial |>
 
 - To explore more details on `tbl_regression` function, you can find more information in the [gtsummary documentation](https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html) or from R directly with `?tbl_regression`.
 :::
-
-
-
-
-
-# Your turn ----------------
-
-## My turn
-
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
-
-## Your turn
-
-::: callout-caution
-## Your turn
-
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
-
--   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-...and:
-:::
-
-1.  Under the section `4.2. Ex29`, answer to the following question with an x next to the correct answer.
-
-What do you pass in the method argument of `tbl_uvregression`, a model object or a function?
-
-model object
-function
-
-
-2.  Then, open the script `20-tbl_uvregression.R` and follow the instruction step by step.
-
-::: {.fragment .fade-out fragment-index="1"}
-```{r}
-#| echo: false
-countdown(
-  minutes = 5,
-  left = "25%",
-  right = "25%",
-  top = "70%",
-  bottom = 0,
-  blink_colon = TRUE,
-  play_sound = TRUE,
-  margin = "5%",
-  font_size = "4em"
-)
-```
-:::
-
-::: {.fragment .fade-in fragment-index="1"}
-::: callout-important
-- In `tbl_uvregression` you pass a function and its arguments to the `method` and `method.args` arguments, respectively. That model will be fit for each variable included in the table.
-
-- In the `tbl_regression` function, you pass a single model object to the `model` argument. That model will be summarized in the table.
-:::
-:::
-
-
-
-
-
-
-
 
 
 # Merging (h) and stacking (v) tables
@@ -1104,41 +926,35 @@ as_gt(tbl_trial) |>
 - `gtsave` can save tables as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files; just set the file extension in the filename argument accordingly. 
 :::
 
-# Your turn ----------------
 
-## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
-
-ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
 ## Your turn
 
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+- Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+- Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
-...and:
 :::
 
-1.  Under the section `4.2. Ex30`, answer to the following question with an x next to the correct answer.
+1. Under the section `4.1. Ex25 Ex26 Ex 27`, answer to the questions with an x next to the correct answer.
 
-What happens if you pass two tables with different (but same number of) variables  to `tbl_merge`?
 
-- error
-- the tables are merged with missing values
-- the table wrongly merges the variables
+3. Then, open the script `16-tbl_cross.R` and follow the instruction step by step.
 
-2.  Then, open the script `21-merge.R` and follow the instruction step by step.
+4.  Then, open the script `17-tbl_uvregression.R` and follow the instruction step by step.
+
+5.  Then, open the script `18-merge.R` and follow the instruction step by step.
+
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
 #| echo: false
 countdown(
-  minutes = 5,
+  minutes = 15,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -1153,6 +969,15 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
+- `tbl_cross` accept a data frame and two of its variables names as input.
+
+- to formats the digits of the percentages, you can use the `digits` argument. For example, if the statistic being calculated is `"{n} ({p}%)"` and you want the percent rounded to 2 decimal places use digits = c(0, 2)
+
+- In `tbl_uvregression` you pass a function and its arguments to the `method` and `method.args` arguments, respectively. That model will be fit for each variable included in the table.
+
+- In the `tbl_regression` function, you pass a single model object to the `model` argument. That model will be summarized in the table.
+
+
 - `tbl_merge` merges tables horizontally
 - `tbl_stack` stacks tables vertically
 - `gt::gtsave(as_gt(<tbl>), here("path/to/file.<ext>"))` saves table <tbl> as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files (depending on the extension <ext>).
@@ -1160,25 +985,12 @@ countdown(
 :::
 
 
-# Homework
+## My turn
 
-## Posit's RStudio Cloud Workspace
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
--   Project: Day-4
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-4 assessment under the tab "Summative Assessments".
--   Script to complete on RStudio: `solution.R`
+ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
-
-
-# Break --------------------
-
-## Break
-
-[10 minutes](https://apps.garrickadenbuie.com/countdown/?_inputs_&time=%2220%3A00%22&update_every=%221%22&warn_time=%2204%3A00%22)[^1]
-
-[^1]: <https://apps.garrickadenbuie.com/countdown>
 
 
 ## Acknowledgment
