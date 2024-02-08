@@ -270,7 +270,6 @@ trial |>
 :::
 :::
 
-# Live-review - 20'
 
 # Next month(s) assessment - 10'
 

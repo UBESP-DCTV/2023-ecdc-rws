@@ -397,7 +397,7 @@
 <section id="title-slide" class="quarto-title-block center"><h1 class="title">
 <span style="color:darkblue">Day Three</span>:<br><span style="color:darkorange;">Transform</span><br><span style="color:darkorange;">Types</span>
 </h1>
-  <p class="subtitle">45 min approx</p>
+  <p class="subtitle">30 (+30) min approx</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -854,58 +854,6 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 </div>
 </div>
-</section><section id="my-turn" class="slide level2"><h2>My turn</h2>
-<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a> (<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
-<p>ME: Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>14-factors.R</code></p>
-</section><section id="your-turn" class="slide level2"><h2>Your turn</h2>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Your turn</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li><p>Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a>(<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>)</p></li>
-<li><p>Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>)</p></li>
-</ul>
-<p>…and:</p>
-</div>
-</div>
-</div>
-<ol type="1">
-<li><p>Before to evaluate it, in the pad, under the section <code>4.1. Ex23</code>, write (in a new line) how can you convert (within the same <code>db</code>, possibly reassigning its modification to the same name) the variable <code>sex</code> (which is a character as imported) to factors using <code><a href="https://forcats.tidyverse.org/reference/fct.html">forcats::fct</a></code> from our data frame <code>db</code> imported from <code>Copenhagen_clean.xlsx</code> .</p></li>
-<li><p>Then, open the script <code>15-factors.R</code> and follow the instruction step by step.</p></li>
-</ol>
-<div class="fragment fade-out" data-fragment-index="1">
-<div class="cell">
-<div class="cell-output-display">
-<div class="countdown" id="timer_12e8a604" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
-<div class="countdown-controls">
-<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
-</div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment fade-in" data-fragment-index="1">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p><code>factors</code> from base R, or <code><a href="https://forcats.tidyverse.org/reference/fct.html">forcats::fct</a></code> from <a href="https://forcats.tidyverse.org/">forcats</a> are the best way to represent categories in R. They work similarly, but <a href="https://forcats.tidyverse.org/">forcats</a> is more informative and more flexible.</p>
-</div>
-</div>
-</div>
-</div>
 </section><section id="dates-and-time" class="slide level2"><h2>Dates and Time</h2>
 <p>In the Tidyverse, the main package to manage dates and time is <a href="https://lubridate.tidyverse.org">lubridate</a>.</p>
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -938,8 +886,8 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <span id="cb33-2"><a href="#cb33-2"></a><span class="fu">now</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-01-26"
-[1] "2024-01-26 13:58:30 CET"</code></pre>
+<pre><code>[1] "2024-02-08"
+[1] "2024-02-08 11:13:39 CET"</code></pre>
 </div>
 </div>
 </div>
@@ -985,8 +933,8 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code> POSIXct[1:1], format: "2024-01-26"
- Date[1:1], format: "2024-01-26"</code></pre>
+<pre><code> POSIXct[1:1], format: "2024-02-08"
+ Date[1:1], format: "2024-02-08"</code></pre>
 </div>
 </div>
 </div>
@@ -1027,16 +975,16 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <span id="cb41-11"><a href="#cb41-11"></a><span class="fu">quarter</span>(today_now)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-01-26 13:58:31 CET"
+<pre><code>[1] "2024-02-08 11:13:39 CET"
 [1] 2024
-[1] 1
-[1] 26
+[1] 2
+[1] 8
+[1] 11
 [1] 13
-[1] 58
-[1] 31.06663
+[1] 39.37499
+[1] 5
+[1] 39
 [1] 6
-[1] 26
-[1] 4
 [1] 1</code></pre>
 </div>
 </div>
@@ -1058,21 +1006,18 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <span id="cb43-12"><a href="#cb43-12"></a>today_now</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2020-01-26 13:58:31 CET"
-[1] "2020-12-26 13:58:31 CET"
-[1] "2020-12-30 13:58:31 CET"
-[1] "2020-12-30 17:58:31 CET"
-[1] "2020-12-30 17:14:31 CET"
+<pre><code>[1] "2020-02-08 11:13:39 CET"
+[1] "2020-12-08 11:13:39 CET"
+[1] "2020-12-30 11:13:39 CET"
+[1] "2020-12-30 17:13:39 CET"
+[1] "2020-12-30 17:14:39 CET"
 [1] "2020-12-30 17:14:56 CET"</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="my-turn-1" class="slide level2"><h2>My turn</h2>
-<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a> (<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
-<p>ME: Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>15-date-time.R</code></p>
-</section><section id="your-turn-2" class="slide level2"><h2>Your turn</h2>
+</section><section id="your-turn" class="slide level2"><h2>Your turn</h2>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1091,17 +1036,17 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 </div>
 <ol type="1">
-<li><p>Before to evaluate it, in the pad, under the section <code>4.1. Ex24</code>, write (in a new line) how can you convert (within the same <code>db</code>, possibly reassigning its modification to the same name) the variable <code>dayonset</code> (which is a datetime as imported) to pure Date format using <code>{lbridate}</code> functions (from our data frame <code>db</code> imported from <code>Copenhagen_clean.xlsx</code>).</p></li>
-<li><p>Then, open the script <code>16-date-time.R</code> and follow the instruction step by step.</p></li>
+<li><p>Under the sections <code>4.2. Ex28 Ex29</code> of the pad, write (in a new line) your answer to the questions reported.</p></li>
+<li><p>Then, open the scripts <code>19-factors.R</code> and <code>20-date-time.R</code> and follow the instruction step by step.</p></li>
 </ol>
 <div class="fragment fade-out" data-fragment-index="1">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_4b0600c6" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_13f75491" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">15</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -1116,11 +1061,17 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><code>Date</code> and <code>Date-time</code> are counts of days/seconds since 1970-01-01. Managing them in R is not easy, but <a href="https://lubridate.tidyverse.org">lubridate</a> makes it easier.</p>
+<ul>
+<li><p><code>factors</code> from base R, or <code><a href="https://forcats.tidyverse.org/reference/fct.html">forcats::fct</a></code> from <a href="https://forcats.tidyverse.org/">forcats</a> are the best way to represent categories in R. They work similarly, but <a href="https://forcats.tidyverse.org/">forcats</a> is more informative and more flexible.</p></li>
+<li><p><code>Date</code> and <code>Date-time</code> are counts of days/seconds since 1970-01-01. Managing them in R is not easy, but <a href="https://lubridate.tidyverse.org">lubridate</a> makes it easier.</p></li>
+</ul>
 </div>
 </div>
 </div>
 </div>
+</section><section id="my-turn" class="slide level2"><h2>My turn</h2>
+<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a> (<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
+<p>ME: Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>14-factors.R</code></p>
 </section><section id="strings---regular-expressions" class="slide level2"><h2>Strings - Regular Expressions</h2>
 <p>Regular expressions are a powerful tool for matching text patterns. They are used in many programming languages to find and manipulate strings, and in R are implemented in the <a href="https://stringr.tidyverse.org">stringr</a> package.</p>
 <div class="columns">
@@ -1462,10 +1413,7 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 </div>
 </div>
-</section><section id="my-turn-2" class="slide level2"><h2>My turn</h2>
-<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a> (<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
-<p>ME: Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>16-strings.R</code></p>
-</section><section id="your-turn-4" class="slide level2"><h2>Your turn</h2>
+</section><section id="your-turn-2" class="slide level2"><h2>Your turn</h2>
 <div class="callout callout-caution callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1484,17 +1432,17 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 </div>
 <ol type="1">
-<li><p>Before to evaluate it, in the pad, under the section <code>4.1. Ex25</code>, write (in a new line) how can you match all files names that are R scripts (i.e., ending with <code>.r</code> or <code>.R</code>)? Report you option for a regular expression.</p></li>
-<li><p>Then, open the script <code>17-strings.R</code> and follow the instruction step by step.</p></li>
+<li><p>Before to evaluate it, in the pad, under the section <code>4.2. Ex30</code>, write (in a new line) how can you match all files names that are R scripts (i.e., ending with <code>.r</code> or <code>.R</code>)? Report you option for a regular expression.</p></li>
+<li><p>Then, open the script <code>21-strings.R</code> and follow the instruction step by step.</p></li>
 </ol>
 <div class="fragment fade-out" data-fragment-index="1">
 <div class="cell">
 <div class="cell-output-display">
-<div class="countdown" id="timer_046aeae0" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
+<div class="countdown" id="timer_92adf8ef" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:70%;right:25%;bottom:0;left:25%;margin:5%;font-size:4em;">
 <div class="countdown-controls">
 <button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
 </div>
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 </div>
 </div>
@@ -1518,43 +1466,23 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 </div>
 </div>
 </div>
+</section><section id="my-turn-1" class="slide level2"><h2>My turn</h2>
+<p>YOU: Connect to our <a href="https://bit.ly/ubep-rws-pad-ed2">pad</a> (<a href="https://bit.ly/ubep-rws-pad-ed2" class="uri">https://bit.ly/ubep-rws-pad-ed2</a>) and write there questions &amp; doubts (and if I am too slow or too fast)</p>
+<p>ME: Connect to the Day-3 project in RStudio cloud (<a href="https://bit.ly/ubep-rws-rstudio" class="uri">https://bit.ly/ubep-rws-rstudio</a>): script <code>16-strings.R</code></p>
 </section></section><section><section id="homework" class="title-slide slide level1 center"><h1>Homework</h1>
 
 </section><section id="posits-rstudio-cloud-workspace" class="slide level2"><h2>Posit’s RStudio Cloud Workspace</h2>
-<p><strong>Instructions</strong></p>
-<div class="columns">
-<div class="column" style="width:50%;">
 <ul>
-<li>Go to: https://bit.ly/ubep-rws-rstudio</li>
-</ul>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Your turn</strong></p>
-</div>
-<div class="callout-content">
-<ul>
-<li>Project: day-3</li>
+<li>Project: Day-4</li>
 <li>Instructions:
 <ul>
 <li>Go to: https://bit.ly/ubep-rws-website</li>
-<li>The text is the Day-3 assessment under the tab “Summative Assessments”.</li>
-<li>(on RStudio Cloud) <code>homework/day_three-summative.html</code>
-</li>
+<li>The text is the Day-4 assessment under the tab “Summative Assessments”.</li>
 </ul>
 </li>
-<li>Script to complete: <code>homework/solution.R</code>
+<li>Script to complete on RStudio: <code>solution.R</code>
 </li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section id="acknowledgment" class="slide level2"><h2>Acknowledgment</h2>
+</ul></section><section id="acknowledgment" class="slide level2"><h2>Acknowledgment</h2>
 <p>To create the current lesson, we explored, used, and adapted content from the following resources:</p>
 <ul>
 <li><p><a href="https://hadley.nz/">Hadley Wickham</a>’s <a href="https://r4ds.hadley.nz/">R for Data Science (2e)</a></p></li>
@@ -1572,8 +1500,19 @@ Levels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec</code></pre>
 <h3 id="license">License</h3>
  <p xmlns:cc="http://creativecommons.org/ns#"><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 <h3 id="references">References</h3>
-<p><img src="img/UBEP.png" class="slide-logo"></p>
-<div class="footer footer-default">
+</section><section id="break" class="slide level2"><h2>Break</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer_6e330cf6" data-update-every="1" data-play-sound="true" data-blink-colon="true" tabindex="0" style="top:15%;right:15%;bottom:15%;left:15%;margin:5%;font-size:4em;">
+<div class="countdown-controls">
+<button class="countdown-bump-down">−</button><button class="countdown-bump-up">&amp;plus;</button>
+</div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+
+<img src="img/UBEP.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>UBEP’s R training for supervisors</p>
 </div>
 </section></section>
