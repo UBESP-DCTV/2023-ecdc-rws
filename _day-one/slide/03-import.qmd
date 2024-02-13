@@ -1,5 +1,5 @@
 ---
-title: '[Day Three]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
+title: '[Day One]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
 subtitle: "~20 min"
 format:
   revealjs:

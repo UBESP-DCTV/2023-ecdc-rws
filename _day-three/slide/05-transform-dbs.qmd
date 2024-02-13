@@ -321,7 +321,6 @@ You can also separate colnames containing multiple variables, and matching a reg
 :::
 :::
 
-
 ## `tidyr::pivot_wider` (Optional)
 
 ![Image from [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)](img/pivot-wider-carpentry.png)
@@ -353,7 +352,6 @@ all.equal(
 )
 ```
 
-
 ## Your turn
 
 ::: callout-caution
@@ -362,14 +360,12 @@ all.equal(
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-
 :::
 
-1.  Answer in the pad, with an "x" next to the correct answers. 
+1.  Answer in the pad, with an "x" next to the correct answers.
 
-  - What are the main option for `pivot_longer`?
-  - What are the main option for `pivot_wider`?
+-   What are the main option for `pivot_longer`?
+-   What are the main option for `pivot_wider`?
 
 ::: columns
 ::: {.column width="50%"}
@@ -404,9 +400,9 @@ countdown(
 
 ::: {.fragment .fade-in fragment-index="1"}
 ::: callout-important
-- To transform a table to a longer one, you need to put some of its columns `names_to` a new column, and their corresponding `values_to` another one! Possibly allowing `values_drop_na`.
+-   To transform a table to a longer one, you need to put some of its columns `names_to` a new column, and their corresponding `values_to` another one! Possibly allowing `values_drop_na`.
 
-- To transform a table to a wider one, you need to take new column `names_from` an existing column, and their corresponding `values_from` the associated one! Possibly with created missing `values_fill`ed.
+-   To transform a table to a wider one, you need to take new column `names_from` an existing column, and their corresponding `values_from` the associated one! Possibly with created missing `values_fill`ed.
 :::
 :::
 
@@ -415,8 +411,6 @@ countdown(
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
-
-
 
 # Data management
 
@@ -527,8 +521,6 @@ It could be difficult to remind the priority order of logical operators. Using p
 :::
 :::
 
-
-
 ## Columns - `dplyr::select`
 
 For analyses, you do not need to remove columns from your dataset, but it could be extremely useful to see more clearly only the data you need to see time to time.[^4]
@@ -637,7 +629,6 @@ db |>
 :::
 :::
 
-
 ## Your turn
 
 ::: callout-caution
@@ -689,7 +680,6 @@ YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
-
 ## Break
 
 ```{r}
@@ -706,8 +696,6 @@ countdown(
   font_size = "4em"
 )
 ```
-
-
 
 ## Mutate
 
@@ -857,8 +845,6 @@ db |>
 -   `TRUE ~ <dafault_value>` is used to specify the “default”/catch all value.
 :::
 
-
-
 ## Apply Functions Across Selected Columns - `dplyr::across`
 
 When working with datasets, it's often necessary to apply transformations or calculations across multiple columns. The `dplyr::across` function, used within `dplyr::mutate`, enables these operations to be performed succinctly and efficiently.
@@ -881,8 +867,6 @@ db |>
     )
   )
 ```
-
-
 
 ## Grouping and summarizing
 
@@ -909,7 +893,6 @@ db |>
   )
 ```
 
-
 ```{r}
 db |> 
   summarize(
@@ -923,7 +906,6 @@ db |>
     .by = class
   )
 ```
-
 
 ## Counts
 
@@ -953,8 +935,6 @@ db |>
 -   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
-
-
 :::
 
 1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
@@ -1009,7 +989,6 @@ As all the other verbs in the Tidyverse, `dplyr::mutate`
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
-
 
 # Homework
 

@@ -120,29 +120,26 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 ### \[50'\] Basic R and RStudio:
 
--   \[25'\] Base data structures
+- Base data structures
 
-    -   Vectors (`logical`, `integer`, `double`, `character`, `factors`, `Date`, `POSIXct`)
-    -   Lists (`list`, `data frame`/`tibble`)
-
--   \[25'\] Subsetting and Extractions
+- Subsetting and Extractions
 
 ### EXERCISE \[15'\]
 ### SOLUTION \[5'\]
 
 
 
-### 3a. \[85'\] Pipe(s) and visualization [^3]
+### \[85'\] Pipe(s) and visualization [^3]
 
--   \[10'\] Intro to data analysis cycle loop
+-   Intro to data analysis cycle loop
 
--   \[20'\] Function composition and pipes
+-   Function composition and pipes
 
--   \[55'\] Intro to `{ggplot2}`
+-   Intro to `{ggplot2}`
 
-    -   \[10'\] Tidy data, and the layered grammar of graphics.
+    -   Tidy data, and the layered grammar of graphics.
 
-    -   \[45'\] Base template (data, aesthetics, and geometries)
+    -   Base template (data, aesthetics, and geometries)
 
 ### EXERCISE \[15'\]
 ### SOLUTION \[5'\]
