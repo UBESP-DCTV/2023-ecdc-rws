@@ -1,6 +1,6 @@
 ---
 title: '[Day One]{style="color:darkblue"}:<br>[Introduction]{style="color:darkorange;"}'
-subtitle: "40 min approx"
+subtitle: "~60 min"
 format:
   revealjs:
     width:  1648 #(3/2)
@@ -39,7 +39,7 @@ library(countdown)
 -   What are we going to do in the course?
 -   How is the course organized?
 -   How do you access/use the course material?
--   R/RStudio/Tidyverse<br>Why and How?
+-   R/RStudio why and How?
 :::
 
 ::: {.column width="50%"}
@@ -55,7 +55,6 @@ library(countdown)
 -   Course website and slides.
 -   Course cloud workspace.
 -   R sessions within RStudio.
--   Basic operations in R.
 :::
 :::
 
@@ -171,12 +170,12 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ## Teaching Materials & Resources
 
-|                                                     |                                                                                                       |
-|-------------------------|-----------------------------------------------|
-| Teams' room:                                        |                                                                                                       |
+|                                                     |                                                                                                 |
+|-------------------------|----------------------------------------------|
+| Teams' room:                                        |                                                                                                 |
 | Website (agenda, slides, and assessments):          | [https://bit.ly/ubep-rws[-website]{style="color:darkorange;"}](https://bit.ly/ubep-rws-website) |
-| RStudio cloud workspace:                            | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)       |
-| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws[-pad-ed2]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-ed2)       |
+| RStudio cloud workspace:                            | [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio) |
+| Really real-time collaborative pad (chat included): | [https://bit.ly/ubep-rws[-pad-ed2]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-ed2) |
 
 <br>
 
@@ -192,7 +191,7 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 
 ## Slides
 
--   From the website, you can access the slides of the day and navigate them independently
+-   From the website ([https://bit.ly/ubep-rws-website](https://bit.ly/ubep-rws-website)), you can access the slides of the day and navigate them at your pace.
 
 -   You can follow and navigate the presentation slides on your phone, tablet, or laptop from the web. When the presenter changes slides in their screen-shared (master) presentations, everyone will follow and see the same content on their device.
 
@@ -202,59 +201,6 @@ The course will take place **virtually on Teams** every Monday and Thursday from
 ```
 :::
 
-## Posit Cloud
-
--   A fully functional RStudio IDE on the cloud.
-
--   Free for you to use within the course workspace.[^3]
-
--   Once you join the workspace, you can enter the R project provided for the day.
-
--   The environment is already set for you
-
-[^3]: You need a free account to join workspaces. If you didn't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio).
-
-![](img/posit-cloud-day1.png){.absolute top="35%" left="5%" height="50%"}
-
-## Suggested screen layout
-
-::: columns
-::: {.column width="35%"}
-1.  Teams:
-    1.  Shared screen
-    2.  Speaker view
-    3.  Chat (assistance & reactions)
-2.  RStudio Cloud
-3.  Real-time collaborative pad:
-    1.  Exercise
-    2.  Comments
-    3.  Chat (your discussion place)
-:::
-
-::: {.column width="65%"}
-{{< video img/layout-display.mp4 >}}
-:::
-:::
-
-## Suggested screen layout
-
-::: columns
-::: {.column width="35%"}
-1.  Teams:
-    1.  Shared screen
-    2.  Speaker view
-    3.  Chat (assistance & reactions)
-2.  RStudio Cloud
-3.  Real-time collaborative pad:
-    1.  Exercise
-    2.  Comments
-    3.  Chat (your discussion place)
-:::
-
-::: {.column width="65%"}
-![](img/layout-single-screen-annotated.png){fig-align="center"}
-:::
-:::
 
 ## Lessons organization {.center}
 
@@ -313,7 +259,69 @@ countdown(
 )
 ```
 
+
 # R/RStudio
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide1.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide2.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide3.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide4.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide5.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide6.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide7.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide8.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide9.PNG)
+
+------------------------------------------------------------------------
+
+<br>
+
+![](img/concept-map/Slide10.PNG)
+
 
 ## R
 
@@ -352,7 +360,25 @@ countdown(
     sum(1:3)
     ```
 
-## RStudio (in the cloud)
+
+## RStudio Cloud
+
+-   A fully functional RStudio IDE on the cloud.
+
+-   Free for you to use within the course workspace.[^3]
+
+-   Once you join the workspace, you can enter the R project provided for the day.
+
+-   The environment is already set for you
+
+[^3]: You need a free account to join workspaces. If you didn't have one already, joining our workspace will first redirect to the sign up page. Link to join: [https://bit.ly/ubep-rws[-rstudio-registration-only]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio-registration-only).
+
+![](img/posit-cloud-day1.png){.absolute top="35%" left="5%" height="50%"}
+
+
+
+
+## RStudio (in the cloud) [side-by-side]
 
 ::: columns
 ::: {.column width="35%"}
@@ -367,9 +393,13 @@ IDE = Integrated Development Environment (to work with R)
 3.  Overview of defined R objects in the current session.
 
 4.  Embedded file explorer connected to the current session R working directory.
+
+
 :::
 
 ::: {.column width="65%"}
+
+
 ![](img/rstudio-full.png){.absolute top="10%" right="10%"}
 
 ::: fragment
@@ -394,43 +424,121 @@ IDE = Integrated Development Environment (to work with R)
 :::
 :::
 
-## The Tidyverse
+> (Afte registration) To connect to RStudio cloud: [https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)
 
-The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
 
-<br>
+
+## Your turn
 
 ::: columns
-::: {.column width="28%"}
-### Design Principles
+::: {.column width="50%"}
+::: callout-caution
+## Your turn
 
--   Reuse existing data structures.
--   Compose simple functions with the pipe.
--   Embrace functional programming.
--   [Design for humans]{style="background-color: yellow;"}.
-:::
+- Connect to RStudio cloud ([https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)) and:
 
-::: {.column width="70%"}
-### Packages
-
--   `{ggplot2}`: create data visualizations using the Grammar of Graphics.
--   `{dplyr}`: a set of verbs to solve data manipulation challenges.
--   `{tidyr}`: a set of functions that help you get to tidy data.
--   `{readr}`: a fast and friendly way to read rectangular data
--   `{purrr}`: a consistent tools suite for functional programming.
--   `{tibble}`: a modern re-imagining of the data frame.
--   `{stringr}`: a set of functions to work with strings as easy as possible.
--   `{forcats}`: a tool suite that solves common problems with factors.
--   `{lubridate}`: a tool suite to work with dates and date-times.
+  - create new a project on our workspace
+  - do some operation (anything) interacting with R console
+  - create a script with the code above, and save it
+  - run the script and check the result in the console
 :::
 :::
+
+::: {.column width="50%"}
+::: callout-important
+## Groups
+
+- Main room: group A
+- Brakeout room 1: group B
+- Brakeout room 2: group C
+
+:::
+:::
+:::
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 15,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## Suggested screen layout [optional]
+
+::: columns
+::: {.column width="35%"}
+1.  Teams:
+    1.  Shared screen
+    2.  Speaker view
+    3.  Chat (assistance & reactions)
+2.  RStudio Cloud
+3.  Real-time collaborative pad:
+    1.  Exercise
+    2.  Comments
+    3.  Chat (your discussion place)
+:::
+
+::: {.column width="65%"}
+![](img/layout-single-screen-annotated.png){fig-align="center"}
+:::
+:::
+
+
+## Suggested screen layout [optional]
+
+::: columns
+::: {.column width="35%"}
+1.  Teams:
+    1.  Shared screen
+    2.  Speaker view
+    3.  Chat (assistance & reactions)
+2.  RStudio Cloud
+3.  Real-time collaborative pad:
+    1.  Exercise
+    2.  Comments
+    3.  Chat (your discussion place)
+:::
+
+::: {.column width="65%"}
+{{< video img/layout-display.mp4 >}}
+:::
+:::
+
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
 
 ## Acknowledgment
 
 To create the current lesson we explored, use, and adapt contents from the following resources:
 
--   [Carpentrie](https://carpentries.org/)'s [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
--   [Carpentrie](https://carpentries.org/)'s [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
+-   [Carpentries](https://carpentries.org/)' [Programming with R](https://swcarpentry.github.io/r-novice-inflammation/) course material.
+-   [Carpentries](https://carpentries.org/)' [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) course material.
 -   [Hadley Wickham](https://hadley.nz/)'s [Advanced R - (2e)](https://adv-r.hadley.nz)
 -   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
 
@@ -445,4 +553,3 @@ The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.o
 ```{=html}
  <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
 ```
-### References
