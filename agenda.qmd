@@ -44,30 +44,81 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ::: panel-tabset
 ## Day 1
 
-### 0. \[40'\] Intros:
+### \[60'\] Intros:
 
--   \[10'\] Course's objectives and philosophy
+-   Course's objectives and philosophy
 
--   \[5'\] Ts/TAs presentation
+-   Ts/TAs presentation
 
--   \[10'\] Course organization, teaching materials, and personalized assistance
+-   Course organization, teaching materials, and personalized assistance
 
--   \[15'\] Posit RStudio Cloud IDE presentation and setup
+-   R/RStudio 
 
-### 1a. \[40'\] Basic R and RStudio:
+-   Posit RStudio Cloud IDE presentation and setup
 
--   \[20'\] Math and Logic
-
--   \[20'\] Base R syntax
 
 ### EXERCISE \[15'\]
-### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 1b. \[50'\] Basic R and RStudio:
+
+### \[20'\] Basic R and RStudio:
+
+- R basics
+
+- Packages
+
+- Tidyverse
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
+
+### \[30'\] Infrastructures[^2]
+
+-   R projects
+
+- `{here}`
+
+-   Files organization (dev/ folder)
+
+
+### EXERCISE \[20'\]
+### SOLUTION \[5'\]
+
+
+::: {.callout-note appearance="minimal"}
+\[10'\] `BREAK`{=html}
+:::
+
+### 4. \[20'\] Import and cleaning
+
+-   `rio`[^5] [^6]
+
+### EXERCISE \[15'\]
+### SOLUTION \[5'\]
+
+
+::: {.callout-note appearance="minimal"}
+\[10'\] Recap & Assignments
+:::
+
+
+
+
+
+
+
+## Day 2
+
+::: {.callout-note appearance="minimal"}
+\[10'\] Recap & Solutions
+:::
+
+
+### \[50'\] Basic R and RStudio:
 
 -   \[25'\] Base data structures
 
@@ -80,48 +131,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ### SOLUTION \[5'\]
 
 
-::: {.callout-note appearance="minimal"}
-\[10'\] `BREAK`{=html}
-:::
-
-### 1c. \[20'\] Basic R and RStudio:
-
-<!-- -   \[30'\] Control flow (`if`, `else`, `for`) -->
-
-<!-- -   \[30'\] Functions (named and anonymous) -->
-
--   \[20'\] Packages, Tidyverse ecosystem, style, and perspectives
-
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
-
-
-::: {.callout-note appearance="minimal"}
-\[10'\] Recap & Assignments
-:::
-
-## Day 2
-
-::: {.callout-note appearance="minimal"}
-\[10'\] Recap & Solutions
-:::
-
-### 2. \[40'\] Infrastructures[^2]
-
--   \[15'\] R projects
-
--   \[20'\] Local environments
-
--   \[5'\] Files organization (dev/ folder)
-
-
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
-
-
-::: {.callout-note appearance="minimal"}
-\[10'\] `BREAK`{=html}
-:::
 
 ### 3a. \[85'\] Pipe(s) and visualization [^3]
 
