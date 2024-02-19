@@ -1,0 +1,642 @@
+---
+title: '[Day One]{style="color:darkblue"}:<br>[Import]{style="color:darkorange;"}'
+subtitle: "~20 min"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-import.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set( 
+  echo = TRUE,
+  results = "hold"
+)
+options(width = 65)
+library(countdown)
+library(tidyverse)
+library(here)
+library(rio)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   How data can be imported end exported from/to files on disk?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   import and export data from/to files on disk
+:::
+:::
+
+# Import/Export
+
+## Data file
+
+For doing real data analyses, we need to interact with the *external* world with data. Reading and writing them.
+
+Mainly, we will work with the so-called rectangular data. I.e., information that can be organized in a tables:
+
+-   all columns (AKA variables) have the same number of rows.
+-   all rows (AKA observations) have the same number of columns
+-   each data value correspond to a single row-column pair within the table.
+
+![](img/tidy-data-R4DS.png)
+
+## Reminder on data frames [overview]
+
+R tabular data structure is the `data.frame`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: FALSE
+#| paged.print: FALSE
+mtcars
+```
+
+```{r}
+#| output-location: default
+class(mtcars)
+```
+
+::: callout-warning
+Row names are not data, but an attribute of the data frame, so `as_tibble` will remove them.
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| paged.print: FALSE
+#| echo: FALSE
+mtcars
+```
+:::
+:::
+
+In the tidyverse, we will use a modern version of the data frame called *tibble* (class: `tbl_df`)
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+library(tidyverse)
+
+mtcars_tbl <- as_tibble(mtcars)
+mtcars_tbl
+```
+
+```{r}
+#| output-location: default
+# `tibble`s are `data.frame`s!
+class(mtcars_tbl) 
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| paged.print: FALSE
+#| echo: FALSE
+library(tidyverse)
+
+mtcars_tbl <- as_tibble(mtcars)
+mtcars_tbl
+```
+:::
+:::
+
+## Reminder on data frames [optional]
+
+R tabular data structure is the `data.frame`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: FALSE
+#| paged.print: FALSE
+mtcars
+```
+
+```{r}
+#| output-location: default
+class(mtcars)
+```
+
+::: callout-warning
+Row names are not data, but an attribute of the data frame, so `as_tibble` will remove them.
+
+To keep row names, use `rownames = "<name>"`.
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| paged.print: FALSE
+#| echo: FALSE
+mtcars
+```
+:::
+:::
+
+In the tidyverse, we will use a modern version of the data frame called *tibble* (class: `tbl_df`)
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| paged.print: FALSE
+#| output: false
+library(tidyverse)
+
+mtcars_tbl <- as_tibble(
+  mtcars,
+  rownames = "model"
+)
+mtcars_tbl
+```
+
+```{r}
+#| output-location: default
+# `tibble`s are `data.frame`s!
+class(mtcars_tbl) 
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| paged.print: FALSE
+#| echo: FALSE
+library(tidyverse)
+
+mtcars_tbl <- as_tibble(
+  mtcars,
+  rownames = "model"
+)
+mtcars_tbl
+```
+:::
+:::
+
+## Plain Vs. non-plain text data
+
+Tabular data can be (quite always) saved as a plain text, readable by anyone, on every computer.
+
+::: columns
+::: {.column width="50%"}
+Most common plain-text tabular data file format is "CSV", i.e., Comma-Separated Value.
+
+``` csv
+id,age,weigth
+1,47,80
+2,51,76
+3,27,92
+```
+
+Extension for those files is `.csv` (e.g., `data.csv`)
+
+::: {.fragment .fade-in}
+::: callout-warning
+In EU, we use a comma to separate decimal digits instead of a dot. For this reason, it would be ambiguous to use comma to separate field in CSV, which must use quotes in those cases. For this reason, there is an alternative version of CSV, called CSV2 (using the same file extension `.csv`!!) which uses a semicolon to separate fields and can use comma for numbers.
+
+::: columns
+::: {.column widht="50%"}
+CSV
+
+``` csv
+id,age,weigth
+1,47,"80,4"
+2,51,"76,3"
+3,27,"92"
+```
+:::
+
+::: {.column widht="50%"}
+CSV2
+
+``` csv
+id;age;weigth
+1;47;80,4
+2;51;76,3
+3;27;92
+```
+:::
+:::
+:::
+:::
+:::
+
+::: {.column width="50%"}
+On the other hand, it could be difficult to collect data in plain text, and often they are collected by other software, e.g., Excel, in non-plain text format.
+
+![](img/excel-data.png)
+
+Extension for those files is `.xlsx` (e.g., `data.xlsx`)
+:::
+:::
+
+## Base R [optional]
+
+-   read CSV with `?read.csv`
+
+::: panel-tabset
+## From disk
+
+```{r}
+#| paged.print: FALSE
+library(here)
+
+data_path <- here("data-raw", "Copenhagen_clean.csv")
+read.csv(data_path) |> 
+  head()
+```
+
+## From web
+
+```{r}
+#| paged.print: FALSE
+read.csv("https://pos.it/r4ds-students-csv") |> 
+  head()
+```
+
+## From text
+
+> You must use `text` argument to read from literal text
+
+```{r}
+#| paged.print: FALSE
+read.csv(
+  text =
+'id,age,weigth
+1,47,80.4
+2,51,76.3
+3,27,92'
+) |> 
+  head()
+```
+:::
+
+## Tidyverse [optional]
+
+-   read CSV with `?read_csv`
+
+::: panel-tabset
+## From disk
+
+```{r}
+#| paged.print: FALSE
+library(here)
+library(tidyverse)
+
+data_path <- here("data-raw", "Copenhagen_clean.csv")
+read_csv(data_path)
+```
+
+## From web
+
+```{r}
+#| paged.print: FALSE
+read_csv("https://pos.it/r4ds-students-csv")
+```
+
+## From text
+
+```{r}
+#| paged.print: FALSE
+read_csv(
+'id,age,weigth
+1,47,80.4
+2,51,76.3
+3,27,92'
+)
+```
+:::
+
+## Non plain-text data [optional]
+
+::: panel-tabset
+## Excel
+
+```{r}
+#| paged.print: FALSE
+library(readxl)
+here("data-raw", "Copenhagen_clean.xlsx") |> 
+  read_excel()
+```
+
+## SAS
+
+```{r}
+#| paged.print: FALSE
+library(haven)
+
+read_sas(
+  "http://www.principlesofeconometrics.com/sas/airline.sas7bdat"
+)
+```
+
+## STATA
+
+```{r}
+#| paged.print: FALSE
+library(haven)
+# read_stata()
+
+```
+
+## SPSS
+
+```{r}
+#| paged.print: FALSE
+library(haven)
+# read_spss()
+```
+:::
+
+## `{rio}`
+
+From one side, it could be better to use `{tidyverse}` functions (i.e., `{readr}` ones, which is part of the Tidyverse) to read tabular data into R because of a more consistent naming and arguments.
+
+But, we still need `{haven}` to read SAS, SPSS, STATA, and other types of data, and we need `{readxl}` to read Excel files. Moreover, we still need to recognize and link the file type with the function used to read it.
+
+::: callout-tip
+We can use the `{rio}` package to read them all!
+
+-   `?rio::import` provides a painless data import experience by automatically choosing the appropriate import/read function based on file extension (or a specified format argument)
+
+-   `?rio::export` provides the same painless file recognition for data export/write functionality
+:::
+
+## `{rio}` - read [side-by-side]
+
+::: panel-tabset
+## CSV
+
+```{r}
+#| paged.print: FALSE
+library(here)
+library(rio)
+
+# {rio} default import is a simple data.frame
+here("data-raw", "Copenhagen_clean.csv") |> 
+  import() |> 
+  head()
+```
+
+## Excel
+
+```{r}
+#| paged.print: FALSE
+library(here)
+library(rio)
+
+# {rio} default import is a simple data.frame.
+# But, class of imported object can be asked
+# to be a tibble!
+here("data-raw", "Copenhagen_clean.xlsx") |> 
+  import(setclass = "tibble")
+```
+
+## SAS
+
+```{r}
+#| paged.print: FALSE
+library(here)
+library(rio)
+
+# {rio} default import is a simple data.frame
+# You can also set the {rio} import class globally
+options(rio.import.class = "tibble")
+
+import(
+  "http://www.principlesofeconometrics.com/sas/airline.sas7bdat"
+)
+```
+
+## STATA
+
+## SPSS
+:::
+
+... and [many other](https://gesistsa.github.io/rio/#supported-file-formats)
+
+## `{rio}` - write [side-by-side]
+
+::: panel-tabset
+## CSV
+
+```{r}
+#| paged.print: FALSE
+Copenhagen_clean <- here("data-raw", "Copenhagen_clean.csv") |> 
+  import()
+
+Copenhagen_clean |> 
+  # export() returns the output path
+  # so, we can pipe it back to import
+  export(here("output", "Copenhagen_clean.csv")) |> 
+  import()
+```
+
+## Excel
+
+```{r}
+#| paged.print: FALSE
+Copenhagen_clean |> 
+  export(here("output", "Copenhagen_clean.xlsx")) |> 
+  import()
+```
+
+## SAS
+
+```{r}
+#| paged.print: FALSE
+Copenhagen_clean |> 
+  export(here("output", "Copenhagen_clean.sas7bdat")) |> 
+  import()
+```
+
+## STATA
+
+```{r}
+#| paged.print: FALSE
+Copenhagen_clean |> 
+  export(here("output", "Copenhagen_clean.dta")) |> 
+  import()
+```
+
+## SPSS
+
+```{r}
+#| paged.print: FALSE
+Copenhagen_clean |> 
+  export(here("output", "Copenhagen_clean.sav")) |> 
+  import()
+```
+:::
+
+## `{rio}` - multiple-sheets Excel [optional]
+
+You can directly save a multi-sheet Excel file writing a list of data frames...
+
+::: columns
+::: {.column width="50%"}
+### single file, multi-sheets
+
+```{r}
+#| output-location: default
+list(mtcars = mtcars, iris = iris) |> 
+  export(here("output", "r-data.xlsx"))
+```
+
+### multiple files, single-sheet
+
+```{r}
+#| output-location: default
+list(mtcars = mtcars, iris = iris) |> 
+  # "\%s" is the name placeholder from list names
+  export_list(here("output", "%s.xlsx"))
+```
+:::
+
+::: {.column width="50%"}
+![](img/mtcars-iris-excel.png)
+:::
+:::
+
+## `{rio}` - multiple-sheets Excel [optional]
+
+... and import multiple sheet data in a (list of) data frame(s)
+
+### list of dataframes, from single multi-sheets file
+
+```{r}
+import_list(here("output", "r-data.xlsx")) |> 
+  str(1) # structure up to first nested level
+```
+
+### single dataframe, from multiple ones binded by rows
+
+(from multiple files w/ same colnames)
+
+```{r}
+c(
+  here("output", "mtcars.xlsx"),
+  here("output", "mtcars.xlsx")
+) |>
+  import_list(rbind = TRUE) |> 
+  str(0) # structure for the top level only
+```
+
+## Your turn (main: A; bk1: B; bk2: C)
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+
+-   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+:::
+
+1.  Which function(s) can you use to read excel data from disk?
+
+    -   `import_excel`
+    -   `read`
+    -   `import`
+
+2.  Then, open the script `08-rio.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 15,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   you can use `rio::import` to read tabular data, it will process the file properly based on its extension and content.
+-   you can use `rio::export` to write tabular data (most of format), simply providing the correct extension.
+:::
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `09-import.R`
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: <https://bit.ly/ubep-rws-rstudio>
+
+::: callout-caution
+## Your turn
+
+-   Project: day-1
+-   Instructions (on RStudio Cloud):
+    -   Text: `homework/day_one-summative.html`
+    -   Script to complete: `homework/solution.R`
+- Solution:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-1 assessment under the tab "Summative Assessments".
+
+:::
+:::
+:::
+
+## Acknowledgment {.smaller}
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+-   [rio](https://gesistsa.github.io/rio/) package.
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+

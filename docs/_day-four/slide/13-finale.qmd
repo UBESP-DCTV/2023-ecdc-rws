@@ -1,0 +1,288 @@
+---
+title: '[Day Four]{style="color:darkblue"}:<br>[Finale]{style="color:darkorange;"}'
+subtitle: "50 min approx"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set( 
+  echo = TRUE,
+  results = "hold"
+)
+options(width = 65)
+library(countdown)
+```
+
+# Global recap - 10'
+
+## Base R
+
+::: columns
+::: {.column width="50%"}
+-   `#`: comments
+-   `name <- object` : assignment
+-   `funs(arg = value)` : function call
+-   `?fun` : help
+-   `?"+"` : help on operator
+-   `pkg::fun` : function from package
+-   `?pkg::fun` : help on function from package
+-   `\(x) x + 1` : anonymous function definition
+-   `(\(x) x + 1)()` : anonymous function call
+-   `f(x, y) == (x |> f(y))` : pipe
+:::
+
+::: {.column width="50%"}
+-   math
+-   logic
+-   base types: `logical` \< `integer` \< `numeric` \< `character`
+-   vectors: same types only
+-   vector other types: factors, dates, times
+-   lists : different types
+-   list other types: data frames, tibbles
+:::
+:::
+
+## Tidyverse
+
+::: columns
+::: {.column width="50%"}
+-   `library(tidyverse)` wrapper for many packages:
+    -   `library(tidyr)`: reshape to tidy (`pivot_longer`, `pivot_wider`, `separate`)
+    -   `library(dplyr)`: data wrangling (`filter`, `select`, `mutate`, `group_by`, `summarise`)
+    -   `library(forcats)` : factors manipulation (`fct_*`)
+    -   `library(lubridate)` : dates manipulation (`ymd`, `mdy`, `dmy`, `ymd_hms`)
+    -   `library(stringr)`: string manipulation (`str_*`)
+    -   `library(ggplot2)`: data visualization
+:::
+
+::: {.column width="50%"}
+![Tidyverse loop](img/tidyverse-loop.png)
+
+Tidy principles: - design for humans - pipes: "and then... and then..." - tidy data - functions are verbs - coherent grammar
+:::
+:::
+
+## Project organizatin
+
+::: columns
+::: {.column width="50%"}
+-   activate RStudio project
+-   `here::here()`: project root
+-   `here::here("data-raw")`: raw data
+-   `here::here("data")`: preprocessed data
+-   `here::here("output")`: output
+-   `here::here("R/functions.R")`: script with custom functions
+-   `here::here("analyses")`: analyses
+-   load custom functions with: `source(here("R/functions.R"))`
+:::
+
+::: {.column width="50%"}
+![](img/here.png)
+:::
+:::
+
+
+## Import
+
+::: columns
+::: {.column width="50%"}
+-   base: `read.csv`
+-   tidyverse: `read_csv`
+-   heven: `read_sas`, `read_spss`, `read_stata`
+-   `rio::import` : import from many formats
+-   `rio::export` : export to many formats
+:::
+
+::: {.column width="50%"}
+![](img/rio-formats.png)
+:::
+:::
+
+## Cleaning
+
+::: columns
+::: {.column width="50%"}
+-   `janitor::clean_names`: clean column names
+-   `janitor::remove_empty`: remove empty rows and columns
+-   `tidyr::fill`: Fills missing values in selected columns using the next or previous entry
+-   `tidyr::drop_na()`: drop rows with missing values in selected columns
+-   `unheader::mash_colnames`: combine header rows (including grouping headers with `sliding_headers = TRUE`)
+:::
+
+::: {.column width="50%"}
+``` r
+library(rio)
+library(here)
+library(unheadr)
+library(janitor)
+library(tidyverse)
+options(rio.import.class = "tibble")
+
+here(
+  "data-raw",
+  "Copenhagen_raw.xlsx"
+) |> 
+  import(
+    header = FALSE,
+    na = c("", "??")
+  ) |> 
+  mash_colnames(
+    keep_names = FALSE,
+    n_name_rows = 4,
+    sliding_headers = TRUE
+  ) |> 
+  clean_names() |> 
+  remove_empty(c("rows", "cols")) |> 
+  fill(demo_sex)
+```
+:::
+:::
+
+## Data wrangling
+
+::: columns
+::: {.column width="50%"}
+-   `dplyr::filter`: filter rows
+-   `dplyr::select`: select columns
+-   `dplyr::mutate`: add/change columns
+-   `dplyr::group_by`: group rows by one or more column unique values
+-   `dplyr::summarise`: summarize groups
+:::
+
+::: {.column width="50%"}
+::: callout-caution
+**Summary** functions (e.g., min, max):
+
+-   Takes: vectors.
+-   Returns: a single value.
+
+**Vectorized** functions (e.g., pmin, pmax):
+
+-   Takes: vectors.
+-   Returns: vectors (the same length as the input).
+:::
+:::
+:::
+
+## Summary tables
+
+::: columns
+::: {.column width="50%"}
+-   `gtsummary::tbl_summary`: summary table
+-   `gtsummary::tbl_cross`: cross table
+-   `gtsummary::tbl_uvregression`: regression table
+-   `gtsummary::tbl_merge`: merge tables (horizontally)
+-   `gtsummary::tbl_stack`: stack tables (vertically)
+-   `gt::gtsave(as_gt(<tbl>), "my_tbl.<ext>")`: save table as `<ext>` file (e.g., `html`, `png`, `pdf`, `docx`, ...)
+:::
+
+::: {.column width="50%"}
+``` r
+trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    label = list(
+      age ~ "Age (years)",
+      grade ~ "Grade",
+      response ~ "Response"
+    ),
+    type = list(
+      response ~ "categorical"
+    ),
+    percent = "row",
+    digits = list(
+      age ~ 2
+    ),
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      response ~ "{n} ({p}%)"
+    )
+  ) |> 
+  add_n() |>
+  add_overall() |> 
+  add_p() |> 
+  bold_p(t = 0.6) |>
+  bold_levels() |>
+  bold_labels() |> 
+  italicize_levels() |> 
+  italicize_labels()
+```
+:::
+:::
+
+## Data visualization
+
+::: columns
+::: {.column width="50%"}
+``` r
+p <- <DATA> |> 
+  ggplot(
+    aes(<GLOBAL_MAPPINGS>)
+  ) + 
+    <GEOM_FUNCTION>(
+      aes(<LOCAL_MAPPINGS>),
+      position = <LOCAL_POSITION>,
+      <AESTHETIC> = <LOCAL_CONSTANT>
+    ) +
+    <SCALE_FUNCTION> +
+    <FACET_FUNCTION> +
+    labs(
+      ## aesthetics
+      <AES_NAME> = "<TEXT>",
+      
+      ## meta-data
+      <METADATA_NAME> = "<TEXT>"
+    ) +
+    <THEME>()
+    
+p
+ggsave("my_plot.png") # last printet plot
+ggsave("my_plot.jpeg", p) # specific plot
+```
+:::
+
+::: {.column width="50%"}
+![](img/ggplot-layers.png)
+:::
+:::
+
+
+# Next month(s) assessment - 10'
+
+One month after the end of all the three editions of the course, we will upload a new complete assessment to the website to permit you to check long-term retention of the concepts and skills learned during the course.
+
+![](img/next-month-assessment.png)
+
+# Survey - 10'
+
+# R local installation support - 10'
+
+# Thank you!
+
+## Acknowledgment
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```

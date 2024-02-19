@@ -14,13 +14,33 @@ title: "Slides"
 [00-presentation.html](_day-one/slide/00-presentation.html)
 :::
 
-## Introduction to R
+## R Basics
 
 ::: center
 ```{=html}
-<iframe class="slide-deck" src="_day-one/slide/01-intro-r.html"></iframe>
+<iframe class="slide-deck" src="_day-one/slide/01-basics-r-rstudio.html"></iframe>
 ```
-[01-intro-r.html](_day-one/slide/01-intro-r.html)
+[01-basics-r-rstudio.html](_day-one/slide/01-basics-r-rstudio.html)
+
+:::
+
+## Infrastructure
+
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/02-infrastructure.html"></iframe>
+```
+[02-infrastructure.html](_day-one/slide/02-infrastructure.html)
+
+:::
+
+## Import data
+
+::: center
+```{=html}
+<iframe class="slide-deck" src="_day-one/slide/03-import.html"></iframe>
+```
+[03-import.html](_day-one/slide/03-import.html)
 
 :::
 
@@ -32,65 +52,106 @@ title: "Slides"
 # Day 2
 
 ::: panel-tabset
-## Infrastructure
+##  R (local) environments
 
 ::: center
 ```{=html}
-<iframe class="slide-deck" src="_day-two/slide/02-infrastructure.html"></iframe>
+<iframe class="slide-deck" src="_day-two/slide/04-renv.html"></iframe>
 ```
-[02-infrastructure.html](_day-two/slide/02-infrastructure.html)
+[04-renv.html](_day-two/slide/04-renv.html)
 
 :::
 
-## Pipe(s) & Visualization
+## Data Structures
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-two/slide/03-visualization.html"></iframe>
+<iframe class="slide-deck" src="_day-two/slide/05-data-structure.html"></iframe>
 ```
-[03-visualization.html](_day-two/slide/03-visualization.html)
+[05-data-structure.html](_day-two/slide/05-data-structure.html)
+:::
+
+## Pipe
+
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-two/slide/06-pipe.html"></iframe>
+```
+[06-pipe.html](_day-two/slide/06-pipe.html)
+:::
+
+
+## Cleaning Data
+
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-two/slide/07-cleaning.html"></iframe>
+```
+[07-cleaning.html](_day-two/slide/07-cleaning.html)
 :::
 
 
 :::
+
+
+
+
+
 
 
 # Day 3
 
 ::: panel-tabset
 
-## Import/Export
+## Filter (rows) and Select (cols)
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-three/slide/04-import.html"></iframe>
+<iframe class="slide-deck" src="_day-three/slide/08-filter-select-dbs.html"></iframe>
 ```
-[04-import.html](_day-three/slide/04-import.html)
+[08-filter-select-dbs.html](_day-three/slide/08-filter-select-dbs.html)
 :::
+
 
 ## Transform (data sets)
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-three/slide/05-transform-dbs.html"></iframe>
+<iframe class="slide-deck" src="_day-three/slide/09-transform-dbs.html"></iframe>
 ```
-[05-transform-dbs.html](_day-three/slide/05-transform-dbs.html)
+[09-transform-dbs.html](_day-three/slide/09-transform-dbs.html)
 :::
+
+
+## Summary tables
+
+::: {.center}
+```{=html}
+<iframe class="slide-deck" src="_day-three/slide/10-gtsummary.html"></iframe>
+```
+[10-gtsummary.html](_day-three/slide/10-gtsummary.html)
 :::
+
+:::
+
+
 
 
 # Day 4
 
 ::: panel-tabset
 
-## Summary tables
+## Visualization - `{ggplot2}`
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-four/slide/06-gtsummary.html"></iframe>
+<iframe class="slide-deck" src="_day-four/slide/11-visualization.html"></iframe>
 ```
-[06-gtsummary.html](_day-four/slide/06-gtsummary.html)
+[11-visualization.html](_day-four/slide/11-visualization.html)
 :::
+
+:::
+
 
 
 ## Transform (Types)
@@ -99,7 +160,7 @@ title: "Slides"
 ```{=html}
 <iframe class="slide-deck" src="_day-four/slide/05-transform-types.html"></iframe>
 ```
-[05-transform-types.html](_day-four/slide/05-transform-types.html)
+[12-transform-types.html](_day-four/slide/12-transform-types.html)
 :::
 
 
@@ -117,9 +178,9 @@ title: "Slides"
 
 ::: {.center}
 ```{=html}
-<iframe class="slide-deck" src="_day-four/slide/08-finale.html"></iframe>
+<iframe class="slide-deck" src="_day-four/slide/13-finale.html"></iframe>
 ```
-[08-finale.html](_day-four/slide/08-finale.html)
+[13-finale.html](_day-four/slide/13-finale.html)
 :::
 
 :::

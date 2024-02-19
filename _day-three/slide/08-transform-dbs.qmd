@@ -1,0 +1,384 @@
+---
+title: '[Day Three]{style="color:darkblue"}:<br>[Transform]{style="color:darkorange;"}<br>[Datasets]{style="color:darkorange;"}'
+subtitle: "~50 min"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-transform-dbs.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set( 
+  echo = TRUE,
+  results = "hold"
+)
+options(width = 65)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   How to modify (even create) the content of a (possibly new) variable?
+-   How to modify or summarize data by group?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+- Change content of variable programmatically, possibly using content from other variables.
+- Perform operation on groups of data both obtaining results for each observation (same results for observation within same group) or for each group.
+:::
+:::
+
+
+## Mutate [side-by-side]
+
+We can add new columns which are calculated from existing ones.
+
+### We can use simple algebra
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+
+db <- here("data-raw", "Copenhagen_clean.xlsx") |> 
+  import(setclass = "tibble")
+
+db |> 
+  # select just to return few results
+  select(id, incubation) |> 
+  mutate(
+    incubation_days = incubation / 24
+  )
+```
+
+## Mutate [side-by-side]
+
+We can also add new columns which are calculated from existing ones.
+
+### We can use functions on variables
+
+```{r}
+library(tidyverse)
+
+db |> 
+  # select just to return few results
+  select(id, incubation) |> 
+  mutate(
+    incubation_norm = (
+      incubation - mean(incubation, na.rm = TRUE)
+    ) / sd(incubation, na.rm = TRUE) 
+  )
+```
+
+## Mutate [side-by-side]
+
+We can also add new columns which are calculated from existing ones.
+
+### We can use variables just created
+
+```{r}
+library(tidyverse)
+
+db |> 
+  # select just to return few results
+  select(id, age, group, class, case) |> 
+  mutate(
+    adult = (age > 18) & (
+      (group != "student") |
+      is.na(class)
+    ),
+    adult_case = adult & case
+  )
+```
+
+## Mutate [side-by-side]
+
+We can also add new columns which are calculated from existing ones.
+
+### Pay attention on vectorized Vs. summary functions
+
+::: columns
+::: {.column width="75%"}
+```{r}
+#| output-location: default
+library(tidyverse)
+
+sample_df <- tibble(
+  x = c(1, 5, 7),
+  y = c(3, 2, NA)
+)
+
+sample_df |> 
+  mutate(
+    # rows element-wise
+    min_vec = pmin(x, y, na.rm = TRUE),
+    max_vec = pmax(x, y, na.rm = TRUE),
+    # cols global
+    min_all = min(x, y, na.rm = TRUE),
+    max_all = max(x, y, na.rm = TRUE),
+  )
+```
+:::
+
+::: {.column width="25%"}
+::: callout-warning
+-   **Summary** functions (e.g., `min`, `max`):
+    -   Takes: vectors.
+    -   Returns: a single value.
+-   **Vectorized** functions (e.g., `pmin`, `pmax`):
+    -   Takes: vectors.
+    -   Returns: vectors (the same length as the input).
+:::
+:::
+:::
+
+## Conditional - Binary: `dplyr::if_else` [side-by-side]
+
+To mutate a variable accordingly to a binary condition
+
+```{r}
+library(tidyverse)
+
+db |> 
+  mutate(
+    age_class = if_else(
+      age >= 18,
+      "adult",
+      "child"
+    )
+  ) |> 
+  select(age, age_class)
+
+```
+
+::: callout-important
+`dplyr::if_else` requires compatible types in the output.
+:::
+
+## Conditional - Subsequent: `dplyr::case_when` [side]
+
+To mutate a variable accordingly to multiple subsequent conditions
+
+```{r}
+library(tidyverse)
+
+db |> 
+  mutate(
+    age_class = case_when(
+      age >  24 ~ "adult (prof)",
+      age >= 18 ~ "adult (stud)",
+      age >= 15 ~ "young (stud)",
+      TRUE      ~ "child"
+    )
+  ) |> 
+  select(age, age_class)
+```
+
+::: callout-important
+`dplyr::case_when` takes `condition ~ value` pairs. `condition` must be a logical vector; when it’s `TRUE`, the `valule` will be used.
+
+-   If none of the cases match, the output gets an `NA`.
+-   Conditions are considered in order, so you should put the most specific case first!
+-   `TRUE ~ <dafault_value>` is used to specify the “default”/catch all value.
+:::
+
+## Apply Functions Across Columns - `dplyr::across` [side]
+
+When working with datasets, it's often necessary to apply transformations or calculations across multiple columns. The `dplyr::across` function, used within `dplyr::mutate`, enables these operations to be performed succinctly and efficiently.
+
+::: callout-tip
+You can use all of the selectors we have seen before to select the columns to apply the function to. In particular, `where` is very useful to select the columns to apply the function to!
+:::
+
+```{r}
+#| code-line-numbers: "7-10"
+library(tidyverse)
+
+db |> 
+  mutate(
+    id = as.character(id),
+    class = fct(class),
+    across(  # apply a function to selected columns
+      where(is.double),  # selector
+      scale              # function
+    )
+  )
+```
+
+# Grouping and summarizing
+
+## Grouping
+
+With `.by` argument, we can group rows into groups meaningful for your analysis by one or more variables, and then `dplyr::mutate` each row group-by-group.
+
+```{r}
+#| code-line-numbers: "3-13"
+library(tidyverse)
+
+db |> 
+  mutate(
+    mean_age = age |> 
+      mean(na.rm = TRUE),
+    n = n(),
+    n_teachers = sum(
+      group == "teacher",
+      na.rm = TRUE
+    ),
+    .by = class
+  ) |> 
+  select(
+    class, mean_age, n, n_teachers,
+    everything()
+  )
+```
+
+## Summarizing
+
+With `.by` argument, we can group rows into groups meaningful for your analysis by one or more variables, and then `dplyr::summarize` to a single row per group.
+
+```{r}
+db |> 
+  summarize(
+    mean_age = age |> 
+      mean(na.rm = TRUE),
+    n = n(),
+    n_teachers = sum(
+      group == "teacher",
+      na.rm = TRUE
+    ),
+    .by = class
+  )
+```
+
+## Counts
+
+If we want to count the number of rows in each group, we can use simply `dplyr::count` instead of `dplyr::group_by` and `dplyr::summarize`.
+
+::: panel-tabset
+## single var
+
+```{r}
+db |> 
+  count(class)
+```
+
+## multiple var
+
+```{r}
+db |> 
+  count(class, group)
+```
+:::
+
+## Your turn
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+:::
+
+1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
+
+``` r
+library(tidyverse)
+
+db |> 
+  mutate(
+  age = age * 365.25
+)
+```
+
+2.  Then, open the script `14-mutate.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+As all the other verbs in the Tidyverse, `dplyr::mutate`
+
+::: columns
+::: {.column width="50%"}
+-   It takes a data frame in input, always.
+-   It returns a data frame in output, always.
+:::
+
+::: {.column width="50%"}
+-   It doesn't change it's input, never.
+:::
+:::
+:::
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
+
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+-   [Tidy data for efficiency, reproducibility, and collaboration](https://openscapes.org/blog/2020-10-12-tidy-data/)
+
+-   [Garrick Aden-Buie](https://www.garrickadenbuie.com/)'s [Tidyexplain](https://www.garrickadenbuie.com/project/tidyexplain/)
+
+-   [Data Carpentry](https://datacarpentry.org/)'s [R for Social Scientists](https://datacarpentry.org/r-socialsci/04-tidyr.html)
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Luis D. Verde Arregoitia](https://luisdva.github.io/) [Data Cleaning with R](https://rfortherestofus.com/courses/data-cleaning/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References
