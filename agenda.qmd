@@ -52,10 +52,9 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   Course organization, teaching materials, and personalized assistance
 
--   R/RStudio 
+-   R/RStudio
 
 -   Posit RStudio Cloud IDE presentation and setup
-
 
 ### EXERCISE \[15'\]
 
@@ -63,53 +62,45 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] `BREAK`{=html}
 :::
 
-
 ### \[20'\] Basic R and RStudio:
 
-- R basics
+-   R basics
 
-- Packages
+-   Packages
 
-- Tidyverse
+-   Tidyverse
 
 ### EXERCISE \[15'\]
-### SOLUTION \[5'\]
 
+### SOLUTION \[5'\]
 
 ### \[30'\] Infrastructures[^2]
 
 -   R projects
 
-- `{here}`
+-   `{here}`
 
 -   Files organization (dev/ folder)
 
-
 ### EXERCISE \[20'\]
-### SOLUTION \[5'\]
 
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 4. \[20'\] Import and cleaning
+### \[20'\] Import and cleaning
 
--   `rio`[^5] [^6]
+-   `rio`[^3] [^4]
 
 ### EXERCISE \[15'\]
-### SOLUTION \[5'\]
 
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] Recap & Assignments
 :::
-
-
-
-
-
-
 
 ## Day 2
 
@@ -117,102 +108,115 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] Recap & Solutions
 :::
 
+### \[20'\] local environments
 
-### \[50'\] Basic R and RStudio:
+-   `{renv}`
 
--   \[25'\] Base data structures
+### EXERCISE \[20'\]
 
-    -   Vectors (`logical`, `integer`, `double`, `character`, `factors`, `Date`, `POSIXct`)
-    -   Lists (`list`, `data frame`/`tibble`)
-
--   \[25'\] Subsetting and Extractions
-
-### EXERCISE \[15'\]
 ### SOLUTION \[5'\]
-
-
-
-### 3a. \[85'\] Pipe(s) and visualization [^3]
-
--   \[10'\] Intro to data analysis cycle loop
-
--   \[20'\] Function composition and pipes
-
--   \[55'\] Intro to `{ggplot2}`
-
-    -   \[10'\] Tidy data, and the layered grammar of graphics.
-
-    -   \[45'\] Base template (data, aesthetics, and geometries)
-
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
-
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] `BREAK`{=html}
 :::
 
-### 3b. \[10'\] Pipe(s) and visualization [^4]
+### \[30'\] R Data Structures
 
--   \[10'\] Intro to `{ggplot2}`
+-   Base data structures
 
-    -   \[5'\] Scales, Facets, Labels, and Themes
+-   Subsetting and Extractions
 
-    -   \[5'\] Saving plots
+### EXERCISE \[20'\]
 
+### SOLUTION \[5'\]
+
+### \[20'\] Pipe
+
+-   Pipe
+
+### EXERCISE \[15'\]
+
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
-\[10'\] RECAP & assignments
+\[10'\] `BREAK`{=html}
+:::
+
+### \[30'\] cleaning
+
+-   Headers, variables' names, and missing data
+
+### EXERCISE \[25'\]
+
+### SOLUTION \[5'\]
+
+::: {.callout-note appearance="minimal"}
+\[10'\] Recap & Assignments
 :::
 
 ## Day 3
 
 ::: {.callout-note appearance="minimal"}
-\[10'\] RECAP & solutions
+\[10'\] Recap & Solutions
 :::
 
-### 4. \[70'\] Import and cleaning
+### \[30'\] Transform shape of dataset [^5] [^6]
 
--   \[20'\] Base and Tidy, and `rio`[^5] [^6]
--   \[50'\] Headers, var names, and missing data
+-   Tidy format
 
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
+-   `select` (all_of...)
 
-
-::: {.callout-note appearance="minimal"}
-\[10'\] BREAK
-:::
-
-### 5. (a) \[10'\] Transform -- manage shape[^7]
-
--   \[10'\] Tidy format
-
-
-### 5. (b) \[40'\] Transform -- manage dataset[^8]
-
--   \[20'\] select (all_of...)
-
--   \[20'\] filter (.data & .env)
+-   `filter`
 
 ### EXERCISE \[15'\]
+
 ### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
 :::
 
-### 5. (b) \[20'\] Transform -- manage dataset[^8]
+### \[30'\] Transform -- manage dataset[^7]
 
--   \[20'\] mutate (grouped) data contents & across
+-   mutate (across) data contents row-by-row
 
-### EXERCISE \[15'\]
+-   mutate and summarize data by groups
+
+::: {.callout-note appearance="minimal"}
+\[10'\] BREAK
+:::
+
+### EXERCISE \[20'\]
+
 ### SOLUTION \[5'\]
 
+### \[50'\] Modeling (summary statistics tables)[^8]
+
+-   Summary tables
+
+    -   descriptive statistics
+
+### EXERCISE \[20'\]
+
+### SOLUTION \[5'\]
+
+```         
+- cross-tables
+- saving tables
+```
+
+### EXERCISE \[15'\]
+
+### SOLUTION \[5'\]
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & assignments
 :::
+
+
+
+
+
 
 ## Day 4
 
@@ -220,45 +224,40 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] RECAP & solutions
 :::
 
+### \[85'\] Visualization [^9]
 
-### 6. \[55'\] Modeling (summary statistics tables)[^10]
+-   Intro to `{ggplot2}`
 
--   \[55'\] Summary tables
+    -   Tidy data, and the layered grammar of graphics.
 
-    -   \[55'\] descriptive statistics
+    -   Base template (data, aesthetics, and geometries)
 
-### EXERCISE \[15'\]
+### EXERCISE \[20'\]
+
 ### SOLUTION \[5'\]
+
+::: {.callout-note appearance="minimal"}
+\[10'\] `BREAK`{=html}
+:::
+
+### \[10'\] Visualization [^10]
+
+-   Intro to `{ggplot2}`
+
+    -   Scales, Facets, Labels, and Themes
+    -   Saving plots
 
 ::: {.callout-note appearance="minimal"}
 \[10'\] BREAK
 :::
 
+### \[30'\] Transform -- manage main types[^11]
 
-### 6. \[50'\] Modeling (summary statistics tables)[^10]
+-   factors
 
--   \[30'\] Summary tables
+-   dates/datetimes
 
-    -   \[15'\] cross-tables
-
-    -   \[15'\] uni-variables
-
--   \[20'\] Merging (h) and stacking (v) tables
-
-### EXERCISE \[15'\]
-### SOLUTION \[5'\]
-
-
-
-
-### 5. (c) \[30'\] Transform -- manage main types[^9]
-
--   \[15'\] factors
-
--   \[15'\] dates/datetimes
-
--   (\[30'\] strings (optional if time allows))
-
+-   (strings (optional if time allows))
 
 <!-- ### 7. \[60'\] Communicate (tools: R markdown and Quarto)[^11] -->
 
@@ -280,7 +279,6 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] BREAK
 :::
 
-
 ::: {.callout-note appearance="minimal"}
 \[10'\] RECAP & final assignments
 :::
@@ -288,26 +286,27 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ::: {.callout-note appearance="minimal"}
 \[25'\] finale w/ OVERALL RECAP, next-month assignment, support access instructions, and final survey
 :::
-
 :::
 
 [^2]: pkg: {renv}, {here}
 
-[^3]: pkg: {magrittr}, {ggplot2}
+[^3]: pkgs: {readr}, {readxl}, {writexl}, {haven}
 
-[^4]: pkg: {magrittr}, {ggplot2}
+[^4]: pkg: {rio}
 
-[^5]: pkgs: {readr}, {readxl}, {writexl}, {haven}
+[^5]: pkgs: {janitor}, {tidyr}
 
-[^6]: pkg: {rio}
+[^6]: pkgs: {dplyr}
 
-[^7]: pkgs: {janitor}, {tidyr}
+[^7]: pkgs: {dplyr}
 
-[^8]: pkgs: {dplyr}
+[^8]: pkgs: {dplyr}, {gtsummary}
 
-[^9]: pkgs: {dplyr}, {lubridate}, {stringr}, {glue}
+[^9]: pkg: {magrittr}, {ggplot2}
 
-[^10]: pkgs: {dplyr}, {gtsummary}
+[^10]: pkg: {magrittr}, {ggplot2}
+
+[^11]: pkgs: {dplyr}, {lubridate}, {stringr}, {glue}
 
 <!-- [^11]: The *Communicate* section is flexible. Topics from this section can be omitted to allow for more in-depth discussion on earlier sections, if needed, based on the time available. -->
 
