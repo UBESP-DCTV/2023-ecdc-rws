@@ -293,7 +293,7 @@ db |>
 ```
 :::
 
-## Your turn
+## Your turn (main: B; bk1: C; bk2: A)
 
 ::: callout-caution
 ## Your turn

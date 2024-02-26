@@ -328,7 +328,7 @@ Change the RStudio default shortcut `CTRL/CMD + SHIFT + M` to use the native pip
 
 ![](img/rstudio-native-pipe.png){.absolute left="412" width="824"}
 
-## Your turn
+## Your turn (main: C; bk1: A; bk2: B)
 
 ::: callout-caution
 ## Your turn

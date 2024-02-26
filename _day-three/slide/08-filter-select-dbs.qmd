@@ -621,7 +621,7 @@ db |>
 :::
 :::
 
-## Your turn
+## Your turn (main: A; bk1: B; bk2: C)
 
 ::: callout-caution
 ## Your turn
@@ -672,28 +672,6 @@ YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep
 
 ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
-# Homework
-
-## Posit's RStudio Cloud Workspace
-
-**Instructions**
-
-::: columns
-::: {.column width="50%"}
--   Go to: https://bit.ly/ubep-rws-rstudio
-
-::: callout-caution
-## Your turn
-
--   Project: day-2
--   Instructions:
-    -   Go to: https://bit.ly/ubep-rws-website
-    -   The text is the Day-2 assessment under the tab "Summative Assessments".
-    -   (on RStudio Cloud) `homework/day_two-summative.html`
--   Script to complete: `homework/solution.R`
-:::
-:::
-:::
 
 ## Acknowledgment
 

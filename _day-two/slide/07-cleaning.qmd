@@ -449,8 +449,7 @@ here(
   fill(demo_sex)
 ```
 
-## Your turn
-
+## Your turn (main: A; bk1: B; bk2: C)
 ::: callout-caution
 ## Your turn
 
@@ -500,6 +499,30 @@ will be quite standard anytime!
 YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-2
+-   Instructions:
+    -   Go to: https://bit.ly/ubep-rws-website
+    -   The text is the Day-2 assessment under the tab "Summative Assessments".
+    -   (on RStudio Cloud) `homework/day_two-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
+
 
 ## Acknowledgment {.smaller}
 

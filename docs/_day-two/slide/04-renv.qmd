@@ -190,7 +190,7 @@ every time...
 That is managed efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
 :::
 
-## Your turn
+## Your turn (main: A; bk1: B; bk2: C)
 
 ```{r}
 #| echo: false

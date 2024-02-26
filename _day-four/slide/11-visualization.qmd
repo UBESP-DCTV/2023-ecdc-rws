@@ -633,7 +633,7 @@ Up to now, we can have a minimal set of instructions to define a base template f
 Local `aes`thetic mappings overwrite the global ones!
 :::
 
-## Your turn
+## Your turn (main: A; bk1: B; bk2: C)
 
 ::: callout-caution
 ## Your turn

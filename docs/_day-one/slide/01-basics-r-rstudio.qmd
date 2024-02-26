@@ -537,7 +537,7 @@ The tidyverse is an opinionated collection of R packages designed for data scien
 :::
 
 
-## Your turn
+## Your turn (main: B; bk1: C; bk2: A)
 
 ::: columns
 ::: {.column width="50%"}

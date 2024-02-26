@@ -532,7 +532,7 @@ today_now
 :::
 :::
 
-## Your turn
+## Your turn (main: B; bk1: C; bk2: A)
 
 ::: callout-caution
 ## Your turn
@@ -763,7 +763,7 @@ tibble(
   )
 ```
 
-## Your turn
+## Your turn (main: C; bk1: A; bk2: B)
 
 ::: callout-caution
 ## Your turn

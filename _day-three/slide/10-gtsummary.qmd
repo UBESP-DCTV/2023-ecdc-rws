@@ -582,7 +582,7 @@ tbl
 :::
 
 
-## Your turn
+## Your turn (main: C; bk1: A; bk2: B)
 
 ::: callout-caution
 ## Your turn
@@ -702,7 +702,7 @@ as_gt(tbl) |>
 :::
 
 
-## Your turn
+## Your turn (main: A; bk1: B; bk2: C)
 
 ::: callout-caution
 ## Your turn
@@ -929,7 +929,7 @@ tbl_stack(list(resp_uv, resp_adj))
 :::
 
 
-## Your turn
+## Your turn (main: B; bk1: C; bk2: A)
 
 ::: callout-caution
 ## Your turn (`tbl_cross` and `gtsave` only)
