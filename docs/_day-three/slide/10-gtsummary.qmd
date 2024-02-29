@@ -587,14 +587,14 @@ tbl
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Under the section `4.1. Ex23 Ex24`, answer to the questions with an x next to the correct answer.
+1.  Under the section `3.3. Ex20 Ex21`, answer to the questions with an x next to the correct answer.
 
-2.  Open the script `15-tbl_summary.R`, and follow the instruction step by step.
+2.  Open the script `14-tbl_summary.R`, and follow the instruction step by step.
 
 
 ::: {.fragment .fade-out fragment-index="1"}
@@ -625,9 +625,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
 
 # Cross-tables - summarize relationships
@@ -707,14 +707,14 @@ as_gt(tbl) |>
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Under the section `4.1. Ex 25`, answer to the questions with an x next to the correct answer.
+1.  Under the section `3.3. Ex 22`, answer to the questions with an x next to the correct answer.
 
-2.  Open the script `16-tbl_cross.R`, and follow the instruction step by step.
+2.  Open the script `15-tbl_cross.R`, and follow the instruction step by step.
 
 
 ::: {.fragment .fade-out fragment-index="1"}
@@ -745,9 +745,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 
 ## Break
 
@@ -934,16 +934,16 @@ tbl_stack(list(resp_uv, resp_adj))
 ::: callout-caution
 ## Your turn (`tbl_cross` and `gtsave` only)
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Under the section `4.1. Ex26 Ex 27`, answer to the questions with an x next to the correct answer.
+1.  Under the section `3.3. Ex23 Ex 24`, answer to the questions with an x next to the correct answer.
 
-3.  Then, open the script `17-tbl_uvregression.R` and follow the instruction step by step.
+3.  Then, open the script `16-tbl_uvregression.R` and follow the instruction step by step.
 
-4.  Then, open the script `18-merge.R` and follow the instruction step by step.
+4.  Then, open the script `17-merge.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -978,7 +978,7 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
 

@@ -349,15 +349,17 @@ all.equal(
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) Ex 15-16
 
--   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
 1.  Answer in the pad, with an "x" next to the correct answers.
 
 -   What are the main option for `pivot_longer`?
 -   What are the main option for `pivot_wider`?
+
+<br>
 
 ::: columns
 ::: {.column width="50%"}
@@ -371,7 +373,7 @@ all.equal(
 :::
 :::
 
-2.  Open the scripts `10-pivot_longer.R` and `11-pivot_wider.R`, and follow the instruction.
+2.  Open the scripts `09-pivot_longer.R` and `10-pivot_wider.R`, and follow the instruction.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -400,9 +402,9 @@ countdown(
 
 ## My turn \[optional\]
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `11-pivoting.R`
 
 # Data management
 
@@ -626,14 +628,14 @@ db |>
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Answer in the pad, under the section `3.2. Ex20`, and `3.2. Ex21`.
+1.  Answer in the pad, under the section `3.2. Ex17`, and `3.2. Ex18`.
 
-2.  Then, open the script `12-filter.R` and `13-select.R`, and follow the instruction.
+2.  Then, open the script `11-filter.R` and `12-select.R`, and follow the instruction.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -668,9 +670,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed) (<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `12-filter-and-select.R`
 
 
 ## Acknowledgment

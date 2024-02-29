@@ -537,14 +537,14 @@ today_now
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ...and:
 :::
 
-1.  Under the sections `4.2. Ex28 Ex29` of the pad, write (in a new line) your answer to the questions reported.
+1.  Under the sections `4.2. Ex26 Ex27` of the pad, write (in a new line) your answer to the questions reported.
 
 2.  Then, open the scripts `19-factors.R` and `20-date-time.R` and follow the instruction step by step.
 
@@ -575,9 +575,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `14-factors.R`
+ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `14-factors.R`
 
 ## Strings - Regular Expressions
 
@@ -768,14 +768,14 @@ tibble(
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ...and:
 :::
 
-1.  Before to evaluate it, in the pad, under the section `4.2. Ex30`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
+1.  Before to evaluate it, in the pad, under the section `4.2. Ex8`, write (in a new line) how can you match all files names that are R scripts (i.e., ending with `.r` or `.R`)? Report you option for a regular expression.
 
 2.  Then, open the script `21-strings.R` and follow the instruction step by step.
 
@@ -808,9 +808,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `16-strings.R`
+ME: Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `16-strings.R`
 
 # Homework
 

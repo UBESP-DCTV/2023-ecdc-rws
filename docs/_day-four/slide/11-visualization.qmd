@@ -638,12 +638,12 @@ Local `aes`thetic mappings overwrite the global ones!
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) Ex25
 
--   Connect to the [Day-1](https://bit.ly/ubep-rws-rstudio-day-1) project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio-day-1>)
+-   Connect to the Day-4 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Open the script `07-ggplot.R` and follow the instruction step by step to create a plot and upload it on the pad.
+1.  Open the script `18-ggplot.R` and follow the instruction step by step to create a plot and upload it on the pad.
 
 ```{r}
 #| echo: false
@@ -662,7 +662,7 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the `course-scripts` project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-ggplot.R` (up to base)
 

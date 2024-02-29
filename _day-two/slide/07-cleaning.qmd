@@ -89,7 +89,7 @@ You can have:
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) Ex. 13
 
 1.  List all other issue you have ever encounter in importing/cleaning data (or you can imagine could happen, if this is the first time you import data on software for data analyses)
 :::
@@ -456,7 +456,7 @@ here(
 Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Open the script `09-clean.R` and follow the instruction step by step.
+1.  Open the script `08-clean.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -496,7 +496,7 @@ will be quite standard anytime!
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `10-cleaning.R`
 

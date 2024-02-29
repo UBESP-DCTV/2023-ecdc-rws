@@ -79,9 +79,9 @@ library(tidyverse)
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>)
 
-1.  Put an `X` next to the correct answer, under section 2.2 Ex9 in the pad.
+1.  Put an `X` next to the correct answer, under section 2.3 Ex10 in the pad.
 
 If you attach only the `{tidyverse}` package in a new R session, and you call `filter()`, which function are you calling?
 
@@ -156,7 +156,7 @@ h <- 4
 ::: callout-caution
 ## Your Turn
 
-You can type your answer on sec 2.2 Ex.10 in the pad.
+You can type your answer on sec 2.3 Ex.11 in the pad.
 :::
 :::
 
@@ -333,15 +333,15 @@ Change the RStudio default shortcut `CTRL/CMD + SHIFT + M` to use the native pip
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) (Ex. 11)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>) (Ex. 12)
 
--   Connect to our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to Day 2 project on our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 Imagine we have a dataset representing the daily number of new infection cases reported in a specific area over a week. Unfortunately, there was a day when data couldn't be collected due to a system malfunction, resulting in a missing value. Our goal is to calculate the average (2 significant digits) day-to-day fluctuation in the number of new cases reported over the week.This measure can help public health officials understand the volatility in the spread of the infection and potentially identify any unusual spikes or drops in case numbers.
 
-1.  Open the script `06-pipe.R`, and reformat the code using the native pipe the code.
+1.  Open the script `07-pipe.R`, and reformat the code using the native pipe the code.
 
-2.  In the pad, under section `1.2 - Ex.9` report your preference putting an X next to your selection.
+2.  In the pad, under section `2.3 - Ex.12` report your preference putting an X next to your selection.
 :::
 
 You can solve the problem with the following code:
@@ -370,7 +370,7 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `07-pipe.R`
 

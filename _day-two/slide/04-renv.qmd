@@ -207,9 +207,9 @@ font_size = "4em"
 )
 ```
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>) (Ex. 7-8)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) (Ex. 6)
 
--   Connect to our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to Day 2 project on our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 
 ::: columns
 ::: {.column width="50%"}
@@ -229,7 +229,7 @@ font_size = "4em"
 -   calls the `make_plot()` function
 -   saves the plot in the `output/` folder
 -   Run the whole `analyses/analysis.R` script.
--   Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad-ed2) (https://bit.ly/ubep-rws-pad-ed2). 
+-   Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad-ed3) (https://bit.ly/ubep-rws-pad-ed3). 
 :::
 :::
 
@@ -270,7 +270,7 @@ ggsave(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 
 ## Acknowledgment

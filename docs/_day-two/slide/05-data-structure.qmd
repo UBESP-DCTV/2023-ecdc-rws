@@ -695,18 +695,18 @@ db_df$height
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Before to evaluate it, in the pad, under the section `1.1. Ex3`, write (in a new line) what is your expected result (including *an error*).
+1.  Before to evaluate it, in the pad, under the section `2.2. Ex7`, write (in a new line) what is your expected result (including *an error*).
 
-2.  Before to evaluate it, in the pad, under the section `1.1. Ex4`, write (in a new line) what is your expected result (including *an error*).
+2.  Before to evaluate it, in the pad, under the section `2.2. Ex8`, write (in a new line) what is your expected result (including *an error*).
 
-3.  Then, open the script `02-atomic-vectors.R` and follow the instruction step by step.
+3.  Then, open the script `04-atomic-vectors.R` and follow the instruction step by step.
 
-4.  Then, open the script `03-subsetting.R` and follow the instruction step by step.
+4.  Then, open the script `05-subsetting.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -737,9 +737,9 @@ countdown(
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-1 project in RStudio cloud
+ME: Connect to the Day-2 project in RStudio cloud
 
 -   (<https://bit.ly/ubep-rws-rstudio>): script `02-vectors.R`
 -   (<https://bit.ly/ubep-rws-rstudio>): script `03-matrices_dataframes.R`
@@ -948,18 +948,18 @@ x_exp_y(y = 3, 2)
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>)
 
--   Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+-   Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Before to evaluate it, in the pad, under the section `1.1. Ex5`, write (in a new line) what is your expected result from the following computation:
+1.  Before to evaluate it, in the pad, under the section `2.2. Ex9`, write (in a new line) what is your expected result from the following computation:
 
 ``` r
 <code>
 ```
 
-2.  Then, open the script `04-cond-and-funs.R` and follow the instruction step by step.
+2.  Then, open the script `06-cond-and-funs.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -987,9 +987,9 @@ countdown(
 
 ## My turn [optional]
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)(<https://bit.ly/ubep-rws-pad-3ed>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)(<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
-ME: Connect to the Day-1 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `04-cond_loop.R`
+ME: Connect to the Day-2 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `04-cond_loop.R`
 
 
 ## Break

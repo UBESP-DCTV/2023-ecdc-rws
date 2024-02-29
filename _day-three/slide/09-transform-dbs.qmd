@@ -298,12 +298,12 @@ db |>
 ::: callout-caution
 ## Your turn
 
--   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2)(<https://bit.ly/ubep-rws-pad-ed2>)
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
 
 -   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
 :::
 
-1.  Before to try it, in the pad, under the section `3.2. Ex22` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
+1.  Before to try it, in the pad, under the section `3.2. Ex19` write your guess respect the output of using `dplyr::mutate` assigning the same name of an already existing variable. E.g.
 
 ``` r
 library(tidyverse)
@@ -314,7 +314,7 @@ db |>
 )
 ```
 
-2.  Then, open the script `14-mutate.R` and follow the instruction step by step.
+2.  Then, open the script `13-mutate.R` and follow the instruction step by step.
 
 ::: {.fragment .fade-out fragment-index="1"}
 ```{r}
@@ -352,7 +352,7 @@ As all the other verbs in the Tidyverse, `dplyr::mutate`
 
 ## My turn
 
-YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed2) (<https://bit.ly/ubep-rws-pad-ed2>) and write there questions & doubts (and if I am too slow or too fast)
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
 
 ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `13-transforming.R`
 
