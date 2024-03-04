@@ -108,11 +108,11 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] Recap & Solutions
 :::
 
-### \[20'\] local environments
+### \[40'\] local environments
 
 -   `{renv}`
 
-### EXERCISE \[20'\]
+### EXERCISE \[25'\]
 
 ### SOLUTION \[5'\]
 
@@ -126,15 +126,15 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
 -   Subsetting and Extractions
 
-### EXERCISE \[20'\]
+### EXERCISE \[25'\]
 
 ### SOLUTION \[5'\]
 
-### \[20'\] Pipe
+### \[30'\] Pipe
 
 -   Pipe
 
-### EXERCISE \[15'\]
+### EXERCISE \[20'\]
 
 ### SOLUTION \[5'\]
 
@@ -142,7 +142,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] `BREAK`{=html}
 :::
 
-### \[30'\] cleaning
+### \[30'\] (cleaning (Optional if time allows))
 
 -   Headers, variables' names, and missing data
 
@@ -153,6 +153,12 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 ::: {.callout-note appearance="minimal"}
 \[10'\] Recap & Assignments
 :::
+
+
+
+
+
+
 
 ## Day 3
 
@@ -186,7 +192,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 \[10'\] BREAK
 :::
 
-### EXERCISE \[20'\]
+### EXERCISE \[25'\]
 
 ### SOLUTION \[5'\]
 
@@ -196,7 +202,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 
     -   descriptive statistics
 
-### EXERCISE \[20'\]
+### EXERCISE \[25'\]
 
 ### SOLUTION \[5'\]
 
@@ -205,7 +211,7 @@ knitr::write_bib(c(.packages(), "tidyverse", "ggplot2", "readr", "readxl", "writ
 - saving tables
 ```
 
-### EXERCISE \[15'\]
+### EXERCISE \[20'\]
 
 ### SOLUTION \[5'\]
 

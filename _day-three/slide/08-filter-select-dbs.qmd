@@ -379,7 +379,7 @@ all.equal(
 ```{r}
 #| echo: false
 countdown(
-  minutes = 20,
+  minutes = 25,
   left = "55%",
   right = 0,
   top = "10%",
@@ -641,7 +641,7 @@ db |>
 ```{r}
 #| echo: false
 countdown(
-  minutes = 15,
+  minutes = 20,
   left = "25%",
   right = "25%",
   top = "70%",

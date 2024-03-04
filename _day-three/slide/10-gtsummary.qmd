@@ -601,7 +601,7 @@ tbl
 ```{r}
 #| echo: false
 countdown(
-  minutes = 20,
+  minutes = 25,
   left = "25%",
   right = "25%",
   top = "70%",
@@ -721,7 +721,7 @@ as_gt(tbl) |>
 ```{r}
 #| echo: false
 countdown(
-  minutes = 15,
+  minutes = 20,
   left = "25%",
   right = "25%",
   top = "70%",
