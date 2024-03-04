@@ -1,0 +1,436 @@
+---
+title: '[Day One]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
+subtitle: "~30 min"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  results = "hold"
+)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   What is an RStudio project?
+-   Why using RStudio projects helps?
+-   How works the `{here}` package, and why it is useful in combination with RStudio projects.
+-   What is a library (and a repository) of R packages, and how many of them we (can) have on a system?
+-   Why organize a project in standard folders?
+-   What can be a suitable standard project folder organization?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   Activate, restore, a work on an RStudio projects.
+-   Use the `{here}` package to find files and folders within a project.
+-   Describe the difference from a library and a package, in R.
+-   Organize a project in folder, in particular understand and be able to use the standard structure of  `R/`, `data-raw/`, and `data/`, with optional folders for `analyses/`, and `dev/`
+:::
+:::
+
+# R/RStudio projects
+
+## Scripts - interface
+
+-   You are not required to use the interactive R console alone
+-   You can save what you type/code for future usage in scripts, i.e., simple text files containing code. If R scripts, their extension is `.R`, e.g., `my-first-script.R`.
+
+::: columns
+::: {.column width="50%"}
+![](img/rstudio-script.png)
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Strive to create scripts that are working as expected while executed as a whole from top to bottom in a new clean R session.
+:::
+:::
+:::
+
+## Projects [side-by-side cloud and local]
+
+With RStudio projects, R automatically set the working directory of your session at the project folder. Moreover RStudio automatically save the status of your projects script, including open tabs.
+
+So, with rstudio projects, you can
+
+::: columns
+::: {.column width="50%"}
+-   close and reopen your projects without losing your script (you will lose your R environmental object you have created with your code, but you can always restore it re-running your scripts!).
+
+-   run multiple R session simultaneously, each one linked to its own working directory, i.e. working effectively on multiple projects.
+
+-   send/store your projects out from your computer and it will still working
+:::
+
+::: {.column width="50%"}
+![](img/rstudio-project.png)
+:::
+:::
+
+## Working directory [side-by-side cloud and local]
+
+-   Your scripts (with your data) are the *source of truth* regarding your analyses project!
+
+-   You/other can and should be able to recreate all your result from your script and data
+
+### *Where* are your analyses?
+
+-   Every R session is automatically linked to a so called *working directory*, i.e., a folder in your computer.
+
+-   Every time you as R to write/save to, read/load from your disk, R will start looking from that folder.
+
+::: callout-tips
+You can always know what is your current working directory by
+
+```{r}
+getwd()
+```
+
+Or looking at the top of your console tab in RStudio...[^4]
+
+![](img/rstudio-wd.png)
+:::
+
+[^4]: In RStudio cloud that should not that meaningful as every project is a sort of complete isolated system.
+
+
+## Paths
+
+::: columns
+::: {.column width="50%"}
+### Absolute
+
+-   Inside projects you do not need to use (and you should never do that!) use absolute path in reading or writing files and folders.
+
+-   Absolute paths points to a specific folder in a specific computer, and will never work on other systems, or if you move your project on a different folder of the same PC.
+
+E.g., `C:\Users\<usr>\Documents\2023-ecdc-rws\_day-one\slide\`
+:::
+
+::: {.column width="50%"}
+### Relative
+
+-   Inside projects you can (and you should always do that!) use relative path in reading or writing files and folders.
+
+-   Relative paths point to a path relative to the current working directory, so that they always works on different PCs, or if you move your project folder on other position within your computer.
+
+E.g., `_day0one\slide\`
+:::
+:::
+
+On UNIX Machine (linux/mac) path are separated by slashes (e.g., `path/to/folder`), while on Windows they are separated by back-slashes (e.g., `path\to\folder`).
+
+However, in R (and many other software), the backslash has special meaning, so that if you need to write a windows-like path in R, you should type them twice every time (e.g., `path\\to\\folder`).
+
+::: callout-tip
+On the other hand, R understand and can manage both the standards in all the systems, so that, in R, you can always use the UNIX-like path, even on Windows machines.
+:::
+
+# The `{here}` package [side-by-side]
+
+Sometimes the working directory can change with or without our control.[^5]
+
+[^5]: E.g., in rendering reports, the working directory while the render engine runs is set to the report script folder.
+
+::: columns
+::: {.column width="50%"}
+To use `{here}` in your scripts, simply attach it!
+
+```{r}
+library(here)
+```
+
+-   `here()` function always uses project-relative paths
+
+    ```{r}
+    here()
+    ```
+
+-   you can compose paths without worrying about the slash/backslash to use!
+
+    ```{r}
+    here("img", "here.png")
+    here("img/here.png")
+    ```
+:::
+
+::: {.column width="50%"}
+![](img/here.png)
+:::
+:::
+
+
+## Your turn (main: C; bk1: A; bk2: B)
+
+::: callout-caution
+## Your turn (If you havn't installed R/RStudio yet locally, do it now with our support)
+
+Connect RStudio cloud ([https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio))
+
+1. Create a new project (on the cloud), and pretend you are developing some code for a new analysis.
+2. Create a new file called `hello.txt` and write your name in it.
+3. Create a new script called `read-and-write.R` and write in it the following code
+
+```r
+me <- readLines("hello.txt")
+writeLines(paste("Hello,", me, "!"), "hello-me.txt")
+```
+4. Run the script, what happens? Where is the `hello-me.txt` file?
+5. Delete the `hello-me.txt` file, export the project, and unzip it in your computer on the desktop.
+
+6. Double click on the `read-and-write.R` script directly (RStudio will open it automatically), and run it. What happens? Whare is the `hello-me.txt` file? Delete the `hello-me.txt` file, and close R/RStudio.
+7. Create a folder in your local project named `scripts/`, and move the `read-and-write.R` script in it.
+8. Double click on the `read-and-write.R` script now, and run it. What happens? Where is the `hello-me.txt` file? Are you able now to run it properly?
+9. Change the content of `read-and-write.R` to the following
+
+```r
+library(here)
+
+readLines(here("hello.txt"))
+writeLines("Hello, world!", here("hello-world.txt"))
+```
+10. Close R/RStudio (locally), double click on the `read-and-write.R` script, and execute it. What happens? Where is the `hello-me.txt` file? Are you able now to run it properly?
+11. Close R/RStudio (locally), move the `read-and-write.R` script back to the main project folder, and double click on the `read-and-write.R` script, and execute it. What happens? Where is the `hello-me.txt` file? Are you able now to run it properly?
+:::
+
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  left = "60%",
+  right = 0,
+  top = "25%",
+  bottom = "45%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-3ed)([https://bit.ly/ubep-rws[-pad-3ed]{style="color:darkorange;"}](https://bit.ly/ubep-rws-pad-3ed)) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-1 project in RStudio cloud ([https://bit.ly/ubep-rws[-rstudio]{style="color:darkorange;"}](https://bit.ly/ubep-rws-rstudio)): script `05-packages.R`
+
+
+
+
+
+# Best practice
+
+## Scripts - shortcuts [optional]
+
+-   Create new R script with the shortcut `CTRL/CMD + SHIFT + N`
+
+-   In RStudio, you can run/execute/evaluate/send-to-R a complete chunk of code by placing the cursor wherever inside that chunk, and using the shortcut `CTRL/CMD + RETURN`.[^1]
+
+[^1]: You can use `CTRL/CMD + SHIFT + S` to run the whole script ("S" for *source*).
+
+::: columns
+::: {.column width="50%"}
+::: callout-tip
+-   New script: `CTRL/CMD + SHIFT + N`
+-   Run line/chunk of code: `CTRL/CMD + RETURN`
+-   Run selected piece/lines/blocks of code: select them and `CTRL/CMD + RETURN`
+-   Run (source) the whole script: `CTRL/CMD + SHIFT + S`
+-   Restart the R session: `CTRL/CMD + SHIFT + F10`
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+-   Always start your script attaching **all** used packages, i.e. including all the `library()` statements (Easily see which package you would need to install, and what is used to run every piece of code in the script).
+-   Never include (uncommented) `install.packages()` statements in a script (especially if you share it! changing other people environment can hamper the systems).
+:::
+:::
+:::
+
+
+## Saving and naming files and folder
+
+-   Machine readable: avoid spaces, symbols, and special characters.[^2]
+
+-   Human readable: use file names to describe what’s in the file.
+
+-   Play well with default ordering: start file names with numbers so that alphabetical sorting puts them in the order they get used.[^3]
+
+[^2]: And don’t rely on case sensitivity to distinguish files.
+
+[^3]: Use 0-leading numbers if you imagine more than ten files, e.g., use "01" instead of "1" to avoid that "11" will be ordered before "2".
+
+::: columns
+::: {.column width="50%"}
+### Common name
+
+```         
+alternative model.R
+code for exploratory analysis.r
+finalreport.qmd
+FinalReport.qmd
+fig 1.png
+Figure_02.png
+model_first_try.R
+run-first.r
+temp.txt
+```
+:::
+
+::: {.column width="50%"}
+### Better names
+
+```         
+01-load-data.R
+02-exploratory-analysis.R
+03-model-approach-1.R
+04-model-approach-2.R
+fig-01.png
+fig-02.png
+report-2022-03-20.qmd
+report-2022-04-02.qmd
+report-draft-notes.txt
+```
+:::
+:::
+
+::: callout-tip
+Spend time to write/style names and codes that make as fast as possible to understand them. You will spend *a lot* more time reading, understanding, debugging your code, files, and projects than the amount of time you will pass actually typing them. So, saving time in typing possibly more immediate and faster, but less readable code or less meaningful names is the best way to spend more time overall on projects.
+:::
+
+## RStudio settings for reproducibility [side-by-side]
+
+::: columns
+::: {.column width="50%"}
+::: callout-important
+-   From a well designed script and data, all the environmental objects can be recreated
+
+-   From a well created environmental set of objects, is still quite impossible to reconstruct the code used to create it!
+:::
+
+::: callout-tip
+Do not let R to save/restore your workspace (the default), start every R session with a clean environment!
+:::
+:::
+
+::: {.column width="50%"}
+![](img/rstudio-blank-slate.png)
+:::
+:::
+
+
+## Folder organization
+
+Now that you:
+
+-   have a main project folder to work inside
+-   can write scripts to store code used for you analyses
+-   (can write/read files to/from the disk)
+-   can define robust path relative to the project main folder
+
+You are free to organize and move your scripts and data in well designed folder structures
+
+::: callout-tip
+Some of the standard R folders are:
+
+-   `data-raw/`: to store raw data, the original ones *they* send us
+-   `data/`: processed data we will use into our analyses
+-   `R/`: a folder to store custom functions source code only (advanced topic)
+:::
+
+# Suggested folder organization
+
+-   `R/`: if any, custom functions defined and used within the project.
+-   `data-raw/`: to store raw data (i.e., the original ones *they* send us), and the scripts to preprocess them in preparation for the analyses.
+-   `data/`: processed data we will use into our analyses.
+-   `analysis/`: analysis scripts.
+-   `output/`: report, figure and table produced.
+
+::: columns
+::: {.column width="50%"}
+::: callout-tip
+If you create an `R/functions.R` script into which you define custom functions, you can make them available during analyses computations including, after the `library()` calls at the top of the script, the following code:
+
+``` r
+source(here("R/functions.R"))
+```
+
+And next, you can use your custom function within the script.
+:::
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+`source` is a base R function that allows to run a whole script, i.e., to execute all the code contained in it.
+:::
+:::
+:::
+
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+-   [`{here}`](https://here.r-lib.org/) website
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Jenny Brian](https://jennybryan.org/about/)'s [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```

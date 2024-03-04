@@ -1,0 +1,1032 @@
+---
+title: '[Day Four]{style="color:darkblue"}:<br>[Summary tables]{style="color:darkorange;"}'
+subtitle: "~50 min"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-gtsummary.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set( 
+  echo = TRUE,
+  results = "hold"
+)
+options(width = 65)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   What are summary tables, and how are they used in data analysis?
+-   How does `{gtsummary}` facilitate the presentation of descriptive statistics?
+-   How can one create cross-tables using `{gtsummary}`?
+-   How can one create tables for univariable models using `{gtsummary}`?
+-   How does one merge (horizontally) and stack (vertically) tables using gtsummary?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   Generate summary tables using `{gtsummary}` (using the `tbl_summary()` function)
+-   Customize summary tables using `{gtsummary}` (using the basic extended functions, such as `add_*`, and `bold_*`)
+-   Create cross-tables (tables showing relationships between variables) using `{gtsummary}` (using the `tbl_cross()` function)
+-   Merge and stack summary tables using `{gtsummary}` in R (using the `tbl_merge()` and `tbl_stack()` functions)
+-   Create and interpret tables summarizing univariable model results
+-   Merge (h) and stuck (v) multiple tables to compare or combine data
+:::
+:::
+
+# Summary tables
+
+## What are summary tables?
+
+-   A way to present descriptive statistics and results of statistical models in a tabular format.
+
+As for ggplot for graphs, `{gtsummary}` is a package that facilitates the creation of summary tables in R. It is based on the `{gt}` package, which is a "grammar of tables" and it follows the same philosophy of `{ggplot2}`.
+
+![](img/gt_parts_of_a_table.svg)
+
+# Descriptive statistic - <small>summarize data</small>
+
+## `tbl_summary()` - base function
+
+-   The `tbl_summary()` function is used to summarize data in a table format.
+-   It calculates descriptive statistics for continuous, categorical, and dichotomous variables in R, and presents the results in a beautiful, customizable summary table ready for publication (or presentation).
+-   It adopts the tidyverse syntax to summarize data:
+    -   it uses the pipe operator `|>` to chain functions together
+    -   it uses the same selectors to select variables as the `dplyr::select()` function, e.g., `starts_with()`, `ends_with()`, `contains()`, `matches()`, `everything()`, etc.
+
+## `tbl_summary()` - Main arguments
+
+-   `data` - the data frame to summarize (which can be piped in)
+-   `include` - the variables to include in the table, i.e., the "variable" column of the table
+-   `by` - the variable(s) to stratify the table by, i.e., the variable(s) that define the *summary* columns of the table. Summary statistics will be calculated separately for each level of the by variable (e.g. by = `trt`).
+
+::: callout-tip
+-   if `include` is not specified, all variables in the data frame will be included in the table
+
+-   if `by` is not specified, the table will not be stratified, and summary statistics will be calculated for all variables in the data frame
+:::
+
+## `tbl_summary()` - base [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary()
+tbl
+```
+
+::: callout-tip
+-   use no arguments to summarize all variables in the data frame
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - strata [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt #<<
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `by` argument to stratify the table by a variable
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - variables I [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  select(trt, age, grade, response) |> #<<
+  tbl_summary(
+    by = trt
+  )
+tbl
+```
+
+::: callout-tip
+-   to select variable of interest, we can pipe in a `select()` function, or...
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - variables II [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response) #<<
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `include` argument to select variables of interest
+:::
+
+::: callout-important
+-   Detects variable types of input data and calculates proper descriptive statistics
+-   Variables coded as 0/1, TRUE/FALSE, and Yes/No are presented dichotomously
+-   Recognizes NA values as “missing” and lists them as unknown
+-   Label attributes automatically printed
+-   Variable levels indented and footnotes added
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - types [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list( #<<
+      response ~ "categorical" #<<
+    ) #<<
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `type` argument to specify the variable types, e.g., to change the default behavior for dichotomous variables to be treated as standard categorical (i.e., showing each level on a separate row)
+:::
+
+::: callout-important
+-   Syntax is `variable ~ "type"`
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+
+::: callout-important
+-   Detects variable types of input data and calculates proper descriptive statistics
+-   Variables coded as 0/1, TRUE/FALSE, and Yes/No are presented dichotomously
+-   Recognizes NA values as “missing” and lists them as unknown
+-   Label attributes automatically printed
+-   Variable levels indented and footnotes added
+:::
+:::
+:::
+
+## `tbl_summary()` - percent [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list(
+      response ~ "categorical"
+    ),
+    percent = "row" #<<
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `percent` argument to calculate percentages within strata:
+    -   `percent = "column"` calculates percentages within columns
+    -   `percent = "row"` calculates percentages within rows
+    -   `percent = "cell"` calculates percentages within the overall variable's cells
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - labels [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list(
+      response ~ "categorical"
+    ),
+    label = list(  #<<
+      age ~ "Age (years)", #<<
+      grade ~ "Grade", #<<
+      response ~ "Response" #<<
+    ), #<<
+    percent = "row"
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `label` argument to change the variable labels
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - digits [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list(
+      response ~ "categorical"
+    ),
+    label = list(
+      age ~ "Age (years)",
+      grade ~ "Grade",
+      response ~ "Response"
+    ),
+    percent = "row",
+    digits = list(
+      age ~ 2 #<<
+    )
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `digits` argument to change the number of digits shown for continuous variables
+:::
+
+::: callout-important
+-   Syntax is `variable ~ digits`
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - statistics [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list(
+      response ~ "categorical"
+    ),
+    label = list(
+      age ~ "Age (years)",
+      grade ~ "Grade",
+      response ~ "Response"
+    ),
+    percent = "row",
+    digits = list(
+      age ~ 2
+    ),
+    statistic = list(  #<<
+      all_continuous() ~ "{mean} ({sd})",  #<<
+      response ~ "{n} ({p}%)"  #<<
+    )  #<<
+  )
+tbl
+```
+
+::: callout-tip
+-   use the `statistic` argument to change the summary statistics
+:::
+
+::: callout-important
+-   Syntax is list(`variable ~ "statistic"`)
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## Statisitcs [overview] {.smaller}
+
+::: columns
+::: {.column width="50%"}
+For categorical variables the following statistics are available to display.
+
+-   `{n}`: frequency
+-   `{N}`: denominator, or cohort size
+-   `{p}`: formatted percentage
+
+For continuous variables the following statistics are available to display.
+
+-   `{median}`: median
+-   `{mean}`: mean
+-   `{sd}`: standard deviation
+-   `{var}`: variance
+-   `{min}`: minimum
+-   `{max}`: maximum
+-   `{sum}`: sum
+-   `{p##}`:⁠ any integer percentile, where ⁠##⁠ is an integer from 0 to 100
+-   `{foo}`: any function of the form foo(x) is accepted where x is a numeric vector
+:::
+
+::: {.column width="50%"}
+For both categorical and continuous variables, statistics on the number of missing and non-missing observations and their proportions are available to display.
+
+-   `{N_obs}`: total number of observations
+-   `{N_miss}`: number of missing observations
+-   `{N_nonmiss}`: number of non-missing observations
+-   `{p_miss}`: percentage of observations missing
+-   `{p_nonmiss}`: percentage of observations not missing
+:::
+:::
+
+## `tbl_summary()` - adders [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    label = list(
+      age ~ "Age (years)",
+      grade ~ "Grade",
+      response ~ "Response"
+    ),
+    type = list(
+      response ~ "categorical"
+    ),
+    percent = "row",
+    digits = list(
+      age ~ 2
+    ),
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      response ~ "{n} ({p}%)"
+    )
+  ) |> 
+  add_n() |>
+  add_overall() |> 
+  add_p()
+tbl
+```
+
+::: callout-tip
+-   use the `add_*` functions to add summary statistics to the table
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+## `tbl_summary()` - stylers [side-by-side] {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| output: false
+#| output-location: default
+library(tidyverse)
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    label = list(
+      age ~ "Age (years)",
+      grade ~ "Grade",
+      response ~ "Response"
+    ),
+    type = list(
+      response ~ "categorical"
+    ),
+    percent = "row",
+    digits = list(
+      age ~ 2
+    ),
+    statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      response ~ "{n} ({p}%)"
+    )
+  ) |> 
+  add_n() |>
+  add_overall() |> 
+  add_p() |> 
+  bold_p(t = 0.6) |>
+  bold_levels() |>
+  bold_labels() |> 
+  italicize_levels() |> 
+  italicize_labels()
+tbl
+```
+
+::: callout-tip
+-   use the `bold_*` and `italicize_*` functions to customize the table
+:::
+
+::: callout-important
+-   `bold_p` bolds p-values less than a specified threshold
+:::
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+tbl
+```
+:::
+:::
+
+
+## Your turn (main: C; bk1: A; bk2: B)
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+:::
+
+1.  Under the section `3.3. Ex20 Ex21`, answer to the questions with an x next to the correct answer.
+
+2.  Open the script `14-tbl_summary.R`, and follow the instruction step by step.
+
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 25,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   `include` selects the variables to include in the table
+-   `by` stratifies the table by a variable
+-   you can use tidyverse selectors to select variables to include in the table, i.e., as the `include` argument of `tbl_summary`
+
+:::
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+
+
+# Cross-tables - summarize relationships
+
+## `tbl_cross()` {auto-animate="true"}
+
+-   The `tbl_cross()` function is used to summarize relationships between variables in a table format.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+trial |> 
+  tbl_cross(
+    row = trt,
+    col = grade
+  )
+```
+
+## `tbl_cross()` {auto-animate="true"}
+
+-   The `tbl_cross()` function is used to summarize relationships between variables in a table format.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+trial |> 
+  tbl_cross(
+    row = trt,
+    col = grade,
+    percent = "row", 
+  ) |> 
+  add_p()
+```
+
+::: callout-tip
+-   `tbl_cross` can use the same arguments, adders, and stylers as `tbl_summary`.
+:::
+
+
+## `gtsave` [side-by-side] {auto-animate="true"}
+
+-   The `gtsave()` function is used to save gtsummary tables as images or HTML files.
+
+```{r}
+#| eval: false
+library(tidyverse)  
+library(gtsummary)
+
+tbl <- trial |> 
+  tbl_summary(
+    by = trt,
+    include = c(trt, age, grade, response),
+    type = list(response ~ "categorical")
+  )
+
+as_gt(tbl) |> 
+  gt::gtsave("trial.png")
+
+as_gt(tbl) |> 
+  gt::gtsave("trial.pdf")
+
+as_gt(tbl) |> 
+  gt::gtsave("trial.docx")
+
+# ...and so on
+```
+
+::: callout-tip
+-   `gtsave` can save tables as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files; just set the file extension in the filename argument accordingly.
+:::
+
+
+## Your turn (main: A; bk1: B; bk2: C)
+
+::: callout-caution
+## Your turn
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+:::
+
+1.  Under the section `3.3. Ex 22`, answer to the questions with an x next to the correct answer.
+
+2.  Open the script `15-tbl_cross.R`, and follow the instruction step by step.
+
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   `tbl_cross` accept a data frame and two of its variables names as input.
+
+-   `gt::gtsave(as_gt(<tbl>), here("path/to/file.<ext>"))` saves table <tbl> as HTML, PNG, JPG, DOCX, RTF, TEX, or PDF files (depending on the extension <ext>).
+
+:::
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+
+## Break
+
+```{r}
+#| echo: false
+countdown(
+  minutes = 10,
+  left = "15%",
+  right = "15%",
+  top = "15%",
+  bottom = "15%",
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+
+
+# Tables for univariable models - multiple regression at once [optional]
+
+## `tbl_uvregression()` - base [optional] {auto-animate="true"}
+
+-   The `tbl_uvregression()` function is used to summarize the results of multiple (one for each covariate included) univariable models at once.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+trial |> 
+  tbl_uvregression(
+    include = c(response, age, grade),
+    y = response,
+    method = glm,
+    method.args = list(family = binomial)
+  )
+```
+
+::: callaut-important
+-   models function and arguments are specified within the `tbl_uvregression()` function directly.
+
+-   Variable types are automatically detected and reference rows are added for categorical variables.
+
+-   Model estimates and confidence intervals are rounded and formatted.
+
+-   Variable levels are indented and footnotes added.
+:::
+
+## `tbl_uvregression()` - autodetect [optional] {auto-animate="true"}
+
+-   The `tbl_uvregression()` function is used to summarize the results of multiple (one for each covariate included) univariable models at once.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+trial |> 
+  tbl_uvregression(
+    include = c(response, age, grade),
+    y = response,
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE
+  )
+```
+
+::: callaut-important
+-   Common model types detected and appropriate header added with footnote
+
+-   The model was recognized as logistic regression with coefficients exponentiated, so the header displayed “OR” for odds ratio.
+:::
+
+## `tbl_uvregression()` - customize {auto-animate="true"}
+
+-   The `tbl_uvregression()` function is used to summarize the results of multiple (one for each covariate included) univariable models at once.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+trial |> 
+  tbl_uvregression(
+    include = c(response, age, grade),
+    y = response,
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE
+  ) |> 
+  add_nevent() |>
+  add_global_p() |>
+  # adjusts global p-values for multiple testing
+  add_q() |> 
+  bold_p() |>
+  # bold q-values under the threshold of 0.10
+  bold_p(t = 0.10, q = TRUE) |> 
+  bold_labels()
+```
+
+::: callaut-tip
+-   `tbl_uvregression` is a wrapper for `tbl_regression`, and as a result, accepts nearly identical function arguments.
+
+-   Differently to `tbl_uvregression`, `tbl_regression` accepts a single full model object as input directly instead of a data frame and a model specification.
+
+-   To explore more details on `tbl_regression` function, you can find more information in the [gtsummary documentation](https://www.danieldsjoberg.com/gtsummary/reference/tbl_regression.html) or from R directly with `?tbl_regression`.
+:::
+
+# Merging (h) and stacking (v) tables [optional]
+
+## `tbl_merge()` {auto-animate="true"}
+
+-   The `tbl_merge()` function is used to merge multiple tables horizontally to compare or combine data.
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+library(survival)
+
+tbl_resp <- trial |> 
+  tbl_uvregression(
+    include = c(trt, grade, age),
+    y = response, 
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE
+) 
+
+tbl_surv <- trial |> 
+  tbl_uvregression(
+    include = c(trt, grade, age),
+    y = Surv(ttdeath, death),
+    method = coxph,
+    exponentiate = TRUE
+  )
+
+tbl_merge(
+  list(tbl_resp, tbl_surv),
+  tab_spanner = c("**Tumor Response**", "**Time to Death**")
+)
+```
+
+::: callout-important
+-   covariates are merged automatically
+-   footnotes are merged automatically
+-   column headers are merged automatically
+:::
+
+## `tbl_stack()` [optional] {auto-animate="true"}
+
+-   The `tbl_stack()` function is used to stack multiple tables vertically to compare or combine data.
+
+```{r}
+resp_uv <- glm(
+    response ~ trt,
+    family = binomial,
+    data = trial
+  ) |> 
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(trt ~ "Treatment (unadjusted)")
+  )
+
+resp_adj <- glm(
+    response ~ trt + age + grade + stage,
+    family = binomial,
+    data = trial
+  ) |> 
+  tbl_regression(
+    include = "trt",
+    exponentiate = TRUE,
+    label = list(trt ~ "Treatment (adjusted)")
+  )
+
+tbl_stack(list(resp_uv, resp_adj))
+```
+
+::: callout-tip
+-   you can pass models directly to `tbl_regression`
+-   you can include only specific variables in the table (but the model can be fit with more variables)
+:::
+
+
+## Your turn (main: B; bk1: C; bk2: A)
+
+::: callout-caution
+## Your turn (`tbl_cross` and `gtsave` only)
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>)
+
+-   Connect to the Day-3 project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+:::
+
+1.  Under the section `3.3. Ex23 Ex 24`, answer to the questions with an x next to the correct answer.
+
+3.  Then, open the script `16-tbl_uvregression.R` and follow the instruction step by step.
+
+4.  Then, open the script `17-merge.R` and follow the instruction step by step.
+
+::: {.fragment .fade-out fragment-index="1"}
+```{r}
+#| echo: false
+countdown(
+  minutes = 20,
+  left = "25%",
+  right = "25%",
+  top = "70%",
+  bottom = 0,
+  blink_colon = TRUE,
+  play_sound = TRUE,
+  margin = "5%",
+  font_size = "4em"
+)
+```
+:::
+
+::: {.fragment .fade-in fragment-index="1"}
+::: callout-important
+-   to formats the digits of the percentages, you can use the `digits` argument. For example, if the statistic being calculated is `"{n} ({p}%)"` and you want the percent rounded to 2 decimal places use digits = c(0, 2)
+
+-   In `tbl_uvregression` you pass a function and its arguments to the `method` and `method.args` arguments, respectively. That model will be fit for each variable included in the table.
+
+-   In the `tbl_regression` function, you pass a single model object to the `model` argument. That model will be summarized in the table.
+
+-   `tbl_merge` merges tables horizontally
+
+-   `tbl_stack` stacks tables vertically
+:::
+:::
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3)  (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
+
+ME: Connect to the Course-script project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `17-gtsummary.R`
+
+
+# Homework
+
+## Posit's RStudio Cloud Workspace
+
+**Instructions**
+  
+::: columns
+::: {.column width="50%"}
+-   Go to: https://bit.ly/ubep-rws-rstudio
+
+::: callout-caution
+## Your turn
+
+-   Project: day-3
+-   Instructions:
+  -   Go to: https://bit.ly/ubep-rws-website
+-   The text is the Day-3 assessment under the tab "Summative Assessments".
+-   (on RStudio Cloud) `homework/day_three-summative.html`
+-   Script to complete: `homework/solution.R`
+:::
+:::
+:::
+  
+  
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Daniel D. Sjoberg](https://www.danieldsjoberg.com/)'s [gtsummary](https://www.danieldsjoberg.com/gtsummary).
+
+-   [Daniel D. Sjoberg](https://www.danieldsjoberg.com/)'s [Presentation-Ready Summary Tables with gtsummary](https://education.rstudio.com/blog/2020/07/gtsummary/).
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Daniel D. Sjoberg](https://www.danieldsjoberg.com/)'s [gtsummary FAQ + Gallery](https://www.danieldsjoberg.com/gtsummary/articles/gallery.html).
+
+-   [Daniel D. Sjoberg](https://www.danieldsjoberg.com/)'s [Presentation-Ready Summary Tables with gtsummary](https://www.youtube.com/watch?v=tANo9E1SYJE) YouTube workshop.
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```
+### References

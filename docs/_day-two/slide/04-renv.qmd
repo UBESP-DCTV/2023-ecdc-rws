@@ -1,0 +1,294 @@
+---
+title: '[Day Two]{style="color:darkblue"}:<br>[Infrastructures]{style="color:darkorange;"}'
+subtitle: "~20 min"
+format:
+  revealjs:
+    width:  1648 #(3/2)
+    height: 1080
+    logo: img/UBEP.png
+    footer: "UBEP's R training for supervisors"
+    slide-number: true
+    history: false
+    preview-links: auto
+    code-link: true
+    multiplex: true
+    df-print: paged
+    chalkboard: 
+      src: src/chalkboard-pipes-and-visualization.json
+output-location: column
+bibliography: references.bib
+---
+
+```{r}
+#| label: setup
+#| include: false
+knitr::opts_chunk$set(
+  echo = TRUE,
+  results = "hold"
+)
+library(countdown)
+```
+
+# Overview {style="color:darkblue;"}
+
+## 
+
+::: columns
+::: {.column width="50%"}
+### Questions
+
+-   What is a library (and a repository) of R packages, and how many of them we (can) have on a system?
+-   What is `{renv}`, and why it is crucial for mid- long-term projects?
+-   How can we activate and use `{renv}` on our R projects?
+:::
+
+::: {.column width="50%"}
+### Lesson Objectives
+
+#### To be able to
+
+-   Describe the difference from a library and a package, in R.
+-   Create a project powered by `{renv}`
+-   Use `?renv::init`, `?renv::status`, `?renv::snapshot`, and `?renv::restore`
+:::
+:::
+
+# Local environments - `{renv}`
+
+## Glossary
+
+::: columns
+::: {.column width="50%"}
+-   **Package**: a container for functions and data
+
+-   **Library**: a folder on a computer in which installed packages are stored
+
+-   **Repository**: a source of packages (often on Internet)
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+## Reminder
+
+Functions and data are identified by their names (which cannot be duplicate within the same package).
+
+When you `library()` a package you *attach* it to the current R session.
+
+Attaching a package to the R session, it means to make it function and data names available for you to use. I.e., you are (within the session) expanded the *language*!
+:::
+:::
+:::
+
+## Repositories [optional]
+
+The most common repository is [CRAN](https://cran.r-project.org/) (The Comprehensive R Archive Network) from which you can install packages from any R session by `install.packages()`.
+
+::: columns
+::: {.column width="50%"}
+Other repositories are:
+
+-   [Bioconductor](https://bioconductor.org/): focused on open source software for bioinformatics.
+-   [Posit Public Package Manager](https://packagemanager.posit.co/): current and snapshot versions of R and Python packages.
+-   [R Universe](https://r-universe.dev/search/): high-performance package server which turns GitHub organizations into repositories.
+:::
+
+::: {.column width="50%"}
+
+::: callout-tip
+Call `getOption("repos")` to know which repository are you using in the session you are.
+
+```{r}
+getOption("repos")
+```
+:::
+
+:::
+:::
+
+## Libraries [optional]
+
+::: columns
+::: {.column width="50%"}
+- System: shared across all users and projects
+
+- User: shared by all the user projects
+
+- Project: powered by `{renv}`, is the project its own independent collection of packages
+:::
+
+::: {.column width="50%"}
+::: callout-tip
+Call `.libPaths()` to know which library are you using in the session you are.
+
+```{r}
+.libPaths()
+```
+
+:::
+:::
+:::
+
+## Create projects powered by `{renv}` [side]
+
+To create a project powered by `{renv}` you can simply tick the corresponding option in RStudio at creation time.
+
+![](img/rstudio-renv.png)
+
+
+## The `{renv}` main workflow
+
+![The renv workflow](img/renv-workflow.png)
+
+0.  `init()`: setup the `{renv}` infrastructure
+1.  `install()`/`update()`/`install.packages()`: install/update packages
+2.  `snapshot()`: update the `renv.lock` file writing metadata about the current state of the project library
+3.  `restore()`: restore the library accordingly to the what is prescribed in the `renv.lock` file
+
+> `status()`: check for differences between the `renv.lock` file and the packages installed in the project library.
+
+
+## Convert projects to use `{renv}`
+
+To convert an existing project to use `{renv}` call `renv::init()`.
+
+::: columns
+::: {.column width="50%"}
+This creates:
+
+-   A `renv/library` folder that will be the projects library containing all the packages used within the project
+
+-   `renv.lock` file which is the current package inventory of your projects, storing metadata of project used packages so that anyone can re-install them all (with exact the same version) on any other machine.
+
+-   A project dedicated `.Rprofile`; which is an R script that is automatically run at every R start, just before to giving you the power to interact with the R session, and it is used by `{renv}` to configure the project library in the current session.
+:::
+
+::: {.column width="50%"}
+![](img/renv-init.png)
+
+### My turn
+
+> ME: Connect to the course-scripts project in RStudio cloud (<https://bit.ly/ubep-rws-rstudio>): script `06-renv.R`
+:::
+
+:::
+
+
+## `{renv}` cache [optional]
+
+Every `{renv}` projects starts with an empty library (there is only the `{renv}` package itself).
+
+Working on many projects you will probably use same packages on different projects, so you will need to install them multiple times!
+
+::: callout-important
+Installing a package means:
+
+-   download it from a repository
+-   install (put) it in the project library
+
+every time...
+
+That is managed efficiently by a `{renv}` global cache, which permit to download and install a specific package (with a specific version) only once, so that installing the same package on multiple projects takes time only the first time, and it will be lighting fast in all the subsequent ones.
+:::
+
+## Your turn (main: A; bk1: B; bk2: C)
+
+```{r}
+#| echo: false
+countdown(
+minutes = 20,
+left = "68%",
+right = 0,
+top = 0,
+bottom = "83%",
+blink_colon = TRUE,
+play_sound = TRUE,
+margin = "1%",
+font_size = "4em"
+)
+```
+
+-   Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) (Ex. 6)
+
+-   Connect to Day 2 project on our RStudio cloud (<https://bit.ly/ubep-rws-rstudio>)
+
+::: columns
+::: {.column width="50%"}
+
+::: callout-caution
+## Your turn
+
+-   Create a new project
+-   Install `{renv}` and activate it
+-   Install `{ggplot2}`, and `{here}` and update the `renv.lock` file
+-   Create the folders `R/`, `analyses/`, and `output/`
+-   Create a script `R/functions.R` and define a function `make_plot()` returning a `ggplot2` plot of `mtcars`
+-   Create a script `analyses/analysis.R` that:
+-   attach the `ggplot2` package
+-   attach the `here` package
+-   attach the `functions.R` script
+-   calls the `make_plot()` function
+-   saves the plot in the `output/` folder
+-   Run the whole `analyses/analysis.R` script.
+-   Answer the question reported in the [pad](https://bit.ly/ubep-rws-pad-ed3) (https://bit.ly/ubep-rws-pad-ed3). 
+:::
+:::
+
+::: {.column width="50%"}
+- Within the `R/` folder, create a script named `functions.R` and type in
+
+``` r
+make_plot <- function() {
+  ggplot2::ggplot(
+    mtcars,
+    ggplot2::aes(x = cyl, y = mpg)
+  ) +
+    ggplot2::geom_point()
+}
+```
+
+-   within the `analyses/` folder, create a script `analysis.R` including the following code
+
+``` r
+library(here)
+library(ggplot2)
+
+source(here("R", "functions.R"))
+
+plot <- make_plot()
+
+ggsave(
+  plot,
+  here("output", "plot.png")
+)
+```
+
+::: 
+:::
+
+`status()`: check differences between `renv.lock` and packages installed in the project's library.
+
+
+## My turn
+
+YOU: Connect to our [pad](https://bit.ly/ubep-rws-pad-ed3) (<https://bit.ly/ubep-rws-pad-ed3>) and write there questions & doubts (and if I am too slow or too fast)
+
+
+## Acknowledgment
+
+To create the current lesson, we explored, used, and adapted content from the following resources:
+
+-   [Hadley Wickham](https://hadley.nz/)'s [R for Data Science (2e)](https://r4ds.hadley.nz/)
+
+-   [`{renv}`](https://rstudio.github.io/renv/articles/renv.html) website.
+
+The slides are made using [Posit](https://posit.co/)'s [Quarto](https://quarto.org/) open-source scientific and technical publishing system powered in R by [Yihui Xie](https://yihui.org/)'s [Kintr](https://yihui.org/knitr/).
+
+### Additional resources
+
+-   [Jenny Brian](https://jennybryan.org/about/)'s [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+
+### License
+
+```{=html}
+ <p xmlns:cc="http://creativecommons.org/ns#" ><a rel="cc:attributionURL" href="https://github.com/UBESP-DCTV/2023-ecdc-rws">This work</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/CorradoLanera">Corrado Lanera, Ileana Baldi, and Dario Gregori</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p> 
+```

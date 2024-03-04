@@ -1,0 +1,1733 @@
+---
+title: "Day Four - Assessment"
+subtitle: "UBEP's R training for supervisors"
+format:
+  html:
+    df-print: paged
+    embed-resources: true
+    code-fold: true
+    code-annotations: select
+    toc: true
+    toc-location: left
+bibliography: [references.bib, packages.bib]
+csl: vancouver.csl
+execute: 
+  warning: false
+editor: visual
+params:
+  solved: false
+---
+
+# Infrastructure, Import, and Tidying
+
+::: {.callout-note appearance="minimal"}
+## Learning Objectives
+
+At the end of the assessment, participants should have demonstrated their ability to: [@R-gtsummary; @R-knitr]
+
+-   Perform summary statistics on data sets using functions in the package `{gtsummary}` and `{skimr}` (i.e.,`tbl_cross`, `tbl_summary`, `skim`). [@R-gtsummary, @R-skimr]
+
+-   Perform summary statistics on multi/uni variable models using functions in the package `{gtsummary}` (i.e.,`tbl_regression`, `tbl_uvregression`). [@R-gtsummary]
+
+-   Adorn tables produced by `{gtsummary}` using functions in the package `{gtsummary}` itself (i.e., `add_p`, `add_n`, `add_overall`, `bold_labels`, `bold_p`, `italicize_levels`); Know that are options to modify headers too (i.e., `modify_header`). [@R-gtsummary]
+
+-   Ability to merge summary tables produced by `{gtsummary}` (i.e., `tbl_merge`, `tbl_stack`). [@R-gtsummary]
+:::
+
+# Preamble
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+::: panel-tabset
+## Instructions
+
+This assessment is the last of four ones regarding the UBEP's **R training for supervisors** for the ECDC.
+
+To solve the exercise follow the text and find the assessments in which you need to fill the `___` where required in the code. Next, go to the corresponding section of the R script `solution.R` and try/run sequentially your code.
+
+All the exercise are presented in a tabset panel with a tab containing all the missing parts, and a tab with the solved, completed (including output) code. This version of the file `r c("has not", "has")[params$solved + 1L]` the solution exposed.
+
+## RStudio cloud
+
+You can access to a dedicated R/RStudio environment on Posit Cloud at connecting [here](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4). You need to create a free account on Posit Cloud, and next accept to join the "R training for supervisors" workspace. Inside that space, you can enter in the "day-4" project, and find inside all the data, script and resources useful to complete the assessment.
+
+## Attribution
+
+The text and examples in the present document are UBEP's variation/adaptation from the ECDC EPIET Outbreak Investigation, that can be found on GitHub at <https://github.com/EPIET/OutbreakInvestigation>.[@noauthor_epietoutbreakinvestigation_nodate]
+
+## Copyright & License
+
+The present work is released under the GPL-3 License.
+:::
+
+# Data preparation
+
+::: panel-tabset
+## Context
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+### Objectives
+
+At the end of the case study, participants should be able to:
+
+-   Conduct an investigation to identify the source of an outbreak
+-   Apply the ten steps of an outbreak investigation
+-   Explain the epidemiological and microbiological contributions to foodborne outbreak investigations
+-   Perform data cleaning and analysis preparation steps using R
+-   Perform descriptive, univariable and stratified analyses using R
+-   Critically evaluate the results from statistical and microbiological analyses and identify food vehicles most likely associated with becoming ill
+-   Understand the importance of writing outbreak reports (developing an analytical plan)
+
+### The Alert
+
+On November 14th 2006 the director of a high school in Greater Copenhagen, Denmark, contacted the regional public health authorities to inform them about an outbreak of diarrhoea and vomiting among participants from a school dinner party held on the 11th of November 2006. Almost all students and teachers of the school (750 people) attended the party.
+
+The first people fell ill the same night and by 14 November, the school had received reports of diarrhoeal illness from around 200 - 300 students and teachers, many of whom also reported vomiting.
+
+### Your mission
+
+Your group has been tasked with investigating this outbreak; you have just received the information above.
+
+## Data Import
+
+::: callout-important
+## Instructions
+
+In this section, participants should fill in `___` the proper instructions to correctly import the data set.
+:::
+
+The epidemiologists in the outbreak team decided to perform a retrospective cohort study in order to identify the food item that was the vehicle of the outbreak. The cohort was defined as students and teachers who had attended the party at the high school on 11th of November 2006.
+
+A questionnaire was designed to conduct a survey on food consumption and on presentation of the illness. Information about the survey and a link to the questionnaire was circulated to students and teachers via the school's intranet with the request that everyone who attended the school party on 11th of November 2006 should fill in the questionnaire.
+
+Practically all students and teachers check the intranet on a daily basis, because it is the school's main communication channel for information about courses, homework assignments, cancellation of lessons etc. The school's intranet was accessible for ill students or teachers from home so that everyone in the cohort could potentially participate and the response rate could be maximised. Additionally, the information about the investigation was also displayed on the screen in the main hall of the school.
+
+These data were then exported from the survey tool and saved as `Copenhagen_raw.xlsx`.[^1]
+
+### Load packages {#load-pkgs}
+
+In this section, you will become familiar with the raw data set provided.
+
+Before to start, open your RStudio project day-3 within the course [Posit Cloud Workspace](https://posit.cloud/spaces/455124/join?access_code=DHjcv_CtTVioVEoCQTqHwYFs1-N5zyPVnl7bW_K4) by clicking on it.[^2] You can find your exercise within the `solution.R` file in the `assessment/` folder. That script reports all the unsolved chunks of R code reported in this very document, including all the once under the "Exercise" tabs. Within the project's folder there is a folder named `data-raw/`. In the `data-raw/` folder there is our raw file `Copenhagen_raw.xlsx`.
+
+First of all attach the packages we will use to the current working R session.
+
+```{r}
+#| label: setup
+#| code-fold: false
+library(tidyverse)
+library(gtsummary)
+library(here)
+library(janitor)
+library(unheadr)
+library(rio)
+library(skimr)
+```
+
+```{r}
+#| label: import-raw-ex
+#| code-fold: false
+linelist_raw <- import(here("data-raw/Copenhagen_raw.xlsx"))
+linelist_raw
+```
+
+You should now see that you have a `data.frame` called `linelist_raw` in your environment tab. You should also be able to see how many observations and variables it contains.
+
+You can view the data by clicking on the name of it (`linelist_raw`) in the environment pane, or alternatively, type and execute `View(linelist_raw)` in the R console.
+
+As you can see, the data are quite messy, especially in the first rows. If you navigate them you can find that:
+
+-   it seams that there are leading headers for each group of columns (in the first of them)
+-   the "real" headers seams span across multiple rows (three)
+-   the presence of logical column with all visible rows as NA could be highlight the presence of empty lines
+-   the sex column seams to report only the a single (the first) occurrence of `female` and `male`
+
+```{r}
+#| label: import
+
+# read and import the dataset
+# use the working instructions used previously
+# In the first line, create the path to the data set only
+linelist <- here("data-raw/Copenhagen_raw.xlsx") |> 
+  # import the data
+  # don't consider the first row (headers' groups) as column names
+  import(col_names = FALSE) |>
+  # mash together the four rows composing the headers
+  # merge the groups' headers with the proper headers in a single row
+  # (tip.: use a function in the `{unheadr}`)
+  mash_colnames(                                                  #  <1>
+    n_name_rows = 4,  # how many rows has to be mashed?
+    keep_names = FALSE, # do we count/consider current colnames?
+    sliding_headers = TRUE  # are there grouping headers'name (1st row)
+  ) |>  
+  # remove empty columns (tip.: use a function in the `{janitor}`)
+  remove_empty(which = c("cols")) |> 
+  # clean all the names
+  # convert them using standard cammel_case convention
+  # (tip.: use a function in the `{janitor}`)
+  clean_names() |> 
+  # fill the `sex` column to have a complete data set (remind that we
+  # have mashed the groups'heaaders with the columns'names)
+  fill(demo_sex) |> 
+  # Because of our importing strategy, all columns are pure characters.
+  # We can use the `parse_guess` function of the {readr} package to 
+  # mutate every columns to a suitable proper type across each one.
+  mutate(
+    across(everything(), \(x) parse_guess(x, guess_integer = TRUE))
+  )
+
+linelist
+```
+
+1.  Note: If you would like to throw away the groups' names at the beginning of each variable names, you could ignore the first line when importing the dataset (`import(skip = 1, col_names = FALSE)`) and remove the `sliding_headers` option to the `mash_colnames` call, considering three cols now only (`mash_colnames(3, keep_names = FALSE)`).
+
+### Exploring the data
+
+Before you can begin analysing the data, you will need to become familiar with its contents and check for any errors, or values that don't make sense.
+
+In addition, it is advisable to consider what format or class each variable (column) should be in. This is something you can include in your analysis plan. For example, if you know you will be creating an epidemic curve of onset dates, you will need to ensure that the onset dates have been correctly interpreted by R as `date` class on import and are not being read as character strings. The column class or type is particularly important if you plan on performing any calculations on that column.
+
+We will see how to do that, in the next lesson.
+
+Anyway we can have a look at the current summary of column types and values by the `skim` function of the `{skimr}` package.
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: skim-data-ex
+#| code-fold: false
+#| eval: false
+
+___(linelist)
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: skim-data-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# use the `skim` function of the {skimr} package to have an overview of the dataset's variables
+skim(linelist)
+```
+:::
+
+## Data Cleaning
+
+::: callout-important
+## Instructions
+
+In this section, participants should fill in `___` the proper instructions to correctly import the data set.
+
+> Suggestion: Explore the piped code sequentially, one istruction a time, looking on all the intermediate results step by step.
+:::
+
+### Date time variables
+
+The dates are formatted as day, then month (abbreviated character string), then year, in a character vector; we will convert them to a date object.
+
+Most people fell ill on Saturday 12 November (a day after the implicated meal). However, the data set also includes the hour of onset in a variable called `time_start_hour`. We will combine the date and hour of onset into a date-time variable, which will provide more appropriate units to construct an epicurve with later.
+
+```{r}
+#| label: pre-processing-date-time
+
+# Update linelist:
+linelist <- linelist |> 
+  mutate(
+    time_day_onset = dmy(time_day_onset, tz = "UTC"),
+    time_datetime_onset = paste(time_day_onset, time_start_hour) |> 
+      ymd_h(truncated = 2) # <1>
+  )
+
+linelist
+```
+
+1.  The argument `truncated = 2` will result in dates with missing `time_start_hour` still being converted to date-time, with the missing time being set to `00:00` (midnight). Whether you want to deal with missing `time_start_hour` in this way or prefer to code these date-times as `NA` will depend on how you want them to be represented in your analysis.
+
+### Recoding values
+
+There is a variable in the data set called `group`. In this variable, teachers have been encoded as `0`, while students were encoded as `1`. We can convert the `group` variable to a factor and give each factor level the appropriate label.
+
+We will convert to factor also the `demo_sex` variable
+
+```{r}
+#| label: demo-sex
+
+linelist <- linelist |> 
+  mutate(
+    demo_sex = factor(demo_sex),
+    demo_group = factor(demo_group, labels = c("teacher", "student")),
+    demo_class = factor(demo_class)
+  )
+linelist
+```
+
+Having a look to combination of `demo_age` and `demo_group` (@tbl-age-group-original) we can highlight and fix some typographical errors.[^3]
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-age-group-original-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # create a contingency table of `demo_age` and `demo_group`
+  ___(demo_age, demo_group)
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-age-group-original-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Age vs. Group comparison for the original data."
+linelist |> 
+  # create a contingency table of `demo_age` and `demo_group`
+  tbl_cross(demo_age, demo_group)
+```
+:::
+
+-   There is one teacher aged 16 (likely digit reversal - should be 61)
+-   There is one student aged 8 (likely missing a digit - should be 18)
+-   There is one student aged 180 (likely has an extra digit - should be 18)
+
+We will fix those values accordingly. (@tbl-age-group-fixed)
+
+```{r}
+#| label: age-group-fixes
+linelist <- linelist |> 
+  mutate(
+    demo_age = case_when(
+      demo_age == 16 & demo_group == "teacher" ~ 61, 
+      demo_age %in% c(8, 180) & demo_group == "student" ~ 18, 
+      TRUE ~ demo_age
+    )
+  )
+linelist
+```
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-age-group-fixed-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # create a contingency table of `demo_age` and `demo_group`
+  ___(demo_age, demo_group)
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-age-group-fixed-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Age vs. Group comparison after fix"
+linelist |> 
+  tbl_cross(demo_age, demo_group)
+```
+:::
+
+### Variable Class
+
+Most variables are either binary symptoms or food exposures, that have been encoded as 0 (where the symptom was absent or there was no exposure) or 1 (symptom present or person was exposed to the food item). We will convert them to logicals (i.e., `TRUE`/`FALSE`).
+
+```{r}
+#| label: booleans-hidden
+
+# Update linelist
+linelist <- linelist |>
+  mutate(
+    across(
+      where(\(x) all(x %in% c(0, 1, NA))),
+      as.logical
+    )
+  )
+linelist
+```
+
+## Case Definition
+
+::: callout-important
+## Instructions
+
+In this section, participants should fill in `___` the proper instructions to correctly import the data set.
+
+> Suggestion: Explore the piped code sequentially, one istruction a time, looking on all the intermediate results step by step.
+:::
+
+The final step to undertake before proceeding to descriptive analysis, is to create a new column in the data set to hold the case definition. You can call this column `case` and set it to `TRUE` if the individual meets the case definition criteria and `FALSE` if not.
+
+**Variables of interest:**
+
+Your exposure of interest is the school dinner party held on 11 November 2006 at 18:00. You may have noticed while skimming the data, that there is a binary variable called `food_meal`. This variable indicates whether people attended the school dinner party and ate a meal there, or not.
+
+Other variables that will be helpful to include in your case definition are `time_datetime_onset` (hint: check that case onset date/time is **after** exposure) and symptom variables (hint: not everyone on the linelist fell ill). The symptoms included in the data set are:
+
+-   `symptoms_abdo` (abdominal pain)
+-   `symptoms_diarrhoea`
+-   `symptoms_bloody` (bloody diarrhoea)
+-   `symptoms_nausea`
+-   `symptoms_vomiting`
+-   `symptoms_fever`
+-   `symptoms_headache`
+-   `symptoms_jointpain`
+
+### Defining a case
+
+To demonstrate how this works, we will first construct an example case definition in words:
+
+A case was defined as a person who:
+
+-   attended the school dinner on 11 November 2006 (i.e. is on the linelist)
+-   ate a meal at the school dinner (i.e. was exposed)
+-   fell ill after the start of the meal
+-   fell ill no later than two days after the school dinner
+-   suffered from diarrhoea with or without blood, or vomiting
+
+Non cases were defined as people who:
+
+-   attended the school dinner on 11 November 2006 (i.e. are on the linelist)
+-   ate a meal at the school dinner (i.e. were exposed)
+-   did not fall ill within the time period of interest
+-   did not develop diarrhoea (with or without blood) or vomiting
+
+For the sake of the analysis, we exclude any people from the cohort who didn't eat at the dinner, because we specifically hypothesise a food item to be the vehicle of infection in this outbreak. Excluding people reduces the sample size and therefore the power slightly, but the investigators considered that this would increase specificity.
+
+The variables needed to define this case definition are:
+
+-   `food_meal`
+-   `time_datetime_onset`
+-   `symptoms_diarrhoea`
+-   `symptoms_bloody`
+-   `symptoms_vomiting`
+
+### Case definition
+
+First, we create a column for the date and time of the meal. We can use this column to determine if onset date/times occured before or after the meal. We can limit the case definition to people who had onset date/times after the meal, since we hypothesise that the meal is where exposure to the pathogen occured.
+
+Moreover, for the case definition, we are primarily interested in three symptoms:
+
+-   `symptoms_diarrhoea` (without blood)
+-   `symptoms_bloody` (diarrhoea with blood)
+-   `symptoms_vomiting`
+
+However, these are not the only symptoms in the data set. When creating the case definition, it would be easier to refer to these three symptoms if there was one column, indicating whether people had those symptoms or not. We can call this column `symptoms_gastro`.
+
+```{r}
+#| label: case-def
+
+# Start with linelist:
+linelist <- linelist |>  
+  mutate(
+    meal_datetime = ymd_h("2006-11-11 18"),
+    symptoms_gastro = (
+      symptoms_diarrhoea | symptoms_bloody | symptoms_vomiting
+    ) |>
+      # Replace missing values with FALSE
+      replace_na(FALSE)
+  )
+linelist
+```
+
+> Note that we have included people who have no data for all three symptoms of interest, and categorised them as `FALSE`. This means that they will be defined as non-cases in the next step.
+
+**Creating the case definition column**
+
+Next, we can create a column for the case definition, in which we will define all the respondents as either cases, non-cases or `NA`.
+
+We can define non-cases as those who attended the meal, but didn't develop any gastro symptoms, or if they did, developed them before the meal took place.
+
+We can exclude (define as `NA`) respondents that answered the survey, but did not attend the meal.
+
+```{r}
+#| label: ate-meal
+linelist <- linelist |>
+  rowwise() |> 
+  mutate(
+    # Consider only vars that start with "food" and do not end with "_d"
+    ate_anything = c_across(starts_with("food") & !ends_with("_d")) |> 
+      reduce(`|`) |>
+      # Replace missing values with FALSE
+      replace_na(FALSE)
+  ) |> 
+  ungroup()
+linelist
+```
+
+Next, we can check if there is anyone that said they didn't eat a meal (or skipped that question) but did consume one or more of the food or drink items at the party (@tbl-ate-meal):
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-ate-meal-ex
+#| code-fold: false
+#| eval: false
+
+tbl_ate_meal <- linelist |> 
+  # Create a cross table of people who ate something without having the meal
+  ___(food_meal, ate_anything)
+tbl_ate_meal
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-ate-meal-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "People eating something without having the meal."
+tbl_ate_meal <- linelist |> 
+  # Create a cross table of people who ate something without having the meal
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
+```
+:::
+
+We can see from this table that `r inline_text(tbl_ate_meal, col_level = "TRUE", row_level = "FALSE")` respondents said they didn't have a meal, but did actually consume items on the party meal menu, according to their answers for the food and drink questions.
+
+We can therefore recode the `food_meal` column for these individuals as `TRUE`.
+
+```{r}
+#| label: fix-ate-meal
+
+# Start with linelist:
+linelist <- linelist |> 
+  # modify the food_meal column for people who ate something but didn't
+  # have a meal
+  mutate(
+    food_meal = if_else(
+      !food_meal & ate_anything,
+      true = TRUE,
+      false = food_meal
+    )
+  )
+linelist
+```
+
+Check teh result (@tbl-ate-meal-check).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-ate-meal-check-ex
+#| code-fold: false
+#| eval: false
+
+tbl_ate_meal <- linelist |> 
+  # Create a cross table of people who ate something without having the meal
+  ___(food_meal, ate_anything)
+tbl_ate_meal
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-ate-meal-check-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "People eating something without having the meal, after fix."
+tbl_ate_meal <- linelist |> 
+  tbl_cross(food_meal, ate_anything)
+tbl_ate_meal
+```
+:::
+
+Now that these values are corrected, we can proceed with the case definition:
+
+```{r}
+#| label: case-definition
+
+# Start with linelist:
+linelist <- linelist |>  
+  # Create case definition:
+  mutate(
+    case = case_when(
+      # Define excluded individuals as those with no record of a meal:
+      !food_meal | is.na(food_meal) ~ NA,
+  
+      # Cases have any gastro symptoms with onset after the meal:
+      symptoms_gastro & !is.na(time_datetime_onset) & (time_datetime_onset >= meal_datetime) 
+      ~ TRUE, 
+      
+      # All the rest (i.e., `TRUE` evaluates as `TRUE` for all the cases
+      # that didn't match a previous condition!) marked as FALSE,
+      # i.e., non cases have no gastro symptoms but ate a meal at the party:
+      # !symptoms_gastro |
+      #   (symptoms_gastro & (time_datetime_onset < meal_datetime))
+      TRUE ~ FALSE
+    ),
+  )
+linelist
+```
+
+### Incubation times
+
+A suitable incubation period to use in the case definition can be defined by calculating the time between exposure (to the meal) and onset of symptoms, and then looking at the distribution of these time differences. In this outbreak, incubation periods are easy to calculate, because everyone was exposed at (roughly) the same time and on the same day (eating the meal at the school dinner party).
+
+We will create a column for incubation times (date and time of meal subtracted from the date and time of symptom onset).
+
+```{r}
+#| label: incubation
+
+linelist <- linelist |>  
+  # Update incubation to be NA if case is not TRUE:
+  mutate(
+    incubation = if_else(case, time_datetime_onset - meal_datetime, NA)
+  )
+linelist
+```
+
+We can now refine the case definition and limit the maximum incubation period to 48 hours after the meal, as the data points to a fast-acting bacterial toxin or a virus.
+
+We will update the case definition, this time only changing values which were previously defined as a case but had onset of symptoms after 13 November 2006 at 18:00. Respondents that meet this condition will be reclassified as non cases (i.e. `case = FALSE`).
+
+```{r}
+#| label: case-update
+
+# Update the case definition to limit to onset three days after meal:
+linelist <- linelist |> 
+  mutate(
+    case = case & (time_datetime_onset <= (meal_datetime + days(2)))
+  )
+linelist
+```
+
+As it happens, there is no change in the number of cases, because none of them had an onset date and time that was more than two days after the meal. We can double-check this by cross-tabulating the onset date/time and case status (@tbl-case-onset).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-case-onset-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # Show a cross table of onset date/time and case status:
+  ___(time_datetime_onset, case)
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-case-onset-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Cases and non-cases each onset datetime"
+
+linelist |> 
+  # Show a cross table of onset date/time and case status:
+  tbl_cross(time_datetime_onset, case)
+```
+:::
+
+We can see that the onset dates of all cases were from 11 to 13 November 2006 inclusive; this is why case numbers didn't change when we updated the case definition.
+
+### Exclusions
+
+Ultimately, the investigation team decided to remove respondents that did not meet the definition for a case or a non-case from the data set prior to analysis. We can do this easily with the function `drop_na()`:
+
+```{r}
+#| label: drop-missing-cases
+
+linelist <- linelist |> 
+  # Remove rows where case is NA:
+  drop_na(case)
+linelist
+```
+:::
+
+[^1]: This version of the dataset is slightlty modified respect the original `Copenhagen_raw.csv` raw dataset to include some additional *messiness* useful for the assessment purposes.[@epiet/ou]
+
+[^2]: If you have downloaded it in your local environment, you can double click on the `project.Rproj` project file.
+
+[^3]: Assuming you have contacted the school to make sure your suspicions about the actual ages are correct!
+
+# Descriptive analysis
+
+::: panel-tabset
+## Introduction
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+### Goals
+
+In this session, we will perform some descriptive analysis. Typically, we would describe the outbreak in terms of time, place and person. In this data set, we don't have geospatial information, but we do have time (onset dates and times, incubation periods) and person (age, sex, clinical symptoms). You will:
+
+-   Describe cases by age and sex
+-   Describe case symptoms
+-   Describe and illustrate incubation periods
+-   Create an epidemic curve
+
+Many of the descriptive features can be illustrated graphically, for which we will use the package `ggplot2`.
+
+## Analisys Plan
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+In theory, you create an analysis plan before data collection - it is an important way to ensure you collect all the data you need and that you *only* collect the data you need (think: data protection!). However, during outbreak investigations, you may need to deploy questionnaires as soon as possible and before a plan has been developed. In these cases, your experience will be an important resource to fall back on.
+
+In your analysis plan you should create a document to include:
+
+-   research question(s) and hypothesis
+-   dataset(s) to be used
+-   inclusion / exclusion criteria for records you will use in your analysis
+-   list of variables that will be used in the main analysis;
+    -   outcome variable (being a case)
+    -   main exposure variables (e.g. food consumed)
+    -   stratifying variables (e.g. age, sex, group, class)
+-   statistical methods
+-   key mock-up tables including title, labels and expected format for results
+    -   univariable
+    -   bivariable
+    -   stratified
+
+## Time
+
+::: callout-important
+## Instructions
+
+This section is for context only. Nothing has to be done in this section by the participants.
+:::
+
+### Incubation period
+
+> The incubation period of a disease is the time from an exposure resulting in infection until the onset of disease. Because infection usually occurs immediately after exposure, the incubation period is generally the duration of the period from the onset of infection to the onset of disease. [@rothman2008]
+
+In the previous section, we calculated incubation period by subtracting the meal date and time from the date and time of symptom onset. This gave us the incubation period in hours. We can now look at this on a graph:
+
+**Plot of incubation period:**
+
+```{r}
+#| label: incubation_ggplot
+
+incplot <- linelist |>  
+  
+  # Remove missing values from incubation column:
+  drop_na(incubation) |> 
+  
+  # Create an empty ggplot frame:
+  ggplot(aes(x = incubation)) +
+  
+  # Add a histogram of incubation:
+  geom_histogram(
+    # Set bin widths to 6 hours:
+    binwidth = 6
+  ) +
+  
+  # Adapt scale to better fit data
+  scale_x_continuous(breaks = seq(0, 48, 6)) + 
+  
+  # Label x and y axes:
+  labs(
+    x = "Incubation period in 6-hour bins",
+    y = "Number of cases"
+  )
+
+# Print plot:
+incplot
+```
+
+### Epidemic curve
+
+To create an *epicurve*, we are going to use `ggplot2`. `ggplot2` is a versatile package that helps create beautiful visualizations in `R`. There are plenty good in-depth guides to the package, for example: [*The Epidemiologist R Handbook* Chapter on *ggplot*](https://epirhandbook.com/en/ggplot-basics.html) and [*ggplot2 - Elegant Graphics for Data Analysis*](https://ggplot2-book.org/index.html).
+
+First, we can create an epicurve for the date of onset, limiting the input data to cases:
+
+```{r}
+#| label: epicurve-date
+
+# Fetch data:
+epicurve_date <- linelist |> 
+  
+  # Filter for cases where dayonset is not missing:
+  filter(case, !is.na(time_day_onset)) |>  #<1>
+  
+  # Add dayonset to ggplot aesthetic:
+  ggplot(aes(x = time_day_onset)) + 
+  
+  # Add the proper `geom_*` for a barplot:
+  geom_bar() +
+
+  # Update x and y axis labels:
+  labs(x = "Date of onset", 
+       y = "Number of cases") +
+  
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_date
+```
+
+1.  Note that `case` is logical, so we can use it as a filter directly (i.e., `case == TRUE` is exactly the same as `case` alone).
+
+As you can see, the epicurve is quite crude, because most cases had their disease onset on 12 November. To increase resolution, we could enhance the time information to include both day and hour.
+
+During the data preparation session, we already concatenated the variables `time_day_onset` and `start_hour` together and formatted them with the `lubridate` package to create a new date-time variable called `time_datetime_onset`. We can now create the epicurve with this variable:
+
+```{r}
+#| label: epicurve-hour
+
+# Fetch data:
+epicurve_hour <- linelist |> 
+  
+  # Filter for cases where dayonset is not missing:
+  filter(case, !is.na(time_datetime_onset)) |> 
+  
+  # Add onset_datetime to ggplot aesthetic:
+  ggplot(aes(x = time_datetime_onset)) + 
+  
+  # Add the proper `geom_*` for a barplot:
+  geom_bar() +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Update x and y axis labels:
+  labs(
+    x = "Date and time of onset", 
+    y = "Number of cases"
+  ) +
+
+  # Remove unnecessary grid lines:
+  theme_bw()
+
+# Print epicurve:
+epicurve_hour
+```
+
+Finally, we could compare the epicurve between the sexes and additionally investigate how teachers versus students were distributed.
+
+```{r}
+#| label: epicurve-stratified
+
+# Fetch data:
+epicurve_strata <- linelist |> 
+  
+  # Filter for cases where onset_datetime is not missing:
+  filter(case, !is.na(time_datetime_onset)) |> 
+  
+  # Add factor onset_day to ggplot aesthetic:
+  ggplot(aes(x = time_datetime_onset)) + 
+  
+  # Add the proper `geom_*` for an "overall" barplot:
+  geom_bar() +
+  
+  # Superimpose the same `geom_*` for a barplot
+  # stratified by sex:
+  geom_bar(aes(fill = demo_sex), position = "dodge") +
+  
+  # Adjust x axis scales to a suitable unit:
+  scale_x_datetime(
+    date_breaks = "6 hours", 
+    labels = scales::label_date_short()) +
+  
+  # Stratify by group:
+  facet_wrap("demo_group", nrow = 2) +
+  
+  # Update x and y axis labels:
+  labs(
+    x = "Date and time of onset", 
+    y = "Number of cases", 
+    fill = "Sex", 
+    title = "Epicurve of the outbreak, overall (gray bars) and stratified by sex (coloured bars)",
+    subtitle = str_glue(
+      "Copenhagen, November 2006, N = {sum(linelist$case)}"
+    )
+  ) +
+
+  # Add theme:
+  theme_bw()
+
+# Print epicurve:
+epicurve_strata
+```
+
+## Person
+
+In this section, we will describe the outbreak in terms of personal characteristics (age, sex and symptoms of cases).
+
+### Age & sex
+
+During the data cleaning exercise, we already looked at the age characteristics of the cohort, since there were some typographic errors that needed to be corrected. However, we have not yet looked at the distribution of cases and non-cases by sex (@tbl-case-sex).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-case-sex-ex
+#| code-fold: false
+#| eval: false
+
+linelist |>
+  # Show a cross table of cases and sex, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages. 
+  ___(case, demo_sex, ___ = "row", digits = c(0, ___))
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-case-sex-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Frequency and percentage of cases stratified by sex."
+
+linelist |> 
+  # Show a cross table of cases and group, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages.
+  tbl_cross(case, demo_sex, percent = "row", digits = c(0, 2))
+```
+:::
+
+Now we can also look at `group` (whether the respondent is a student or a teacher) (@tbl-case-group).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-case-group-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # Show a cross table of cases and group, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages.
+  ___(case, demo_group, ___ = "row", digits = c(___, ___))
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-case-group-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Frequency and percentage of cases stratified by group"
+
+linelist |> 
+  # Show a cross table of cases and group, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages.
+  tbl_cross(case, demo_group, percent = "row", digits = c(0, 2))
+```
+:::
+
+We can see that the majority of respondents are students; this is true for both cases and non-cases.
+
+Lastly, we will look at school class. The respondents belong to three classes (@tbl-case-class).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-case-class-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # Show a cross table of cases and class, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages.
+  ___(case, demo_class, ___ = "row", digits = c(___, ___))
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-case-class-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Frequency and percentage of cases stratified by class."
+
+linelist |> 
+  # Show a cross table of cases and class, with percentages by row.
+  # Use 0 decimal places for counts and 2 decimal places for percentages.
+  tbl_cross(case, demo_class, percent = "row", digits = c(0, 2))
+```
+:::
+
+### Symptoms
+
+In the first part of this case study, we selected three symptoms to use in the case definition; these were diarrhoea (with or without blood) and vomiting. However, other symptoms were also recorded in the survey.
+
+It may be useful to determine which symptoms are most common among cases and non-cases (@tbl-symptoms).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-symptoms-ex
+#| code-fold: false
+#| eval: false
+
+tbl_symptoms <- linelist |> 
+  # Create a table of symptoms, stratified by case status.
+  # consider percentages by column.
+  ___(
+    ___ = case,
+    include = starts_with("symptoms"),
+    percent = "___",
+    # Create nice labels:
+    label  = list(
+      symptoms_diarrhoea   ~ "Diarrhoea",                           
+      symptoms_bloody      ~ "Dysentary",
+      symptoms_vomiting    ~ "Vomiting",
+      symptoms_abdo        ~ "Abdominal pain",
+      symptoms_nausea      ~ "Nausea", 
+      symptoms_fever       ~ "Fever", 
+      symptoms_headache    ~ "Headache", 
+      symptoms_joint_pain   ~ "Joint pain"
+    )
+  ) |> 
+  # add a total column.
+  ___() |> 
+  # add p values.
+  ___() |> 
+  # make the labels bold and italic.
+  ___() |> 
+  ___() |> 
+    # Modify header:
+  modify_header(
+    stat_1 = "**Non-case**\n *N* = {n}",
+    stat_2 = "**Case**\n *N* = {n}", 
+    p.value = "**P value**"
+    )
+tbl_symptoms
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-symptoms-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+#| tbl-cap: "Summary statistics of symptoms by case/non-case."
+
+tbl_symptoms <- linelist |> 
+  tbl_summary(
+    by = case,
+    include = starts_with("symptoms"),
+    percent = "column",
+    # Create nice labels:
+    label  = list(
+      symptoms_diarrhoea   ~ "Diarrhoea",                           
+      symptoms_bloody      ~ "Dysentary",
+      symptoms_vomiting    ~ "Vomiting",
+      symptoms_abdo        ~ "Abdominal pain",
+      symptoms_nausea      ~ "Nausea", 
+      symptoms_fever       ~ "Fever", 
+      symptoms_headache    ~ "Headache", 
+      symptoms_joint_pain   ~ "Joint pain"
+    )
+  ) |> 
+  add_overall() |> 
+  add_p() |> 
+  bold_labels() |> 
+  italicize_labels() |> 
+    # Modify header:
+  modify_header(
+    stat_1 = "**Non-case**\n *N* = {n}",
+    stat_2 = "**Case**\n *N* = {n}", 
+    p.value = "**P value**"
+    )
+tbl_symptoms
+```
+:::
+
+Looking at the table, do you think the symptoms selected for the case definition were the right ones, or would you change anything? This might be a bit easier to assess if we look at the symptoms in an ordered bar chart. To do this, we will need to reshape the data, so that one column contains symptoms and another column contains the proportion of respondents with a given symptom in each case.
+
+We will reshape the data, and tally up the counts for each symptom, stratified by case definition.
+
+::: callout-important
+## Instructions
+
+In this section, participants should fill in `___` the proper instructions to correctly reshape the data set of symptoms to have intermediate data set composed by three columns: `case`, `symptoms`, and `value`.
+
+To do that, use the proper `pivot_*` function of hte `{tidyr}` package.
+:::
+
+```{r}
+#| label: pivot
+tbl_symptoms_case <- linelist |> 
+  # Select all symptoms columns, i.e., those starting with "symptoms":
+  select(case, starts_with("symptoms")) |> 
+  # Remove rows with missing values:
+  drop_na() |> 
+  
+  # Reshape the dataset from wide to long
+  pivot_longer(
+    -case, 
+    names_to = "symptoms",
+    values_to = "value",
+    values_drop_na = TRUE
+  ) |> 
+  # Keep only TRUE `value`s:
+  filter(value) |> 
+  count(symptoms, case)
+tbl_symptoms_case
+```
+
+```{r}
+#| label: pivot-plot
+fig_symptoms_case <- tbl_symptoms_case |> 
+  ggplot(aes(
+    x = fct_infreq(symptoms), 
+    y = n,
+  )) +
+  geom_bar(stat = "identity") +
+  labs(
+    x = "Symptoms",
+    y = "Proportion of respondents"
+  ) +
+  coord_flip() +
+  facet_wrap(
+    case ~ .,
+    ncol = 2,
+    labeller = c(
+      "FALSE" = "Non case",
+      "TRUE" = "Case"
+    ) |> as_labeller()
+  )
+fig_symptoms_case
+```
+
+### Attack proportions
+
+You can calculate crude attack proportions and attack proportions stratified by different variables of interest. Commonly, *attack proportions* are also called "*attack rates*" but please note that "*attack rate*" is a misnomer and should not be used: "*attack rates*" are not *rates*, but rather *proportions*. Mathematically, a *rate* is defined as a change in one unit per change in another unit. For example, think about velocity: the distance travelled per time passed, typically measured in *meters*/*seconds*. Other examples include decay of radioactive material with *decays*/*seconds*, or widely used in epidemiology: *incidence rate* - the number of new cases per month/year/etc. Crucially, *rates* have no upper limit: 10, 100, 1000 individuals can fall sick per month. *Proportions*, in contrast, compare the amount of something to the amount of the whole. *Attack proportions* compare the number of those having become sick to the size of the whole sample. As such, *attack proportions* can never be greater than 1 or 100% - at maximum, the entire sample became ill.
+
+Thus, the *attack proportion* is simply the percentage of Cases among the total observed individuals and can be calculated quite easily.
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: attack-proportion-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # Calculate attack proportion using the `case` variable and the function `tbl_summary`
+  ___(include = ___)
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: attack-proportion-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+linelist |> 
+  # Calculate attack proportion using the `case` variable and the function `tbl_summary`
+  tbl_summary(include = case)
+```
+:::
+
+It would also be interesting to stratify the attack proportion by another variable. First we will look at `group` (students vs. teachers).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: attack-proportion-group-ex
+#| code-fold: false
+#| eval: false
+
+tbl_attack_case_group <- linelist |> 
+  # Calculate attack proportion using the `case` variable, by `demo_group`
+  # the function `tbl_summary`
+  ___(___ = case, ___ = demo_group) |>
+  # Add overall attack proportion
+  ___()
+tbl_attack_case_group
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: attack-proportion-group-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+tbl_attack_case_group <- linelist |> 
+  tbl_summary(include = case, by = demo_group) |> 
+  add_overall()
+tbl_attack_case_group
+```
+:::
+
+The attack proportion among students is `r inline_text(tbl_attack_case_group, case, "student")`, while for teachers, the attack proportion is `r inline_text(tbl_attack_case_group, case, "teacher")`.
+
+Of course, we would like to to know if attack proportions differ when stratifying by other variables, too. E.g., for group, class and sex (the demographic `demo_*` ones excluding `demo_id` and `demo_age`).
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: attack-class-group-sex-ex
+#| code-fold: false
+#| eval: false
+
+linelist |> 
+  # Calculate attack proportion using the `demo_*` variables
+  # by `case`. Exsclude `demo_id` and `demo_age`.
+  ___(
+    ___ = c(starts_with("demo"), -demo_id, -___),
+    label = list(
+      demo_class ~ "Class",
+      demo_group ~ "Group",
+      demo_sex ~ "Sex"
+    ),
+    by = case
+  ) |> 
+  # Add overall attack proportion
+  ___() |> 
+  modify_header(
+    stat_1 = "**Non-case**<br> *N* = {n}",
+    stat_2 = "**Case**<br> *N* = {n}"
+  ) |>
+  # Add p-values
+  ___() |> 
+  # Make variable names bold and italics
+  ___() |>  
+  ___() |>
+  sort_p()
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: attack-class-group-sex-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+linelist |> 
+  # Calculate attack proportion using the `demo_*` variables
+  # by `case`. Exsclude `demo_id` and `demo_age`.
+  tbl_summary(
+    include = c(starts_with("demo"), -demo_id, -demo_age),
+    label = list(
+      demo_class ~ "Class",
+      demo_group ~ "Group",
+      demo_sex ~ "Sex"
+    ),
+    by = case
+  ) |> 
+  # Add overall attack proportion
+  add_overall() |> 
+  modify_header(
+    stat_1 = "**Non-case**<br> *N* = {n}",
+    stat_2 = "**Case**<br> *N* = {n}"
+  ) |> 
+  # Add p-values
+  add_p() |> 
+  # Make variable names bold and italics
+  bold_labels() |>  
+  italicize_labels() |>
+  sort_p()
+```
+:::
+
+We can see that although there are minor differences in attack proportion by group, class and sex, none are statistically significant. Remember that there are much fewer teachers than students.
+:::
+
+# Univariable analysis
+
+::: panel-tabset
+## Risk ratios
+
+### Introduction
+
+To identify the potential vehicle(s) of infection in the outbreak, we will proceed with an analytical study where statistical tests are used to investigate the associations of some suspicious food items with the disease.
+
+For this case study, we will conduct univariable analysis to calculate the relative risks, in order to identify possible vehicles of infection from all the food and drink exposures.
+
+*Note:*
+
+Here we are using a measure of association (relative risk) in order to rank the food and drink exposures in the cohort of people that attended the school dinner and identify the most likely vehicle(s) of infection. We will calculate the relative risks by specifying the model method as `glm`, the family as `binomial` and link as `log`.
+
+We will also specify that we only want single rows of output for binary exposures, and we will exponentiate the results to get the relative risks.
+
+**Table of risk ratios for food and drink exposures**
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-rrtab-ex
+#| code-fold: false
+#| eval: false
+
+# Pipe in the data:
+rrtab <- linelist |>  
+  # Calculate risk ratios selecting the appropriate `{gtsummary}` fun.
+  # use the `case` (y) variable and all the `food_*` variables (xs)
+  # (excluding the dose ones, i.e., the ones ending with `_d`)
+  ___(
+    ___ = c(starts_with("food"), -ends_with("_d"), case), 
+    label = list(
+      food_pasta ~ "Pasta",
+      food_veal ~ "Veal",
+      food_champagne ~ "Champagne",
+      food_sauce ~ "Sauce",
+      food_shrimps ~ "Shrimps",
+      food_beer ~ "Beer",
+      food_rocket ~ "Rocket",
+      food_bread ~ "Bread",
+      food_tuna ~ "Tuna",
+      food_red_wine ~ "Red wine",
+      food_green ~ "Green",
+      food_white_wine ~ "White wine"
+    ),
+    
+    # Choose the model (generalised linear model)
+    method = glm, 
+
+    # Use the `case` variable as the outcome:
+    y = ___,
+    
+    # Choose the model family:
+    method.args = list(
+      family = binomial(link = "log"),
+      na.action = na.exclude
+    ),
+
+    # Exponentiate the results:
+    exponentiate = ___,
+
+    # Show results for binary variables on a single row:
+    show_single_row = c(starts_with("food"), -ends_with("_d"))
+    
+  ) |> 
+  
+  # Sort the table by p-values: 
+  sort_p()
+
+# Print the results table:
+rrtab
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-rrtab-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Pipe in the data:
+rrtab <- linelist |>  
+  # Calculate risk ratios selecting the appropriate `{gtsummary}` fun.
+  # use the `case` (y) variable and all the `food_*` variables (xs)
+  # (excluding the dose ones, i.e., the ones ending with `_d`)
+  tbl_uvregression(
+    include = c(starts_with("food"), -ends_with("_d"), case), 
+    label = list(
+      food_pasta ~ "Pasta",
+      food_veal ~ "Veal",
+      food_champagne ~ "Champagne",
+      food_sauce ~ "Sauce",
+      food_shrimps ~ "Shrimps",
+      food_beer ~ "Beer",
+      food_rocket ~ "Rocket",
+      food_bread ~ "Bread",
+      food_tuna ~ "Tuna",
+      food_red_wine ~ "Red wine",
+      food_green ~ "Green",
+      food_white_wine ~ "White wine"
+    ),
+    
+    # Choose the model (generalised linear model)
+    method = glm, 
+
+    # Use the `case` variable as the outcome:
+    y = case,
+    
+    # Choose the model family:
+    method.args = list(
+      family = binomial(link = "log"),
+      na.action = na.exclude
+    ),
+
+    # Exponentiate the results:
+    exponentiate = TRUE,
+
+    # Show results for binary variables on a single row:
+    show_single_row = c(starts_with("food"), -ends_with("_d"))
+    
+  ) |> 
+  
+  # Sort the table by p-values: 
+  sort_p()
+
+# Print the results table:
+rrtab
+```
+:::
+
+## Dose response
+
+In this section, we will look at the dose response variables, which indicate for each food or drink item how many portions or glasses each respondent consumed. This may give us a better idea of whether there is a dose response effect with any of the suspected vehicles, and if so, which one(s) have the strongest effect.
+
+Dose-response analysis can be particularly useful to tease apart potential vehicles in a foodborne outbreak when there has been cross-contamination. Typically, the main contaminant will have a stronger dose-response effect.
+
+We can iterate through each of the dose-response columns, calculate and tabulate the relative risks.
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-drtab-ex
+#| code-fold: false
+#| eval: false
+# Pipe in the data:
+drtab <- linelist |> 
+  # Calculate risk ratios and tabulate results
+  # Calculate risk ratios through the `tbl_uvregression` function,
+  # using the `case` variable and all the `food_*_d` variables
+  ___(
+    ___ = ends_with("_d"),
+    label = list(
+      food_pasta_d ~ "Pasta",
+      food_veal_d ~ "Veal",
+      food_champagne_d ~ "Champagne",
+      food_sauce_d ~ "Sauce",
+      food_shrimps_d ~ "Shrimps",
+      food_beer_d ~ "Beer",
+      food_rocket_d ~ "Rocket",
+      food_bread_d ~ "Bread",
+      food_tuna_d ~ "Tuna",
+      food_red_wine_d ~ "Red wine",
+      food_green_d ~ "Green",
+      food_white_wine_d ~ "White wine"
+    ),
+    
+    # Choose the model (generalised linear model)
+    method = glm, 
+    
+    # Use the `case` variable as the outcome:
+    y = case,
+    
+    # Choose the model family:
+    method.args = list(
+      family = binomial(link = "log"),
+      na.action = na.exclude
+    ),
+    
+    # Exponentiate the results:
+    ___ = TRUE 
+ 
+  ) |> 
+  
+  # Sort the table by p-values: 
+  sort_p()
+
+# Print the results table:
+drtab
+
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl-drtab-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+
+# Pipe in the data:
+drtab <- linelist |> 
+  # Calculate risk ratios and tabulate results
+  # Calculate risk ratios through the `tbl_uvregression` function,
+  # using the `case` variable and all the `food_*_d` variables
+  tbl_uvregression(
+    include = ends_with("_d"),
+    label = list(
+      food_pasta_d ~ "Pasta",
+      food_veal_d ~ "Veal",
+      food_champagne_d ~ "Champagne",
+      food_sauce_d ~ "Sauce",
+      food_shrimps_d ~ "Shrimps",
+      food_beer_d ~ "Beer",
+      food_rocket_d ~ "Rocket",
+      food_bread_d ~ "Bread",
+      food_tuna_d ~ "Tuna",
+      food_red_wine_d ~ "Red wine",
+      food_green_d ~ "Green",
+      food_white_wine_d ~ "White wine"
+    ),
+    
+    # Choose the model (generalised linear model)
+    method = glm, 
+    
+    # Use the `case` variable as the outcome:
+    y = case,
+    
+    # Choose the model family:
+    method.args = list(
+      family = binomial(link = "log"),
+      na.action = na.exclude
+    ),
+    
+    # Exponentiate the results:
+    exponentiate = TRUE 
+ 
+  ) |> 
+  
+  # Sort the table by p-values: 
+  sort_p()
+
+# Print the results table:
+drtab
+```
+:::
+
+## Multivariable analysis
+
+::: callout-caution
+## Questioning
+
+Should we include something like that? There are no multi-variable analyses in the Copenhagen study, what do *you* prefer for the summative assessment on this regards?
+:::
+
+::: {.panel-tabset group="ex-sol"}
+## Exercise
+
+```{r}
+#| label: tbl-glm-ex
+#| code-fold: false
+#| eval: false
+
+tbl_glm <- glm(
+    case ~
+      demo_sex + demo_group + demo_age +
+      food_pasta_d + food_veal_d + food_champagne_d +
+      food_sauce_d + food_shrimps_d + food_beer_d +
+      food_rocket_d + food_bread_d + food_tuna_d +
+      food_red_wine_d + food_green_d + food_white_wine_d,
+    data = linelist,
+    family = binomial,
+    na.action = na.exclude
+  ) |> 
+  # Use the appropriate function to create a table of results:
+  ___(
+    label = list(
+      food_pasta_d ~ "Pasta",
+      food_veal_d ~ "Veal",
+      food_champagne_d ~ "Champagne",
+      food_sauce_d ~ "Sauce",
+      food_shrimps_d ~ "Shrimps",
+      food_beer_d ~ "Beer",
+      food_rocket_d ~ "Rocket",
+      food_bread_d ~ "Bread",
+      food_tuna_d ~ "Tuna",
+      food_red_wine_d ~ "Red wine",
+      food_green_d ~ "Green",
+      food_white_wine_d ~ "White wine",
+      demo_sex = "Sex",
+      demo_group ~ "Group"
+    ),
+    exponentiate = TRUE, 
+    show_single_row = c(demo_sex, demo_group)
+  ) |> 
+  # sort by p-values
+  sort_p() |> 
+  # adjust for multiple comparisons 
+  add_q() |>
+  # add number of observations
+  add_n()
+
+tbl_glm
+```
+
+## Solution
+
+```{asis, echo = !params$solved}
+::: {.callout-note appearance="minimal"}
+Solution will appear on the "solved" document
+:::
+```
+
+```{r}
+#| label: tbl_glm-sol
+#| include: !expr params$solved
+#| echo: !expr params$solved
+tbl_glm <- glm(
+    case ~
+      demo_sex + demo_group + demo_age +
+      food_pasta_d + food_veal_d + food_champagne_d +
+      food_sauce_d + food_shrimps_d + food_beer_d +
+      food_rocket_d + food_bread_d + food_tuna_d +
+      food_red_wine_d + food_green_d + food_white_wine_d,
+    data = linelist,
+    family = binomial,
+    na.action = na.exclude
+  ) |> 
+  # Use the appropriate function to create a table of results:
+  tbl_regression(
+    label = list(
+      food_pasta_d ~ "Pasta",
+      food_veal_d ~ "Veal",
+      food_champagne_d ~ "Champagne",
+      food_sauce_d ~ "Sauce",
+      food_shrimps_d ~ "Shrimps",
+      food_beer_d ~ "Beer",
+      food_rocket_d ~ "Rocket",
+      food_bread_d ~ "Bread",
+      food_tuna_d ~ "Tuna",
+      food_red_wine_d ~ "Red wine",
+      food_green_d ~ "Green",
+      food_white_wine_d ~ "White wine",
+      demo_sex = "Sex",
+      demo_group ~ "Group"
+    ),
+    exponentiate = TRUE, 
+    show_single_row = c(demo_sex, demo_group)
+  ) |> 
+  # sort by p-values
+  sort_p() |> 
+  # adjust for multiple comparisons 
+  add_q() |>
+  # add number of observations
+  add_n()
+
+tbl_glm
+```
+:::
+:::
+
+# References
+
+```{r}
+#| label: pkg-bib
+#| include: false
+knitr::write_bib(
+  c(
+    .packages(),
+    "ggplot2", "tidyverse", "renv", "here", "tidyr", "janitor",
+    "rio", "haven", "readr", "unheadr", "dplyr", "forcats", "stringr",
+    "lubridate", "gt", "gtsummary", "skimr", "knitr"
+  ) |> unique(),
+  file = "packages.bib"
+)
+```
