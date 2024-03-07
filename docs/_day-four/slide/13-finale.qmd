@@ -75,7 +75,13 @@ library(countdown)
 ::: {.column width="50%"}
 ![Tidyverse loop](img/tidyverse-loop.png)
 
-Tidy principles: - design for humans - pipes: "and then... and then..." - tidy data - functions are verbs - coherent grammar
+Tidy principles:
+
+- design for humans
+- pipes: "and then... and then..."
+- tidy data
+- functions are verbs
+- coherent grammar
 :::
 :::
 
@@ -103,9 +109,9 @@ Tidy principles: - design for humans - pipes: "and then... and then..." - tidy d
 
 ::: columns
 ::: {.column width="50%"}
--   base: `read.csv`
--   tidyverse: `read_csv`
--   heven: `read_sas`, `read_spss`, `read_stata`
+-   (base): `read.csv`
+-   (tidyverse): `read_csv`
+-   (heven): `read_sas`, `read_spss`, `read_stata`
 -   `rio::import` : import from many formats
 -   `rio::export` : export to many formats
 :::
@@ -121,9 +127,9 @@ Tidy principles: - design for humans - pipes: "and then... and then..." - tidy d
 ::: {.column width="50%"}
 -   `janitor::clean_names`: clean column names
 -   `janitor::remove_empty`: remove empty rows and columns
--   `tidyr::fill`: Fills missing values in selected columns using the next or previous entry
--   `tidyr::drop_na()`: drop rows with missing values in selected columns
--   `unheader::mash_colnames`: combine header rows (including grouping headers with `sliding_headers = TRUE`)
+-   (`tidyr::fill`): Fills missing values in selected columns using the next or previous entry
+-   (`tidyr::drop_na`): drop rows with missing values in selected columns
+-   (`unheader::mash_colnames`): combine header rows (including grouping headers with `sliding_headers = TRUE`)
 :::
 
 ::: {.column width="50%"}
@@ -161,9 +167,9 @@ here(
 ::: {.column width="50%"}
 -   `dplyr::filter`: filter rows
 -   `dplyr::select`: select columns
--   `dplyr::mutate`: add/change columns
--   `dplyr::group_by`: group rows by one or more column unique values
--   `dplyr::summarise`: summarize groups
+-   `dplyr::mutate`: add/change columns (does not affect number of rows)
+-   `dplyr::summarise`: summarize groups (resulting in one row per group `tibble`/`data.frame`)
+-   `.by` = `<tidy-select>`: group rows by one or more column unique values; used both in `mutate` and `summarise`.
 :::
 
 ::: {.column width="50%"}
@@ -187,9 +193,9 @@ here(
 ::: {.column width="50%"}
 -   `gtsummary::tbl_summary`: summary table
 -   `gtsummary::tbl_cross`: cross table
--   `gtsummary::tbl_uvregression`: regression table
--   `gtsummary::tbl_merge`: merge tables (horizontally)
--   `gtsummary::tbl_stack`: stack tables (vertically)
+-   (`gtsummary::tbl_uvregression`): regression table
+-   (`gtsummary::tbl_merge`): merge tables (horizontally)
+-   (`gtsummary::tbl_stack`): stack tables (vertically)
 -   `gt::gtsave(as_gt(<tbl>), "my_tbl.<ext>")`: save table as `<ext>` file (e.g., `html`, `png`, `pdf`, `docx`, ...)
 :::
 
